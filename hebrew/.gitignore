@@ -1,1 +1,9 @@
 __pycache__/
+
+# Pristine, copyrighted original-game files (extracted via dunepak etc.) --
+# input to build_intro1_animation.py. Never commit these; re-extract locally
+# from your own legally-owned copy of the game.
+extracted/
+
+# Debug output from build_intro1_animation.py.
+tools/_wsa_debug_frames/

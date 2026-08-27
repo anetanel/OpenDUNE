@@ -41,6 +41,23 @@ project), which already had a working Hebrew translation:
   their Hebrew-suffixed names, all into `bin/data/` (where `File_Init()`
   looks by default). Usage: `python3 hebrew/tools/build_heb.py`, or name
   specific jobs (`dune`, `texta`, …; `list` shows valid names).
+- `tools/build_intro1_animation.py` + `wsa_encode.py`/`wsa_decode.py` —
+  regenerates `hebrew/intro1.wsa` from `hebrew/INTRO1-00049.png` (the
+  hand-edited final frame). Ported from
+  [Dune2-Heb](https://github.com/anetanel/Dune2-Heb)'s `utils/`, which is
+  otherwise where this project's extraction/reconstruction tooling stays —
+  this one script is the exception, copied here (not just its output)
+  because regenerating the animation is a normal part of the day-to-day
+  Hebrew translation workflow.
+
+  Unlike `build_heb.py`, it needs heavier dependencies (`opencv-python`,
+  `numpy`, `Pillow` — `pip install --user opencv-python-headless numpy
+  pillow`) **and** the pristine, copyrighted original game files as input:
+  `hebrew/extracted/dune2_eu_1.07/INTRO/INTRO1.WSA` and `INTRO.PAL`,
+  extracted from your own legally-owned copy of the game (e.g. via
+  `dunepak`). `hebrew/extracted/` is gitignored — never commit it. Usage:
+  `python3 hebrew/tools/build_intro1_animation.py`, then run
+  `build_heb.py` as usual to install the result.
 
 ## Known gaps (translated source exists, but nothing loads it — yet)
 

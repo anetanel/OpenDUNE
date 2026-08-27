@@ -15,6 +15,13 @@ Usage:
     python3 hebrew/tools/build_heb.py            # build everything
     python3 hebrew/tools/build_heb.py dune intro  # just these
     python3 hebrew/tools/build_heb.py list        # show valid names
+
+If you edited hebrew/INTRO1-00049.png (the flying-logo intro animation's
+source frame), regenerate hebrew/intro1.wsa first, before running this
+script -- see hebrew/tools/build_intro1_animation.py (separate from this
+job list: it needs heavier dependencies (opencv/numpy/Pillow) and your own
+locally-extracted copy of the original game files, so it isn't run as part
+of "build everything" above).
 """
 import json
 import sys
