@@ -77,6 +77,14 @@ STRING_JOBS = {
 # those buttons silently fail to draw (found by testing the actual modal).
 # Shipping the English graphic keeps the buttons functional, with English
 # labels, until someone draws a proper Hebrew version.
+#
+# intro1.wsa -> INTRO1.WSA is a special case: the flying-logo intro
+# animation. cutscene.c/houseanimation.c hardcode "INTRO1.WSA" with no
+# per-language suffix at all (confirmed against both this repo and
+# dunedynasty's identical mechanism) -- so unlike every other asset here,
+# there's no way to make this Hebrew-only; installing it overwrites the
+# stock English WSA in place, and it'll show for every language until
+# someone adds real per-language branching in cutscene.c.
 ASSET_JOBS = {
     "intro.fnt": ("fonts", "introh.fnt"),
     "new8p.fnt": ("fonts", "new8ph.fnt"),
@@ -88,6 +96,7 @@ ASSET_JOBS = {
     "mentat.heb.shp": ("graphics", "MENTAT.HEB"),
     "misc.heb.cps": ("graphics", "MISC.HEB"),
     "title.heb.cps": ("graphics", "TITLE.HEB"),
+    "intro1.wsa": (".", "INTRO1.WSA"),
 }
 
 
