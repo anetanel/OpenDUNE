@@ -1,0 +1,1666 @@
+[
+  {
+    "en": "100",
+    "he": "100"
+  },
+  {
+    "en": "There is a traitor among us.  We are questioning everyone, including YOU! Answer this question correctly and you will prove your loyalty to House Harkonnen!",
+    "he": "There is a traitor among us.  We are questioning everyone, including YOU! Answer this question correctly and you will prove your loyalty to House Harkonnen!"
+  },
+  {
+    "en": "Correct, you are truly loyal to House Harkonnen!",
+    "he": "Correct, you are truly loyal to House Harkonnen!"
+  },
+  {
+    "en": "That is the wrong answer!",
+    "he": "That is the wrong answer!"
+  },
+  {
+    "en": "We have reports that you have been trading confidential information with the Ordos. You must answer a question correctly to prove your innocence.",
+    "he": "We have reports that you have been trading confidential information with the Ordos. You must answer a question correctly to prove your innocence."
+  },
+  {
+    "en": "Very good, I am glad to see that our reports were wrong about you.",
+    "he": "Very good, I am glad to see that our reports were wrong about you."
+  },
+  {
+    "en": "That is incorrect!",
+    "he": "That is incorrect!"
+  },
+  {
+    "en": "There is talk of an information leak within the ranks of the high military. To prove your innocence, you must answer the following question accurately:",
+    "he": "There is talk of an information leak within the ranks of the high military. To prove your innocence, you must answer the following question accurately:"
+  },
+  {
+    "en": "Well done.  You are no longer under suspicion, for now.",
+    "he": "Well done.  You are no longer under suspicion, for now."
+  },
+  {
+    "en": "You are wrong!",
+    "he": "You are wrong!"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "slab.wsa",
+    "he": "slab.wsa"
+  },
+  {
+    "en": "foundation",
+    "he": "foundation"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "wall.wsa",
+    "he": "wall.wsa"
+  },
+  {
+    "en": "defensive wall",
+    "he": "defensive wall"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "windtrap.wsa",
+    "he": "windtrap.wsa"
+  },
+  {
+    "en": "power plant",
+    "he": "power plant"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "refinery.wsa",
+    "he": "refinery.wsa"
+  },
+  {
+    "en": "industrial facility",
+    "he": "industrial facility"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "storage.wsa",
+    "he": "storage.wsa"
+  },
+  {
+    "en": "storehouse",
+    "he": "storehouse"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "turret.wsa",
+    "he": "turret.wsa"
+  },
+  {
+    "en": "ground based turret",
+    "he": "ground based turret"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "rturret.wsa",
+    "he": "rturret.wsa"
+  },
+  {
+    "en": "ground based turret",
+    "he": "ground based turret"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "construc.wsa",
+    "he": "construc.wsa"
+  },
+  {
+    "en": "production facility",
+    "he": "production facility"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "barrac.wsa",
+    "he": "barrac.wsa"
+  },
+  {
+    "en": "production facility",
+    "he": "production facility"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "wor.wsa",
+    "he": "wor.wsa"
+  },
+  {
+    "en": "production facility",
+    "he": "production facility"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "liteftry.wsa",
+    "he": "liteftry.wsa"
+  },
+  {
+    "en": "production facility",
+    "he": "production facility"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "hvyftry.wsa",
+    "he": "hvyftry.wsa"
+  },
+  {
+    "en": "production facility",
+    "he": "production facility"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "hitcftry.wsa",
+    "he": "hitcftry.wsa"
+  },
+  {
+    "en": "production facility",
+    "he": "production facility"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "repair.wsa",
+    "he": "repair.wsa"
+  },
+  {
+    "en": "industrial facility",
+    "he": "industrial facility"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "ix.wsa",
+    "he": "ix.wsa"
+  },
+  {
+    "en": "technology facility",
+    "he": "technology facility"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "starport.wsa",
+    "he": "starport.wsa"
+  },
+  {
+    "en": "advanced structure",
+    "he": "advanced structure"
+  },
+  {
+    "en": "What type of structure is this?",
+    "he": "What type of structure is this?"
+  },
+  {
+    "en": "palace.wsa",
+    "he": "palace.wsa"
+  },
+  {
+    "en": "capitol building",
+    "he": "capitol building"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "slab.wsa",
+    "he": "slab.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "wall.wsa",
+    "he": "wall.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "windtrap.wsa",
+    "he": "windtrap.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "refinery.wsa",
+    "he": "refinery.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "storage.wsa",
+    "he": "storage.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "headqrts.wsa",
+    "he": "headqrts.wsa"
+  },
+  {
+    "en": "heavy",
+    "he": "heavy"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "turret.wsa",
+    "he": "turret.wsa"
+  },
+  {
+    "en": "heavy",
+    "he": "heavy"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "rturret.wsa",
+    "he": "rturret.wsa"
+  },
+  {
+    "en": "heavy",
+    "he": "heavy"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "construc.wsa",
+    "he": "construc.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "barrac.wsa",
+    "he": "barrac.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "wor.wsa",
+    "he": "wor.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "liteftry.wsa",
+    "he": "liteftry.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "hvyftry.wsa",
+    "he": "hvyftry.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "hitcftry.wsa",
+    "he": "hitcftry.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "repair.wsa",
+    "he": "repair.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "ix.wsa",
+    "he": "ix.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "starport.wsa",
+    "he": "starport.wsa"
+  },
+  {
+    "en": "heavy",
+    "he": "heavy"
+  },
+  {
+    "en": "What is the armor level of this structure?",
+    "he": "What is the armor level of this structure?"
+  },
+  {
+    "en": "palace.wsa",
+    "he": "palace.wsa"
+  },
+  {
+    "en": "heavy",
+    "he": "heavy"
+  },
+  {
+    "en": "What is the weight of this structure?",
+    "he": "What is the weight of this structure?"
+  },
+  {
+    "en": "slab.wsa",
+    "he": "slab.wsa"
+  },
+  {
+    "en": "1469 kg",
+    "he": "1469 kg"
+  },
+  {
+    "en": "What is the weight of this structure?",
+    "he": "What is the weight of this structure?"
+  },
+  {
+    "en": "wall.wsa",
+    "he": "wall.wsa"
+  },
+  {
+    "en": "2245 kg",
+    "he": "2245 kg"
+  },
+  {
+    "en": "What is the armament of this structure?",
+    "he": "What is the armament of this structure?"
+  },
+  {
+    "en": "turret.wsa",
+    "he": "turret.wsa"
+  },
+  {
+    "en": "105mm cannon",
+    "he": "105mm cannon"
+  },
+  {
+    "en": "What is the range of this structure?",
+    "he": "What is the range of this structure?"
+  },
+  {
+    "en": "turret.wsa",
+    "he": "turret.wsa"
+  },
+  {
+    "en": "100m",
+    "he": "100m"
+  },
+  {
+    "en": "What is the capacity of this structure?",
+    "he": "What is the capacity of this structure?"
+  },
+  {
+    "en": "storage.wsa",
+    "he": "storage.wsa"
+  },
+  {
+    "en": "1000 spice units",
+    "he": "1000 spice units"
+  },
+  {
+    "en": "What is the capacity of this structure?",
+    "he": "What is the capacity of this structure?"
+  },
+  {
+    "en": "refinery.wsa",
+    "he": "refinery.wsa"
+  },
+  {
+    "en": "1000 spice units",
+    "he": "1000 spice units"
+  },
+  {
+    "en": "What is the armament of this structure?",
+    "he": "What is the armament of this structure?"
+  },
+  {
+    "en": "headqrts.wsa",
+    "he": "headqrts.wsa"
+  },
+  {
+    "en": "none",
+    "he": "none"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "harvest.wsa",
+    "he": "harvest.wsa"
+  },
+  {
+    "en": "spice recovery vehicle",
+    "he": "spice recovery vehicle"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "mcv.wsa",
+    "he": "mcv.wsa"
+  },
+  {
+    "en": "base deployment vehicle",
+    "he": "base deployment vehicle"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "quad.wsa",
+    "he": "quad.wsa"
+  },
+  {
+    "en": "light attack vehicle",
+    "he": "light attack vehicle"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "ltank.wsa",
+    "he": "ltank.wsa"
+  },
+  {
+    "en": "medium battle tank",
+    "he": "medium battle tank"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "rtank.wsa",
+    "he": "rtank.wsa"
+  },
+  {
+    "en": "battlefield support vehicle",
+    "he": "battlefield support vehicle"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "htank.wsa",
+    "he": "htank.wsa"
+  },
+  {
+    "en": "main battle tank",
+    "he": "main battle tank"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "carryall.wsa",
+    "he": "carryall.wsa"
+  },
+  {
+    "en": "airborne unit",
+    "he": "airborne unit"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "orni.wsa",
+    "he": "orni.wsa"
+  },
+  {
+    "en": "close support attack craft",
+    "he": "close support attack craft"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "worm.wsa",
+    "he": "worm.wsa"
+  },
+  {
+    "en": "creature of dune",
+    "he": "creature of dune"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "stank.wsa",
+    "he": "stank.wsa"
+  },
+  {
+    "en": "advanced battle tank",
+    "he": "advanced battle tank"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "ordrtank.wsa",
+    "he": "ordrtank.wsa"
+  },
+  {
+    "en": "battlefield support vehicle",
+    "he": "battlefield support vehicle"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "otrike.wsa",
+    "he": "otrike.wsa"
+  },
+  {
+    "en": "quick strike vehicle",
+    "he": "quick strike vehicle"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "gold-bb.wsa",
+    "he": "gold-bb.wsa"
+  },
+  {
+    "en": "battlefield support missile",
+    "he": "battlefield support missile"
+  },
+  {
+    "en": "What type of unit is this?",
+    "he": "What type of unit is this?"
+  },
+  {
+    "en": "harktank.wsa",
+    "he": "harktank.wsa"
+  },
+  {
+    "en": "advanced battle tank",
+    "he": "advanced battle tank"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "harvest.wsa",
+    "he": "harvest.wsa"
+  },
+  {
+    "en": "none",
+    "he": "none"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "mcv.wsa",
+    "he": "mcv.wsa"
+  },
+  {
+    "en": "none",
+    "he": "none"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "infantry.wsa",
+    "he": "infantry.wsa"
+  },
+  {
+    "en": "9mm rp assault rifles",
+    "he": "9mm rp assault rifles"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "trike.wsa",
+    "he": "trike.wsa"
+  },
+  {
+    "en": "dual 20mm cannons",
+    "he": "dual 20mm cannons"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "quad.wsa",
+    "he": "quad.wsa"
+  },
+  {
+    "en": "dual 30mm cannons",
+    "he": "dual 30mm cannons"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "ltank.wsa",
+    "he": "ltank.wsa"
+  },
+  {
+    "en": "155mm gun",
+    "he": "155mm gun"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "rtank.wsa",
+    "he": "rtank.wsa"
+  },
+  {
+    "en": "missile launcher",
+    "he": "missile launcher"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "htank.wsa",
+    "he": "htank.wsa"
+  },
+  {
+    "en": "dual 155mm cannons",
+    "he": "dual 155mm cannons"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "carryall.wsa",
+    "he": "carryall.wsa"
+  },
+  {
+    "en": "none",
+    "he": "none"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "orni.wsa",
+    "he": "orni.wsa"
+  },
+  {
+    "en": "battle support rockets",
+    "he": "battle support rockets"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "worm.wsa",
+    "he": "worm.wsa"
+  },
+  {
+    "en": "appetite",
+    "he": "appetite"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "stank.wsa",
+    "he": "stank.wsa"
+  },
+  {
+    "en": "sonic amplifier",
+    "he": "sonic amplifier"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "ordrtank.wsa",
+    "he": "ordrtank.wsa"
+  },
+  {
+    "en": "missile launcher",
+    "he": "missile launcher"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "otrike.wsa",
+    "he": "otrike.wsa"
+  },
+  {
+    "en": "dual 20mm cannons",
+    "he": "dual 20mm cannons"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "saboture.wsa",
+    "he": "saboture.wsa"
+  },
+  {
+    "en": "unknown",
+    "he": "unknown"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "harktank.wsa",
+    "he": "harktank.wsa"
+  },
+  {
+    "en": "dual 190mm guns",
+    "he": "dual 190mm guns"
+  },
+  {
+    "en": "What is the armament of this unit?",
+    "he": "What is the armament of this unit?"
+  },
+  {
+    "en": "sardukar.wsa",
+    "he": "sardukar.wsa"
+  },
+  {
+    "en": "classified",
+    "he": "classified"
+  },
+  {
+    "en": "What is the speed (tracked) of this unit?",
+    "he": "What is the speed (tracked) of this unit?"
+  },
+  {
+    "en": "harvest.wsa",
+    "he": "harvest.wsa"
+  },
+  {
+    "en": "32 km/h",
+    "he": "32 km/h"
+  },
+  {
+    "en": "What is the speed (tracked) of this unit?",
+    "he": "What is the speed (tracked) of this unit?"
+  },
+  {
+    "en": "mcv.wsa",
+    "he": "mcv.wsa"
+  },
+  {
+    "en": "36 km/h",
+    "he": "36 km/h"
+  },
+  {
+    "en": "What is the speed (foot) of this unit?",
+    "he": "What is the speed (foot) of this unit?"
+  },
+  {
+    "en": "infantry.wsa",
+    "he": "infantry.wsa"
+  },
+  {
+    "en": "5 km/h",
+    "he": "5 km/h"
+  },
+  {
+    "en": "What is the speed (foot) of this unit?",
+    "he": "What is the speed (foot) of this unit?"
+  },
+  {
+    "en": "hyinfy.wsa",
+    "he": "hyinfy.wsa"
+  },
+  {
+    "en": "12 km/h",
+    "he": "12 km/h"
+  },
+  {
+    "en": "What is the speed (wheel) of this unit?",
+    "he": "What is the speed (wheel) of this unit?"
+  },
+  {
+    "en": "trike.wsa",
+    "he": "trike.wsa"
+  },
+  {
+    "en": "72 km/h",
+    "he": "72 km/h"
+  },
+  {
+    "en": "What is the speed (wheel) of this unit?",
+    "he": "What is the speed (wheel) of this unit?"
+  },
+  {
+    "en": "quad.wsa",
+    "he": "quad.wsa"
+  },
+  {
+    "en": "59 km/h",
+    "he": "59 km/h"
+  },
+  {
+    "en": "What is the speed (tracked) of this unit?",
+    "he": "What is the speed (tracked) of this unit?"
+  },
+  {
+    "en": "ltank.wsa",
+    "he": "ltank.wsa"
+  },
+  {
+    "en": "40 km/h",
+    "he": "40 km/h"
+  },
+  {
+    "en": "What is the speed (tracked) of this unit?",
+    "he": "What is the speed (tracked) of this unit?"
+  },
+  {
+    "en": "rtank.wsa",
+    "he": "rtank.wsa"
+  },
+  {
+    "en": "48 km/h",
+    "he": "48 km/h"
+  },
+  {
+    "en": "What is the speed (tracked) of this unit?",
+    "he": "What is the speed (tracked) of this unit?"
+  },
+  {
+    "en": "htank.wsa",
+    "he": "htank.wsa"
+  },
+  {
+    "en": "32 km/h",
+    "he": "32 km/h"
+  },
+  {
+    "en": "What is the speed (airborne) of this unit?",
+    "he": "What is the speed (airborne) of this unit?"
+  },
+  {
+    "en": "carryall.wsa",
+    "he": "carryall.wsa"
+  },
+  {
+    "en": "160 km/h",
+    "he": "160 km/h"
+  },
+  {
+    "en": "What is the speed (airborne) of this unit?",
+    "he": "What is the speed (airborne) of this unit?"
+  },
+  {
+    "en": "orni.wsa",
+    "he": "orni.wsa"
+  },
+  {
+    "en": "340 km/h",
+    "he": "340 km/h"
+  },
+  {
+    "en": "What is the speed of this unit?",
+    "he": "What is the speed of this unit?"
+  },
+  {
+    "en": "worm.wsa",
+    "he": "worm.wsa"
+  },
+  {
+    "en": "56 km/h",
+    "he": "56 km/h"
+  },
+  {
+    "en": "What is the speed (foot) of this unit?",
+    "he": "What is the speed (foot) of this unit?"
+  },
+  {
+    "en": "fremen.wsa",
+    "he": "fremen.wsa"
+  },
+  {
+    "en": "17 km/h",
+    "he": "17 km/h"
+  },
+  {
+    "en": "What is the speed (tracked) of this unit?",
+    "he": "What is the speed (tracked) of this unit?"
+  },
+  {
+    "en": "stank.wsa",
+    "he": "stank.wsa"
+  },
+  {
+    "en": "44 km/h",
+    "he": "44 km/h"
+  },
+  {
+    "en": "What is the speed (tracked) of this unit?",
+    "he": "What is the speed (tracked) of this unit?"
+  },
+  {
+    "en": "ordrtank.wsa",
+    "he": "ordrtank.wsa"
+  },
+  {
+    "en": "48 km/h",
+    "he": "48 km/h"
+  },
+  {
+    "en": "What is the speed (wheel) of this unit?",
+    "he": "What is the speed (wheel) of this unit?"
+  },
+  {
+    "en": "otrike.wsa",
+    "he": "otrike.wsa"
+  },
+  {
+    "en": "90 km/h",
+    "he": "90 km/h"
+  },
+  {
+    "en": "What is the speed (trike) of this unit?",
+    "he": "What is the speed (trike) of this unit?"
+  },
+  {
+    "en": "saboture.wsa",
+    "he": "saboture.wsa"
+  },
+  {
+    "en": "95 km/h",
+    "he": "95 km/h"
+  },
+  {
+    "en": "What is the speed (tracked) of this unit?",
+    "he": "What is the speed (tracked) of this unit?"
+  },
+  {
+    "en": "harktank.wsa",
+    "he": "harktank.wsa"
+  },
+  {
+    "en": "20 km/h",
+    "he": "20 km/h"
+  },
+  {
+    "en": "What is the speed (foot) of this unit?",
+    "he": "What is the speed (foot) of this unit?"
+  },
+  {
+    "en": "sardukar.wsa",
+    "he": "sardukar.wsa"
+  },
+  {
+    "en": "15 km/h",
+    "he": "15 km/h"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "harvest.wsa",
+    "he": "harvest.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "mcv.wsa",
+    "he": "mcv.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "infantry.wsa",
+    "he": "infantry.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "hyinfy.wsa",
+    "he": "hyinfy.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "trike.wsa",
+    "he": "trike.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "quad.wsa",
+    "he": "quad.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "ltank.wsa",
+    "he": "ltank.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "rtank.wsa",
+    "he": "rtank.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "htank.wsa",
+    "he": "htank.wsa"
+  },
+  {
+    "en": "heavy",
+    "he": "heavy"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "carryall.wsa",
+    "he": "carryall.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "orni.wsa",
+    "he": "orni.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "worm.wsa",
+    "he": "worm.wsa"
+  },
+  {
+    "en": "heavy",
+    "he": "heavy"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "fremen.wsa",
+    "he": "fremen.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "stank.wsa",
+    "he": "stank.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "ordrtank.wsa",
+    "he": "ordrtank.wsa"
+  },
+  {
+    "en": "medium",
+    "he": "medium"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "otrike.wsa",
+    "he": "otrike.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "saboture.wsa",
+    "he": "saboture.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "harktank.wsa",
+    "he": "harktank.wsa"
+  },
+  {
+    "en": "heavy",
+    "he": "heavy"
+  },
+  {
+    "en": "What is the armor level of this unit?",
+    "he": "What is the armor level of this unit?"
+  },
+  {
+    "en": "sardukar.wsa",
+    "he": "sardukar.wsa"
+  },
+  {
+    "en": "light",
+    "he": "light"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "harvest.wsa",
+    "he": "harvest.wsa"
+  },
+  {
+    "en": "5",
+    "he": "5"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "mcv.wsa",
+    "he": "mcv.wsa"
+  },
+  {
+    "en": "15",
+    "he": "15"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "trike.wsa",
+    "he": "trike.wsa"
+  },
+  {
+    "en": "2",
+    "he": "2"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "quad.wsa",
+    "he": "quad.wsa"
+  },
+  {
+    "en": "2",
+    "he": "2"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "ltank.wsa",
+    "he": "ltank.wsa"
+  },
+  {
+    "en": "2",
+    "he": "2"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "rtank.wsa",
+    "he": "rtank.wsa"
+  },
+  {
+    "en": "3",
+    "he": "3"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "htank.wsa",
+    "he": "htank.wsa"
+  },
+  {
+    "en": "3",
+    "he": "3"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "carryall.wsa",
+    "he": "carryall.wsa"
+  },
+  {
+    "en": "4",
+    "he": "4"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "orni.wsa",
+    "he": "orni.wsa"
+  },
+  {
+    "en": "2",
+    "he": "2"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "stank.wsa",
+    "he": "stank.wsa"
+  },
+  {
+    "en": "2",
+    "he": "2"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "ordrtank.wsa",
+    "he": "ordrtank.wsa"
+  },
+  {
+    "en": "3",
+    "he": "3"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "otrike.wsa",
+    "he": "otrike.wsa"
+  },
+  {
+    "en": "2",
+    "he": "2"
+  },
+  {
+    "en": "What is the crew compliment of this unit?",
+    "he": "What is the crew compliment of this unit?"
+  },
+  {
+    "en": "harktank.wsa",
+    "he": "harktank.wsa"
+  },
+  {
+    "en": "3",
+    "he": "3"
+  },
+  {
+    "en": "To which House does this unit belong?",
+    "he": "To which House does this unit belong?"
+  },
+  {
+    "en": "stank.wsa",
+    "he": "stank.wsa"
+  },
+  {
+    "en": "atreides",
+    "he": "atreides"
+  },
+  {
+    "en": "To which House does this unit belong?",
+    "he": "To which House does this unit belong?"
+  },
+  {
+    "en": "ordrtank.wsa",
+    "he": "ordrtank.wsa"
+  },
+  {
+    "en": "ordos",
+    "he": "ordos"
+  },
+  {
+    "en": "To which House does this unit belong?",
+    "he": "To which House does this unit belong?"
+  },
+  {
+    "en": "otrike.wsa",
+    "he": "otrike.wsa"
+  },
+  {
+    "en": "ordos",
+    "he": "ordos"
+  },
+  {
+    "en": "To which House does this unit belong?",
+    "he": "To which House does this unit belong?"
+  },
+  {
+    "en": "saboture.wsa",
+    "he": "saboture.wsa"
+  },
+  {
+    "en": "ordos",
+    "he": "ordos"
+  },
+  {
+    "en": "To which House does this unit belong?",
+    "he": "To which House does this unit belong?"
+  },
+  {
+    "en": "gold-bb.wsa",
+    "he": "gold-bb.wsa"
+  },
+  {
+    "en": "harkonnen",
+    "he": "harkonnen"
+  },
+  {
+    "en": "To which House does this unit belong?",
+    "he": "To which House does this unit belong?"
+  },
+  {
+    "en": "harktank.wsa",
+    "he": "harktank.wsa"
+  },
+  {
+    "en": "harkonnen",
+    "he": "harkonnen"
+  },
+  {
+    "en": "To which House does this unit belong?",
+    "he": "To which House does this unit belong?"
+  },
+  {
+    "en": "sardukar.wsa",
+    "he": "sardukar.wsa"
+  },
+  {
+    "en": "emperor",
+    "he": "emperor"
+  },
+  {
+    "en": "What is the length of this unit?",
+    "he": "What is the length of this unit?"
+  },
+  {
+    "en": "gold-bb.wsa",
+    "he": "gold-bb.wsa"
+  },
+  {
+    "en": "8.12m",
+    "he": "8.12m"
+  },
+  {
+    "en": "What type of warhead does this unit have?",
+    "he": "What type of warhead does this unit have?"
+  },
+  {
+    "en": "gold-bb.wsa",
+    "he": "gold-bb.wsa"
+  },
+  {
+    "en": "h355 hs cluster bomb",
+    "he": "h355 hs cluster bomb"
+  },
+  {
+    "en": "What is the guidance of this unit?",
+    "he": "What is the guidance of this unit?"
+  },
+  {
+    "en": "gold-bb.wsa",
+    "he": "gold-bb.wsa"
+  },
+  {
+    "en": "inertial",
+    "he": "inertial"
+  },
+  {
+    "en": "What is the range of this unit?",
+    "he": "What is the range of this unit?"
+  },
+  {
+    "en": "gold-bb.wsa",
+    "he": "gold-bb.wsa"
+  },
+  {
+    "en": "1120km",
+    "he": "1120km"
+  },
+  {
+    "en": "",
+    "he": ""
+  }
+]

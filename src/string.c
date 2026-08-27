@@ -25,7 +25,7 @@ static uint16 * s_strings = NULL;
 static char * s_stringsBuffer = NULL;
 static uint16 s_stringsCount = 0;
 
-const char * const g_languageSuffixes[LANGUAGE_MAX] = { "ENG", "FRE", "GER", "ITA", "SPA" };
+const char * const g_languageSuffixes[LANGUAGE_MAX] = { "ENG", "FRE", "GER", "ITA", "SPA", "HEB" };
 
 /**
  * Decompress a string and

@@ -1,6 +1,7 @@
 /** @file src/gui/gui.c Generic GUI definitions. */
 
 #include <assert.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -389,6 +390,103 @@ void GUI_DisplayText(const char *str, int importance, ...)
 }
 
 /**
+ * Hebrew letters live in the same cp862-style glyph slots (0x80-0x9A) that
+ * other languages use for accented Latin characters -- fonts are only
+ * swapped to a Hebrew variant when the active language is Hebrew (see
+ * Font_Init()), so checking the byte range here is unambiguous.
+ */
+static bool GUI_IsHebrewByte(unsigned char c)
+{
+	return c >= 0x80 && c <= 0x9A;
+}
+
+/**
+ * Reverse one line's character order in place, for right-to-left display
+ * on this engine's left-to-right-only glyph drawer. Runs of ASCII digits
+ * are kept in their original order (only their position within the line
+ * moves) -- numbers always read most-significant-digit-first, even
+ * embedded in RTL text. Lines with no Hebrew (untranslated, English
+ * fallback content) are left untouched.
+ *
+ * `len` is the number of bytes in the line, excluding any delimiter.
+ */
+static void GUI_MirrorRTLLine(char *line, size_t len)
+{
+	char reversed[512];
+	size_t out;
+	size_t i;
+
+	if (len == 0 || len > sizeof(reversed)) return;
+
+	for (i = 0; i < len; i++) {
+		if (GUI_IsHebrewByte((unsigned char)line[i])) break;
+	}
+	if (i == len) return;
+
+	out = 0;
+	i = len;
+	while (i > 0) {
+		if (isdigit((unsigned char)line[i - 1])) {
+			size_t end = i;
+			size_t start = i;
+
+			while (start > 0 && isdigit((unsigned char)line[start - 1])) start--;
+
+			memcpy(reversed + out, line + start, end - start);
+			out += end - start;
+			i = start;
+		} else {
+			reversed[out++] = line[i - 1];
+			i--;
+		}
+	}
+
+	memcpy(line, reversed, len);
+}
+
+/**
+ * If the active language is Hebrew, copy `string` into `out` (which must be
+ * at least `out_size` bytes) with each '\r'/'\n'-delimited line mirrored
+ * for right-to-left display, and return true. Otherwise (not Hebrew, or
+ * `string` doesn't fit `out`) leaves `out` untouched and returns false --
+ * callers should draw the original `string` in that case.
+ *
+ * Mirroring must happen here, right before drawing, and not earlier at
+ * string-table build time or at word-wrap time: any wrap pass that ran on
+ * `string` before it got here already inserted its '\r'/'\n' delimiters
+ * based on the unmirrored (natural reading order) text -- mirroring before
+ * wrapping would make wrap points land on reversed word order and corrupt
+ * multi-line paragraph flow.
+ *
+ * This is the single shared entry point for every text-drawing path
+ * (GUI_DrawText() and the cutscene-specific drawers in cutscene.c) so the
+ * Hebrew-language gating only needs to live in one place.
+ */
+bool GUI_MirrorRTLText(const char *string, char *out, size_t out_size)
+{
+	size_t len;
+	size_t lineStart;
+	size_t i;
+
+	if (g_config.language != LANGUAGE_HEBREW) return false;
+
+	len = strlen(string);
+	if (len >= out_size) return false;
+
+	memcpy(out, string, len + 1);
+
+	lineStart = 0;
+	for (i = 0; i <= len; i++) {
+		if (out[i] == '\n' || out[i] == '\r' || out[i] == '\0') {
+			GUI_MirrorRTLLine(out + lineStart, i - lineStart);
+			lineStart = i + 1;
+		}
+	}
+
+	return true;
+}
+
+/**
  * Draw a char on the screen.
  *
  * @param c The char to draw.
@@ -465,6 +563,7 @@ void GUI_DrawText(const char *string, int16 left, int16 top, uint8 fgColour, uin
 	uint16 x;
 	uint16 y;
 	const char *s;
+	char mirrored[512];
 
 	if (g_fontCurrent == NULL) return;
 
@@ -477,6 +576,9 @@ void GUI_DrawText(const char *string, int16 left, int16 top, uint8 fgColour, uin
 	colours[1] = fgColour;
 
 	GUI_InitColors(colours, 0, 1);
+
+	if (GUI_MirrorRTLText(string, mirrored, sizeof(mirrored)))
+		string = mirrored;
 
 	s = string;
 	x = left;

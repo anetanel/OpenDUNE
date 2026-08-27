@@ -1,0 +1,1366 @@
+[
+  {
+    "en": "",
+    "he": ""
+  },
+  {
+    "en": "Attack",
+    "he": "תקוף"
+  },
+  {
+    "en": "Move",
+    "he": "זוז"
+  },
+  {
+    "en": "Retreat",
+    "he": "סוג לאחור"
+  },
+  {
+    "en": "Guard",
+    "he": "שמור"
+  },
+  {
+    "en": "Area Guard",
+    "he": "שמור איזור"
+  },
+  {
+    "en": "Harvest",
+    "he": "קצור"
+  },
+  {
+    "en": "Return",
+    "he": "חזור"
+  },
+  {
+    "en": "Stop",
+    "he": "עצור"
+  },
+  {
+    "en": "Ambush",
+    "he": "ארוב"
+  },
+  {
+    "en": "Sabotage",
+    "he": "חבל"
+  },
+  {
+    "en": "Die",
+    "he": "מות"
+  },
+  {
+    "en": "Hunt",
+    "he": "צוד"
+  },
+  {
+    "en": "Target:",
+    "he": "מטרה:"
+  },
+  {
+    "en": "Movement:",
+    "he": "תזוזה:"
+  },
+  {
+    "en": "Initializing the MT-32",
+    "he": "Initializing the MT-32"
+  },
+  {
+    "en": "Old save game file is incompatable with latest version.",
+    "he": "Old save game file is incompatable with latest version."
+  },
+  {
+    "en": "Insufficient memory by %ld bytes.",
+    "he": "Insufficient memory by %ld bytes."
+  },
+  {
+    "en": "The setup program must be run first.",
+    "he": "The setup program must be run first."
+  },
+  {
+    "en": "%s %s destroyed.",
+    "he": "%s %s destroyed."
+  },
+  {
+    "en": "Unit is unable to deploy here.",
+    "he": "Unit is unable to deploy here."
+  },
+  {
+    "en": "Score: %d",
+    "he": "Score: %d"
+  },
+  {
+    "en": "Time: %dh %dm",
+    "he": "Time: %dh %dm"
+  },
+  {
+    "en": "You have attained the rank of",
+    "he": "You have attained the rank of"
+  },
+  {
+    "en": "Units Destroyed By",
+    "he": "Units Destroyed By"
+  },
+  {
+    "en": "Buildings Destroyed By",
+    "he": "Buildings Destroyed By"
+  },
+  {
+    "en": "Spice Harvested By",
+    "he": "Spice Harvested By"
+  },
+  {
+    "en": "Play a Game",
+    "he": "התחל משחק"
+  },
+  {
+    "en": "Replay Introduction",
+    "he": "נגן פתיח מחדש"
+  },
+  {
+    "en": "Exit Game",
+    "he": "צא מהמשחק"
+  },
+  {
+    "en": "Cancel",
+    "he": "ביטול"
+  },
+  {
+    "en": "Deploy",
+    "he": "שלח"
+  },
+  {
+    "en": "Load",
+    "he": "טען"
+  },
+  {
+    "en": "Next",
+    "he": "הבא"
+  },
+  {
+    "en": "Repair",
+    "he": "תקן"
+  },
+  {
+    "en": "Repairing",
+    "he": "בתיקון"
+  },
+  {
+    "en": "Save",
+    "he": "שמור"
+  },
+  {
+    "en": "Stop",
+    "he": "עצור"
+  },
+  {
+    "en": "Place it",
+    "he": "הנח זאת"
+  },
+  {
+    "en": "Completed",
+    "he": "הסתיים"
+  },
+  {
+    "en": "On hold",
+    "he": "בהמתנה"
+  },
+  {
+    "en": "Build it",
+    "he": "בנה זאת"
+  },
+  {
+    "en": "Launch",
+    "he": "Launch"
+  },
+  {
+    "en": "Fremen",
+    "he": "Fremen"
+  },
+  {
+    "en": "Saboteur",
+    "he": "Saboteur"
+  },
+  {
+    "en": "Pre-spice mound",
+    "he": "Pre-spice mound"
+  },
+  {
+    "en": "%d%% done",
+    "he": "%d%% done"
+  },
+  {
+    "en": "Mentat Briefing",
+    "he": "Mentat Briefing"
+  },
+  {
+    "en": "Select Subject:",
+    "he": "Select Subject:"
+  },
+  {
+    "en": "DMG",
+    "he": "נזק"
+  },
+  {
+    "en": "Harvester is heading to refinery.",
+    "he": "Harvester is heading to refinery."
+  },
+  {
+    "en": "Construction complete",
+    "he": "Construction complete"
+  },
+  {
+    "en": "Enemy unit approaching",
+    "he": "Enemy unit approaching"
+  },
+  {
+    "en": "Harkonnen approaching",
+    "he": "Harkonnen approaching"
+  },
+  {
+    "en": "Atreides approaching",
+    "he": "Atreides approaching"
+  },
+  {
+    "en": "Ordos approaching",
+    "he": "Ordos approaching"
+  },
+  {
+    "en": "Fremen approaching",
+    "he": "Fremen approaching"
+  },
+  {
+    "en": "Sardaukar approaching",
+    "he": "Sardaukar approaching"
+  },
+  {
+    "en": "Mercenary approaching",
+    "he": "Mercenary approaching"
+  },
+  {
+    "en": "Saboteur approaching",
+    "he": "Saboteur approaching"
+  },
+  {
+    "en": "Harkonnen unit destroyed",
+    "he": "Harkonnen unit destroyed"
+  },
+  {
+    "en": "Atreides unit destroyed",
+    "he": "Atreides unit destroyed"
+  },
+  {
+    "en": "Ordos unit destroyed",
+    "he": "Ordos unit destroyed"
+  },
+  {
+    "en": "Fremen unit destroyed",
+    "he": "Fremen unit destroyed"
+  },
+  {
+    "en": "Sardaukar unit destroyed",
+    "he": "Sardaukar unit destroyed"
+  },
+  {
+    "en": "Mercenary unit destroyed",
+    "he": "Mercenary unit destroyed"
+  },
+  {
+    "en": "Harkonnen structure destroyed",
+    "he": "Harkonnen structure destroyed"
+  },
+  {
+    "en": "Atreides structure destroyed",
+    "he": "Atreides structure destroyed"
+  },
+  {
+    "en": "Ordos structure destroyed",
+    "he": "Ordos structure destroyed"
+  },
+  {
+    "en": "Fremen structure destroyed",
+    "he": "Fremen structure destroyed"
+  },
+  {
+    "en": "Sardaukar structure destroyed",
+    "he": "Sardaukar structure destroyed"
+  },
+  {
+    "en": "Mercenary structure destroyed",
+    "he": "Mercenary structure destroyed"
+  },
+  {
+    "en": "Harkonnen unit deployed",
+    "he": "Harkonnen unit deployed"
+  },
+  {
+    "en": "Atreides unit deployed",
+    "he": "Atreides unit deployed"
+  },
+  {
+    "en": "Ordos unit deployed",
+    "he": "Ordos unit deployed"
+  },
+  {
+    "en": "Fremen unit deployed",
+    "he": "Fremen unit deployed"
+  },
+  {
+    "en": "Sardaukar unit deployed",
+    "he": "Sardaukar unit deployed"
+  },
+  {
+    "en": "Mercenary unit deployed",
+    "he": "Mercenary unit deployed"
+  },
+  {
+    "en": "Wormsign!",
+    "he": "Wormsign!"
+  },
+  {
+    "en": "Saboteur approaching",
+    "he": "Saboteur approaching"
+  },
+  {
+    "en": "Frigate arrived",
+    "he": "Frigate arrived"
+  },
+  {
+    "en": "Missile approaching",
+    "he": "Missile approaching"
+  },
+  {
+    "en": "You have successfully completed your mission.",
+    "he": "You have successfully completed your mission."
+  },
+  {
+    "en": "You have failed your mission.",
+    "he": "You have failed your mission."
+  },
+  {
+    "en": "Select\rLocation to\rbuild.",
+    "he": "Select\rLocation to\rbuild."
+  },
+  {
+    "en": "Pick Target\rT-Minus: %d",
+    "he": "Pick Target\rT-Minus: %d"
+  },
+  {
+    "en": "Select\rTarget.",
+    "he": "Select\rTarget."
+  },
+  {
+    "en": "Select\rDestination.",
+    "he": "Select\rDestination."
+  },
+  {
+    "en": "   Spice\rholds: %4d\rmax: %4d",
+    "he": "   Spice\rholds: %4d\rmax: %4d"
+  },
+  {
+    "en": "Power Info\rneeded:\routput:",
+    "he": "Power Info\rneeded:\routput:"
+  },
+  {
+    "en": "Base is under attack",
+    "he": "Base is under attack"
+  },
+  {
+    "en": "Dune II: The Battle for Arrakis",
+    "he": "חולית II: הקרב על אראקיס"
+  },
+  {
+    "en": "Load a game",
+    "he": "טען משחק"
+  },
+  {
+    "en": "Save this game",
+    "he": "שמור משחק נוכחי"
+  },
+  {
+    "en": "Game controls",
+    "he": "בקרי משחק"
+  },
+  {
+    "en": "Quit playing",
+    "he": "צא מהמשחק"
+  },
+  {
+    "en": "Continue game",
+    "he": "המשך לשחק"
+  },
+  {
+    "en": "Select a saved game to load:",
+    "he": "בחר משחק שמור:"
+  },
+  {
+    "en": "Select a position to save to:",
+    "he": "בחר מיקום עבור השמירה:"
+  },
+  {
+    "en": "[ EMPTY SLOT ]",
+    "he": "] מקום ריק ["
+  },
+  {
+    "en": "Enter a description of your saved game:",
+    "he": "הכנס תיאור עבור השמירה:"
+  },
+  {
+    "en": "Are you sure you want to quit playing?",
+    "he": "האם אתה בטוח שברצונך להפסיק לשחק?"
+  },
+  {
+    "en": "Previous",
+    "he": "חזרה"
+  },
+  {
+    "en": "Restart scenario",
+    "he": "אתחל תרחיש"
+  },
+  {
+    "en": "Pick another house",
+    "he": "בחר בית אחר"
+  },
+  {
+    "en": "ON",
+    "he": "דלוק"
+  },
+  {
+    "en": "OFF",
+    "he": "כבוי"
+  },
+  {
+    "en": "Yes",
+    "he": "כן"
+  },
+  {
+    "en": "No",
+    "he": "לא"
+  },
+  {
+    "en": "Hints are",
+    "he": "רמזים"
+  },
+  {
+    "en": "Game speed",
+    "he": "מהירות משחק"
+  },
+  {
+    "en": "Music is",
+    "he": "מוזיקה"
+  },
+  {
+    "en": "Sounds are",
+    "he": "צלילים"
+  },
+  {
+    "en": "Slowest",
+    "he": "איטי ביותר"
+  },
+  {
+    "en": "Slow",
+    "he": "איטי"
+  },
+  {
+    "en": "Normal",
+    "he": "רגיל"
+  },
+  {
+    "en": "Fast",
+    "he": "מהיר"
+  },
+  {
+    "en": "Fastest",
+    "he": "מהיר ביותר"
+  },
+  {
+    "en": "Are you sure you wish to restart?",
+    "he": "האם אתה בטוח שברצונך לאתחל?"
+  },
+  {
+    "en": "Are you sure you wish to pick a new house?",
+    "he": "האם אתה בטוח שברצונך לבחור בית חדש?"
+  },
+  {
+    "en": "Auto scroll is",
+    "he": "גלילה אוטומטית"
+  },
+  {
+    "en": " is %d percent full",
+    "he": " is %d percent full"
+  },
+  {
+    "en": " is %d percent full and harvesting",
+    "he": " is %d percent full and harvesting"
+  },
+  {
+    "en": " is %d percent full and heading back",
+    "he": " is %d percent full and heading back"
+  },
+  {
+    "en": " is %d percent full and awaiting pickup",
+    "he": " is %d percent full and awaiting pickup"
+  },
+  {
+    "en": " is empty",
+    "he": " is empty"
+  },
+  {
+    "en": " is empty and harvesting",
+    "he": " is empty and harvesting"
+  },
+  {
+    "en": " is empty and heading back",
+    "he": " is empty and heading back"
+  },
+  {
+    "en": " is empty and awaiting pickup",
+    "he": " is empty and awaiting pickup"
+  },
+  {
+    "en": "is complete.",
+    "he": "is complete."
+  },
+  {
+    "en": "is completed and ready to place.",
+    "he": "is completed and ready to place."
+  },
+  {
+    "en": "is completed and awaiting orders.",
+    "he": "is completed and awaiting orders."
+  },
+  {
+    "en": "Insufficient funds.  Construction is halted.",
+    "he": "Insufficient funds.  Construction is halted."
+  },
+  {
+    "en": "is destroyed.",
+    "he": "is destroyed."
+  },
+  {
+    "en": "Can not place %s here.",
+    "he": "Can not place %s here."
+  },
+  {
+    "en": "Can not place foundation here.",
+    "he": "Can not place foundation here."
+  },
+  {
+    "en": "Unable to create more.",
+    "he": "Unable to create more."
+  },
+  {
+    "en": "Production of %s has started.",
+    "he": "ייצור של %s החל."
+  },
+  {
+    "en": "Repairing stops.",
+    "he": "Repairing stops."
+  },
+  {
+    "en": "Repairing starts.",
+    "he": "Repairing starts."
+  },
+  {
+    "en": "Upgrading stops.",
+    "he": "Upgrading stops."
+  },
+  {
+    "en": "Upgrading starts.",
+    "he": "Upgrading starts."
+  },
+  {
+    "en": "Upgrade",
+    "he": "Upgrade"
+  },
+  {
+    "en": "Upgrading",
+    "he": "Upgrading"
+  },
+  {
+    "en": "Upgrading\r%d%% done",
+    "he": "Upgrading\r%d%% done"
+  },
+  {
+    "en": "Insufficient spice storage available.  Spice is lost.",
+    "he": "Insufficient spice storage available.  Spice is lost."
+  },
+  {
+    "en": "Radar Scan\rFriend: %2d\rEnemy: %2d",
+    "he": "Radar Scan\rFriend: %2d\rEnemy: %2d"
+  },
+  {
+    "en": "Harkonnen harvester deployed",
+    "he": "Harkonnen harvester deployed"
+  },
+  {
+    "en": "Atreides harvester deployed",
+    "he": "Atreides harvester deployed"
+  },
+  {
+    "en": "Ordos harvester deployed",
+    "he": "Ordos harvester deployed"
+  },
+  {
+    "en": "Fremen harvester deployed",
+    "he": "Fremen harvester deployed"
+  },
+  {
+    "en": "Sardaukar harvester deployed",
+    "he": "Sardaukar harvester deployed"
+  },
+  {
+    "en": "Mercenary harvester deployed",
+    "he": "Mercenary harvester deployed"
+  },
+  {
+    "en": "Destruct",
+    "he": "Destruct"
+  },
+  {
+    "en": "Harkonnen unit launched",
+    "he": "Harkonnen unit launched"
+  },
+  {
+    "en": "Atreides unit launched",
+    "he": "Atreides unit launched"
+  },
+  {
+    "en": "Ordos unit launched",
+    "he": "Ordos unit launched"
+  },
+  {
+    "en": "Fremen unit launched",
+    "he": "Fremen unit launched"
+  },
+  {
+    "en": "Sardaukar unit launched",
+    "he": "Sardaukar unit launched"
+  },
+  {
+    "en": "Mercenary unit launched",
+    "he": "Mercenary unit launched"
+  },
+  {
+    "en": "Frigate in\rorbit and\rawaiting\rorder.",
+    "he": "Frigate in\rorbit and\rawaiting\rorder."
+  },
+  {
+    "en": "Frigate\rArrival in\rT-minus %d",
+    "he": "Frigate\rArrival in\rT-minus %d"
+  },
+  {
+    "en": "Harkonnen vehicle repaired",
+    "he": "Harkonnen vehicle repaired"
+  },
+  {
+    "en": "Atreides vehicle repaired",
+    "he": "Atreides vehicle repaired"
+  },
+  {
+    "en": "Ordos vehicle repaired",
+    "he": "Ordos vehicle repaired"
+  },
+  {
+    "en": "Fremen vehicle repaired",
+    "he": "Fremen vehicle repaired"
+  },
+  {
+    "en": "Sardaukar vehicle repaired",
+    "he": "Sardaukar vehicle repaired"
+  },
+  {
+    "en": "Mercenary vehicle repaired",
+    "he": "Mercenary vehicle repaired"
+  },
+  {
+    "en": "Sand",
+    "he": "Sand"
+  },
+  {
+    "en": "Rock",
+    "he": "Rock"
+  },
+  {
+    "en": "Dune",
+    "he": "Dune"
+  },
+  {
+    "en": "Mountain",
+    "he": "Mountain"
+  },
+  {
+    "en": "Spice",
+    "he": "Spice"
+  },
+  {
+    "en": "Spice Bloom",
+    "he": "Spice Bloom"
+  },
+  {
+    "en": "Structure",
+    "he": "Structure"
+  },
+  {
+    "en": "Proceed",
+    "he": "Proceed"
+  },
+  {
+    "en": "Repeat",
+    "he": "Repeat"
+  },
+  {
+    "en": "Cost: %3d",
+    "he": "Cost: %3d"
+  },
+  {
+    "en": "Cost: 999",
+    "he": "Cost: 999"
+  },
+  {
+    "en": "Qty: %2d",
+    "he": "Qty: %2d"
+  },
+  {
+    "en": "Qty: 99",
+    "he": "Qty: 99"
+  },
+  {
+    "en": "NO UNITS ON ORDER",
+    "he": "NO UNITS ON ORDER"
+  },
+  {
+    "en": "Item Name                 Qty Total",
+    "he": "Item Name                 Qty Total"
+  },
+  {
+    "en": "Invoice of Units on Order",
+    "he": "Invoice of Units on Order"
+  },
+  {
+    "en": "Total Cost :",
+    "he": "Total Cost :"
+  },
+  {
+    "en": "OUT OF STOCK",
+    "he": "OUT OF STOCK"
+  },
+  {
+    "en": "NEED STRUCTURE UPGRADE",
+    "he": "NEED STRUCTURE UPGRADE"
+  },
+  {
+    "en": "Upgrade Cost : %d",
+    "he": "Upgrade Cost : %d"
+  },
+  {
+    "en": "Resume Game",
+    "he": "Resume Game"
+  },
+  {
+    "en": "Upgrade",
+    "he": "Upgrade"
+  },
+  {
+    "en": "Send Order",
+    "he": "Send Order"
+  },
+  {
+    "en": "Build This",
+    "he": "Build This"
+  },
+  {
+    "en": "Invoice",
+    "he": "Invoice"
+  },
+  {
+    "en": "Exit",
+    "he": "Exit"
+  },
+  {
+    "en": "Carryall",
+    "he": "Carryall"
+  },
+  {
+    "en": "All-Purpose Carryall",
+    "he": "All-Purpose Carryall"
+  },
+  {
+    "en": "'Thopter",
+    "he": "'Thopter"
+  },
+  {
+    "en": "Ornithipter",
+    "he": "Ornithipter"
+  },
+  {
+    "en": "Infantry",
+    "he": "Infantry"
+  },
+  {
+    "en": "Light Infantry Squad",
+    "he": "Light Infantry Squad"
+  },
+  {
+    "en": "Troopers",
+    "he": "Troopers"
+  },
+  {
+    "en": "Heavy Trooper Squad",
+    "he": "Heavy Trooper Squad"
+  },
+  {
+    "en": "Soldier",
+    "he": "Soldier"
+  },
+  {
+    "en": "Infantry Soldier",
+    "he": "Infantry Soldier"
+  },
+  {
+    "en": "Trooper",
+    "he": "Trooper"
+  },
+  {
+    "en": "Heavy Trooper",
+    "he": "Heavy Trooper"
+  },
+  {
+    "en": "Saboteur",
+    "he": "Saboteur"
+  },
+  {
+    "en": "Insidious Saboteur",
+    "he": "Insidious Saboteur"
+  },
+  {
+    "en": "Launcher",
+    "he": "Launcher"
+  },
+  {
+    "en": "Rocket Launcher",
+    "he": "Rocket Launcher"
+  },
+  {
+    "en": "Deviator",
+    "he": "Deviator"
+  },
+  {
+    "en": "Deviator Launcher",
+    "he": "Deviator Launcher"
+  },
+  {
+    "en": "Tank",
+    "he": "Tank"
+  },
+  {
+    "en": "Combat Tank",
+    "he": "Combat Tank"
+  },
+  {
+    "en": "Siege Tank",
+    "he": "Siege Tank"
+  },
+  {
+    "en": "Heavy Siege Tank",
+    "he": "Heavy Siege Tank"
+  },
+  {
+    "en": "Devastator",
+    "he": "Devastator"
+  },
+  {
+    "en": "Devastator Tank",
+    "he": "Devastator Tank"
+  },
+  {
+    "en": "Sonic Tank",
+    "he": "Sonic Tank"
+  },
+  {
+    "en": "Sonic Wave Tank",
+    "he": "Sonic Wave Tank"
+  },
+  {
+    "en": "Trike",
+    "he": "תלתנוע"
+  },
+  {
+    "en": "Light Attack Trike",
+    "he": "Light Attack Trike"
+  },
+  {
+    "en": "Raider Trike",
+    "he": "Raider Trike"
+  },
+  {
+    "en": "Fast Raider Trike",
+    "he": "Fast Raider Trike"
+  },
+  {
+    "en": "Quad",
+    "he": "Quad"
+  },
+  {
+    "en": "Heavy Attack Quad",
+    "he": "Heavy Attack Quad"
+  },
+  {
+    "en": "Harvester",
+    "he": "Harvester"
+  },
+  {
+    "en": "Spice Harvester",
+    "he": "Spice Harvester"
+  },
+  {
+    "en": "MCV",
+    "he": "MCV"
+  },
+  {
+    "en": "Mobile Const. Vehicle",
+    "he": "Mobile Const. Vehicle"
+  },
+  {
+    "en": "Sandworm",
+    "he": "Sandworm"
+  },
+  {
+    "en": "Sandworm",
+    "he": "Sandworm"
+  },
+  {
+    "en": "Concrete",
+    "he": "בטון"
+  },
+  {
+    "en": "Small Concrete Slab",
+    "he": "מרצפת בטון קטנה"
+  },
+  {
+    "en": "Concrete 4",
+    "he": "בטון 4"
+  },
+  {
+    "en": "Large Concrete Slab",
+    "he": "מרצפת בטון גדולה"
+  },
+  {
+    "en": "Palace",
+    "he": "ארמון"
+  },
+  {
+    "en": "House Palace",
+    "he": "House Palace"
+  },
+  {
+    "en": "Light Fctry",
+    "he": "מפעל קל"
+  },
+  {
+    "en": "Light Vehicle Factory",
+    "he": "מפעל כלי רכב קלים"
+  },
+  {
+    "en": "Heavy Fctry",
+    "he": "מפעל כבד"
+  },
+  {
+    "en": "Heavy Vehicle Factory",
+    "he": "מפעל כלי רכב כבדים"
+  },
+  {
+    "en": "Hi-Tech",
+    "he": "הייטקס"
+  },
+  {
+    "en": "Hi-Tech Factory",
+    "he": "מפעל היי-טק"
+  },
+  {
+    "en": "IX",
+    "he": "איקס"
+  },
+  {
+    "en": "House of IX",
+    "he": "בית איקס"
+  },
+  {
+    "en": "WOR",
+    "he": "WOR"
+  },
+  {
+    "en": "WOR Trooper Facility",
+    "he": "WOR Trooper Facility"
+  },
+  {
+    "en": "Const. Yard",
+    "he": "חצר ייצור"
+  },
+  {
+    "en": "Construction Yard",
+    "he": "חצר ייצור"
+  },
+  {
+    "en": "Windtrap",
+    "he": "מלכודת דוח"
+  },
+  {
+    "en": "Windtrap Power Center",
+    "he": "Windtrap Power Center"
+  },
+  {
+    "en": "Barracks",
+    "he": "קסרקטין"
+  },
+  {
+    "en": "Infantry Barracks",
+    "he": "Infantry Barracks"
+  },
+  {
+    "en": "Starport",
+    "he": "Starport"
+  },
+  {
+    "en": "Starport Facility",
+    "he": "Starport Facility"
+  },
+  {
+    "en": "Refinery",
+    "he": "Refinery"
+  },
+  {
+    "en": "Spice Refinery",
+    "he": "Spice Refinery"
+  },
+  {
+    "en": "Repair",
+    "he": "Repair"
+  },
+  {
+    "en": "Repair Facility",
+    "he": "Repair Facility"
+  },
+  {
+    "en": "Wall",
+    "he": "Wall"
+  },
+  {
+    "en": "Base Defense Wall",
+    "he": "Base Defense Wall"
+  },
+  {
+    "en": "Turret",
+    "he": "Turret"
+  },
+  {
+    "en": "Cannon Turret",
+    "he": "Cannon Turret"
+  },
+  {
+    "en": "R-Turret",
+    "he": "R-Turret"
+  },
+  {
+    "en": "Rocket Turret",
+    "he": "Rocket Turret"
+  },
+  {
+    "en": "Spice Silo",
+    "he": "Spice Silo"
+  },
+  {
+    "en": "Spice Storage Silo",
+    "he": "Spice Storage Silo"
+  },
+  {
+    "en": "Outpost",
+    "he": "Outpost"
+  },
+  {
+    "en": "Radar Outpost",
+    "he": "Radar Outpost"
+  },
+  {
+    "en": "Insufficient power.  Windtrap is needed.",
+    "he": "Insufficient power.  Windtrap is needed."
+  },
+  {
+    "en": "Sand Flea",
+    "he": "Sand Flea"
+  },
+  {
+    "en": "Sand Snake",
+    "he": "Sand Snake"
+  },
+  {
+    "en": "Desert Mongoose",
+    "he": "Desert Mongoose"
+  },
+  {
+    "en": "Sand Warrior",
+    "he": "Sand Warrior"
+  },
+  {
+    "en": "Dune Trooper",
+    "he": "Dune Trooper"
+  },
+  {
+    "en": "Squad Leader",
+    "he": "Squad Leader"
+  },
+  {
+    "en": "Outpost Commander",
+    "he": "Outpost Commander"
+  },
+  {
+    "en": "Base Commander",
+    "he": "Base Commander"
+  },
+  {
+    "en": "Warlord",
+    "he": "Warlord"
+  },
+  {
+    "en": "Chief Warlord",
+    "he": "Chief Warlord"
+  },
+  {
+    "en": "Ruler of Arrakis",
+    "he": "Ruler of Arrakis"
+  },
+  {
+    "en": "Emperor",
+    "he": "Emperor"
+  },
+  {
+    "en": "Three Houses have come to Dune.",
+    "he": "Three Houses have come to Dune."
+  },
+  {
+    "en": "To take control of the land.",
+    "he": "To take control of the land."
+  },
+  {
+    "en": "That has become divided.",
+    "he": "That has become divided."
+  },
+  {
+    "en": "Select your next region",
+    "he": "Select your next region"
+  },
+  {
+    "en": "At the Emperor's Palace.",
+    "he": "At the Emperor's Palace."
+  },
+  {
+    "en": "You, of all people, should\runderstand the importance of victory!",
+    "he": "You, of all people, should\runderstand the importance of victory!"
+  },
+  {
+    "en": "Yes, your excellency. I...",
+    "he": "Yes, your excellency. I..."
+  },
+  {
+    "en": "You let the Atreides defeat\ryou and my Sardaukar!",
+    "he": "You let the Atreides defeat\ryou and my Sardaukar!"
+  },
+  {
+    "en": "I did not let...",
+    "he": "I did not let..."
+  },
+  {
+    "en": "I will not allow it to happen again!",
+    "he": "I will not allow it to happen again!"
+  },
+  {
+    "en": "At the Emperor's Palace\ron Dune.",
+    "he": "At the Emperor's Palace\ron Dune."
+  },
+  {
+    "en": "Fools!\rI gave you weapons and troops.",
+    "he": "Fools!\rI gave you weapons and troops."
+  },
+  {
+    "en": "And still you fail\rto defeat the Atreides.",
+    "he": "And still you fail\rto defeat the Atreides."
+  },
+  {
+    "en": "But, excell...",
+    "he": "But, excell..."
+  },
+  {
+    "en": "Enough!  Together we must make\rsure the Atreides do not succeed!",
+    "he": "Enough!  Together we must make\rsure the Atreides do not succeed!"
+  },
+  {
+    "en": "At the Emperor's Palace.",
+    "he": "At the Emperor's Palace."
+  },
+  {
+    "en": "I cannot believe the\rincompetence I see before me!",
+    "he": "I cannot believe the\rincompetence I see before me!"
+  },
+  {
+    "en": "Your highness?",
+    "he": "Your highness?"
+  },
+  {
+    "en": "I give you my Sardaukar to assist\ragainst the Ordos, and you failed me!",
+    "he": "I give you my Sardaukar to assist\ragainst the Ordos, and you failed me!"
+  },
+  {
+    "en": "We...",
+    "he": "We..."
+  },
+  {
+    "en": "Do not fail me again!\rYou are dismissed!",
+    "he": "Do not fail me again!\rYou are dismissed!"
+  },
+  {
+    "en": "At the Emperor's Palace\ron Dune.",
+    "he": "At the Emperor's Palace\ron Dune."
+  },
+  {
+    "en": "The Ordos were not\rsupposed to get this far!",
+    "he": "The Ordos were not\rsupposed to get this far!"
+  },
+  {
+    "en": "Your highness, let us explain...",
+    "he": "Your highness, let us explain..."
+  },
+  {
+    "en": "No more explanations!\rYou are to defend my palace.",
+    "he": "No more explanations!\rYou are to defend my palace."
+  },
+  {
+    "en": "Only together will\rwe defeat the Ordos!",
+    "he": "Only together will\rwe defeat the Ordos!"
+  },
+  {
+    "en": "At the Emperor's Palace.",
+    "he": "At the Emperor's Palace."
+  },
+  {
+    "en": "You receive the assistance\ryou require and then fail me!",
+    "he": "You receive the assistance\ryou require and then fail me!"
+  },
+  {
+    "en": "No your...",
+    "he": "No your..."
+  },
+  {
+    "en": "My Sardaukar could help defeat the\rHarkonnen, but you wasted them!",
+    "he": "My Sardaukar could help defeat the\rHarkonnen, but you wasted them!"
+  },
+  {
+    "en": "We didn't have...",
+    "he": "We didn't have..."
+  },
+  {
+    "en": "I want no excuses.\rDo not fail me again!",
+    "he": "I want no excuses.\rDo not fail me again!"
+  },
+  {
+    "en": "At the Emperor's Palace\ron Dune.",
+    "he": "At the Emperor's Palace\ron Dune."
+  },
+  {
+    "en": "I should have known your Houses\rcouldn't stand up to the Harkonnen!",
+    "he": "I should have known your Houses\rcouldn't stand up to the Harkonnen!"
+  },
+  {
+    "en": "Excellency, they are...",
+    "he": "Excellency, they are..."
+  },
+  {
+    "en": "Silence!",
+    "he": "Silence!"
+  },
+  {
+    "en": "You are to defend my palace.",
+    "he": "You are to defend my palace."
+  },
+  {
+    "en": "I will show you how\rto crush the Harkonnen!",
+    "he": "I will show you how\rto crush the Harkonnen!"
+  },
+  {
+    "en": "Thank you for playing Dune II.",
+    "he": "Thank you for playing Dune II."
+  },
+  {
+    "en": "Spice storage capacity low, build silos.",
+    "he": "Spice storage capacity low, build silos."
+  },
+  {
+    "en": "Name and Rank",
+    "he": "Name and Rank"
+  },
+  {
+    "en": "Battle",
+    "he": "Battle"
+  },
+  {
+    "en": "Score",
+    "he": "Score"
+  },
+  {
+    "en": "Resume Game",
+    "he": "Resume Game"
+  },
+  {
+    "en": "Clear List",
+    "he": "Clear List"
+  },
+  {
+    "en": "Are you sure you want to clear the high scores?",
+    "he": "Are you sure you want to clear the high scores?"
+  },
+  {
+    "en": "You:",
+    "he": "You:"
+  },
+  {
+    "en": "Enemy:",
+    "he": "Enemy:"
+  },
+  {
+    "en": "Credits are low. Harvest spice for more credits.",
+    "he": "Credits are low. Harvest spice for more credits."
+  },
+  {
+    "en": "Not enough power for radar.  Build windtraps.",
+    "he": "Not enough power for radar.  Build windtraps."
+  },
+  {
+    "en": "Repair structure first",
+    "he": "Repair structure first"
+  },
+  {
+    "en": "Hall of Fame",
+    "he": "היכל התהילה   "
+  },
+  {
+    "en": "Select\rPlace to\rHarvest.",
+    "he": "Select\rPlace to\rHarvest."
+  },
+  {
+    "en": "Hall of Fame",
+    "he": "Hall of Fame"
+  },
+  {
+    "en": "There are no saved games to load.",
+    "he": "There are no saved games to load."
+  },
+  {
+    "en": "Warning: Original saved games are incompatable with the new version.  The battle will be restarted.",
+    "he": "Warning: Original saved games are incompatable with the new version.  The battle will be restarted."
+  },
+  {
+    "en": "Load Game",
+    "he": "טען משחק"
+  },
+  {
+    "en": "",
+    "he": ""
+  }
+]
