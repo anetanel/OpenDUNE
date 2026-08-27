@@ -26,10 +26,11 @@ project), which already had a working Hebrew translation:
   Hebrew-labeled version eventually; this keeps the buttons functional
   until then.
 - `intro1.wsa` + `INTRO1-00049.{png,psd}` — flying-logo intro animation
-  source. Copied over as-is; **not yet wired into the build/load path** —
-  OpenDUNE's intro sequence loading wasn't confirmed to reference a
-  per-language WSA the way strings/graphics do. Needs investigation before
-  it does anything.
+  source, installed by `build_heb.py` as `INTRO1.WSA`. Unlike every other
+  asset here, `cutscene.c`/`houseanimation.c` hardcode that filename with
+  no per-language suffix at all, so it overwrites the stock English WSA in
+  place and plays for every language, not just Hebrew, until someone adds
+  real per-language branching there.
 - `tools/eng.py` — codec for the `.ENG`/`.HEB`-style string table format,
   reverse-engineered directly from this repo's own
   `String_DecompressAndTranslate()` (`src/string.c`) — see its docstring.
