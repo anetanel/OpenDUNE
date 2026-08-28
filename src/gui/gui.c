@@ -524,6 +524,21 @@ void GUI_DrawText_WrapperBox(const char *string, int16 left, int16 top, uint16 w
 		return;
 	}
 
+	/* Font_GetStringWidth() below reads g_fontCurrent, which is only
+	 * updated as a side effect of GUI_DrawText_Wrapper() actually drawing
+	 * with a given `flags` -- and that happens *after* we'd measure. If
+	 * the font last selected by some other draw call (e.g. this same
+	 * screen's differently-styled banner/caption calls interleaving)
+	 * doesn't match `flags`, the width comes out wrong for the font
+	 * we're about to draw with, so the right-aligned x lands off by
+	 * however much those two fonts differ per character -- since the
+	 * stale text isn't cleared first, the old and new draws both stay
+	 * visible, reading as the line doubled/bolded a pixel or two apart.
+	 * Prime the correct font/style first, the same NULL-string idiom
+	 * already used elsewhere in this codebase (e.g. GUI_Mentat_Loop()
+	 * before GUI_SplitText()/GUI_Mentat_SplitText()). */
+	GUI_DrawText_Wrapper(NULL, 0, 0, 0, 0, flags);
+
 	lineStart = string;
 	y = top;
 
@@ -543,6 +558,16 @@ void GUI_DrawText_WrapperBox(const char *string, int16 left, int16 top, uint16 w
 
 		lineWidth = Font_GetStringWidth(lineBuf);
 		x = left + width - lineWidth;
+		if (x < left) x = left;
+		/* left+width can exceed SCREEN_WIDTH (some callers pass an
+		 * oversized box that only ever mattered for word-wrap, never for
+		 * left-anchored drawing, e.g. GUI_Mentat_DrawInfo's caption box).
+		 * Clamped here, not at those call sites, since GUI_DrawText()
+		 * itself force-wraps to a new line the moment x+charWidth would
+		 * exceed SCREEN_WIDTH -- starting a right-aligned line past that
+		 * boundary corrupts the line by splitting it mid-string onto a
+		 * second row instead of drawing it flush right. */
+		if (x + lineWidth > SCREEN_WIDTH) x = SCREEN_WIDTH - lineWidth;
 		if (x < left) x = left;
 
 		GUI_DrawText_Wrapper(lineBuf, x, y, fgColour, bgColour, flags);

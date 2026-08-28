@@ -265,7 +265,10 @@ static void GUI_Mentat_Draw(bool force)
 
 	GUI_DrawSprite(SCREEN_1, g_sprites[397 + g_playerHouseID * 15], g_shoulderLeft, g_shoulderTop, 0, 0);
 
-	GUI_DrawText_Wrapper(String_Get_ByIndex(STR_SELECT_SUBJECT), (g_curWidgetXBase << 3) + 16, g_curWidgetYBase + 2, 12, 0, 0x12);
+	/* Width 144 matches the subject rows' own right edge (offsetX 24 +
+	 * width 0x88, see GUI_Mentat_Create_HelpScreen_Widgets() below) so
+	 * this heading right-aligns flush with the list under it for Hebrew. */
+	GUI_DrawText_WrapperBox(String_Get_ByIndex(STR_SELECT_SUBJECT), (g_curWidgetXBase << 3) + 16, g_curWidgetYBase + 2, 144, 12, 0, 0x12);
 	GUI_DrawText_Wrapper(NULL, 0, 0, 0, 0, 0x11);
 
 	line = GUI_Widget_Get_ByIndex(w, 3);
@@ -1103,7 +1106,7 @@ uint16 GUI_Mentat_Loop(const char *wsaFilename, char *pictureDetails, char *text
 
 	GUI_DrawText_Wrapper(NULL, 0, 0, 0, 0, 0x32);
 
-	textLines = GUI_Mentat_SplitText(text, 304);
+	textLines = GUI_Mentat_SplitText(text, 312);
 
 	mentatSpeakingMode = 2;
 	lines = 0;
@@ -1191,7 +1194,7 @@ uint16 GUI_Mentat_Loop(const char *wsaFilename, char *pictureDetails, char *text
 
 					if (textLines-- != 0) {
 						GFX_Screen_SetActive(SCREEN_2);
-						GUI_DrawText_WrapperBox(text, 4, 1, 304, g_curWidgetFGColourBlink, 0, 0x32);
+						GUI_DrawText_WrapperBox(text, 4, 1, 312, g_curWidgetFGColourBlink, 0, 0x32);
 						mentatSpeakingMode = 1;
 						textDelay = (uint32)strlen(text) * 4;
 						textTick = g_timerGUI + textDelay;
@@ -1253,7 +1256,17 @@ uint16 GUI_Mentat_Loop(const char *wsaFilename, char *pictureDetails, char *text
 
 		if (!dirty) continue;
 
-		GUI_Mentat_DrawInfo(pictureDetails, (g_curWidgetXBase << 3) + 5, g_curWidgetYBase + 3, (g_curWidgetWidth << 3) + 10, 8, 0, lines, 0x31);
+		/* The "+ 10" widened box below GUI_SplitText() used above is a
+		 * generous word-wrap threshold only -- fine for left-anchored
+		 * English, which never draws past where it needs to. For Hebrew,
+		 * GUI_DrawText_WrapperBox() right-aligns to this box's edge, and
+		 * anything drawn past the widget's own box (g_curWidgetXBase +
+		 * g_curWidgetWidth) never reaches the screen: GUI_Screen_Copy()
+		 * below only copies that widget's rectangle, silently cropping
+		 * whatever falls outside it. So here we use the tighter, real
+		 * box instead -- symmetric 5px inset on both sides, matching the
+		 * "+ 5" in the left argument. */
+		GUI_Mentat_DrawInfo(pictureDetails, (g_curWidgetXBase << 3) + 5, g_curWidgetYBase + 3, (g_curWidgetWidth << 3) - 10, 8, 0, lines, 0x31);
 
 		GUI_DrawSprite(SCREEN_2, g_sprites[397 + g_playerHouseID * 15], g_shoulderLeft, g_shoulderTop, 0, 0);
 		GUI_Mouse_Hide_InWidget(g_curWidgetIndex);

@@ -1,0 +1,475 @@
+{
+  "info_prefix_hex": "0000002f0000014e",
+  "entries": [
+    {
+      "code": "00",
+      "threshold": 0,
+      "name_en": "Briefing",
+      "name_he": "תדרוך",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "01",
+      "threshold": 1,
+      "name_en": "Advice",
+      "name_he": "ייעוץ",
+      "prefix": "3",
+      "delim": "*",
+      "body_en": "No desc ",
+      "body_he": "No desc "
+    },
+    {
+      "code": "01",
+      "threshold": 1,
+      "name_en": "Orders",
+      "name_he": "פקודות",
+      "prefix": "0",
+      "delim": "*",
+      "body_en": "No desc ",
+      "body_he": "No desc "
+    },
+    {
+      "code": "10",
+      "threshold": 0,
+      "name_en": "Houses",
+      "name_he": "בתים",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "11",
+      "threshold": 1,
+      "name_en": "House Atreides",
+      "name_he": "בית אטריידיס",
+      "prefix": "FARTR.WSA",
+      "delim": "*",
+      "body_en": "Caladan: \fOur ancestral home is the lush planet of Caladan. We have created a civilized society and we respect the lives and rights of all people. We do not believe in the use of unnecessary violence, and have crafted a defensive alliance with the native Fremen of Dune. ",
+      "body_he": "קאלאדן: \fבית אבותינו הוא כוכב-הלכת השופע קאלאדן. בנינו בו חברה מתורבתת ואנו מכבדים את חייהם וזכויותיהם של כל אדם. איננו מאמינים בשימוש באלימות שלא לצורך, וכרתנו ברית הגנה עם הדררים ילידי חולית. "
+    },
+    {
+      "code": "11",
+      "threshold": 1,
+      "name_en": "House Harkonnen",
+      "name_he": "בית הארקונן",
+      "prefix": "FHARK.WSA",
+      "delim": "*",
+      "body_en": "Giedi Prime: \fThe Harkonnen come from the dark planet of Giedi Prime. They are cruel and vicious individuals, and do not assign much value to fair play or even human life. Their goal is obviously the military conquest of Dune. ",
+      "body_he": "Giedi Prime: \fThe Harkonnen come from the dark planet of Giedi Prime. They are cruel and vicious individuals, and do not assign much value to fair play or even human life. Their goal is obviously the military conquest of Dune. "
+    },
+    {
+      "code": "11",
+      "threshold": 1,
+      "name_en": "House Ordos",
+      "name_he": "בית אורדוס",
+      "prefix": "FORDOS.WSA",
+      "delim": "*",
+      "body_en": "Name: Unknown \fHouse Ordos was originally formed by a group of insecure wealthy families. It has evolved into a powerful cartel that is driven by a lust for credits and the desire to control and manipulate. They often support themselves by stealing rather than working. ",
+      "body_he": "Name: Unknown \fHouse Ordos was originally formed by a group of insecure wealthy families. It has evolved into a powerful cartel that is driven by a lust for credits and the desire to control and manipulate. They often support themselves by stealing rather than working. "
+    },
+    {
+      "code": "20",
+      "threshold": 0,
+      "name_en": "Structures",
+      "name_he": "מבנים",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "21",
+      "threshold": 2,
+      "name_en": "Barracks",
+      "name_he": "מגורי חיילים",
+      "prefix": "barrac.wsa",
+      "delim": "*",
+      "body_en": "Infantry Barracks\rPower Needs: 20 \fThe Barracks is the building that trains our courageous light infantry. The structures are quite durable and will provide you with ample means to defend your spice harvesting operations. ",
+      "body_he": "Infantry Barracks\rPower Needs: 20 \fThe Barracks is the building that trains our courageous light infantry. The structures are quite durable and will provide you with ample means to defend your spice harvesting operations. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Concrete Slab",
+      "name_he": "משטח בטון",
+      "prefix": "slab.wsa",
+      "delim": "*",
+      "body_en": "Concrete Slab \fConcrete slabs provide the stable foundations for our buildings that allow them to operate at maximum efficiency. ",
+      "body_he": "Concrete Slab \fConcrete slabs provide the stable foundations for our buildings that allow them to operate at maximum efficiency. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Construction Yard",
+      "name_he": "מפעל בנייה",
+      "prefix": "Construc.wsa",
+      "delim": "*",
+      "body_en": "Construction Yard\r(Harsh climate model)\rSelf-Powered \fA Construction Yard is required to build any buildings. ",
+      "body_he": "Construction Yard\r(Harsh climate model)\rSelf-Powered \fA Construction Yard is required to build any buildings. "
+    },
+    {
+      "code": "21",
+      "threshold": 4,
+      "name_en": "Heavy Factory",
+      "name_he": "מפעל כבד",
+      "prefix": "hvyftry.wsa",
+      "delim": "*",
+      "body_en": "Heavy Vehicle Factory\rPower Needs: 35 \fThe Heavy Factory produces all large vehicles, like the harvester and the heavier machines used for defensive purposes. The building itself is extremely well armored. ",
+      "body_he": "Heavy Vehicle Factory\rPower Needs: 35 \fThe Heavy Factory produces all large vehicles, like the harvester and the heavier machines used for defensive purposes. The building itself is extremely well armored. "
+    },
+    {
+      "code": "21",
+      "threshold": 5,
+      "name_en": "High-Tech Factory",
+      "name_he": "מפעל הייטק",
+      "prefix": "hitcftry.wsa",
+      "delim": "*",
+      "body_en": "High-Tech Factory\rPower Needs: 35 \fThe High-Tech Factory produces high technology aircraft like the carryall. ",
+      "body_he": "High-Tech Factory\rPower Needs: 35 \fThe High-Tech Factory produces high technology aircraft like the carryall. "
+    },
+    {
+      "code": "21",
+      "threshold": 7,
+      "name_en": "IX",
+      "name_he": "איקס",
+      "prefix": "ix.wsa",
+      "delim": "*",
+      "body_en": "IX Research Center\rPower Needs: 40 \fIX is the technology center of the world. It is the ultimate source of new, wonderful technology that will help us reach our goals. ",
+      "body_he": "IX Research Center\rPower Needs: 40 \fIX is the technology center of the world. It is the ultimate source of new, wonderful technology that will help us reach our goals. "
+    },
+    {
+      "code": "21",
+      "threshold": 3,
+      "name_en": "Light Factory",
+      "name_he": "מפעל קל",
+      "prefix": "liteftry.wsa",
+      "delim": "*",
+      "body_en": "Light Vehicle Factory\rPower Needs: 20 \fThe Light Factory produces lightly armored three and four wheeled vehicles, which are used for the defense of our refineries and silos. ",
+      "body_he": "Light Vehicle Factory\rPower Needs: 20 \fThe Light Factory produces lightly armored three and four wheeled vehicles, which are used for the defense of our refineries and silos. "
+    },
+    {
+      "code": "21",
+      "threshold": 2,
+      "name_en": "Outpost",
+      "name_he": "מוצב תצפית",
+      "prefix": "headqrts.wsa",
+      "delim": "*",
+      "body_en": "Radar Outpost\rPower Needs: 30 \fThe Outpost should be utilized for its radar capability. The radar will allow you to keep a watchful eye on your harvesters and any enemies in the area. ",
+      "body_he": "Radar Outpost\rPower Needs: 30 \fThe Outpost should be utilized for its radar capability. The radar will allow you to keep a watchful eye on your harvesters and any enemies in the area. "
+    },
+    {
+      "code": "21",
+      "threshold": 8,
+      "name_en": "Palace",
+      "name_he": "ארמון",
+      "prefix": "palace.wsa",
+      "delim": "*",
+      "body_en": "Palace\rPower Needs: 80 \fReceiving a Palace is an honor, bestowed only upon those who have displayed bravery and diligence in the completion of their missions. A Palace is the most finely crafted and well-armored structure you may possess. ",
+      "body_he": "Palace\rPower Needs: 80 \fReceiving a Palace is an honor, bestowed only upon those who have displayed bravery and diligence in the completion of their missions. A Palace is the most finely crafted and well-armored structure you may possess. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Refinery",
+      "name_he": "מזקקה",
+      "prefix": "refinery.wsa",
+      "delim": "*",
+      "body_en": "Spice Refinery\rPower Needs: 30 \fThe refinery converts spice into credits. Without the refinery you cannot produce new credits by harvesting spice. ",
+      "body_he": "Spice Refinery\rPower Needs: 30 \fThe refinery converts spice into credits. Without the refinery you cannot produce new credits by harvesting spice. "
+    },
+    {
+      "code": "21",
+      "threshold": 5,
+      "name_en": "Repair Facility",
+      "name_he": "מוסך תיקונים",
+      "prefix": "repair.wsa",
+      "delim": "*",
+      "body_en": "Vehicle Repair Facility\rPower Needs: 20 \fThe Repair facility is used for the repairs of all harvesting and defense vehicles. ",
+      "body_he": "Vehicle Repair Facility\rPower Needs: 20 \fThe Repair facility is used for the repairs of all harvesting and defense vehicles. "
+    },
+    {
+      "code": "21",
+      "threshold": 6,
+      "name_en": "Rocket Turret",
+      "name_he": "צריח רקטות",
+      "prefix": "rturret.wsa",
+      "delim": "*",
+      "body_en": "Rocket Turret\rPower Needs: 25 \fThe Rocket turret is an improvement on the regular turret. Long range rockets have been added to provide for a better perimeter defense system. ",
+      "body_he": "Rocket Turret\rPower Needs: 25 \fThe Rocket turret is an improvement on the regular turret. Long range rockets have been added to provide for a better perimeter defense system. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Spice Silos",
+      "name_he": "ממגורות סם",
+      "prefix": "storage.wsa",
+      "delim": "*",
+      "body_en": "Spice Storage Silo\rPower Needs: 5 \fThe Silos are used to store harvested spice. They are not as strong as some of our other structures, and frequent repairs are advised. ",
+      "body_he": "Spice Storage Silo\rPower Needs: 5 \fThe Silos are used to store harvested spice. They are not as strong as some of our other structures, and frequent repairs are advised. "
+    },
+    {
+      "code": "21",
+      "threshold": 6,
+      "name_en": "Starport",
+      "name_he": "נמל חלל",
+      "prefix": "Starport.wsa",
+      "delim": "*",
+      "body_en": "Starport\rPower Needs: 80 \fA Starport will provide us with the ability to trade and deal through intergalactic trading channels. This will allow us to enhance our fleets and structures. ",
+      "body_he": "Starport\rPower Needs: 80 \fA Starport will provide us with the ability to trade and deal through intergalactic trading channels. This will allow us to enhance our fleets and structures. "
+    },
+    {
+      "code": "21",
+      "threshold": 5,
+      "name_en": "Turret",
+      "name_he": "צריח",
+      "prefix": "turret.wsa",
+      "delim": "*",
+      "body_en": "Base Defense Turret\rPower Needs: 10 \fTurrets are stationary base defenses that are exceptionally accurate at close range. ",
+      "body_he": "Base Defense Turret\rPower Needs: 10 \fTurrets are stationary base defenses that are exceptionally accurate at close range. "
+    },
+    {
+      "code": "21",
+      "threshold": 4,
+      "name_en": "Wall",
+      "name_he": "חומה",
+      "prefix": "wall.wsa",
+      "delim": "*",
+      "body_en": "Hardened Wall \fWalls are the perfect passive defense system. They should be used to fortify silos and other weak structures. ",
+      "body_he": "Hardened Wall \fWalls are the perfect passive defense system. They should be used to fortify silos and other weak structures. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Wind Trap",
+      "name_he": "מלכודת רוח",
+      "prefix": "Windtrap.wsa",
+      "delim": "*",
+      "body_en": "Power Generator\rPower Output: 100 \fThe Windtraps are an elegant and efficient means of harnessing the wind's awesome power and extracting precious moisture. Although they are fairly sturdy, you should make sure that you have backup wind traps in case of accidents or sabotage. ",
+      "body_he": "Power Generator\rPower Output: 100 \fThe Windtraps are an elegant and efficient means of harnessing the wind's awesome power and extracting precious moisture. Although they are fairly sturdy, you should make sure that you have backup wind traps in case of accidents or sabotage. "
+    },
+    {
+      "code": "21",
+      "threshold": 3,
+      "name_en": "Wor",
+      "name_he": "כסח",
+      "prefix": "wor.wsa",
+      "delim": "*",
+      "body_en": "Trooper Barracks\rPower Needs: 20 \fWOR is capable of training heavy troopers. Unlike the other houses, we do not believe in unnecessary violence to achieve our goals, and therefore  I do not believe that we will require the use of such technology. ",
+      "body_he": "Trooper Barracks\rPower Needs: 20 \fWOR is capable of training heavy troopers. Unlike the other houses, we do not believe in unnecessary violence to achieve our goals, and therefore  I do not believe that we will require the use of such technology. "
+    },
+    {
+      "code": "30",
+      "threshold": 0,
+      "name_en": "Vehicles",
+      "name_he": "כלי רכב",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Carryall",
+      "name_he": "כנף-נושאת",
+      "prefix": "carryall.wsa",
+      "delim": "*",
+      "body_en": "Carryall\rMobility: Jet\rFirepower: none \fThe Carryall is capable of transporting the harvester between spice fields and the refinery. It has no offensive capabilities or weapons, and only light armor. ",
+      "body_he": "Carryall\rMobility: Jet\rFirepower: none \fThe Carryall is capable of transporting the harvester between spice fields and the refinery. It has no offensive capabilities or weapons, and only light armor. "
+    },
+    {
+      "code": "31",
+      "threshold": 4,
+      "name_en": "Combat Tank",
+      "name_he": "טנק קרב",
+      "prefix": "ltank.wsa",
+      "delim": "*",
+      "body_en": "Combat Tank\rMobility: Tracked\rFirepower: heavy \fThe Combat Tank is adequately armed and good for defense. It can be used for perimeter defense and protection of the harvesters. ",
+      "body_he": "Combat Tank\rMobility: Tracked\rFirepower: heavy \fThe Combat Tank is adequately armed and good for defense. It can be used for perimeter defense and protection of the harvesters. "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Harvester",
+      "name_he": "מקצרה זחלילית",
+      "prefix": "Harvest.wsa",
+      "delim": "*",
+      "body_en": "Harvester\rMobility: Tracked\rFirepower: none \fHarvesters are large and well armored, and can be produced by a heavy factory. Vital to your spice harvesting missions, they are the only means of collecting and transporting spice from the field to the refinery. ",
+      "body_he": "מקצרה זחלילית\rניידות: זחלים\rכוח אש: אין \fמקצרות הינן גדולות ומשוריונות היטב, וניתן לייצרן במפעל לרכב כבד. חיוניות למשימות כריית הסם שלך, מאחר והן הדרך היחידה לאיסוף ושינוע הסם מהשטח אל המזקקות. "
+    },
+    {
+      "code": "31",
+      "threshold": 2,
+      "name_en": "Heavy Troopers",
+      "name_he": "סיירים כבדים",
+      "prefix": "hyinfy.wsa",
+      "delim": "*",
+      "body_en": "Heavy Troopers\rMobility: Foot\rFirepower: medium \fThe Heavy troopers are armed with powerful weapons and strong armor. ",
+      "body_he": "Heavy Troopers\rMobility: Foot\rFirepower: medium \fThe Heavy troopers are armed with powerful weapons and strong armor. "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Light Infantry",
+      "name_he": "חיל-רגלי קל",
+      "prefix": "infantry.wsa",
+      "delim": "*",
+      "body_en": "Light Infantry\rMobility: Foot\rFirepower: light \fThe light infantry is satisfactorily protected and adequately armed, and is capable of defending our installations. ",
+      "body_he": "Light Infantry\rMobility: Foot\rFirepower: light \fThe light infantry is satisfactorily protected and adequately armed, and is capable of defending our installations. "
+    },
+    {
+      "code": "31",
+      "threshold": 4,
+      "name_en": "MCV",
+      "name_he": "ר.ב.נ.",
+      "prefix": "mcv.wsa",
+      "delim": "*",
+      "body_en": "MCV\rMobility: Wheeled\rFirepower: none \fThe Mobile Construction Vehicle can be employed to erect new structures that need not be connected to the other buildings in your area. Additional refineries in outlying areas, for example, would allow you to harvest more effectively. ",
+      "body_he": "MCV\rMobility: Wheeled\rFirepower: none \fThe Mobile Construction Vehicle can be employed to erect new structures that need not be connected to the other buildings in your area. Additional refineries in outlying areas, for example, would allow you to harvest more effectively. "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Ordos Raider",
+      "name_he": "פושט אורדוס",
+      "prefix": "otrike.wsa",
+      "delim": "*",
+      "body_en": "Ordos Raider Trike\rMobility: Wheeled\rFirepower: Light \fThe Ordos produce a Trike that they call the \"Raider\".  The \"Raider\" is much like our own Trike, only it is faster, more maneuverable, and highly agile, yet it has less armor. ",
+      "body_he": "Ordos Raider Trike\rMobility: Wheeled\rFirepower: Light \fThe Ordos produce a Trike that they call the \"Raider\".  The \"Raider\" is much like our own Trike, only it is faster, more maneuverable, and highly agile, yet it has less armor. "
+    },
+    {
+      "code": "31",
+      "threshold": 7,
+      "name_en": "Ornithopter",
+      "name_he": "כנפנוע",
+      "prefix": "orni.wsa",
+      "delim": "*",
+      "body_en": "Ornithopter\rMobility: Winged\rFirepower: Medium \fThe Ornithopter, a lightly armored, highly maneuverable aircraft, is excellent for defensive air support of your harvesters, trikes, and quads. ",
+      "body_he": "Ornithopter\rMobility: Winged\rFirepower: Medium \fThe Ornithopter, a lightly armored, highly maneuverable aircraft, is excellent for defensive air support of your harvesters, trikes, and quads. "
+    },
+    {
+      "code": "31",
+      "threshold": 2,
+      "name_en": "Quad",
+      "name_he": "ארבע-אופן",
+      "prefix": "Quad.wsa",
+      "delim": "*",
+      "body_en": "Combat Quad\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fQuads are four wheeled vehicles with strong armor and powerful weapons. Like the Trike, they are an efficient defense system. With quads and trikes, you should be able to defend against most attacks. ",
+      "body_he": "Combat Quad\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fQuads are four wheeled vehicles with strong armor and powerful weapons. Like the Trike, they are an efficient defense system. With quads and trikes, you should be able to defend against most attacks. "
+    },
+    {
+      "code": "31",
+      "threshold": 5,
+      "name_en": "Rocket Tank",
+      "name_he": "טנק רקטות",
+      "prefix": "rtank.wsa",
+      "delim": "*",
+      "body_en": "Rocket Tank\rMobility: Tracked\rFirepower: Heavy \fThe Rocket Tank has good armor, is faster than normal tanks, and has long range strike capabilities. It is excellent for defensive support of the light infantry and your squadrons of trikes and quads. ",
+      "body_he": "Rocket Tank\rMobility: Tracked\rFirepower: Heavy \fThe Rocket Tank has good armor, is faster than normal tanks, and has long range strike capabilities. It is excellent for defensive support of the light infantry and your squadrons of trikes and quads. "
+    },
+    {
+      "code": "31",
+      "threshold": 6,
+      "name_en": "Siege Tank",
+      "name_he": "טנק מצור",
+      "prefix": "htank.wsa",
+      "delim": "*",
+      "body_en": "Siege Tank\rMobility: Tracked\rFirepower: Very Heavy \fThe Siege Tank is heavily armored and has very powerful weapons. It is more than adequate to defend your harvesters and installations. ",
+      "body_he": "Siege Tank\rMobility: Tracked\rFirepower: Very Heavy \fThe Siege Tank is heavily armored and has very powerful weapons. It is more than adequate to defend your harvesters and installations. "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Trike",
+      "name_he": "תלתנוע",
+      "prefix": "Trike.wsa",
+      "delim": "*",
+      "body_en": "Combat Trike\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fThe Trike is a three wheeled vehicle produced by the light factory. It is fast, well armored, and carries light weapons for defense. Trikes may be utilized for protection against enemy raids and scouting for spice fields. ",
+      "body_he": "Combat Trike\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fThe Trike is a three wheeled vehicle produced by the light factory. It is fast, well armored, and carries light weapons for defense. Trikes may be utilized for protection against enemy raids and scouting for spice fields. "
+    },
+    {
+      "code": "40",
+      "threshold": 0,
+      "name_en": "Specials",
+      "name_he": "מיוחדים",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "41",
+      "threshold": 8,
+      "name_en": "Death Hand",
+      "name_he": "יד המוות",
+      "prefix": "Gold-bb.wsa",
+      "delim": "*",
+      "body_en": "Death Hand\rMobility: Flight\rFirepower: Unknown \fOne of the most destructive weapons on Dune is the Harkonnen missile called the Death Hand. This multiple explosive warhead affects a wide area and can cause much greater damage than a conventional missile. ",
+      "body_he": "Death Hand\rMobility: Flight\rFirepower: Unknown \fOne of the most destructive weapons on Dune is the Harkonnen missile called the Death Hand. This multiple explosive warhead affects a wide area and can cause much greater damage than a conventional missile. "
+    },
+    {
+      "code": "41",
+      "threshold": 8,
+      "name_en": "Devastator",
+      "name_he": "משמידן",
+      "prefix": "harktank.wsa",
+      "delim": "*",
+      "body_en": "Devastator\rMobility: Tracked\rFirepower: Very Heavy \fThis massive tank is one of the newest war machines developed by the Harkonnen. It has nearly impenetrable armor, enormous firepower, and is capable of destroying nearly any obstacle in its path. ",
+      "body_he": "Devastator\rMobility: Tracked\rFirepower: Very Heavy \fThis massive tank is one of the newest war machines developed by the Harkonnen. It has nearly impenetrable armor, enormous firepower, and is capable of destroying nearly any obstacle in its path. "
+    },
+    {
+      "code": "41",
+      "threshold": 7,
+      "name_en": "Deviator",
+      "name_he": "מתעתע",
+      "prefix": "ordrtank.wsa",
+      "delim": "*",
+      "body_en": "Deviator\rMobility: Tracked\rFirepower: Unknown \fThe Deviator fires missiles containing dangerous nerve gas that can seriously distort the perceptions of affected personnel, and may even incite full scale mutinies. ",
+      "body_he": "Deviator\rMobility: Tracked\rFirepower: Unknown \fThe Deviator fires missiles containing dangerous nerve gas that can seriously distort the perceptions of affected personnel, and may even incite full scale mutinies. "
+    },
+    {
+      "code": "41",
+      "threshold": 8,
+      "name_en": "Fremen",
+      "name_he": "דררי",
+      "prefix": "Fremen.wsa",
+      "delim": "*",
+      "body_en": "Fremen\rMobility: Foot\rFirepower: Medium \fThe native peoples of this planet are excellent guerrilla fighters. The Fremen are friendly toward us because House Atreides has always dealt with them fairly, and as equals. ",
+      "body_he": "Fremen\rMobility: Foot\rFirepower: Medium \fThe native peoples of this planet are excellent guerrilla fighters. The Fremen are friendly toward us because House Atreides has always dealt with them fairly, and as equals. "
+    },
+    {
+      "code": "41",
+      "threshold": 8,
+      "name_en": "Saboteur",
+      "name_he": "חבלן",
+      "prefix": "saboture.wsa",
+      "delim": "*",
+      "body_en": "Saboteur\rMobility: Foot\rFirepower: Unknown \fThe Ordos often employ a band of local terrorist fighters called Saboteurs. These men are well versed in sabotage, and can easily penetrate defensive perimeters en route to the buildings they intend to destroy. They should be attacked and killed promptly whenever discovered. ",
+      "body_he": "Saboteur\rMobility: Foot\rFirepower: Unknown \fThe Ordos often employ a band of local terrorist fighters called Saboteurs. These men are well versed in sabotage, and can easily penetrate defensive perimeters en route to the buildings they intend to destroy. They should be attacked and killed promptly whenever discovered. "
+    },
+    {
+      "code": "41",
+      "threshold": 1,
+      "name_en": "Sand Worm",
+      "name_he": "עקלתון",
+      "prefix": "Worm.wsa",
+      "delim": "*",
+      "body_en": "Shai-Hulud\rNo Known Weakness \fThese enormous creatures are attracted by vibrations on the surface and will often attack and devour both personnel and vehicles. Rock is the only sure defense against these creatures. ",
+      "body_he": "Shai-Hulud\rNo Known Weakness \fThese enormous creatures are attracted by vibrations on the surface and will often attack and devour both personnel and vehicles. Rock is the only sure defense against these creatures. "
+    },
+    {
+      "code": "41",
+      "threshold": 7,
+      "name_en": "Sonic Tank",
+      "name_he": "טנק על-קולי",
+      "prefix": "stank.wsa",
+      "delim": "*",
+      "body_en": "Sonic Tank\rMobility: Tracked\rFirepower: Heavy \fThe Sonic Tank is one of our unique weapons. It fires a blast of sonic energy rather than projectile weapons. An excellent weapon for defensive missions, it is especially effective against enemy infantry. ",
+      "body_he": "Sonic Tank\rMobility: Tracked\rFirepower: Heavy \fThe Sonic Tank is one of our unique weapons. It fires a blast of sonic energy rather than projectile weapons. An excellent weapon for defensive missions, it is especially effective against enemy infantry. "
+    }
+  ]
+}

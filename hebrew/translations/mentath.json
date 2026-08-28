@@ -1,0 +1,495 @@
+{
+  "info_prefix_hex": "000000310000016b",
+  "entries": [
+    {
+      "code": "00",
+      "threshold": 0,
+      "name_en": "Briefing",
+      "name_he": "Briefing",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "01",
+      "threshold": 1,
+      "name_en": "Advice",
+      "name_he": "Advice",
+      "prefix": "3",
+      "delim": "*",
+      "body_en": "No desc ",
+      "body_he": "No desc "
+    },
+    {
+      "code": "01",
+      "threshold": 1,
+      "name_en": "Orders",
+      "name_he": "Orders",
+      "prefix": "0",
+      "delim": "*",
+      "body_en": "No desc ",
+      "body_he": "No desc "
+    },
+    {
+      "code": "10",
+      "threshold": 0,
+      "name_en": "Houses",
+      "name_he": "Houses",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "11",
+      "threshold": 1,
+      "name_en": "House Atreides",
+      "name_he": "House Atreides",
+      "prefix": "FARTR.WSA",
+      "delim": "*",
+      "body_en": "House Atreides \fThe Atreides are spawned from the humid tropical planet of Caladan. They are best known for their weaknesses of honesty and kindness. They do not seem to believe in war and will usually avoid military conflicts. They have befriended the natives of Dune, and may be expected to involve the local patriot Fremen in their defensive plans. ",
+      "body_he": "House Atreides \fThe Atreides are spawned from the humid tropical planet of Caladan. They are best known for their weaknesses of honesty and kindness. They do not seem to believe in war and will usually avoid military conflicts. They have befriended the natives of Dune, and may be expected to involve the local patriot Fremen in their defensive plans. "
+    },
+    {
+      "code": "11",
+      "threshold": 1,
+      "name_en": "House Harkonnen",
+      "name_he": "House Harkonnen",
+      "prefix": "FHARK.WSA",
+      "delim": "*",
+      "body_en": "House Harkonnen \fWe Harkonnen have come from the planet Giedi Prime. We want now to possess Dune. Our weapons are powerful enough to deflect any attacks from our enemies. All of House Harkonnen is concentrating on this task, and only a disaster could stop us now. ",
+      "body_he": "House Harkonnen \fWe Harkonnen have come from the planet Giedi Prime. We want now to possess Dune. Our weapons are powerful enough to deflect any attacks from our enemies. All of House Harkonnen is concentrating on this task, and only a disaster could stop us now. "
+    },
+    {
+      "code": "11",
+      "threshold": 1,
+      "name_en": "House Ordos",
+      "name_he": "House Ordos",
+      "prefix": "FORDOS.WSA",
+      "delim": "*",
+      "body_en": "House Ordos \fThis cartel of greedy families has been thrown together by the lust for power. They will most likely be too busy bickering among themselves to be overly concerned with our forces. ",
+      "body_he": "House Ordos \fThis cartel of greedy families has been thrown together by the lust for power. They will most likely be too busy bickering among themselves to be overly concerned with our forces. "
+    },
+    {
+      "code": "20",
+      "threshold": 0,
+      "name_en": "Structures",
+      "name_he": "Structures",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "21",
+      "threshold": 2,
+      "name_en": "Barracks",
+      "name_he": "Barracks",
+      "prefix": "barrac.wsa",
+      "delim": "*",
+      "body_en": "Infantry Barracks\rPower Needs: 20 \fThese simple little buildings train infantry units. The building itself has fair armor and is relatively cheap to maintain. We Harkonnen, however, do not have use for such weak forces. ",
+      "body_he": "Infantry Barracks\rPower Needs: 20 \fThese simple little buildings train infantry units. The building itself has fair armor and is relatively cheap to maintain. We Harkonnen, however, do not have use for such weak forces. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Concrete Slab",
+      "name_he": "Concrete Slab",
+      "prefix": "slab.wsa",
+      "delim": "*",
+      "body_en": "Concrete Slab \fSlabs are used to provide stable building foundations. We have found that anything built on bare rock will deteriorate rapidly. ",
+      "body_he": "Concrete Slab \fSlabs are used to provide stable building foundations. We have found that anything built on bare rock will deteriorate rapidly. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Construction Yard",
+      "name_he": "Construction Yard",
+      "prefix": "Construc.wsa",
+      "delim": "*",
+      "body_en": "Construction Yard\r(Harsh climate model)\rSelf-Powered \fYou must have a construction yard. It will give you the means to construct other buildings. ",
+      "body_he": "Construction Yard\r(Harsh climate model)\rSelf-Powered \fYou must have a construction yard. It will give you the means to construct other buildings. "
+    },
+    {
+      "code": "21",
+      "threshold": 4,
+      "name_en": "Heavy Factory",
+      "name_he": "Heavy Factory",
+      "prefix": "hvyftry.wsa",
+      "delim": "*",
+      "body_en": "Heavy Vehicle Factory\rPower Needs: 35 \fYou must have a Heavy factory in order to construct our heavy tanks. ",
+      "body_he": "Heavy Vehicle Factory\rPower Needs: 35 \fYou must have a Heavy factory in order to construct our heavy tanks. "
+    },
+    {
+      "code": "21",
+      "threshold": 5,
+      "name_en": "High-Tech Factory",
+      "name_he": "High-Tech Factory",
+      "prefix": "hitcftry.wsa",
+      "delim": "*",
+      "body_en": "High-Tech Factory\rPower Needs: 35 \fThe High-Tech factory produces our carryalls. ",
+      "body_he": "High-Tech Factory\rPower Needs: 35 \fThe High-Tech factory produces our carryalls. "
+    },
+    {
+      "code": "21",
+      "threshold": 7,
+      "name_en": "IX",
+      "name_he": "IX",
+      "prefix": "ix.wsa",
+      "delim": "*",
+      "body_en": "IX Research Center\rPower Needs: 40 \fIX will provide you with a source of militarily advanced weapons. ",
+      "body_he": "IX Research Center\rPower Needs: 40 \fIX will provide you with a source of militarily advanced weapons. "
+    },
+    {
+      "code": "21",
+      "threshold": 3,
+      "name_en": "Light Factory",
+      "name_he": "Light Factory",
+      "prefix": "liteftry.wsa",
+      "delim": "*",
+      "body_en": "Light Vehicle Factory\rPower Needs: 20 \fThe light factory produces only lightly armored vehicles, and is only a beginning step towards your goal of military superiority. ",
+      "body_he": "Light Vehicle Factory\rPower Needs: 20 \fThe light factory produces only lightly armored vehicles, and is only a beginning step towards your goal of military superiority. "
+    },
+    {
+      "code": "21",
+      "threshold": 2,
+      "name_en": "Outpost",
+      "name_he": "Outpost",
+      "prefix": "headqrts.wsa",
+      "delim": "*",
+      "body_en": "Radar Outpost\rPower Needs: 30 \fThe outpost houses radar equipment. The radar will help you to keep an eye on your own domain as well as nearby enemy activity. ",
+      "body_he": "Radar Outpost\rPower Needs: 30 \fThe outpost houses radar equipment. The radar will help you to keep an eye on your own domain as well as nearby enemy activity. "
+    },
+    {
+      "code": "21",
+      "threshold": 8,
+      "name_en": "Palace",
+      "name_he": "Palace",
+      "prefix": "palace.wsa",
+      "delim": "*",
+      "body_en": "Palace\rPower Needs: 80 \fHouse Harkonnen may grant a Palace to those who have proved themselves worthy of such an honor. If you lose a Palace, that was given to you, you will have failed your mission. ",
+      "body_he": "Palace\rPower Needs: 80 \fHouse Harkonnen may grant a Palace to those who have proved themselves worthy of such an honor. If you lose a Palace, that was given to you, you will have failed your mission. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Refinery",
+      "name_he": "Refinery",
+      "prefix": "refinery.wsa",
+      "delim": "*",
+      "body_en": "Spice Refinery\rPower Needs: 30 \fThe refinery converts harvested spice into credits. ",
+      "body_he": "Spice Refinery\rPower Needs: 30 \fThe refinery converts harvested spice into credits. "
+    },
+    {
+      "code": "21",
+      "threshold": 5,
+      "name_en": "Repair Facility",
+      "name_he": "Repair Facility",
+      "prefix": "repair.wsa",
+      "delim": "*",
+      "body_en": "Vehicle Repair Facility\rPower Needs: 20 \fIt is impossible to operate machinery in this desert without causing damage. You must have a repair facility to take care of your damaged vehicles. ",
+      "body_he": "Vehicle Repair Facility\rPower Needs: 20 \fIt is impossible to operate machinery in this desert without causing damage. You must have a repair facility to take care of your damaged vehicles. "
+    },
+    {
+      "code": "21",
+      "threshold": 6,
+      "name_en": "Rocket Turret",
+      "name_he": "Rocket Turret",
+      "prefix": "rturret.wsa",
+      "delim": "*",
+      "body_en": "Rocket Turret\rPower Needs: 25 \fThe Rocket Turret is an excellent weapon. Although they cannot be moved, they can be utilized for long and short range defense. ",
+      "body_he": "Rocket Turret\rPower Needs: 25 \fThe Rocket Turret is an excellent weapon. Although they cannot be moved, they can be utilized for long and short range defense. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Spice Silos",
+      "name_he": "Spice Silos",
+      "prefix": "storage.wsa",
+      "delim": "*",
+      "body_en": "Spice Storage Silo\rPower Needs: 5 \fSpice silos must be built to be able to store the harvested spice. Unfortunately, they are weak structures, and must be repaired frequently. ",
+      "body_he": "Spice Storage Silo\rPower Needs: 5 \fSpice silos must be built to be able to store the harvested spice. Unfortunately, they are weak structures, and must be repaired frequently. "
+    },
+    {
+      "code": "21",
+      "threshold": 6,
+      "name_en": "Starport",
+      "name_he": "Starport",
+      "prefix": "Starport.wsa",
+      "delim": "*",
+      "body_en": "Starport\rPower Needs: 80 \fThe Starport is your link to the storehouses beyond the surface of the planet. With a Starport at your disposal, you can purchase powerful weapons and vehicles. ",
+      "body_he": "Starport\rPower Needs: 80 \fThe Starport is your link to the storehouses beyond the surface of the planet. With a Starport at your disposal, you can purchase powerful weapons and vehicles. "
+    },
+    {
+      "code": "21",
+      "threshold": 5,
+      "name_en": "Turret",
+      "name_he": "Turret",
+      "prefix": "turret.wsa",
+      "delim": "*",
+      "body_en": "Base Defense Turret\rPower Needs: 10 \fTurrets are accurate and effective weapons. Although they are immobile, you should consider them as required enhancements to your forces. ",
+      "body_he": "Base Defense Turret\rPower Needs: 10 \fTurrets are accurate and effective weapons. Although they are immobile, you should consider them as required enhancements to your forces. "
+    },
+    {
+      "code": "21",
+      "threshold": 4,
+      "name_en": "Wall",
+      "name_he": "Wall",
+      "prefix": "wall.wsa",
+      "delim": "*",
+      "body_en": "Wall \fWalls are an excellent choice for defensive reinforcement. Like the concrete slabs, walls are inexpensive to produce. ",
+      "body_he": "Wall \fWalls are an excellent choice for defensive reinforcement. Like the concrete slabs, walls are inexpensive to produce. "
+    },
+    {
+      "code": "21",
+      "threshold": 1,
+      "name_en": "Windtrap",
+      "name_he": "Windtrap",
+      "prefix": "windtrap.wsa",
+      "delim": "*",
+      "body_en": "Power Generator\rPower Output: 100 \fThese are the structures that provide power and water to your installation. They are a bit fragile, and you are well advised to construct more than one. ",
+      "body_he": "Power Generator\rPower Output: 100 \fThese are the structures that provide power and water to your installation. They are a bit fragile, and you are well advised to construct more than one. "
+    },
+    {
+      "code": "21",
+      "threshold": 2,
+      "name_en": "Wor",
+      "name_he": "Wor",
+      "prefix": "wor.wsa",
+      "delim": "*",
+      "body_en": "Trooper Barracks\rPower Needs: 20 \fWOR will train the Heavy Troopers. ",
+      "body_he": "Trooper Barracks\rPower Needs: 20 \fWOR will train the Heavy Troopers. "
+    },
+    {
+      "code": "30",
+      "threshold": 0,
+      "name_en": "Vehicles",
+      "name_he": "Vehicles",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Carryall",
+      "name_he": "Carryall",
+      "prefix": "carryall.wsa",
+      "delim": "*",
+      "body_en": "Carryall\rMobility: Jet\rFirepower: none \fThis transport aircraft can carry large vehicles, such as harvesters, to their destinations more efficiently than letting them wander about on their own. ",
+      "body_he": "Carryall\rMobility: Jet\rFirepower: none \fThis transport aircraft can carry large vehicles, such as harvesters, to their destinations more efficiently than letting them wander about on their own. "
+    },
+    {
+      "code": "31",
+      "threshold": 4,
+      "name_en": "Combat Tank",
+      "name_he": "Combat Tank",
+      "prefix": "LTANK.WSA",
+      "delim": "*",
+      "body_en": "Combat Tank\rMobility: Tracked\rFirepower: heavy \fThe combat tank will be your first tank, and it has adequate armor and fire power. However, remember that there are more powerful weapons at your disposal. ",
+      "body_he": "Combat Tank\rMobility: Tracked\rFirepower: heavy \fThe combat tank will be your first tank, and it has adequate armor and fire power. However, remember that there are more powerful weapons at your disposal. "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Harvester",
+      "name_he": "Harvester",
+      "prefix": "harvest.wsa",
+      "delim": "*",
+      "body_en": "Harvester\rMobility: Tracked\rFirepower: none \fThis large, slow, and barely maneuverable vehicle is used to harvest raw spice and convey it to the refinery. Although unarmed, the iron clad harvesters can be used effectively against small groups of infantry by crushing them beneath their treads. ",
+      "body_he": "Harvester\rMobility: Tracked\rFirepower: none \fThis large, slow, and barely maneuverable vehicle is used to harvest raw spice and convey it to the refinery. Although unarmed, the iron clad harvesters can be used effectively against small groups of infantry by crushing them beneath their treads. "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Heavy Troopers",
+      "name_he": "Heavy Troopers",
+      "prefix": "hyinfy.wsa",
+      "delim": "*",
+      "body_en": "Heavy Troopers\rMobility: Foot\rFirepower: medium \fThe Heavy Troopers are superior fighting units. They are well armored and have powerful weapons. ",
+      "body_he": "Heavy Troopers\rMobility: Foot\rFirepower: medium \fThe Heavy Troopers are superior fighting units. They are well armored and have powerful weapons. "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Light Infantry",
+      "name_he": "Light Infantry",
+      "prefix": "infantry.wsa",
+      "delim": "*",
+      "body_en": "Light Infantry\rMobility: Foot\rFirepower: light \fThe Light Infantry will hardly suit your needs. They are slow, poorly armored, and have a tendency to miss their targets. You should depend upon the more massive troopers. ",
+      "body_he": "Light Infantry\rMobility: Foot\rFirepower: light \fThe Light Infantry will hardly suit your needs. They are slow, poorly armored, and have a tendency to miss their targets. You should depend upon the more massive troopers. "
+    },
+    {
+      "code": "31",
+      "threshold": 4,
+      "name_en": "MCV",
+      "name_he": "MCV",
+      "prefix": "mcv.wsa",
+      "delim": "*",
+      "body_en": "MCV\rMobility: Wheeled\rFirepower: none \fThe Mobile Construction Vehicle will allow you to expand your territories. By using an MCV you will be able to construct distant buildings that need not be adjacent to your principal location. ",
+      "body_he": "MCV\rMobility: Wheeled\rFirepower: none \fThe Mobile Construction Vehicle will allow you to expand your territories. By using an MCV you will be able to construct distant buildings that need not be adjacent to your principal location. "
+    },
+    {
+      "code": "31",
+      "threshold": 3,
+      "name_en": "Ordos Raider",
+      "name_he": "Ordos Raider",
+      "prefix": "otrike.wsa",
+      "delim": "*",
+      "body_en": "Ordos Raider Trike\rMobility: Wheeled\rFirepower: Light \fThis is a pitiful little machine. For some reason the Ordos believe that this overblown Trike can out maneuver and out fire our Quads. ",
+      "body_he": "Ordos Raider Trike\rMobility: Wheeled\rFirepower: Light \fThis is a pitiful little machine. For some reason the Ordos believe that this overblown Trike can out maneuver and out fire our Quads. "
+    },
+    {
+      "code": "31",
+      "threshold": 7,
+      "name_en": "Ornithopter",
+      "name_he": "Ornithopter",
+      "prefix": "orni.wsa",
+      "delim": "*",
+      "body_en": "Ornithopter\rMobility: Winged\rFirepower: Medium \fThis fragile little aircraft is merely an annoyance. Their delicate armor is no match for our weapons of war. ",
+      "body_he": "Ornithopter\rMobility: Winged\rFirepower: Medium \fThis fragile little aircraft is merely an annoyance. Their delicate armor is no match for our weapons of war. "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Quad",
+      "name_he": "Quad",
+      "prefix": "quad.wsa",
+      "delim": "*",
+      "body_en": "Combat Quad\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fThe Quad is a much better vehicle than the smaller trike. It has far superior armor and is much more powerful. ",
+      "body_he": "Combat Quad\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fThe Quad is a much better vehicle than the smaller trike. It has far superior armor and is much more powerful. "
+    },
+    {
+      "code": "31",
+      "threshold": 5,
+      "name_en": "Rocket Tank",
+      "name_he": "Rocket Tank",
+      "prefix": "rtank.wsa",
+      "delim": "*",
+      "body_en": "Rocket Tank\rMobility: Tracked\rFirepower: Heavy \fThe rocket tank is effective for long range attacks. Guard these well, for they are ineffective at close range. ",
+      "body_he": "Rocket Tank\rMobility: Tracked\rFirepower: Heavy \fThe rocket tank is effective for long range attacks. Guard these well, for they are ineffective at close range. "
+    },
+    {
+      "code": "31",
+      "threshold": 4,
+      "name_en": "Sardaukar",
+      "name_he": "Sardaukar",
+      "prefix": "sardukar.wsa",
+      "delim": "*",
+      "body_en": "Sardaukar \fDie Elitetruppen des Imperators. ",
+      "body_he": "Sardaukar \fDie Elitetruppen des Imperators. "
+    },
+    {
+      "code": "31",
+      "threshold": 6,
+      "name_en": "Siege Tank",
+      "name_he": "Siege Tank",
+      "prefix": "htank.wsa",
+      "delim": "*",
+      "body_en": "Siege Tank\rMobility: Tracked\rFirepower: Very Heavy \fThe Siege Tank is superior to the Combat tank. It's armor and weaponry has the power you will need to complete your conquest of this planet. ",
+      "body_he": "Siege Tank\rMobility: Tracked\rFirepower: Very Heavy \fThe Siege Tank is superior to the Combat tank. It's armor and weaponry has the power you will need to complete your conquest of this planet. "
+    },
+    {
+      "code": "31",
+      "threshold": 1,
+      "name_en": "Trike",
+      "name_he": "Trike",
+      "prefix": "trike.wsa",
+      "delim": "*",
+      "body_en": "Combat Trike\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fAlthough these three-wheeled, lightly armored vehicles are functional, we strongly suggest utilizing the larger, more powerful vehicles. ",
+      "body_he": "Combat Trike\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fAlthough these three-wheeled, lightly armored vehicles are functional, we strongly suggest utilizing the larger, more powerful vehicles. "
+    },
+    {
+      "code": "40",
+      "threshold": 0,
+      "name_en": "Specials",
+      "name_he": "Specials",
+      "prefix": "No file",
+      "delim": "?",
+      "body_en": "NO Desc ",
+      "body_he": "NO Desc "
+    },
+    {
+      "code": "41",
+      "threshold": 8,
+      "name_en": "Death Hand",
+      "name_he": "Death Hand",
+      "prefix": "Gold-bb.wsa",
+      "delim": "*",
+      "body_en": "Death Hand\rMobility: Flight\rFirepower: Very Heavy \fOur Death Hand is a lovely weapon capable of being targeted for long range strikes. Just prior to impact it releases a series of explosive fingers that spread destruction over a wide area. ",
+      "body_he": "Death Hand\rMobility: Flight\rFirepower: Very Heavy \fOur Death Hand is a lovely weapon capable of being targeted for long range strikes. Just prior to impact it releases a series of explosive fingers that spread destruction over a wide area. "
+    },
+    {
+      "code": "41",
+      "threshold": 7,
+      "name_en": "Devastator",
+      "name_he": "Devastator",
+      "prefix": "harktank.wsa",
+      "delim": "*",
+      "body_en": "Devastator\rMobility: Tracked\rFirepower: Very Heavy \fThe Devastator is another of the unique and powerful weapons in our awesome arsenal. It's armor and weapons are unequaled. The Devastator need not fear other lesser tanks on the battlefield. ",
+      "body_he": "Devastator\rMobility: Tracked\rFirepower: Very Heavy \fThe Devastator is another of the unique and powerful weapons in our awesome arsenal. It's armor and weapons are unequaled. The Devastator need not fear other lesser tanks on the battlefield. "
+    },
+    {
+      "code": "41",
+      "threshold": 8,
+      "name_en": "Fremen",
+      "name_he": "Fremen",
+      "prefix": "Fremen.wsa",
+      "delim": "*",
+      "body_en": "Fremen\rMobility: Foot\rFirepower: unknown \fThe Fremen are little more than slaves to the Atreides. Ignorant and aboriginal, they occasionally fight for the Atreides, and are provided food and supplies in return. ",
+      "body_he": "Fremen\rMobility: Foot\rFirepower: unknown \fThe Fremen are little more than slaves to the Atreides. Ignorant and aboriginal, they occasionally fight for the Atreides, and are provided food and supplies in return. "
+    },
+    {
+      "code": "41",
+      "threshold": 6,
+      "name_en": "Frigatte",
+      "name_he": "Frigatte",
+      "prefix": "frigate.wsa",
+      "delim": "*",
+      "body_en": "CHOAM Frigatte\rPlanetarisches\rTransportsystem \fDiese gewaltigen Raumschiffe dienen dazu, Schiffsladungen aus dem Orbit zum Raumflughafen zu transportieren. ",
+      "body_he": "CHOAM Frigatte\rPlanetarisches\rTransportsystem \fDiese gewaltigen Raumschiffe dienen dazu, Schiffsladungen aus dem Orbit zum Raumflughafen zu transportieren. "
+    },
+    {
+      "code": "41",
+      "threshold": 8,
+      "name_en": "Ordos Deviator",
+      "name_he": "Ordos Deviator",
+      "prefix": "ordrtank.wsa",
+      "delim": "*",
+      "body_en": "Deviator\rMobility: Tracked\rFirepower: Unknown \fThis tank fires a powerful nerve gas that can cause your weaker-willed soldiers to turn against you. ",
+      "body_he": "Deviator\rMobility: Tracked\rFirepower: Unknown \fThis tank fires a powerful nerve gas that can cause your weaker-willed soldiers to turn against you. "
+    },
+    {
+      "code": "41",
+      "threshold": 8,
+      "name_en": "Saboteur",
+      "name_he": "Saboteur",
+      "prefix": "saboture.wsa",
+      "delim": "*",
+      "body_en": "Saboteur\rMobility: Foot\rFirepower: Unknown \fThe Ordos depend upon a band of terrorists called Saboteurs. If uncontrolled, these cunning little pests will inflict a great deal of damage to your buildings. I suggest eliminating Saboteurs immediately whenever they are encountered. ",
+      "body_he": "Saboteur\rMobility: Foot\rFirepower: Unknown \fThe Ordos depend upon a band of terrorists called Saboteurs. If uncontrolled, these cunning little pests will inflict a great deal of damage to your buildings. I suggest eliminating Saboteurs immediately whenever they are encountered. "
+    },
+    {
+      "code": "41",
+      "threshold": 1,
+      "name_en": "Sand Worm",
+      "name_he": "Sand Worm",
+      "prefix": "Worm.wsa",
+      "delim": "*",
+      "body_en": "Shai-Hulud\rNo Known Weakness \fThese huge native worms are almost impossible to kill. They are attracted by surface vibrations, and all ground based units are at risk of being devoured.  Rock is the only sure defense against these creatures. ",
+      "body_he": "Shai-Hulud\rNo Known Weakness \fThese huge native worms are almost impossible to kill. They are attracted by surface vibrations, and all ground based units are at risk of being devoured.  Rock is the only sure defense against these creatures. "
+    },
+    {
+      "code": "41",
+      "threshold": 7,
+      "name_en": "Sonic Tank",
+      "name_he": "Sonic Tank",
+      "prefix": "stank.wsa",
+      "delim": "*",
+      "body_en": "Sonic Tank\rMobility: Tracked\rFirepower: Unknown \fThe Atreides believe that they have found a humane way of eliminating their enemies. Their Sonic Tank fires shock waves instead of rockets. ",
+      "body_he": "Sonic Tank\rMobility: Tracked\rFirepower: Unknown \fThe Atreides believe that they have found a humane way of eliminating their enemies. Their Sonic Tank fires shock waves instead of rockets. "
+    }
+  ]
+}

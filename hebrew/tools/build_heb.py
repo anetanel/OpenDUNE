@@ -37,6 +37,7 @@ DEST_DIR = REPO_ROOT / "bin" / "data"
 
 sys.path.insert(0, str(HEBREW_DIR / "tools"))
 import eng  # noqa: E402
+import mentat_eng  # noqa: E402
 
 
 def _write(name, data):
@@ -53,6 +54,13 @@ def _build_simple_list(name, compressed):
     return eng.encode(strings, compressed=compressed), len(pairs), translated
 
 
+def _build_mentat(name):
+    doc = json.loads((TRANSLATIONS_DIR / f"{name}.json").read_text())
+    entries = doc["entries"]
+    translated = sum(1 for e in entries if e["name_he"] != e["name_en"] or e["body_he"] != e["body_en"])
+    return mentat_eng.encode(doc), len(entries), translated
+
+
 # name -> (output filename, builder). compressed flags mirror exactly the
 # `compressed` argument String_Init() passes to String_Load() for each
 # table in src/string.c.
@@ -64,6 +72,11 @@ STRING_JOBS = {
     "texta": ("TEXTA.HEB", lambda: _build_simple_list("texta", True)),
     "texto": ("TEXTO.HEB", lambda: _build_simple_list("texto", True)),
     "protect": ("PROTECT.HEB", lambda: _build_simple_list("protect", True)),
+    # Mentat per-house "encyclopedia" (help subject list) -- a separate IFF
+    # FORM container, not eng.py's offset-table format. See mentat_eng.py.
+    "mentata": ("MENTATA.HEB", lambda: _build_mentat("mentata")),
+    "mentath": ("MENTATH.HEB", lambda: _build_mentat("mentath")),
+    "mentato": ("MENTATO.HEB", lambda: _build_mentat("mentato")),
 }
 
 # source path (relative to hebrew/) -> dest filename, for assets that are
@@ -74,16 +87,15 @@ STRING_JOBS = {
 # uses for string tables (confirmed against AND/BTTN/HERALD/MENTAT/MISC/TITLE
 # call sites in opendune.c, cutscene.c, sprites.c, gui.c).
 #
-# choam.eng-fallback.cps -> CHOAM.HEB is NOT translated -- it's a byte-for-byte
-# copy of the original English CHOAM.ENG. Every officially supported language
-# ships its own CHOAM.<suffix> (it holds the "BUILD THIS"/"RESUME GAME"/
-# "UPGRADE"/scroll-arrow button graphics used by the Construction Yard/Starport
-# full-screen build modal, GUI_DisplayFactoryWindow) -- there's no working
-# generic fallback if it's missing (Sprites_Load's fallback filename argument
-# points at a file that isn't actually shipped), so without *some* CHOAM.HEB
-# those buttons silently fail to draw (found by testing the actual modal).
-# Shipping the English graphic keeps the buttons functional, with English
-# labels, until someone draws a proper Hebrew version.
+# choam.heb.shp -> CHOAM.HEB holds the "BUILD THIS"/"RESUME GAME"/"UPGRADE"/
+# scroll-arrow button graphics for the Construction Yard/Starport full-screen
+# build modal (GUI_DisplayFactoryWindow). Every officially supported language
+# ships its own CHOAM.<suffix> -- there's no working generic fallback if it's
+# missing (Sprites_Load's fallback filename argument points at a file that
+# isn't actually shipped), so without *some* CHOAM.HEB those buttons silently
+# fail to draw (found by testing the actual modal). This used to ship as a
+# byte-for-byte copy of the original English CHOAM.ENG (untranslated, just to
+# keep the buttons functional); now a real hand-drawn Hebrew version.
 #
 # intro1.wsa -> INTRO1H.WSA is a special case: the flying-logo intro
 # animation. cutscene.c/houseanimation.c hardcode the base "INTRO1.WSA"
@@ -109,7 +121,7 @@ ASSET_JOBS = {
     "new6p.fnt": ("fonts", "new6ph.fnt"),
     "and.heb.cps": ("graphics", "AND.HEB"),
     "bttn.heb.shp": ("graphics", "BTTN.HEB"),
-    "choam.eng-fallback.cps": ("graphics", "CHOAM.HEB"),
+    "choam.heb.shp": ("graphics", "CHOAM.HEB"),
     "herald.heb.cps": ("graphics", "HERALD.HEB"),
     "mentat.heb.shp": ("graphics", "MENTAT.HEB"),
     "misc.heb.cps": ("graphics", "MISC.HEB"),

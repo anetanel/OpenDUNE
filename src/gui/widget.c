@@ -9,6 +9,7 @@
 
 #include "widget.h"
 
+#include "font.h"
 #include "gui.h"
 #include "../input/input.h"
 #include "../input/mouse.h"
@@ -205,7 +206,22 @@ void GUI_Widget_Draw(Widget *w)
 		} break;
 
 		case DRAW_MODE_TEXT: {
-			GUI_DrawText(drawParam.text, positionLeft, positionTop, fgColour, bgColour);
+			uint16 left = positionLeft;
+
+			/* Only the Mentat subject list uses this draw mode, one row
+			 * per widget, each a single line. GUI_DrawText() mirrors
+			 * Hebrew correctly within the line but always draws it
+			 * left-anchored at positionLeft, so the whole list still
+			 * comes out left-justified -- reordering characters doesn't
+			 * change a string's rendered width, so right-align it here
+			 * to this widget's own box instead, matching every other
+			 * RTL text box in this screen. */
+			if (GUI_IsRTLLanguage() && drawParam.text != NULL) {
+				uint16 textWidth = Font_GetStringWidth(drawParam.text);
+				if (textWidth < w->width) left = positionLeft + w->width - textWidth;
+			}
+
+			GUI_DrawText(drawParam.text, left, positionTop, fgColour, bgColour);
 		} break;
 
 		case DRAW_MODE_UNKNOWN3: {
