@@ -85,13 +85,14 @@ STRING_JOBS = {
 # Shipping the English graphic keeps the buttons functional, with English
 # labels, until someone draws a proper Hebrew version.
 #
-# intro1.wsa -> INTRO1.WSA is a special case: the flying-logo intro
-# animation. cutscene.c/houseanimation.c hardcode "INTRO1.WSA" with no
-# per-language suffix at all (confirmed against both this repo and
-# dunedynasty's identical mechanism) -- so unlike every other asset here,
-# there's no way to make this Hebrew-only; installing it overwrites the
-# stock English WSA in place, and it'll show for every language until
-# someone adds real per-language branching in cutscene.c.
+# intro1.wsa -> INTRO1H.WSA is a special case: the flying-logo intro
+# animation. cutscene.c/houseanimation.c hardcode the base "INTRO1.WSA"
+# lookup with no per-language suffix at all (confirmed against both this
+# repo and dunedynasty's identical mechanism), so this can't use the usual
+# ".HEB"/"...h.fnt" naming conventions -- instead it's installed under its
+# own non-clobbering name, and GameLoop_PlayAnimation() (src/cutscene.c)
+# picks "INTRO1H.WSA" over the stock "INTRO1.WSA" only when
+# g_config.language == LANGUAGE_HEBREW and the file exists.
 #
 # Note: BLDING.VOC/DYNASTY.VOC (the "battle for Arrakis" title-correction
 # audio -- see hebrew/README.md) are NOT installed as loose ASSET_JOBS
@@ -113,7 +114,7 @@ ASSET_JOBS = {
     "mentat.heb.shp": ("graphics", "MENTAT.HEB"),
     "misc.heb.cps": ("graphics", "MISC.HEB"),
     "title.heb.cps": ("graphics", "TITLE.HEB"),
-    "intro1.wsa": (".", "INTRO1.WSA"),
+    "intro1.wsa": (".", "INTRO1H.WSA"),
 }
 
 

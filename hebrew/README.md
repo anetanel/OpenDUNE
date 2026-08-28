@@ -26,11 +26,13 @@ project), which already had a working Hebrew translation:
   Hebrew-labeled version eventually; this keeps the buttons functional
   until then.
 - `intro1.wsa` + `INTRO1-00049.{png,psd}` — flying-logo intro animation
-  source, installed by `build_heb.py` as `INTRO1.WSA`. Unlike every other
-  asset here, `cutscene.c`/`houseanimation.c` hardcode that filename with
-  no per-language suffix at all, so it overwrites the stock English WSA in
-  place and plays for every language, not just Hebrew, until someone adds
-  real per-language branching there.
+  source, installed by `build_heb.py` as `INTRO1H.WSA` (not `INTRO1.WSA`,
+  since `cutscene.c`/`houseanimation.c` hardcode that base lookup with no
+  per-language suffix at all, unlike every other asset here). Instead,
+  `GameLoop_PlayAnimation()` (`src/cutscene.c`) picks `INTRO1H.WSA` over
+  the stock `INTRO1.WSA` only when `language == HEBREW` and the file is
+  actually present, so the stock English WSA plays untouched for every
+  other language.
 - `audio/{BLDING,DYNASTY}.VOC` — a title correction to the intro
   narration, not a translation. The US release's narration says "Dune...
   the building of a dynasty", but the EU/HitSquad release (the one this

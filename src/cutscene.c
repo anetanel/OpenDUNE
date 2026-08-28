@@ -375,6 +375,18 @@ static void GameLoop_PlayAnimation(const HouseAnimation_Animation *animation)
 			}
 
 			snprintf(filenameBuffer, sizeof(filenameBuffer), "%.8s.WSA", animation->string);
+
+			/* The flying-logo intro animation has a Hebrew-titled variant
+			 * (see hebrew/README.md), installed as "INTRO1H.WSA" rather
+			 * than overwriting the stock "INTRO1.WSA" in place -- pick it
+			 * up only for that one animation, only in Hebrew, and only if
+			 * it was actually installed. */
+			if (g_config.language == LANGUAGE_HEBREW
+			 && strcmp(animation->string, "INTRO1") == 0
+			 && File_Exists("INTRO1H.WSA")) {
+				snprintf(filenameBuffer, sizeof(filenameBuffer), "INTRO1H.WSA");
+			}
+
 			wsa = WSA_LoadFile(filenameBuffer, wsa, wsaSize, wsaReservedDisplayFrame);
 		}
 
