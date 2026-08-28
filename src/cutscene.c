@@ -209,12 +209,8 @@ static void GameLoop_PlaySubtitle(uint8 animation)
 
 	GUI_DrawFilledRectangle(0, subtitle->top == 85 ? 0 : subtitle->top, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0);
 
-	/* The original game only ever dubbed the intro narration for English;
-	 * every other localized release showed subtitles in silence. Hebrew
-	 * keeps the English narration audio under translated subtitles rather
-	 * than going silent (matching dunedynasty's identical carve-out here). */
 	if (g_enableVoices != 0 && s_feedback_base_index != 0xFFFF && s_houseAnimation_currentSubtitle != 0
-			&& (g_config.language == LANGUAGE_ENGLISH || g_config.language == LANGUAGE_HEBREW)) {
+			&& g_config.language == LANGUAGE_ENGLISH) {
 		/* specific code for Intro
 		 * @see GameLoop_GameIntroAnimation() */
 		uint16 feedback_index = s_feedback_base_index + s_houseAnimation_currentSubtitle;
@@ -226,6 +222,21 @@ static void GameLoop_PlaySubtitle(uint8 animation)
 			GameLoop_DrawText(String_Get_ByIndex(subtitle->stringID), subtitle->top);
 		}
 	} else {
+		/* The original game only ever dubbed the intro narration for English;
+		 * every other localized release showed subtitles in silence. Hebrew
+		 * keeps the English narration audio under translated subtitles rather
+		 * than going silent (matching dunedynasty's identical carve-out here).
+		 * Unlike English, messageId doesn't gate the text here: that flag only
+		 * marks the handful of lines the English release forced onto screen
+		 * as title cards, but Hebrew needs every line's translated text shown
+		 * since (unlike English) the narration audio itself isn't translated. */
+		if (g_enableVoices != 0 && s_feedback_base_index != 0xFFFF && s_houseAnimation_currentSubtitle != 0
+				&& g_config.language == LANGUAGE_HEBREW) {
+			uint16 feedback_index = s_feedback_base_index + s_houseAnimation_currentSubtitle;
+
+			Sound_Output_Feedback(feedback_index);
+		}
+
 		if (subtitle->stringID != STR_NULL) {
 			GameLoop_DrawText(String_Get_ByIndex(subtitle->stringID), subtitle->top);
 		}
