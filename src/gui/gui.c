@@ -3821,6 +3821,7 @@ void GUI_Screen_FadeIn(uint16 xSrc, uint16 ySrc, uint16 xDst, uint16 yDst, uint1
 	uint16 offsetsY[100];
 	uint16 offsetsX[40];
 	int x, y;
+	uint16 sleepAccum = 0;
 
 	if (screenDst == SCREEN_0) {
 		GUI_Mouse_Hide_InRegion(xDst << 3, yDst, (xDst + width) << 3, yDst + height);
@@ -3867,8 +3868,27 @@ void GUI_Screen_FadeIn(uint16 xSrc, uint16 ySrc, uint16 xDst, uint16 yDst, uint1
 			if (y2 == height) y2 = 0;
 		}
 
-		/* XXX -- This delays the system so you can in fact see the animation */
-		if ((y % 4) == 0) Timer_Sleep(1);
+		/* Without any delay this reveal completes within a single modern
+		 * frame -- too fast to read as a "wide blocks materializing" effect
+		 * (dunedynasty drops the delay entirely, betting on that being close
+		 * enough; it isn't). The original DOS release's own reveal, timed
+		 * from a DOSBox-X capture of the house-intro transition (this exact
+		 * 38x120 call), spans ~12 frames of its ~70Hz VGA output, i.e.
+		 * ~171ms.
+		 *
+		 * Timer_Sleep(1) is NOT the ~8.33ms its nominal 120Hz (s_timerSpeed
+		 * in timer.c) suggests -- measured wall-clock (not CPU time; clock()
+		 * undercounts time spent blocked in sleepIdle() and gave a falsely
+		 * fast reading here) it's ~33.3ms/call in practice. 5 calls over
+		 * this 60-row loop lands at ~167ms, matching the ~171ms target;
+		 * paced via a fractional accumulator (scaled x100, ~9/row) rather
+		 * than a fixed "every Nth row" so differently-sized callers still
+		 * fade in over a comparable, evenly-spread duration. */
+		sleepAccum += 9;
+		if (sleepAccum >= 100) {
+			sleepAccum -= 100;
+			Timer_Sleep(1);
+		}
 	}
 
 	if (screenDst == SCREEN_0) {

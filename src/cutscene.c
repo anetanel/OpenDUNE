@@ -489,7 +489,15 @@ static void GameLoop_PlayAnimation(const HouseAnimation_Animation *animation)
 
 			memcpy(&g_palette_998A[215 * 3], s_palettePartCurrent, 18);
 
-			GUI_SetPaletteAnimated(g_palette_998A, 45);
+			/* Fade the whole screen to black here, not just the subtitle's
+			 * 18-byte glow range: g_palette_998A's other 250 entries are the
+			 * final, full-brightness picture colours and never go dark on
+			 * their own, so animating toward it is a no-op for the picture.
+			 * Confirmed against the original EU 1.07 DUNE2.EXE (live DOSBox-X
+			 * capture) that this transition is a genuine whole-screen fade to
+			 * black, matched by the following step's FADEINTEXT fading the
+			 * next picture back in from black via g_palette1. */
+			GUI_SetPaletteAnimated(g_palette2, 45);
 		}
 
 		WSA_Unload(wsa);
