@@ -16,6 +16,10 @@
 ;fullscreen=1
 ; Maximum frame rate  (default is 60)
 ;framerate=60
+; set adlib=1 for authentic AdLib/OPL music (built-in emulator, original
+; .ADL instrument data) instead of General MIDI. Only implemented for
+; builds with PulseAudio support; silently ignored otherwise.
+;adlib=1
 ; set mt32midi=1 if you output music to a MT-32 device or compatible
 ; default setting is for GeneralMidi music (Roland SC55)
 ;mt32midi=1

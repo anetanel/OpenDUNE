@@ -85,6 +85,12 @@ Available options are :
 - scalefilter : nearest (default), scale2x, hqx
 - framerate : maximum frame rate (60 FPS default)
 - fullscreen : 0(default)/1 starts the game in full screen mode if possible
+- adlib : 0(default)/1 play music through a built-in AdLib/OPL emulator,
+          using the original .ADL instrument data, instead of the General
+          MIDI pipeline. Only implemented for builds with PulseAudio
+          support (auto-detected by configure on most Unix-like systems);
+          on builds without it, this option is silently ignored and music
+          falls back to General MIDI.
 - mt32midi : 0(default)/1 send MT32 init, use .XMI files
 - mt32rompath : directory containing CM32L_CONTROL.ROM/CM32L_PCM.ROM files
                 for Munt MT32 emulator.
