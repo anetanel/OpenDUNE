@@ -104,6 +104,7 @@ typedef struct tile32 {
 	uint16 y;
 } tile32;
 
+#if !defined(__cplusplus)
 #ifdef __ALTIVEC__
 #undef bool
 #undef pixel
@@ -114,5 +115,6 @@ typedef unsigned char bool;
 #define false 0
 #define true 1
 #endif /* bool */
+#endif /* !__cplusplus */
 
 #endif /* TYPES_H */

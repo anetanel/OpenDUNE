@@ -10,6 +10,7 @@
 
 #include "driver.h"
 
+#include "adl_music.h"
 #include "dsp.h"
 #include "mt32mpu.h"
 #include "../config.h"
@@ -419,6 +420,7 @@ void Drivers_All_Uninit(void)
 {
 	Drivers_SoundMusic_Uninit();
 	Drivers_Voice_Uninit();
+	ADLMusic_Uninit();
 }
 
 void Driver_LoadFile(const char *musicName, Driver *driver)

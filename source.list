@@ -64,6 +64,15 @@ audio/midi_atari.c
 	#endif
 #endif
 #endif
+audio/adl/fmopl.cpp
+audio/adl/opl_dosbox.cpp
+audio/adl/opl_mame.cpp
+audio/adl/sound_adlib.cpp
+#if PULSE
+audio/adl_music.cpp
+#else
+audio/adl_music_none.c
+#endif
 audio/mt32mpu.c
 audio/sound.c
 codec/format40.c
@@ -212,6 +221,13 @@ wsa.c
 
 # Header files
 animation.h
+audio/adl/fmopl.h
+audio/adl/opl_dosbox.h
+audio/adl/opl_impl.h
+audio/adl/opl_inc.h
+audio/adl/opl_mame.h
+audio/adl/sound_adlib.h
+audio/adl_music.h
 audio/driver.h
 audio/dsp.h
 audio/midi.h

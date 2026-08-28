@@ -9,6 +9,7 @@
 
 #include "sound.h"
 
+#include "adl_music.h"
 #include "driver.h"
 #include "mt32mpu.h"
 #include "../config.h"
@@ -89,6 +90,11 @@ void Music_Play(uint16 musicID)
 	if (musicID == 0xFFFF || musicID >= 38 || musicID == currentMusicID) return;
 
 	currentMusicID = musicID;
+
+	if (ADLMusic_IsEnabled()) {
+		ADLMusic_Play(musicID);
+		return;
+	}
 
 	if (g_table_musics[musicID].string != s_currentMusic) {
 		s_currentMusic = g_table_musics[musicID].string;
