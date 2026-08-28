@@ -92,6 +92,16 @@ STRING_JOBS = {
 # there's no way to make this Hebrew-only; installing it overwrites the
 # stock English WSA in place, and it'll show for every language until
 # someone adds real per-language branching in cutscene.c.
+#
+# Note: BLDING.VOC/DYNASTY.VOC (the "battle for Arrakis" title-correction
+# audio -- see hebrew/README.md) are NOT installed as loose ASSET_JOBS
+# entries like INTRO1.WSA. The loose-file-overrides-PAK lookup that works
+# for INTRO1.WSA turned out not to apply to VOC playback (confirmed by
+# testing in-game -- only a fragment of "for" played), so those two files
+# have to be packed directly into INTROVOC.PAK instead. See
+# hebrew/tools/pack_introvoc.py (a separate script, like
+# build_intro1_animation.py, since it needs the pristine original PAK as
+# input and isn't part of "build everything" below).
 ASSET_JOBS = {
     "intro.fnt": ("fonts", "introh.fnt"),
     "new8p.fnt": ("fonts", "new8ph.fnt"),
