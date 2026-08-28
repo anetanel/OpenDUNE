@@ -40,7 +40,7 @@ static void GUI_Security_DrawText(char *text)
 
 	GUI_Mentat_SplitText(text, 304);
 
-	GUI_DrawText_Wrapper(text, 4, 1, g_curWidgetFGColourBlink, 0, 0x32);
+	GUI_DrawText_WrapperBox(text, 4, 1, 304, g_curWidgetFGColourBlink, 0, 0x32);
 
 	GUI_Mouse_Hide_InRegion(0, 0, SCREEN_WIDTH, 40);
 	GUI_Screen_Copy(0, 0, 0, 0, SCREEN_WIDTH / 8, 40, SCREEN_2, SCREEN_0);

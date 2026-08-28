@@ -362,9 +362,9 @@ static void GameLoop_DrawMenu(const char **strings)
 		uint16 pos = top + g_fontCurrent->height * i;
 
 		if (i == props->fgColourBlink) {
-			GUI_DrawText_Wrapper(strings[i], left, pos, props->fgColourSelected, 0, 0x22);
+			GUI_DrawText_WrapperBox(strings[i], left, pos, props->width << 3, props->fgColourSelected, 0, 0x22);
 		} else {
-			GUI_DrawText_Wrapper(strings[i], left, pos, props->fgColourNormal, 0, 0x22);
+			GUI_DrawText_WrapperBox(strings[i], left, pos, props->width << 3, props->fgColourNormal, 0, 0x22);
 		}
 	}
 
@@ -373,17 +373,17 @@ static void GameLoop_DrawMenu(const char **strings)
 	Input_History_Clear();
 }
 
-static void GameLoop_DrawText2(const char *string, uint16 left, uint16 top, uint8 fgColourNormal, uint8 fgColourSelected, uint8 bgColour)
+static void GameLoop_DrawText2(const char *string, uint16 left, uint16 top, uint16 width, uint8 fgColourNormal, uint8 fgColourSelected, uint8 bgColour)
 {
 	uint8 i;
 
 	for (i = 0; i < 3; i++) {
 		GUI_Mouse_Hide_Safe();
 
-		GUI_DrawText_Wrapper(string, left, top, fgColourSelected, bgColour, 0x22);
+		GUI_DrawText_WrapperBox(string, left, top, width, fgColourSelected, bgColour, 0x22);
 		Timer_Sleep(2);
 
-		GUI_DrawText_Wrapper(string, left, top, fgColourNormal, bgColour, 0x22);
+		GUI_DrawText_WrapperBox(string, left, top, width, fgColourNormal, bgColour, 0x22);
 		GUI_Mouse_Show_Safe();
 		Timer_Sleep(2);
 	}
@@ -501,8 +501,8 @@ static uint16 GameLoop_HandleEvents(const char **strings)
 
 	if (current != old) {
 		GUI_Mouse_Hide_Safe();
-		GUI_DrawText_Wrapper(strings[old], left, top + (old * lineHeight), fgColourNormal, 0, 0x22);
-		GUI_DrawText_Wrapper(strings[current], left, top + (current * lineHeight), fgColourSelected, 0, 0x22);
+		GUI_DrawText_WrapperBox(strings[old], left, top + (old * lineHeight), props->width << 3, fgColourNormal, 0, 0x22);
+		GUI_DrawText_WrapperBox(strings[current], left, top + (current * lineHeight), props->width << 3, fgColourSelected, 0, 0x22);
 		GUI_Mouse_Show_Safe();
 	}
 
@@ -511,7 +511,7 @@ static uint16 GameLoop_HandleEvents(const char **strings)
 	if (result == 0xFFFF) return 0xFFFF;
 
 	GUI_Mouse_Hide_Safe();
-	GameLoop_DrawText2(strings[result], left, top + (current * lineHeight), fgColourNormal, fgColourSelected, 0);
+	GameLoop_DrawText2(strings[result], left, top + (current * lineHeight), props->width << 3, fgColourNormal, fgColourSelected, 0);
 	GUI_Mouse_Show_Safe();
 
 	return result;

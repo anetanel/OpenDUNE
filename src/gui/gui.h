@@ -159,8 +159,10 @@ extern void GUI_PaletteAnimate(void);
 
 extern void GUI_DisplayText(const char *str, int importance, ...);
 extern bool GUI_MirrorRTLText(const char *string, char *out, size_t out_size);
+extern bool GUI_IsRTLLanguage(void);
 extern void GUI_DrawText(const char *string, int16 left, int16 top, uint8 fgColour, uint8 bgColour);
 extern void GUI_DrawText_Wrapper(const char *string, int16 left, int16 top, uint8 fgColour, uint8 bgColour, int flags, ...);
+extern void GUI_DrawText_WrapperBox(const char *string, int16 left, int16 top, uint16 width, uint8 fgColour, uint8 bgColour, int flags);
 extern uint16 GUI_DisplayModalMessage(const char *str, unsigned int stringID, ...);
 extern uint16 GUI_DisplayHint(uint16 stringID, uint16 spriteID);
 

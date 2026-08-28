@@ -487,6 +487,74 @@ bool GUI_MirrorRTLText(const char *string, char *out, size_t out_size)
 }
 
 /**
+ * Whether the active language draws right-to-left, for callers that word-
+ * wrap dialogue text into a fixed-width box and need to know whether that
+ * box's lines should hug the box's right edge (Hebrew) instead of its left
+ * edge (every other supported language).
+ */
+bool GUI_IsRTLLanguage(void)
+{
+	return g_config.language == LANGUAGE_HEBREW;
+}
+
+/**
+ * Draw dialogue text that was pre-wrapped by the caller (GUI_SplitText() /
+ * GUI_Mentat_SplitText()) to fit a `width`-pixel-wide box starting at
+ * `left`, with physical line breaks already embedded as '\r'/'\n'.
+ *
+ * GUI_DrawText_Wrapper()'s align-right flag (0x0200) shifts `left` once,
+ * by the width of the *whole* formatted string -- correct for the
+ * single-line labels it was designed for, but not here: a multi-line
+ * chunk's total character count says nothing about any one physical
+ * line's rendered width, so that shift is meaningless for a paragraph, and
+ * GUI_DrawText() resets every wrapped line back to the same `left` x
+ * regardless. For Hebrew, where each line must instead end flush with the
+ * box's right edge (RTL paragraphs are right-justified), this draws one
+ * already-delimited physical line at a time, right-aligning each to
+ * `left + width` individually. Every other language keeps drawing through
+ * GUI_DrawText_Wrapper() unchanged (left-aligned, single call).
+ */
+void GUI_DrawText_WrapperBox(const char *string, int16 left, int16 top, uint16 width, uint8 fgColour, uint8 bgColour, int flags)
+{
+	const char *lineStart;
+	int16 y;
+
+	if (!GUI_IsRTLLanguage()) {
+		GUI_DrawText_Wrapper(string, left, top, fgColour, bgColour, flags);
+		return;
+	}
+
+	lineStart = string;
+	y = top;
+
+	for (;;) {
+		const char *p = lineStart;
+		char lineBuf[512];
+		size_t len;
+		uint16 lineWidth;
+		int16 x;
+
+		while (*p != '\0' && *p != '\r' && *p != '\n') p++;
+
+		len = (size_t)(p - lineStart);
+		if (len >= sizeof(lineBuf)) len = sizeof(lineBuf) - 1;
+		memcpy(lineBuf, lineStart, len);
+		lineBuf[len] = '\0';
+
+		lineWidth = Font_GetStringWidth(lineBuf);
+		x = left + width - lineWidth;
+		if (x < left) x = left;
+
+		GUI_DrawText_Wrapper(lineBuf, x, y, fgColour, bgColour, flags);
+
+		if (*p == '\0') break;
+		while (*p == '\r' || *p == '\n') p++;
+		lineStart = p;
+		y += g_fontCurrent->height;
+	}
+}
+
+/**
  * Draw a char on the screen.
  *
  * @param c The char to draw.

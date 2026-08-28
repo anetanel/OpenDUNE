@@ -56,7 +56,7 @@ void GUI_Widget_TextButton_Draw(Widget *w)
 	if (w->stringID == STR_CANCEL || w->stringID == STR_PREVIOUS || w->stringID == STR_YES || w->stringID == STR_NO) {
 		GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(w->stringID), positionX + (width / 2), positionY + 2, colour, 0, 0x122);
 	} else {
-		GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(w->stringID), positionX + 3, positionY + 2, colour, 0, 0x22);
+		GUI_DrawText_WrapperBox(GUI_String_Get_ByIndex(w->stringID), positionX + 3, positionY + 2, width - 6, colour, 0, 0x22);
 	}
 
 	if (oldScreenID == SCREEN_0) {

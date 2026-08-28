@@ -1038,7 +1038,7 @@ void GUI_Mentat_ScrollBar_Draw(Widget *w)
 	GUI_Mentat_Draw(false);
 }
 
-static bool GUI_Mentat_DrawInfo(char *text, uint16 left, uint16 top, uint16 height, uint16 skip, int16 lines, uint16 flags)
+static bool GUI_Mentat_DrawInfo(char *text, uint16 left, uint16 top, uint16 width, uint16 height, uint16 skip, int16 lines, uint16 flags)
 {
 	Screen oldScreenID;
 
@@ -1049,7 +1049,7 @@ static bool GUI_Mentat_DrawInfo(char *text, uint16 left, uint16 top, uint16 heig
 	while (skip-- != 0) text += strlen(text) + 1;
 
 	while (lines-- != 0) {
-		if (*text != '\0') GUI_DrawText_Wrapper(text, left, top, g_curWidgetFGColourBlink, 0, flags);
+		if (*text != '\0') GUI_DrawText_WrapperBox(text, left, top, width, g_curWidgetFGColourBlink, 0, flags);
 		top += height;
 		text += strlen(text) + 1;
 	}
@@ -1191,7 +1191,7 @@ uint16 GUI_Mentat_Loop(const char *wsaFilename, char *pictureDetails, char *text
 
 					if (textLines-- != 0) {
 						GFX_Screen_SetActive(SCREEN_2);
-						GUI_DrawText_Wrapper(text, 4, 1, g_curWidgetFGColourBlink, 0, 0x32);
+						GUI_DrawText_WrapperBox(text, 4, 1, 304, g_curWidgetFGColourBlink, 0, 0x32);
 						mentatSpeakingMode = 1;
 						textDelay = (uint32)strlen(text) * 4;
 						textTick = g_timerGUI + textDelay;
@@ -1253,7 +1253,7 @@ uint16 GUI_Mentat_Loop(const char *wsaFilename, char *pictureDetails, char *text
 
 		if (!dirty) continue;
 
-		GUI_Mentat_DrawInfo(pictureDetails, (g_curWidgetXBase << 3) + 5, g_curWidgetYBase + 3, 8, 0, lines, 0x31);
+		GUI_Mentat_DrawInfo(pictureDetails, (g_curWidgetXBase << 3) + 5, g_curWidgetYBase + 3, (g_curWidgetWidth << 3) + 10, 8, 0, lines, 0x31);
 
 		GUI_DrawSprite(SCREEN_2, g_sprites[397 + g_playerHouseID * 15], g_shoulderLeft, g_shoulderTop, 0, 0);
 		GUI_Mouse_Hide_InWidget(g_curWidgetIndex);
