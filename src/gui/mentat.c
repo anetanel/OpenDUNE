@@ -278,14 +278,21 @@ static void GUI_Mentat_Draw(bool force)
 		line->drawParameterNormal.text   = (char *)helpSubjects + 7;
 
 		if (helpSubjects[6] == '0') {
-			line->offsetX          = 16;
+			/* For RTL, rows are right-anchored at offsetX + width
+			 * (see GUI_Widget_Draw()'s DRAW_MODE_TEXT case), so a
+			 * *larger* offsetX reads as flush with the right edge
+			 * and a smaller one as indented left. Swap the LTR
+			 * 16/24 pair for Hebrew so headlines stay flush right
+			 * (matching the "Select Subject:" title) and items
+			 * indent inward from there, instead of the reverse. */
+			line->offsetX          = GUI_IsRTLLanguage() ? 24 : 16;
 			line->fgColourSelected = 11;
 			line->fgColourDown     = 11;
 			line->fgColourNormal   = 11;
 			line->stringID         = 0x30;
 		} else {
 			uint8 colour = (i == s_selectedHelpSubject) ? 8 : 15;
-			line->offsetX          = 24;
+			line->offsetX          = GUI_IsRTLLanguage() ? 16 : 24;
 			line->fgColourSelected = colour;
 			line->fgColourDown     = colour;
 			line->fgColourNormal   = colour;
