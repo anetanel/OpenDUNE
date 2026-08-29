@@ -1550,7 +1550,7 @@ void Game_LoadScenario(uint8 houseID, uint16 scenarioID)
 	g_validateStrictIfZero++;
 
 	if (!Scenario_Load(scenarioID, houseID)) {
-		GUI_DisplayModalMessage("No more scenarios!", 0xFFFF);
+		GUI_DisplayModalMessage(EngineString_Get(ENGINE_STR_NO_MORE_SCENARIOS, "No more scenarios!"), 0xFFFF);
 
 		PrepareEnd();
 		exit(0);

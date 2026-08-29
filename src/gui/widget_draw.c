@@ -1,6 +1,7 @@
 /** @file src/gui/widget_draw.c %Widget drawing routines. */
 
 #include <stdio.h>
+#include <string.h>
 #include "types.h"
 
 #include "font.h"
@@ -817,6 +818,7 @@ void GUI_Widget_ActionPanel_Draw(bool forceDraw)
 							uint16 percent;
 							uint16 steps;
 							Unit *u2;
+							char buf[32];
 
 							u2 = Structure_GetLinkedUnit(s);
 							if (u2 == NULL) break;
@@ -826,7 +828,8 @@ void GUI_Widget_ActionPanel_Draw(bool forceDraw)
 							steps = g_table_unitInfo[u2->o.type].o.buildTime / 4;
 							percent = (steps - (s->countDown >> 8)) * 100 / steps;
 
-							GUI_DrawText_Wrapper(String_Get_ByIndex(STR_D_DONE), 258, 116, 29, 0, 0x11, percent);
+							snprintf(buf, sizeof(buf), String_Get_ByIndex(STR_D_DONE), percent);
+							GUI_DrawText_WrapperBox(buf, 258, 116, 55, 29, 0, 0x11);
 						} break;
 
 						case STRUCTURE_WINDTRAP: {
@@ -834,63 +837,109 @@ void GUI_Widget_ActionPanel_Draw(bool forceDraw)
 							uint16 powerAverage = (h->windtrapCount == 0) ? 0 : h->powerUsage / h->windtrapCount;
 
 							GUI_DrawLine(261, 95, 312, 95, 16);
-							GUI_DrawText_Wrapper(String_Get_ByIndex(STR_POWER_INFONEEDEDOUTPUT), 258, 88, 29, 0, 0x11);
-							GUI_DrawText_Wrapper("%3d", 292, g_fontCurrent->height * 2 + 80, 29, 0, 0x11, powerAverage);
-							GUI_DrawText_Wrapper("%3d", 292, g_fontCurrent->height * 3 + 80, (powerOutput >= powerAverage) ? 29 : 6, 0, 0x11, powerOutput);
+
+							if (GUI_IsRTLLanguage()) {
+								/* STR_POWER_INFONEEDEDOUTPUT is one '\r'-joined
+								 * "header\rneeded:\routput:" string. The LTR
+								 * layout keeps each value in its own draw call
+								 * so the numbers line up in a fixed-x column,
+								 * but that column position is meaningless once
+								 * the label is right-justified for Hebrew, so
+								 * glue each label to its value into one line
+								 * and let GUI_DrawText_WrapperBox() place both
+								 * as a unit -- same as every other RTL box. */
+								const char *label = String_Get_ByIndex(STR_POWER_INFONEEDEDOUTPUT);
+								const char *headerEnd = strchr(label, '\r');
+								const char *neededStart = (headerEnd != NULL) ? headerEnd + 1 : label;
+								const char *neededEnd = strchr(neededStart, '\r');
+								const char *outputStart = (neededEnd != NULL) ? neededEnd + 1 : neededStart;
+								char headerLine[32];
+								char line[32];
+								size_t headerLen = (headerEnd != NULL) ? (size_t)(headerEnd - label) : 0;
+								size_t neededLen = (neededEnd != NULL) ? (size_t)(neededEnd - neededStart) : 0;
+
+								if (headerLen >= sizeof(headerLine)) headerLen = sizeof(headerLine) - 1;
+								memcpy(headerLine, label, headerLen);
+								headerLine[headerLen] = '\0';
+
+								GUI_DrawText_WrapperBox(headerLine, 258, 88, 55, 29, 0, 0x11);
+
+								if (neededLen >= sizeof(line) - 8) neededLen = sizeof(line) - 8;
+								memcpy(line, neededStart, neededLen);
+								snprintf(line + neededLen, sizeof(line) - neededLen, " %u", powerAverage);
+								GUI_DrawText_WrapperBox(line, 258, g_fontCurrent->height + 88, 55, 29, 0, 0x11);
+
+								snprintf(line, sizeof(line), "%s %u", outputStart, powerOutput);
+								GUI_DrawText_WrapperBox(line, 258, g_fontCurrent->height * 2 + 88, 55, (powerOutput >= powerAverage) ? 29 : 6, 0, 0x11);
+							} else {
+								GUI_DrawText_Wrapper(String_Get_ByIndex(STR_POWER_INFONEEDEDOUTPUT), 258, 88, 29, 0, 0x11);
+								GUI_DrawText_Wrapper("%3d", 292, g_fontCurrent->height * 2 + 80, 29, 0, 0x11, powerAverage);
+								GUI_DrawText_Wrapper("%3d", 292, g_fontCurrent->height * 3 + 80, (powerOutput >= powerAverage) ? 29 : 6, 0, 0x11, powerOutput);
+							}
 						} break;
 
 						case STRUCTURE_STARPORT: {
 							if (h->starportLinkedID != 0xFFFF) {
-								GUI_DrawText_Wrapper(String_Get_ByIndex(STR_FRIGATEARRIVAL_INTMINUS_D), 258, 88, 29, 0, 0x11, h->starportTimeLeft);
+								char buf[64];
+								snprintf(buf, sizeof(buf), String_Get_ByIndex(STR_FRIGATEARRIVAL_INTMINUS_D), h->starportTimeLeft);
+								GUI_DrawText_WrapperBox(buf, 258, 88, 55, 29, 0, 0x11);
 							} else {
-								GUI_DrawText_Wrapper(String_Get_ByIndex(STR_FRIGATE_INORBIT_ANDAWAITINGORDER), 258, 88, 29, 0, 0x11);
+								GUI_DrawText_WrapperBox(String_Get_ByIndex(STR_FRIGATE_INORBIT_ANDAWAITINGORDER), 258, 88, 55, 29, 0, 0x11);
 							}
 						} break;
 
 						case STRUCTURE_REFINERY:
 						case STRUCTURE_SILO: {
 							uint16 creditsStored;
+							char buf[64];
 
 							creditsStored = h->credits * si->creditsStorage / h->creditsStorage;
 							if (h->credits > h->creditsStorage) creditsStored = si->creditsStorage;
 
 							GUI_DrawLine(261, 95, 312, 95, 16);
-							GUI_DrawText_Wrapper(String_Get_ByIndex(STR_SPICEHOLDS_4DMAX_4D), 258, 88, 29, 0, 0x11, creditsStored, (si->creditsStorage <= 1000) ? si->creditsStorage : 1000);
+							snprintf(buf, sizeof(buf), String_Get_ByIndex(STR_SPICEHOLDS_4DMAX_4D), creditsStored, (si->creditsStorage <= 1000) ? si->creditsStorage : 1000);
+							GUI_DrawText_WrapperBox(buf, 258, 88, 55, 29, 0, 0x11);
 						} break;
 
 						case STRUCTURE_OUTPOST: {
+							char buf[64];
+
 							GUI_DrawLine(261, 95, 312, 95, 16);
-							GUI_DrawText_Wrapper(String_Get_ByIndex(STR_RADAR_SCANFRIEND_2DENEMY_2D), 258, 88, 29, 0, 0x11, h->unitCountAllied, h->unitCountEnemy);
+							snprintf(buf, sizeof(buf), String_Get_ByIndex(STR_RADAR_SCANFRIEND_2DENEMY_2D), h->unitCountAllied, h->unitCountEnemy);
+							GUI_DrawText_WrapperBox(buf, 258, 88, 55, 29, 0, 0x11);
 						} break;
 					}
 				} break;
 
 				case 4: /* Attack */
 					GUI_Widget_MakeVisible(widget30);
-					GUI_DrawText_Wrapper(String_Get_ByIndex(STR_SELECTTARGET), 259, 76, g_curWidgetFGColourBlink, 0, 0x11);
+					GUI_DrawText_WrapperBox(String_Get_ByIndex(STR_SELECTTARGET), 259, 76, 54, g_curWidgetFGColourBlink, 0, 0x11);
 					break;
 
 				case 5: /* Movement */
 					GUI_Widget_MakeVisible(widget30);
-					GUI_DrawText_Wrapper(String_Get_ByIndex(STR_SELECTDESTINATION), 259, 76, g_curWidgetFGColourBlink, 0, 0x11);
+					GUI_DrawText_WrapperBox(String_Get_ByIndex(STR_SELECTDESTINATION), 259, 76, 54, g_curWidgetFGColourBlink, 0, 0x11);
 					break;
 
 				case 6: /* Harvest */
 					GUI_Widget_MakeVisible(widget30);
-					GUI_DrawText_Wrapper(String_Get_ByIndex(STR_SELECTPLACE_TOHARVEST), 259, 76, g_curWidgetFGColourBlink, 0, 0x11);
+					GUI_DrawText_WrapperBox(String_Get_ByIndex(STR_SELECTPLACE_TOHARVEST), 259, 76, 54, g_curWidgetFGColourBlink, 0, 0x11);
 					break;
 
 				case 7: /* Placement */
 					GUI_Widget_MakeVisible(widget30);
-					GUI_DrawText_Wrapper(String_Get_ByIndex(STR_SELECTLOCATION_TOBUILD), 259, 84, g_curWidgetFGColourBlink, 0, 0x11);
+					GUI_DrawText_WrapperBox(String_Get_ByIndex(STR_SELECTLOCATION_TOBUILD), 259, 84, 54, g_curWidgetFGColourBlink, 0, 0x11);
 					break;
 
 				case 8: /* House Missile */
 				{
 					int16 count = (int16)g_houseMissileCountdown - 1;
+					char buf[64];
+
 					if (count <= 0) count = 0;
 
-					GUI_DrawText_Wrapper(String_Get_ByIndex(STR_PICK_TARGETTMINUS_D), 259, 84, g_curWidgetFGColourBlink, 0, 0x11, count);
+					snprintf(buf, sizeof(buf), String_Get_ByIndex(STR_PICK_TARGETTMINUS_D), count);
+					GUI_DrawText_WrapperBox(buf, 259, 84, 54, g_curWidgetFGColourBlink, 0, 0x11);
 				} break;
 
 				default:

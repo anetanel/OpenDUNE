@@ -49,7 +49,7 @@
       "prefix": "FARTR.WSA",
       "delim": "*",
       "body_en": "Caladan: \fOur ancestral home is the lush planet of Caladan. We have created a civilized society and we respect the lives and rights of all people. We do not believe in the use of unnecessary violence, and have crafted a defensive alliance with the native Fremen of Dune. ",
-      "body_he": "קאלאדן: \fבית אבותינו הוא כוכב-הלכת השופע קאלאדן. בנינו בו חברה מתורבתת ואנו מכבדים את חייהם וזכויותיהם של כל אדם. איננו מאמינים בשימוש באלימות שלא לצורך, וכרתנו ברית הגנה עם הדררים ילידי חולית. "
+      "body_he": "קלדן: \fבית אבותינו הוא כוכב-הלכת השופע קאלאדן. בנינו בו חברה מתורבתת ואנו מכבדים את חייהם וזכויותיהם של כל אדם. איננו מאמינים בשימוש באלימות שלא לצורך, וכרתנו ברית הגנה עם הדררים ילידי חולית. "
     },
     {
       "code": "11",
@@ -105,7 +105,7 @@
       "code": "21",
       "threshold": 1,
       "name_en": "Construction Yard",
-      "name_he": "מפעל בנייה",
+      "name_he": "חצר ייצור",
       "prefix": "Construc.wsa",
       "delim": "*",
       "body_en": "Construction Yard\r(Harsh climate model)\rSelf-Powered \fA Construction Yard is required to build any buildings. ",

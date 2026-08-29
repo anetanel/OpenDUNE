@@ -1601,10 +1601,17 @@ uint16 Script_Unit_DisplayDestroyedText(ScriptEngine *script)
 	u = g_scriptCurrentUnit;
 	ui = &g_table_unitInfo[u->o.type];
 
-	if (g_config.language == LANGUAGE_FRENCH) {
-		GUI_DisplayText(String_Get_ByIndex(STR_S_S_DESTROYED), 0, String_Get_ByIndex(ui->o.stringID_abbrev), g_table_houseInfo[Unit_GetHouseID(u)].name);
-	} else {
-		GUI_DisplayText(String_Get_ByIndex(STR_S_S_DESTROYED), 0, g_table_houseInfo[Unit_GetHouseID(u)].name, String_Get_ByIndex(ui->o.stringID_abbrev));
+	{
+		uint8 houseID = Unit_GetHouseID(u);
+		const char *houseName = EngineString_Get(ENGINE_STR_HOUSE_HARKONNEN + houseID, g_table_houseInfo[houseID].name);
+
+		/* French and Hebrew both put the noun before its qualifier, see
+		 * the matching comment in Unit_DisplayStatusText() (src/unit.c). */
+		if (g_config.language == LANGUAGE_FRENCH || g_config.language == LANGUAGE_HEBREW) {
+			GUI_DisplayText(String_Get_ByIndex(STR_S_S_DESTROYED), 0, String_Get_ByIndex(ui->o.stringID_abbrev), houseName);
+		} else {
+			GUI_DisplayText(String_Get_ByIndex(STR_S_S_DESTROYED), 0, houseName, String_Get_ByIndex(ui->o.stringID_abbrev));
+		}
 	}
 
 	return 0;

@@ -70,14 +70,26 @@ project), which already had a working Hebrew translation:
   `dunepak`) with `mentat_eng.py decode`, not yet translated (`"he"`
   fields still equal `"en"` throughout — same starting state as
   `texth`/`texto`/`message`).
+- `translations/engine_strings.json` — source for `ENGINE.HEB`, an
+  OpenDUNE-only file with no original-game counterpart, for text this
+  repo's own C code hardcodes as a plain English string literal instead
+  of looking up by `STR_*` index — `EngineStringID` in `src/string.h`
+  documents why each entry exists (house names read straight out of
+  `g_table_houseInfo[].name`; a couple of modal error messages that never
+  got a `STR_*` slot). **Entry order must match the `EngineStringID` enum
+  exactly** — it's a plain position-indexed offset table like `DUNE.HEB`,
+  with no per-entry ID stored in the file itself. `EngineString_Get()`
+  (`src/string.c`) only loads `ENGINE.<suffix>` if it exists for the
+  active language, falling back to the caller's English literal
+  otherwise, so this is safe for every language, not just Hebrew.
 - `tools/build_heb.py` — run this after editing any translation JSON, then
   just relaunch the game (no recompile needed). Encodes the JSON into
   `DUNE.HEB`, `MESSAGE.HEB`, `INTRO.HEB`, `TEXTH.HEB`, `TEXTA.HEB`,
   `TEXTO.HEB`, `PROTECT.HEB`, `MENTATA.HEB`, `MENTATH.HEB`, `MENTATO.HEB`,
-  and copies the font/graphics assets under their Hebrew-suffixed names,
-  all into `bin/data/` (where `File_Init()` looks by default). Usage:
-  `python3 hebrew/tools/build_heb.py`, or name specific jobs (`dune`,
-  `texta`, …; `list` shows valid names).
+  `ENGINE.HEB`, and copies the font/graphics assets under their
+  Hebrew-suffixed names, all into `bin/data/` (where `File_Init()` looks
+  by default). Usage: `python3 hebrew/tools/build_heb.py`, or name
+  specific jobs (`dune`, `texta`, …; `list` shows valid names).
 - `tools/build_intro1_animation.py` + `wsa_encode.py`/`wsa_decode.py` —
   regenerates `hebrew/intro1.wsa` from `hebrew/INTRO1-00049.png` (the
   hand-edited final frame). Ported from
@@ -108,14 +120,9 @@ project), which already had a working Hebrew translation:
 
 ## Known gaps (translated source exists, but nothing loads it — yet)
 
-dunedynasty has two more translation categories with no equivalent loading
-code anywhere in this repo (confirmed by grep — zero hits):
-
 - End-game scrolling credits (`CREDITS`) — the credits scroll in
   `src/cutscene.c` doesn't load a language-suffixed strings file the way
   the rest of the UI does.
-- `engine_strings.json`-equivalent — dunedynasty's own mechanism for UI
-  strings *it* added with no original PAK slot; doesn't apply here.
 
-Porting these would mean building the missing feature first. Not attempted
+Porting this would mean building the missing feature first. Not attempted
 in this pass.

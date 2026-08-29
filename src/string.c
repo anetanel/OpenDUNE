@@ -164,6 +164,43 @@ static void String_Load(const char *filename, bool compressed, uint16 start, uin
 	      filename, s_stringsCount, s_strings[s_stringsCount]);
 }
 
+static uint8 *s_engineStringsBuffer = NULL;
+static uint16 s_engineStringsCount = 0;
+
+/**
+ * Load ENGINE.<suffix> (built from hebrew/translations/engine_strings.json
+ * by hebrew/tools/build_heb.py, same offset-table format as DUNE.HEB --
+ * see hebrew/tools/eng.py), if the active language ships one. Silently
+ * does nothing otherwise -- EngineString_Get() falls back to its
+ * caller-supplied English text for any language without this file, same
+ * as every language except Hebrew currently gets for these strings.
+ */
+static void String_LoadEngineStrings(void)
+{
+	const char *filename = String_GenerateFilename("ENGINE");
+
+	if (!File_Exists(filename)) return;
+
+	s_engineStringsBuffer = File_ReadWholeFile(filename);
+	s_engineStringsCount = READ_LE_UINT16(s_engineStringsBuffer) / 2;
+}
+
+/**
+ * Look up a string outside the original game's own string tables (see the
+ * EngineStringID doc comment in string.h). Returns the active language's
+ * translation if ENGINE.<suffix> both exists and has a non-empty entry for
+ * `id`, otherwise returns `fallback` unchanged.
+ */
+const char *EngineString_Get(EngineStringID id, const char *fallback)
+{
+	const char *s;
+
+	if (s_engineStringsBuffer == NULL || id >= s_engineStringsCount) return fallback;
+
+	s = (const char *)s_engineStringsBuffer + READ_LE_UINT16(s_engineStringsBuffer + id * 2);
+	return (s[0] != '\0') ? s : fallback;
+}
+
 /**
  * Loads the language files in the memory, which is used after that with String_GetXXX_ByIndex().
  */
@@ -180,6 +217,7 @@ void String_Init(void)
 	String_Load("TEXTA",    true,  445, 484);
 	String_Load("TEXTO",    true,  485, 524);
 	String_Load("PROTECT",  true,  525,   0);
+	String_LoadEngineStrings();
 }
 
 /**
@@ -191,6 +229,9 @@ void String_Uninit(void)
 	s_stringsBuffer = NULL;
 	free(s_strings);
 	s_strings = NULL;
+	free(s_engineStringsBuffer);
+	s_engineStringsBuffer = NULL;
+	s_engineStringsCount = 0;
 }
 
 /**

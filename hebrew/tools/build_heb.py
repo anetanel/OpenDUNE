@@ -77,6 +77,13 @@ STRING_JOBS = {
     "mentata": ("MENTATA.HEB", lambda: _build_mentat("mentata")),
     "mentath": ("MENTATH.HEB", lambda: _build_mentat("mentath")),
     "mentato": ("MENTATO.HEB", lambda: _build_mentat("mentato")),
+    # Text this engine's own C code hardcodes as a plain English string
+    # literal (house names, a couple of modal error messages) rather than
+    # looking up by STR_* index -- see EngineStringID in src/string.h.
+    # Entry order here must match that enum exactly; String_LoadEngineStrings()
+    # (src/string.c) only loads this file if it exists for the active
+    # language, so English (and any language without one) is unaffected.
+    "engine": ("ENGINE.HEB", lambda: _build_simple_list("engine_strings", False)),
 }
 
 # source path (relative to hebrew/) -> dest filename, for assets that are

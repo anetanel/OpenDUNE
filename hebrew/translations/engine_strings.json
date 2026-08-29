@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ENGINE_STR_HOUSE_HARKONNEN",
+    "en": "Harkonnen",
+    "he": "הארקונן"
+  },
+  {
+    "id": "ENGINE_STR_HOUSE_ATREIDES",
+    "en": "Atreides",
+    "he": "אטריידיס"
+  },
+  {
+    "id": "ENGINE_STR_HOUSE_ORDOS",
+    "en": "Ordos",
+    "he": "אורדוס"
+  },
+  {
+    "id": "ENGINE_STR_HOUSE_FREMEN",
+    "en": "Fremen",
+    "he": "דררים"
+  },
+  {
+    "id": "ENGINE_STR_HOUSE_SARDAUKAR",
+    "en": "Sardaukar",
+    "he": "סרדאוקאר"
+  },
+  {
+    "id": "ENGINE_STR_HOUSE_MERCENARY",
+    "en": "Mercenary",
+    "he": "דכירי-חרב"
+  },
+  {
+    "id": "ENGINE_STR_NO_MORE_SCENARIOS",
+    "en": "No more scenarios!",
+    "he": "אין עוד תרחישים!"
+  },
+  {
+    "id": "ENGINE_STR_NO_ITEMS_IN_CONSTRUCTION_LIST",
+    "en": "ERROR: No items in construction list!",
+    "he": "שגיאה: אין פריטים ברשימת הבנייה!"
+  }
+]

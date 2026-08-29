@@ -309,8 +309,35 @@ void GUI_DisplayText(const char *str, int importance, ...)
 
 			GUI_DrawFilledRectangle(0, 0, SCREEN_WIDTH - 1, 23, g_curWidgetFGColourNormal);
 
-			GUI_DrawText_Wrapper(displayLine2, g_curWidgetXBase << 3,  2, fgColour2, 0, 0x012);
-			GUI_DrawText_Wrapper(displayLine1, g_curWidgetXBase << 3, 13, fgColour1, 0, 0x012);
+			{
+				uint16 left2 = g_curWidgetXBase << 3;
+				uint16 left1 = g_curWidgetXBase << 3;
+
+				/* GUI_DrawText() mirrors Hebrew correctly within the line but
+				 * always draws it left-anchored here, so right-justify to this
+				 * widget's own box for RTL, matching every other RTL text box. */
+				if (GUI_IsRTLLanguage()) {
+					uint16 boxWidth = g_curWidgetWidth << 3;
+					uint16 width2, width1;
+
+					/* Font_GetStringWidth() reads g_fontCurrent, which is only
+					 * updated as a side effect of GUI_DrawText_Wrapper() actually
+					 * drawing with a given flags -- prime it first (same idiom as
+					 * GUI_DrawText_WrapperBox()) or a stale font from whatever
+					 * else last drew leaves these widths wrong, landing the
+					 * right-justified text short of the box's true right edge. */
+					GUI_DrawText_Wrapper(NULL, 0, 0, 0, 0, 0x012);
+
+					width2 = Font_GetStringWidth(displayLine2);
+					width1 = Font_GetStringWidth(displayLine1);
+
+					if (width2 < boxWidth) left2 = (g_curWidgetXBase << 3) + boxWidth - width2;
+					if (width1 < boxWidth) left1 = (g_curWidgetXBase << 3) + boxWidth - width1;
+				}
+
+				GUI_DrawText_Wrapper(displayLine2, left2,  2, fgColour2, 0, 0x012);
+				GUI_DrawText_Wrapper(displayLine1, left1, 13, fgColour1, 0, 0x012);
+			}
 
 			g_textDisplayNeedsUpdate = false;
 
@@ -401,12 +428,30 @@ static bool GUI_IsHebrewByte(unsigned char c)
 }
 
 /**
+ * ASCII letters and digits -- as opposed to Hebrew glyphs -- are always an
+ * embedded left-to-right run (a number, or untranslated English content
+ * like a house name pulled straight from g_table_houseInfo[] with no
+ * Hebrew equivalent), so GUI_MirrorRTLLine() below keeps runs of these
+ * bytes intact instead of reversing them character-by-character.
+ */
+static bool GUI_IsAsciiWordByte(unsigned char c)
+{
+	return c < 0x80 && isalnum(c);
+}
+
+/**
  * Reverse one line's character order in place, for right-to-left display
- * on this engine's left-to-right-only glyph drawer. Runs of ASCII digits
- * are kept in their original order (only their position within the line
- * moves) -- numbers always read most-significant-digit-first, even
- * embedded in RTL text. Lines with no Hebrew (untranslated, English
- * fallback content) are left untouched.
+ * on this engine's left-to-right-only glyph drawer. Runs of ASCII
+ * letters/digits are kept in their original order (only their position
+ * within the line moves) -- numbers always read most-significant-digit-
+ * first even embedded in RTL text, and untranslated ASCII words (e.g. a
+ * house name) must keep their own letter order even though the Hebrew
+ * elsewhere on the same line still needs mirroring. A trailing '%' right
+ * after a digit run is glued to it as part of the same atomic block, so
+ * e.g. "25%" stays "25%" instead of the '%' -- which isn't itself
+ * alnum -- being mirrored on its own and landing on the wrong side of the
+ * digits ("%25"). Lines with no Hebrew (untranslated, English fallback
+ * content) are left untouched.
  *
  * `len` is the number of bytes in the line, excluding any delimiter.
  */
@@ -426,11 +471,13 @@ static void GUI_MirrorRTLLine(char *line, size_t len)
 	out = 0;
 	i = len;
 	while (i > 0) {
-		if (isdigit((unsigned char)line[i - 1])) {
-			size_t end = i;
-			size_t start = i;
+		bool percentAfterDigits = line[i - 1] == '%' && i >= 2 && isdigit((unsigned char)line[i - 2]);
 
-			while (start > 0 && isdigit((unsigned char)line[start - 1])) start--;
+		if (GUI_IsAsciiWordByte((unsigned char)line[i - 1]) || percentAfterDigits) {
+			size_t end = i;
+			size_t start = percentAfterDigits ? i - 1 : i;
+
+			while (start > 0 && GUI_IsAsciiWordByte((unsigned char)line[start - 1])) start--;
 
 			memcpy(reversed + out, line + start, end - start);
 			out += end - start;
@@ -1014,7 +1061,51 @@ uint16 GUI_DisplayModalMessage(const char *str, unsigned int spriteID, ...)
 
 	g_curWidgetFGColourNormal = 0;
 
-	GUI_DrawText(textBuffer, g_curWidgetXBase << 3, g_curWidgetYBase, g_curWidgetFGColourBlink, g_curWidgetFGColourNormal);
+	{
+		uint16 left = g_curWidgetXBase << 3;
+
+		/* textBuffer was pre-wrapped by GUI_SplitText() above into '\r'-
+		 * delimited physical lines; GUI_DrawText() resets every one of them
+		 * back to the same left x, which reads fine for left-to-right
+		 * languages but leaves Hebrew flush against the wrong edge of the
+		 * box. Right-justify each line individually here, the same
+		 * per-line approach GUI_DrawText_WrapperBox() uses for other RTL
+		 * paragraph boxes -- a single whole-string shift wouldn't work
+		 * since one line's rendered width says nothing about another's. */
+		if (GUI_IsRTLLanguage()) {
+			uint16 boxWidth = g_curWidgetWidth << 3;
+			const char *lineStart = textBuffer;
+			int16 y = g_curWidgetYBase;
+
+			for (;;) {
+				const char *p = lineStart;
+				char lineBuf[240];
+				size_t len;
+				uint16 lineWidth;
+				int16 x;
+
+				while (*p != '\0' && *p != '\r' && *p != '\n') p++;
+
+				len = (size_t)(p - lineStart);
+				if (len >= sizeof(lineBuf)) len = sizeof(lineBuf) - 1;
+				memcpy(lineBuf, lineStart, len);
+				lineBuf[len] = '\0';
+
+				lineWidth = Font_GetStringWidth(lineBuf);
+				x = left + boxWidth - lineWidth;
+				if (x < left) x = left;
+
+				GUI_DrawText(lineBuf, x, y, g_curWidgetFGColourBlink, g_curWidgetFGColourNormal);
+
+				if (*p == '\0') break;
+				while (*p == '\r' || *p == '\n') p++;
+				lineStart = p;
+				y += g_fontCurrent->height;
+			}
+		} else {
+			GUI_DrawText(textBuffer, left, g_curWidgetYBase, g_curWidgetFGColourBlink, g_curWidgetFGColourNormal);
+		}
+	}
 
 	GFX_SetPalette(g_palette1);
 
@@ -2990,7 +3081,7 @@ static void GUI_FactoryWindow_InitItems(void)
 	}
 
 	if (g_factoryWindowTotal == 0) {
-		GUI_DisplayModalMessage("ERROR: No items in construction list!", 0xFFFF);
+		GUI_DisplayModalMessage(EngineString_Get(ENGINE_STR_NO_ITEMS_IN_CONSTRUCTION_LIST, "ERROR: No items in construction list!"), 0xFFFF);
 		PrepareEnd();
 		exit(0);
 	}
@@ -4669,12 +4760,18 @@ uint16 GUI_HallOfFame_DrawData(HallOfFameStruct *data, bool show)
 
 		if (data[i].score == 0) break;
 
-		if (g_config.language == LANGUAGE_FRENCH) {
-			p1 = String_Get_ByIndex(_rankScores[data[i].rank].rankString);
-			p2 = g_table_houseInfo[data[i].houseID].name;
-		} else {
-			p1 = g_table_houseInfo[data[i].houseID].name;
-			p2 = String_Get_ByIndex(_rankScores[data[i].rank].rankString);
+		{
+			const char *houseName = EngineString_Get(ENGINE_STR_HOUSE_HARKONNEN + data[i].houseID, g_table_houseInfo[data[i].houseID].name);
+
+			/* French and Hebrew both put the noun before its qualifier, see
+			 * the matching comment in Unit_DisplayStatusText() (src/unit.c). */
+			if (g_config.language == LANGUAGE_FRENCH || g_config.language == LANGUAGE_HEBREW) {
+				p1 = String_Get_ByIndex(_rankScores[data[i].rank].rankString);
+				p2 = houseName;
+			} else {
+				p1 = houseName;
+				p2 = String_Get_ByIndex(_rankScores[data[i].rank].rankString);
+			}
 		}
 		snprintf(buffer, sizeof(buffer), "%s, %s %s", data[i].name, p1, p2);
 

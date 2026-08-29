@@ -2050,8 +2050,14 @@ void Unit_DisplayStatusText(Unit *unit)
 	if (unit->o.type == UNIT_SANDWORM) {
 		snprintf(buffer, sizeof(buffer), "%s", String_Get_ByIndex(ui->o.stringID_abbrev));
 	} else {
-		const char *houseName = g_table_houseInfo[Unit_GetHouseID(unit)].name;
-		if (g_config.language == LANGUAGE_FRENCH) {
+		uint8 houseID = Unit_GetHouseID(unit);
+		const char *houseName = EngineString_Get(ENGINE_STR_HOUSE_HARKONNEN + houseID, g_table_houseInfo[houseID].name);
+
+		/* French and Hebrew both put the noun before its qualifier ("Trike
+		 * Atreides"/"תלתנוע אטריידיס", i.e. Hebrew's construct-state
+		 * word order) rather than English's adjective-first "Atreides
+		 * Trike". */
+		if (g_config.language == LANGUAGE_FRENCH || g_config.language == LANGUAGE_HEBREW) {
 			snprintf(buffer, sizeof(buffer), "%s %s", String_Get_ByIndex(ui->o.stringID_abbrev), houseName);
 		} else {
 			snprintf(buffer, sizeof(buffer), "%s %s", houseName, String_Get_ByIndex(ui->o.stringID_abbrev));

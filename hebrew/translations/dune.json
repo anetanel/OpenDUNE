@@ -21,7 +21,7 @@
   },
   {
     "en": "Area Guard",
-    "he": "שמור איזור"
+    "he": "שמור אזור"
   },
   {
     "en": "Harvest",
@@ -61,51 +61,51 @@
   },
   {
     "en": "Initializing the MT-32",
-    "he": "Initializing the MT-32"
+    "he": "מאתחל את MT-32"
   },
   {
     "en": "Old save game file is incompatable with latest version.",
-    "he": "Old save game file is incompatable with latest version."
+    "he": "שמירת משחק ישנה אינה תואמת לגירסה האחרונה."
   },
   {
     "en": "Insufficient memory by %ld bytes.",
-    "he": "Insufficient memory by %ld bytes."
+    "he": "אין די זיכרון. חסרים %ld בתים."
   },
   {
     "en": "The setup program must be run first.",
-    "he": "The setup program must be run first."
+    "he": "תוכנת setup חייבת לרוץ קודם."
   },
   {
     "en": "%s %s destroyed.",
-    "he": "%s %s destroyed."
+    "he": "%s %s הושמד."
   },
   {
     "en": "Unit is unable to deploy here.",
-    "he": "Unit is unable to deploy here."
+    "he": "לא ניתן לפרוס את היחידה במקום זה."
   },
   {
     "en": "Score: %d",
-    "he": "Score: %d"
+    "he": "ציון: %d"
   },
   {
     "en": "Time: %dh %dm",
-    "he": "Time: %dh %dm"
+    "he": "זמן: %dh %dm"
   },
   {
     "en": "You have attained the rank of",
-    "he": "You have attained the rank of"
+    "he": "זכית בדרגת"
   },
   {
     "en": "Units Destroyed By",
-    "he": "Units Destroyed By"
+    "he": "יחידות שהושמדו על יד"
   },
   {
     "en": "Buildings Destroyed By",
-    "he": "Buildings Destroyed By"
+    "he": "מבנים שהושמדו על יד"
   },
   {
     "en": "Spice Harvested By",
-    "he": "Spice Harvested By"
+    "he": "סם שנכרה על יד"
   },
   {
     "en": "Play a Game",
@@ -169,27 +169,27 @@
   },
   {
     "en": "Launch",
-    "he": "Launch"
+    "he": "שגר"
   },
   {
     "en": "Fremen",
-    "he": "Fremen"
+    "he": "דררי"
   },
   {
     "en": "Saboteur",
-    "he": "Saboteur"
+    "he": "חבלן"
   },
   {
     "en": "Pre-spice mound",
-    "he": "Pre-spice mound"
+    "he": "תלולית טרום-סם"
   },
   {
     "en": "%d%% done",
-    "he": "%d%% done"
+    "he": "%d%% מוכן"
   },
   {
     "en": "Mentat Briefing",
-    "he": "Mentat Briefing"
+    "he": "תדרוך מנטאט"
   },
   {
     "en": "Select Subject:",
@@ -201,167 +201,167 @@
   },
   {
     "en": "Harvester is heading to refinery.",
-    "he": "Harvester is heading to refinery."
+    "he": "מקצרה בדרך למזקקה."
   },
   {
     "en": "Construction complete",
-    "he": "Construction complete"
+    "he": "בנייה הסתיימה"
   },
   {
     "en": "Enemy unit approaching",
-    "he": "Enemy unit approaching"
+    "he": "יחידת אוייב מתקרבת"
   },
   {
     "en": "Harkonnen approaching",
-    "he": "Harkonnen approaching"
+    "he": "הארקונן מתקרבים"
   },
   {
     "en": "Atreides approaching",
-    "he": "Atreides approaching"
+    "he": "אטריידיס מתקרבים"
   },
   {
     "en": "Ordos approaching",
-    "he": "Ordos approaching"
+    "he": "אורדוס מתקרבים"
   },
   {
     "en": "Fremen approaching",
-    "he": "Fremen approaching"
+    "he": "דררים מתקרבים"
   },
   {
     "en": "Sardaukar approaching",
-    "he": "Sardaukar approaching"
+    "he": "סרדאוקאר מתקרבים"
   },
   {
     "en": "Mercenary approaching",
-    "he": "Mercenary approaching"
+    "he": "שכירי-חרב מתקרבים"
   },
   {
     "en": "Saboteur approaching",
-    "he": "Saboteur approaching"
+    "he": "חבלנים מתקרבים"
   },
   {
     "en": "Harkonnen unit destroyed",
-    "he": "Harkonnen unit destroyed"
+    "he": "יחידת הארקונן הושמדה"
   },
   {
     "en": "Atreides unit destroyed",
-    "he": "Atreides unit destroyed"
+    "he": "יחידת אטריידיס הושמדה"
   },
   {
     "en": "Ordos unit destroyed",
-    "he": "Ordos unit destroyed"
+    "he": "יחידת אורדוס הושמדה"
   },
   {
     "en": "Fremen unit destroyed",
-    "he": "Fremen unit destroyed"
+    "he": "יחידת דררים הושמדה"
   },
   {
     "en": "Sardaukar unit destroyed",
-    "he": "Sardaukar unit destroyed"
+    "he": "יחידת סרדאוקאר הושמדה"
   },
   {
     "en": "Mercenary unit destroyed",
-    "he": "Mercenary unit destroyed"
+    "he": "יחידת שכירי-חרב הושמדה"
   },
   {
     "en": "Harkonnen structure destroyed",
-    "he": "Harkonnen structure destroyed"
+    "he": "מבנה הארקונן הושמד"
   },
   {
     "en": "Atreides structure destroyed",
-    "he": "Atreides structure destroyed"
+    "he": "מבנה אטריידיס הושמד"
   },
   {
     "en": "Ordos structure destroyed",
-    "he": "Ordos structure destroyed"
+    "he": "מבנה אורדוס הושמד"
   },
   {
     "en": "Fremen structure destroyed",
-    "he": "Fremen structure destroyed"
+    "he": "מבנה דררי הושמד"
   },
   {
     "en": "Sardaukar structure destroyed",
-    "he": "Sardaukar structure destroyed"
+    "he": "מבנה סרדאוקאר הושמד"
   },
   {
     "en": "Mercenary structure destroyed",
-    "he": "Mercenary structure destroyed"
+    "he": "מבנה שכירי-חרב הושמד"
   },
   {
     "en": "Harkonnen unit deployed",
-    "he": "Harkonnen unit deployed"
+    "he": "יחידת הארקונן נפרסה"
   },
   {
     "en": "Atreides unit deployed",
-    "he": "Atreides unit deployed"
+    "he": "יחידת אטריידיס נפרסה"
   },
   {
     "en": "Ordos unit deployed",
-    "he": "Ordos unit deployed"
+    "he": "יחידת אורדוס נפרסה"
   },
   {
     "en": "Fremen unit deployed",
-    "he": "Fremen unit deployed"
+    "he": "יחידת דררים נפרסה"
   },
   {
     "en": "Sardaukar unit deployed",
-    "he": "Sardaukar unit deployed"
+    "he": "יחידת סרדאוקאר נפרסה"
   },
   {
     "en": "Mercenary unit deployed",
-    "he": "Mercenary unit deployed"
+    "he": "יחידת שכירי-חרב נפרסה"
   },
   {
     "en": "Wormsign!",
-    "he": "Wormsign!"
+    "he": "גל עקלתון!"
   },
   {
     "en": "Saboteur approaching",
-    "he": "Saboteur approaching"
+    "he": "חבלן מתקרב"
   },
   {
     "en": "Frigate arrived",
-    "he": "Frigate arrived"
+    "he": "נושאת גייסות הגיעה"
   },
   {
     "en": "Missile approaching",
-    "he": "Missile approaching"
+    "he": "טיל מתקרב"
   },
   {
     "en": "You have successfully completed your mission.",
-    "he": "You have successfully completed your mission."
+    "he": "סיימת את משימתך בהצלחה."
   },
   {
     "en": "You have failed your mission.",
-    "he": "You have failed your mission."
+    "he": "נכשלת במשימתך."
   },
   {
     "en": "Select\rLocation to\rbuild.",
-    "he": "Select\rLocation to\rbuild."
+    "he": "בחר\rמיקום\rלבנייה."
   },
   {
     "en": "Pick Target\rT-Minus: %d",
-    "he": "Pick Target\rT-Minus: %d"
+    "he": "בחר מטרה\rספירה לאחור: %d"
   },
   {
     "en": "Select\rTarget.",
-    "he": "Select\rTarget."
+    "he": "בחר\rמטרה."
   },
   {
     "en": "Select\rDestination.",
-    "he": "Select\rDestination."
+    "he": "בחר\rיעד."
   },
   {
     "en": "   Spice\rholds: %4d\rmax: %4d",
-    "he": "   Spice\rholds: %4d\rmax: %4d"
+    "he": "סם:\rתכולה: %4d\rמקס: %4d"
   },
   {
     "en": "Power Info\rneeded:\routput:",
-    "he": "Power Info\rneeded:\routput:"
+    "he": "מצב כוח\rנדרש:\rהספק:"
   },
   {
     "en": "Base is under attack",
-    "he": "Base is under attack"
+    "he": "הבסיס מותקף"
   },
   {
     "en": "Dune II: The Battle for Arrakis",
@@ -485,67 +485,67 @@
   },
   {
     "en": " is %d percent full",
-    "he": " is %d percent full"
+    "he": " %d אחוזים מלאה"
   },
   {
     "en": " is %d percent full and harvesting",
-    "he": " is %d percent full and harvesting"
+    "he": " %d אחוזים מלאה וכורה סם"
   },
   {
     "en": " is %d percent full and heading back",
-    "he": " is %d percent full and heading back"
+    "he": " %d אחוזים מלאה וחוזרת לבסיס"
   },
   {
     "en": " is %d percent full and awaiting pickup",
-    "he": " is %d percent full and awaiting pickup"
+    "he": " %d אחוזים מלאה וממתינה לאיסוף"
   },
   {
     "en": " is empty",
-    "he": " is empty"
+    "he": " ריקה"
   },
   {
     "en": " is empty and harvesting",
-    "he": " is empty and harvesting"
+    "he": " ריקה וכורה סם"
   },
   {
     "en": " is empty and heading back",
-    "he": " is empty and heading back"
+    "he": " ריקה וחוזרת לבסיס"
   },
   {
     "en": " is empty and awaiting pickup",
-    "he": " is empty and awaiting pickup"
+    "he": " ריקה וממתינה לאיסוף"
   },
   {
     "en": "is complete.",
-    "he": "is complete."
+    "he": "מוכן."
   },
   {
     "en": "is completed and ready to place.",
-    "he": "is completed and ready to place."
+    "he": "מוכן להצבה במקום."
   },
   {
     "en": "is completed and awaiting orders.",
-    "he": "is completed and awaiting orders."
+    "he": "מוכן וממתין לפקודות."
   },
   {
     "en": "Insufficient funds.  Construction is halted.",
-    "he": "Insufficient funds.  Construction is halted."
+    "he": "אין די תקציב. בנייה נעצרה."
   },
   {
     "en": "is destroyed.",
-    "he": "is destroyed."
+    "he": "הושמד."
   },
   {
     "en": "Can not place %s here.",
-    "he": "Can not place %s here."
+    "he": "לא ניתן להציב %s כאן."
   },
   {
     "en": "Can not place foundation here.",
-    "he": "Can not place foundation here."
+    "he": "לא ניתן להציב יסודות כאן."
   },
   {
     "en": "Unable to create more.",
-    "he": "Unable to create more."
+    "he": "לא ניתן לייצר עוד."
   },
   {
     "en": "Production of %s has started.",
@@ -553,331 +553,331 @@
   },
   {
     "en": "Repairing stops.",
-    "he": "Repairing stops."
+    "he": "תיקון נעצר."
   },
   {
     "en": "Repairing starts.",
-    "he": "Repairing starts."
+    "he": "תיקון התחיל."
   },
   {
     "en": "Upgrading stops.",
-    "he": "Upgrading stops."
+    "he": "שידרוג נעצר."
   },
   {
     "en": "Upgrading starts.",
-    "he": "Upgrading starts."
+    "he": "שידרוג התחיל."
   },
   {
     "en": "Upgrade",
-    "he": "Upgrade"
+    "he": "שדרג"
   },
   {
     "en": "Upgrading",
-    "he": "Upgrading"
+    "he": "משדרג"
   },
   {
     "en": "Upgrading\r%d%% done",
-    "he": "Upgrading\r%d%% done"
+    "he": "שידרוג\r%d%% הסתיים"
   },
   {
     "en": "Insufficient spice storage available.  Spice is lost.",
-    "he": "Insufficient spice storage available.  Spice is lost."
+    "he": "אין די מקום לאחסון סם. תבואת סם אבדה."
   },
   {
     "en": "Radar Scan\rFriend: %2d\rEnemy: %2d",
-    "he": "Radar Scan\rFriend: %2d\rEnemy: %2d"
+    "he": "סריקת רדאר\rידיד: %2d\rאויב: %2d"
   },
   {
     "en": "Harkonnen harvester deployed",
-    "he": "Harkonnen harvester deployed"
+    "he": "מקצרת הארקונן נפרסה"
   },
   {
     "en": "Atreides harvester deployed",
-    "he": "Atreides harvester deployed"
+    "he": "מקצרת אטריידיס נפרסה"
   },
   {
     "en": "Ordos harvester deployed",
-    "he": "Ordos harvester deployed"
+    "he": "מקצרת אורדוס נפרסה"
   },
   {
     "en": "Fremen harvester deployed",
-    "he": "Fremen harvester deployed"
+    "he": "מקצרת דררים נפרסה"
   },
   {
     "en": "Sardaukar harvester deployed",
-    "he": "Sardaukar harvester deployed"
+    "he": "מקצרת סרדאוקאר נפרסה"
   },
   {
     "en": "Mercenary harvester deployed",
-    "he": "Mercenary harvester deployed"
+    "he": "מקצרת שכירי-חרב נפרסה"
   },
   {
     "en": "Destruct",
-    "he": "Destruct"
+    "he": "השמד"
   },
   {
     "en": "Harkonnen unit launched",
-    "he": "Harkonnen unit launched"
+    "he": "יחידת הארקונן שוגרה"
   },
   {
     "en": "Atreides unit launched",
-    "he": "Atreides unit launched"
+    "he": "יחידת אטריידיס שוגרה"
   },
   {
     "en": "Ordos unit launched",
-    "he": "Ordos unit launched"
+    "he": "יחידת אורדוס שוגרה"
   },
   {
     "en": "Fremen unit launched",
-    "he": "Fremen unit launched"
+    "he": "יחידת דררים שוגרה"
   },
   {
     "en": "Sardaukar unit launched",
-    "he": "Sardaukar unit launched"
+    "he": "יחידת סרדאוקאר שוגרה"
   },
   {
     "en": "Mercenary unit launched",
-    "he": "Mercenary unit launched"
+    "he": "יחידת שכירי-חרב שוגרה"
   },
   {
     "en": "Frigate in\rorbit and\rawaiting\rorder.",
-    "he": "Frigate in\rorbit and\rawaiting\rorder."
+    "he": "נושאת גייסות\rבמסלול היקפי\rממתינה\rלפקודות."
   },
   {
     "en": "Frigate\rArrival in\rT-minus %d",
-    "he": "Frigate\rArrival in\rT-minus %d"
+    "he": "נושאת גייסות\rהגעה עוד\rספירה לאחור %d"
   },
   {
     "en": "Harkonnen vehicle repaired",
-    "he": "Harkonnen vehicle repaired"
+    "he": "רכב הארקונן תוקן"
   },
   {
     "en": "Atreides vehicle repaired",
-    "he": "Atreides vehicle repaired"
+    "he": "רכב אטריידיס תוקן"
   },
   {
     "en": "Ordos vehicle repaired",
-    "he": "Ordos vehicle repaired"
+    "he": "רכב אורדוס תוקן"
   },
   {
     "en": "Fremen vehicle repaired",
-    "he": "Fremen vehicle repaired"
+    "he": "רכב דררי תוקן"
   },
   {
     "en": "Sardaukar vehicle repaired",
-    "he": "Sardaukar vehicle repaired"
+    "he": "רכב סרדאוקאר תוקן"
   },
   {
     "en": "Mercenary vehicle repaired",
-    "he": "Mercenary vehicle repaired"
+    "he": "רכב שכירי-חרב תוקן"
   },
   {
     "en": "Sand",
-    "he": "Sand"
+    "he": "חול"
   },
   {
     "en": "Rock",
-    "he": "Rock"
+    "he": "סלע"
   },
   {
     "en": "Dune",
-    "he": "Dune"
+    "he": "חולית"
   },
   {
     "en": "Mountain",
-    "he": "Mountain"
+    "he": "הר"
   },
   {
     "en": "Spice",
-    "he": "Spice"
+    "he": "סם"
   },
   {
     "en": "Spice Bloom",
-    "he": "Spice Bloom"
+    "he": "ניצן סם"
   },
   {
     "en": "Structure",
-    "he": "Structure"
+    "he": "מבנה"
   },
   {
     "en": "Proceed",
-    "he": "Proceed"
+    "he": "המשך"
   },
   {
     "en": "Repeat",
-    "he": "Repeat"
+    "he": "חזור"
   },
   {
     "en": "Cost: %3d",
-    "he": "Cost: %3d"
+    "he": "מחיר: %3d"
   },
   {
     "en": "Cost: 999",
-    "he": "Cost: 999"
+    "he": "מחיר: 999"
   },
   {
     "en": "Qty: %2d",
-    "he": "Qty: %2d"
+    "he": "כמות: %2d"
   },
   {
     "en": "Qty: 99",
-    "he": "Qty: 99"
+    "he": "כמות: 99"
   },
   {
     "en": "NO UNITS ON ORDER",
-    "he": "NO UNITS ON ORDER"
+    "he": "אין יחידות בהזמנה"
   },
   {
     "en": "Item Name                 Qty Total",
-    "he": "Item Name                 Qty Total"
+    "he": "שם פריט                 כמות סהכ"
   },
   {
     "en": "Invoice of Units on Order",
-    "he": "Invoice of Units on Order"
+    "he": "קבלה עבור יחידות בהזמנה"
   },
   {
     "en": "Total Cost :",
-    "he": "Total Cost :"
+    "he": "מחיר כולל :"
   },
   {
     "en": "OUT OF STOCK",
-    "he": "OUT OF STOCK"
+    "he": "אין במלאי"
   },
   {
     "en": "NEED STRUCTURE UPGRADE",
-    "he": "NEED STRUCTURE UPGRADE"
+    "he": "שידרוג מבנה נדרש"
   },
   {
     "en": "Upgrade Cost : %d",
-    "he": "Upgrade Cost : %d"
+    "he": "מחיר שידרוג : %d"
   },
   {
     "en": "Resume Game",
-    "he": "Resume Game"
+    "he": "המשך משחק"
   },
   {
     "en": "Upgrade",
-    "he": "Upgrade"
+    "he": "שדרג"
   },
   {
     "en": "Send Order",
-    "he": "Send Order"
+    "he": "שלח הוראה"
   },
   {
     "en": "Build This",
-    "he": "Build This"
+    "he": "בנה זאת"
   },
   {
     "en": "Invoice",
-    "he": "Invoice"
+    "he": "קבלה"
   },
   {
     "en": "Exit",
-    "he": "Exit"
+    "he": "יציאה"
   },
   {
     "en": "Carryall",
-    "he": "Carryall"
+    "he": "כנף-נושאת"
   },
   {
     "en": "All-Purpose Carryall",
-    "he": "All-Purpose Carryall"
+    "he": "כנף-נושאת רב תכליתית"
   },
   {
     "en": "'Thopter",
-    "he": "'Thopter"
+    "he": "כנפנוע"
   },
   {
     "en": "Ornithipter",
-    "he": "Ornithipter"
+    "he": "כנפנוע"
   },
   {
     "en": "Infantry",
-    "he": "Infantry"
+    "he": "חייל-רגלי"
   },
   {
     "en": "Light Infantry Squad",
-    "he": "Light Infantry Squad"
+    "he": "יחידת חיילים רגליים קלה"
   },
   {
     "en": "Troopers",
-    "he": "Troopers"
+    "he": "סיירים"
   },
   {
     "en": "Heavy Trooper Squad",
-    "he": "Heavy Trooper Squad"
+    "he": "יחידת סיירים כבדים"
   },
   {
     "en": "Soldier",
-    "he": "Soldier"
+    "he": "חייל"
   },
   {
     "en": "Infantry Soldier",
-    "he": "Infantry Soldier"
+    "he": "חייל רגלי"
   },
   {
     "en": "Trooper",
-    "he": "Trooper"
+    "he": "סייר"
   },
   {
     "en": "Heavy Trooper",
-    "he": "Heavy Trooper"
+    "he": "סייר כבד"
   },
   {
     "en": "Saboteur",
-    "he": "Saboteur"
+    "he": "חבלן"
   },
   {
     "en": "Insidious Saboteur",
-    "he": "Insidious Saboteur"
+    "he": "חבלן תככני"
   },
   {
     "en": "Launcher",
-    "he": "Launcher"
+    "he": "משגר"
   },
   {
     "en": "Rocket Launcher",
-    "he": "Rocket Launcher"
+    "he": "משגר רקטות"
   },
   {
     "en": "Deviator",
-    "he": "Deviator"
+    "he": "מתעתע"
   },
   {
     "en": "Deviator Launcher",
-    "he": "Deviator Launcher"
+    "he": "משגר מתעתע"
   },
   {
     "en": "Tank",
-    "he": "Tank"
+    "he": "טנק"
   },
   {
     "en": "Combat Tank",
-    "he": "Combat Tank"
+    "he": "טנק קרב"
   },
   {
     "en": "Siege Tank",
-    "he": "Siege Tank"
+    "he": "טנק מצור"
   },
   {
     "en": "Heavy Siege Tank",
-    "he": "Heavy Siege Tank"
+    "he": "טנק מצור כבד"
   },
   {
     "en": "Devastator",
-    "he": "Devastator"
+    "he": "משמידן"
   },
   {
     "en": "Devastator Tank",
-    "he": "Devastator Tank"
+    "he": "טנק משמידן"
   },
   {
     "en": "Sonic Tank",
-    "he": "Sonic Tank"
+    "he": "טנק על-קולי"
   },
   {
     "en": "Sonic Wave Tank",
-    "he": "Sonic Wave Tank"
+    "he": "טנק גלים על-קוליים"
   },
   {
     "en": "Trike",
@@ -885,47 +885,47 @@
   },
   {
     "en": "Light Attack Trike",
-    "he": "Light Attack Trike"
+    "he": "תלתנוע תקיפה קל"
   },
   {
     "en": "Raider Trike",
-    "he": "Raider Trike"
+    "he": "תלתנוע פושט"
   },
   {
     "en": "Fast Raider Trike",
-    "he": "Fast Raider Trike"
+    "he": "תלתנוע פושט מהיר"
   },
   {
     "en": "Quad",
-    "he": "Quad"
+    "he": "ארבע-אופן"
   },
   {
     "en": "Heavy Attack Quad",
-    "he": "Heavy Attack Quad"
+    "he": "ארבע-אופן תקיפה כבד"
   },
   {
     "en": "Harvester",
-    "he": "Harvester"
+    "he": "מקצרת סם"
   },
   {
     "en": "Spice Harvester",
-    "he": "Spice Harvester"
+    "he": "מקצרת סם זחלילית"
   },
   {
     "en": "MCV",
-    "he": "MCV"
+    "he": "ר.ב.נ"
   },
   {
     "en": "Mobile Const. Vehicle",
-    "he": "Mobile Const. Vehicle"
+    "he": "רכב בנייה נייד"
   },
   {
     "en": "Sandworm",
-    "he": "Sandworm"
+    "he": "עקלתון"
   },
   {
     "en": "Sandworm",
-    "he": "Sandworm"
+    "he": "עקלתון"
   },
   {
     "en": "Concrete",
@@ -933,7 +933,7 @@
   },
   {
     "en": "Small Concrete Slab",
-    "he": "מרצפת בטון קטנה"
+    "he": "משטח בטון קטן"
   },
   {
     "en": "Concrete 4",
@@ -941,7 +941,7 @@
   },
   {
     "en": "Large Concrete Slab",
-    "he": "מרצפת בטון גדולה"
+    "he": "משטח בטון גדול"
   },
   {
     "en": "Palace",
@@ -949,7 +949,7 @@
   },
   {
     "en": "House Palace",
-    "he": "House Palace"
+    "he": "ארמון בית"
   },
   {
     "en": "Light Fctry",
@@ -985,11 +985,11 @@
   },
   {
     "en": "WOR",
-    "he": "WOR"
+    "he": "כסח"
   },
   {
     "en": "WOR Trooper Facility",
-    "he": "WOR Trooper Facility"
+    "he": "מתקן סיירי כסח"
   },
   {
     "en": "Const. Yard",
@@ -1001,359 +1001,359 @@
   },
   {
     "en": "Windtrap",
-    "he": "מלכודת דוח"
+    "he": "מלכודת רוח"
   },
   {
     "en": "Windtrap Power Center",
-    "he": "Windtrap Power Center"
+    "he": "תחנת רוח"
   },
   {
     "en": "Barracks",
-    "he": "קסרקטין"
+    "he": "מגורי חיילים"
   },
   {
     "en": "Infantry Barracks",
-    "he": "Infantry Barracks"
+    "he": "מגורי חיל רגלים"
   },
   {
     "en": "Starport",
-    "he": "Starport"
+    "he": "נמל חלל"
   },
   {
     "en": "Starport Facility",
-    "he": "Starport Facility"
+    "he": "מתקן נמל חלל"
   },
   {
     "en": "Refinery",
-    "he": "Refinery"
+    "he": "מזקקה"
   },
   {
     "en": "Spice Refinery",
-    "he": "Spice Refinery"
+    "he": "מזקקת סם"
   },
   {
     "en": "Repair",
-    "he": "Repair"
+    "he": "תקן"
   },
   {
     "en": "Repair Facility",
-    "he": "Repair Facility"
+    "he": "מוסך תיקונים"
   },
   {
     "en": "Wall",
-    "he": "Wall"
+    "he": "חומה"
   },
   {
     "en": "Base Defense Wall",
-    "he": "Base Defense Wall"
+    "he": "חומה להגנת הבסיס"
   },
   {
     "en": "Turret",
-    "he": "Turret"
+    "he": "צריח"
   },
   {
     "en": "Cannon Turret",
-    "he": "Cannon Turret"
+    "he": "צריח תותח"
   },
   {
     "en": "R-Turret",
-    "he": "R-Turret"
+    "he": "צריח רקטות"
   },
   {
     "en": "Rocket Turret",
-    "he": "Rocket Turret"
+    "he": "צריח רקטות"
   },
   {
     "en": "Spice Silo",
-    "he": "Spice Silo"
+    "he": "ממגורת סם"
   },
   {
     "en": "Spice Storage Silo",
-    "he": "Spice Storage Silo"
+    "he": "ממגורה לאחסון סם"
   },
   {
     "en": "Outpost",
-    "he": "Outpost"
+    "he": "מוצב תצפית"
   },
   {
     "en": "Radar Outpost",
-    "he": "Radar Outpost"
+    "he": "מוצב תצפית רדאר"
   },
   {
     "en": "Insufficient power.  Windtrap is needed.",
-    "he": "Insufficient power.  Windtrap is needed."
+    "he": "אין די כוח. נדרשת מלכודת רוח."
   },
   {
     "en": "Sand Flea",
-    "he": "Sand Flea"
+    "he": "פשפש חול"
   },
   {
     "en": "Sand Snake",
-    "he": "Sand Snake"
+    "he": "נחש חול"
   },
   {
     "en": "Desert Mongoose",
-    "he": "Desert Mongoose"
+    "he": "נמיית מדבר"
   },
   {
     "en": "Sand Warrior",
-    "he": "Sand Warrior"
+    "he": "לוחם חול"
   },
   {
     "en": "Dune Trooper",
-    "he": "Dune Trooper"
+    "he": "סייר חולית"
   },
   {
     "en": "Squad Leader",
-    "he": "Squad Leader"
+    "he": "מנהיג צוות"
   },
   {
     "en": "Outpost Commander",
-    "he": "Outpost Commander"
+    "he": "מפקד מוצב"
   },
   {
     "en": "Base Commander",
-    "he": "Base Commander"
+    "he": "מפקד בסיס"
   },
   {
     "en": "Warlord",
-    "he": "Warlord"
+    "he": "שר מלחמה"
   },
   {
     "en": "Chief Warlord",
-    "he": "Chief Warlord"
+    "he": "שר מלחמה עליון"
   },
   {
     "en": "Ruler of Arrakis",
-    "he": "Ruler of Arrakis"
+    "he": "שליט אראקיס"
   },
   {
     "en": "Emperor",
-    "he": "Emperor"
+    "he": "קיסר"
   },
   {
     "en": "Three Houses have come to Dune.",
-    "he": "Three Houses have come to Dune."
+    "he": "שלושה בתים הגיעו לחולית."
   },
   {
     "en": "To take control of the land.",
-    "he": "To take control of the land."
+    "he": "על מנת להשתלט על האדמה."
   },
   {
     "en": "That has become divided.",
-    "he": "That has become divided."
+    "he": "שנחלקה לאזורים."
   },
   {
     "en": "Select your next region",
-    "he": "Select your next region"
+    "he": "בחר את האזור הבא שלך"
   },
   {
     "en": "At the Emperor's Palace.",
-    "he": "At the Emperor's Palace."
+    "he": "בארמונו של הקיסר."
   },
   {
     "en": "You, of all people, should\runderstand the importance of victory!",
-    "he": "You, of all people, should\runderstand the importance of victory!"
+    "he": "אתה מכל האנשים, צריך\rלהבין את חשיבותו של ניצחון!"
   },
   {
     "en": "Yes, your excellency. I...",
-    "he": "Yes, your excellency. I..."
+    "he": "כן, הוד רוממותך. אני..."
   },
   {
     "en": "You let the Atreides defeat\ryou and my Sardaukar!",
-    "he": "You let the Atreides defeat\ryou and my Sardaukar!"
+    "he": "הנחת לאטריידיסים להביס אותך\rואת הסרדאוקאר שלי!"
   },
   {
     "en": "I did not let...",
-    "he": "I did not let..."
+    "he": "לא הנחתי..."
   },
   {
     "en": "I will not allow it to happen again!",
-    "he": "I will not allow it to happen again!"
+    "he": "לא ארשה שזה יחזור על עצמו!"
   },
   {
     "en": "At the Emperor's Palace\ron Dune.",
-    "he": "At the Emperor's Palace\ron Dune."
+    "he": "בארמונו של הקיסר\rבחולית."
   },
   {
     "en": "Fools!\rI gave you weapons and troops.",
-    "he": "Fools!\rI gave you weapons and troops."
+    "he": "שוטים!\rהענקתי לכם נשק וכוח אדם."
   },
   {
     "en": "And still you fail\rto defeat the Atreides.",
-    "he": "And still you fail\rto defeat the Atreides."
+    "he": "ועדיין נכשלתם\rלהביס את האטריידיס."
   },
   {
     "en": "But, excell...",
-    "he": "But, excell..."
+    "he": "אבל, הוד רומ..."
   },
   {
     "en": "Enough!  Together we must make\rsure the Atreides do not succeed!",
-    "he": "Enough!  Together we must make\rsure the Atreides do not succeed!"
+    "he": "חדל!  יחד עלינו להבטיח כי\rהאטריידיס לא יצליחו בדרכם!"
   },
   {
     "en": "At the Emperor's Palace.",
-    "he": "At the Emperor's Palace."
+    "he": "בארמונו של הקיסר."
   },
   {
     "en": "I cannot believe the\rincompetence I see before me!",
-    "he": "I cannot believe the\rincompetence I see before me!"
+    "he": "אינני מסוגל להאמין\rלאוזלת היד שנגד עיני."
   },
   {
     "en": "Your highness?",
-    "he": "Your highness?"
+    "he": "הוד מעלתך?"
   },
   {
     "en": "I give you my Sardaukar to assist\ragainst the Ordos, and you failed me!",
-    "he": "I give you my Sardaukar to assist\ragainst the Ordos, and you failed me!"
+    "he": "נתתי לך את הסרדאוקאק שלי לעזרה\rכנגד האורדוס, ואכזבת אותי!"
   },
   {
     "en": "We...",
-    "he": "We..."
+    "he": "אנחנו..."
   },
   {
     "en": "Do not fail me again!\rYou are dismissed!",
-    "he": "Do not fail me again!\rYou are dismissed!"
+    "he": "אל תאכזב אותי בשנית!\rאתה משוחרר!"
   },
   {
     "en": "At the Emperor's Palace\ron Dune.",
-    "he": "At the Emperor's Palace\ron Dune."
+    "he": "בארמונו של הקיסר\rבחולית."
   },
   {
     "en": "The Ordos were not\rsupposed to get this far!",
-    "he": "The Ordos were not\rsupposed to get this far!"
+    "he": "האורדוס לא היו אמורים\rלהגיע רחוק כל כך!"
   },
   {
     "en": "Your highness, let us explain...",
-    "he": "Your highness, let us explain..."
+    "he": "הוד מעלתך, הנח לנו להסביר..."
   },
   {
     "en": "No more explanations!\rYou are to defend my palace.",
-    "he": "No more explanations!\rYou are to defend my palace."
+    "he": "חסל סדר הסברים!\rעליך להגן על ארמוני."
   },
   {
     "en": "Only together will\rwe defeat the Ordos!",
-    "he": "Only together will\rwe defeat the Ordos!"
+    "he": "רק בכוחות משותפים\rנביס את האורדוס!"
   },
   {
     "en": "At the Emperor's Palace.",
-    "he": "At the Emperor's Palace."
+    "he": "בארמונו של הקיסר."
   },
   {
     "en": "You receive the assistance\ryou require and then fail me!",
-    "he": "You receive the assistance\ryou require and then fail me!"
+    "he": "קיבלת את הסיוע שדרשת\rואז אכזבת אותי!"
   },
   {
     "en": "No your...",
-    "he": "No your..."
+    "he": "לא הוד..."
   },
   {
     "en": "My Sardaukar could help defeat the\rHarkonnen, but you wasted them!",
-    "he": "My Sardaukar could help defeat the\rHarkonnen, but you wasted them!"
+    "he": ",הסרדאוקאר שלי מסוגלים להביס את ההארקונן\rאבל בזבזת את יכולתם!"
   },
   {
     "en": "We didn't have...",
-    "he": "We didn't have..."
+    "he": "לא היו לנו..."
   },
   {
     "en": "I want no excuses.\rDo not fail me again!",
-    "he": "I want no excuses.\rDo not fail me again!"
+    "he": "אינני חפץ בתרוצים.\rאל תאכזב אותי בשנית!"
   },
   {
     "en": "At the Emperor's Palace\ron Dune.",
-    "he": "At the Emperor's Palace\ron Dune."
+    "he": "בארמונו של הקיסר\rבחולית."
   },
   {
     "en": "I should have known your Houses\rcouldn't stand up to the Harkonnen!",
-    "he": "I should have known your Houses\rcouldn't stand up to the Harkonnen!"
+    "he": "היה עלי לדעת שהבתים שלכם\rלא יוכלו לעמוד בפני ההארקונן!"
   },
   {
     "en": "Excellency, they are...",
-    "he": "Excellency, they are..."
+    "he": "הוד רוממות, הם..."
   },
   {
     "en": "Silence!",
-    "he": "Silence!"
+    "he": "דממה!"
   },
   {
     "en": "You are to defend my palace.",
-    "he": "You are to defend my palace."
+    "he": "עליכם להגן על ארמוני."
   },
   {
     "en": "I will show you how\rto crush the Harkonnen!",
-    "he": "I will show you how\rto crush the Harkonnen!"
+    "he": "אני אראה לכם כיצד\rלמחוץ את ההארקונן!"
   },
   {
     "en": "Thank you for playing Dune II.",
-    "he": "Thank you for playing Dune II."
+    "he": "תודה ששיחקתם בחולית II."
   },
   {
     "en": "Spice storage capacity low, build silos.",
-    "he": "Spice storage capacity low, build silos."
+    "he": "אין די מקום לאחסון סם. בנה ממגורות."
   },
   {
     "en": "Name and Rank",
-    "he": "Name and Rank"
+    "he": "שם ודרגה"
   },
   {
     "en": "Battle",
-    "he": "Battle"
+    "he": "קרב"
   },
   {
     "en": "Score",
-    "he": "Score"
+    "he": "ציון"
   },
   {
     "en": "Resume Game",
-    "he": "Resume Game"
+    "he": "המשך משחק"
   },
   {
     "en": "Clear List",
-    "he": "Clear List"
+    "he": "נקה רשימה"
   },
   {
     "en": "Are you sure you want to clear the high scores?",
-    "he": "Are you sure you want to clear the high scores?"
+    "he": "האם אתה בטוח שברצונך לנקות את רשימת השיאים?"
   },
   {
     "en": "You:",
-    "he": "You:"
+    "he": "אתה:"
   },
   {
     "en": "Enemy:",
-    "he": "Enemy:"
+    "he": "האויב:"
   },
   {
     "en": "Credits are low. Harvest spice for more credits.",
-    "he": "Credits are low. Harvest spice for more credits."
+    "he": "אין די קרדיטים. כרה סם עבור קרדיטים נוספים."
   },
   {
     "en": "Not enough power for radar.  Build windtraps.",
-    "he": "Not enough power for radar.  Build windtraps."
+    "he": "אין די כוח לרדאר. בנה מלכודות רוח."
   },
   {
     "en": "Repair structure first",
-    "he": "Repair structure first"
+    "he": "קודם כול, תקן את המבנה"
   },
   {
     "en": "Hall of Fame",
-    "he": "היכל התהילה   "
+    "he": "היכל התהילה"
   },
   {
     "en": "Select\rPlace to\rHarvest.",
-    "he": "Select\rPlace to\rHarvest."
+    "he": "בחר\rמיקום\rלכרייה."
   },
   {
     "en": "Hall of Fame",
-    "he": "Hall of Fame"
+    "he": "היכל התהילה"
   },
   {
     "en": "There are no saved games to load.",
-    "he": "There are no saved games to load."
+    "he": "אין משחקים שמורים לטעון."
   },
   {
     "en": "Warning: Original saved games are incompatable with the new version.  The battle will be restarted.",
-    "he": "Warning: Original saved games are incompatable with the new version.  The battle will be restarted."
+    "he": "אזהרה: משחקים שמורים מהגירסה המקורית אינם תואמים לגירסה החדשה.  הקרב יאותחל."
   },
   {
     "en": "Load Game",
