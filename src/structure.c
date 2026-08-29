@@ -1593,6 +1593,7 @@ bool Structure_BuildObject(Structure *s, uint16 objectType)
 			GFX_SetPalette(g_palette1);
 
 			GUI_ChangeSelectionType(SELECTIONTYPE_STRUCTURE);
+			g_viewport_fadein = false; /* closing the factory/CHOAM window shouldn't trigger the mentat-return dissolve */
 
 			if (res == FACTORY_RESUME) return false;
 

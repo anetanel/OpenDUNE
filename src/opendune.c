@@ -1055,6 +1055,7 @@ static void GameLoop_Main(void)
 			g_gameMode = GM_NORMAL;
 
 			GUI_ChangeSelectionType(g_debugScenario ? SELECTIONTYPE_DEBUG : SELECTIONTYPE_STRUCTURE);
+			g_viewport_fadein = false; /* scenario start shouldn't trigger the mentat-return dissolve */
 
 			Music_Play(Tools_RandomLCG_Range(0, 8) + 8);
 			l_timerNext = g_timerGUI + 300;
