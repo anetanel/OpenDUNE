@@ -152,6 +152,7 @@ extern void Structure_ActivateSpecial(Structure *s);
 extern void Structure_RemoveFog(Structure *s);
 extern bool Structure_Damage(Structure *s, uint16 damage, uint16 range);
 extern bool Structure_IsUpgradable(Structure *s);
+extern bool Structure_IsFeminine(uint8 type);
 extern bool Structure_ConnectWall(uint16 position, bool recurse);
 extern struct Unit *Structure_GetLinkedUnit(Structure *s);
 extern void Structure_UntargetMe(Structure *s);

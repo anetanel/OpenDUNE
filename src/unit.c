@@ -489,6 +489,25 @@ bool Unit_IsTypeOnMap(uint8 houseID, uint8 typeID)
 }
 
 /**
+ * Check whether the given unit type's Hebrew name is grammatically
+ * feminine, for verb agreement in Hebrew status-bar messages.
+ *
+ * @param type The UnitType to check.
+ * @return True if and only if the unit's Hebrew name is feminine.
+ */
+bool Unit_IsFeminine(uint8 type)
+{
+	switch (type) {
+		case UNIT_HARVESTER:
+		case UNIT_CARRYALL:
+			return true;
+
+		default:
+			return false;
+	}
+}
+
+/**
  * Sets the action the given unit will execute.
  *
  * @param u The Unit to set the action for.

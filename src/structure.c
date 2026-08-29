@@ -12,6 +12,7 @@
 
 #include "animation.h"
 #include "audio/sound.h"
+#include "config.h"
 #include "explosion.h"
 #include "gfx.h"
 #include "gui/gui.h"
@@ -225,7 +226,11 @@ void GameLoop_Structure(void)
 									if (s->o.type == STRUCTURE_HIGH_TECH) stringID = STR_IS_COMPLETE;
 									if (s->o.type == STRUCTURE_CONSTRUCTION_YARD) stringID = STR_IS_COMPLETED_AND_READY_TO_PLACE;
 
-									GUI_DisplayText("%s %s", 0, String_Get_ByIndex(oi->stringID_full), String_Get_ByIndex(stringID));
+									if (g_config.language == LANGUAGE_HEBREW && stringID == STR_IS_COMPLETED_AND_AWAITING_ORDERS && Structure_IsFeminine(s->o.type)) {
+										GUI_DisplayText("%s %s", 0, String_Get_ByIndex(oi->stringID_full), EngineString_Get(ENGINE_STR_IS_COMPLETED_AND_AWAITING_ORDERS_F, "is completed and awaiting orders."));
+									} else {
+										GUI_DisplayText("%s %s", 0, String_Get_ByIndex(oi->stringID_full), String_Get_ByIndex(stringID));
+									}
 
 									Sound_Output_Feedback(0);
 								}
@@ -1124,6 +1129,28 @@ bool Structure_IsUpgradable(Structure *s)
 
 	if (s->o.houseID == HOUSE_HARKONNEN && s->o.type == STRUCTURE_WOR_TROOPER && s->upgradeLevel == 0 && g_campaignID > 3) return true;
 	return false;
+}
+
+/**
+ * Check whether the given structure type's Hebrew name is grammatically
+ * feminine, for verb agreement in Hebrew status-bar messages.
+ *
+ * @param type The StructureType to check.
+ * @return True if and only if the structure's Hebrew name is feminine.
+ */
+bool Structure_IsFeminine(uint8 type)
+{
+	switch (type) {
+		case STRUCTURE_WINDTRAP:
+		case STRUCTURE_REFINERY:
+		case STRUCTURE_WALL:
+		case STRUCTURE_SILO:
+		case STRUCTURE_CONSTRUCTION_YARD:
+			return true;
+
+		default:
+			return false;
+	}
 }
 
 /**

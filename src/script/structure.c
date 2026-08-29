@@ -634,7 +634,9 @@ uint16 Script_Structure_Destroy(ScriptEngine *script)
 
 		/* French and Hebrew both put the noun before its qualifier, see
 		 * the matching comment in Unit_DisplayStatusText() (src/unit.c). */
-		if (g_config.language == LANGUAGE_FRENCH || g_config.language == LANGUAGE_HEBREW) {
+		if (g_config.language == LANGUAGE_HEBREW && Structure_IsFeminine(s->o.type)) {
+			GUI_DisplayText("%s %s %s", 0, String_Get_ByIndex(g_table_structureInfo[s->o.type].o.stringID_full), houseName, EngineString_Get(ENGINE_STR_DESTROYED_F, "destroyed."));
+		} else if (g_config.language == LANGUAGE_FRENCH || g_config.language == LANGUAGE_HEBREW) {
 			GUI_DisplayText("%s %s %s", 0, String_Get_ByIndex(g_table_structureInfo[s->o.type].o.stringID_full), houseName, String_Get_ByIndex(STR_IS_DESTROYED));
 		} else {
 			GUI_DisplayText("%s %s %s", 0, houseName, String_Get_ByIndex(g_table_structureInfo[s->o.type].o.stringID_full), String_Get_ByIndex(STR_IS_DESTROYED));

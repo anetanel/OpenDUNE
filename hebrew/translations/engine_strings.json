@@ -38,5 +38,15 @@
     "id": "ENGINE_STR_NO_ITEMS_IN_CONSTRUCTION_LIST",
     "en": "ERROR: No items in construction list!",
     "he": "שגיאה: אין פריטים ברשימת הבנייה!"
+  },
+  {
+    "id": "ENGINE_STR_DESTROYED_F",
+    "en": "destroyed.",
+    "he": "הושמדה."
+  },
+  {
+    "id": "ENGINE_STR_IS_COMPLETED_AND_AWAITING_ORDERS_F",
+    "en": "is completed and awaiting orders.",
+    "he": "מוכנה וממתינה לפקודות."
   }
 ]
