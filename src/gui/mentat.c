@@ -1298,14 +1298,30 @@ uint16 GUI_Mentat_SplitText(char *str, uint16 maxWidth)
 	if (str == NULL) return 0;
 
 	while (*str != '\0') {
+		char *lineStart = str;
 		uint16 width = 0;
 
 		while (width < maxWidth && *str != '.' && *str != '!' && *str != '?' && *str != '\0' && *str != '\r') {
-			width += Font_GetCharWidth(*str++);
+			width += Font_GetCharWidth((unsigned char)*str++);
 		}
 
 		if (width >= maxWidth) {
-			while (*str != ' ') width -= Font_GetCharWidth(*str--);
+			/* str is one past the last character actually counted into
+			 * `width`. Back off word by word (to each preceding space)
+			 * until the counted content is back under budget. Stopping
+			 * at the very first space reached (the original single-pass
+			 * version) isn't enough when the overflow lands exactly at a
+			 * word boundary -- i.e. the character right after the last
+			 * counted one is already a space -- since that leaves the
+			 * already-over-budget content as the line, still exceeding
+			 * maxWidth by however wide the word right before that space
+			 * is. Keep backing off past whole words until under budget. */
+			while (width >= maxWidth && str > lineStart) {
+				do {
+					str--;
+					width -= Font_GetCharWidth((unsigned char)*str);
+				} while (str > lineStart && *str != ' ');
+			}
 		}
 
 		height++;
