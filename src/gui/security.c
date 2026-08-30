@@ -88,6 +88,8 @@ bool GUI_Security_Show(void)
 	uint16 i;
 	bool valid;
 
+	if (g_securityQuestionMode == SECURITY_QUESTION_SKIP) return true;
+
 	g_disableOtherMovement = true;
 	g_interrogation = true;
 
@@ -153,7 +155,14 @@ bool GUI_Security_Show(void)
 
 		Input_History_Clear();
 
-		buffer[0] = 0;
+		/* If we accept any answer, fill in the real answer so people
+		 * won't go looking up the manual. */
+		if (g_securityQuestionMode == SECURITY_QUESTION_ANSWER_GIVEN) {
+			strncpy(buffer, String_Get_ByIndex(questionIndex + 2), sizeof(buffer) - 1);
+			buffer[sizeof(buffer) - 1] = 0;
+		} else {
+			buffer[0] = 0;
+		}
 
 		GUI_DrawText_Wrapper(NULL, 0, 0, 0, 0, 0x22);
 

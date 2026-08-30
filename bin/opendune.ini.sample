@@ -34,6 +34,11 @@ midideviceid=0
 ; Game behaviour options :
 ;dune2_enhanced=0
 ;startport_unit_cap=1
+; Controls the manual-lookup copy-protection screen shown after some
+; missions : 0 = original behaviour (answer correctly within 3 tries or
+; the game exits), 1 = screen is shown but the correct answer is
+; pre-filled (default), 2 = screen is skipped entirely.
+;security_question=1
 ; DEBUG options :
 ;debug_game=1
 ;debug_scenario=1

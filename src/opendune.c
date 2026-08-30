@@ -81,6 +81,7 @@ const char *window_caption = "OpenDUNE - v0.9";
 bool g_dune2_enhanced = true; /*!< If false, the game acts exactly like the original Dune2, including bugs. */
 bool g_starPortEnforceUnitLimit = false;	/*!< If true, one cannot circumvent unit cap using starport */
 bool g_unpackSHPonLoad = true;	/*!< If true, Format80 encoded sprites from SHP files will be decoded on load. set to false to save memory */
+SecurityQuestionMode g_securityQuestionMode = SECURITY_QUESTION_ANSWER_GIVEN; /*!< Controls the manual-lookup copy-protection screen ; see SecurityQuestionMode. */
 
 uint32 g_hintsShown1 = 0;          /*!< A bit-array to indicate which hints has been show already (0-31). */
 uint32 g_hintsShown2 = 0;          /*!< A bit-array to indicate which hints has been show already (32-63). */
@@ -1311,6 +1312,8 @@ int main(int argc, char **argv)
 	g_debugSkipDialogs = (IniFile_GetInteger("debug_skip_dialogs", 0) != 0) ? true : false;
 	s_enableLog = (uint8)IniFile_GetInteger("debug_log_game", 0);
 	g_starPortEnforceUnitLimit = (IniFile_GetInteger("startport_unit_cap", 0) != 0) ? true : false;
+	g_securityQuestionMode = (SecurityQuestionMode)IniFile_GetInteger("security_question", SECURITY_QUESTION_ANSWER_GIVEN);
+	if (g_securityQuestionMode > SECURITY_QUESTION_SKIP) g_securityQuestionMode = SECURITY_QUESTION_ANSWER_GIVEN;
 
 	Debug("Globals :\n");
 	Debug("  g_dune2_enhanced = %d\n", (int)g_dune2_enhanced);
@@ -1319,6 +1322,7 @@ int main(int argc, char **argv)
 	Debug("  g_debugSkipDialogs = %d\n", (int)g_debugSkipDialogs);
 	Debug("  s_enableLog = %d\n", (int)s_enableLog);
 	Debug("  g_starPortEnforceUnitLimit = %d\n", (int)g_starPortEnforceUnitLimit);
+	Debug("  g_securityQuestionMode = %d\n", (int)g_securityQuestionMode);
 
 	if (!File_Init()) {
 		return 1;

@@ -10,6 +10,16 @@ typedef enum GameMode {
 	GM_PICKHOUSE = 3
 } GameMode;
 
+/**
+ * How GUI_Security_Show() (the manual-lookup copy-protection screen)
+ * behaves.
+ */
+typedef enum SecurityQuestionMode {
+	SECURITY_QUESTION_ENABLE      = 0, /*!< Original behaviour : answer correctly within 3 tries or the game exits. */
+	SECURITY_QUESTION_ANSWER_GIVEN = 1, /*!< Screen is still shown, but the correct answer is pre-filled -- just press Enter. */
+	SECURITY_QUESTION_SKIP         = 2  /*!< Screen is not shown at all. */
+} SecurityQuestionMode;
+
 /** X and Y coordinate. */
 typedef struct XYPosition {
 	uint16 x; /*!< X coordinate. */
@@ -20,6 +30,7 @@ extern const char *window_caption;
 extern bool g_dune2_enhanced;
 extern bool g_starPortEnforceUnitLimit;
 extern bool g_unpackSHPonLoad;
+extern SecurityQuestionMode g_securityQuestionMode;
 
 extern uint32 g_hintsShown1;
 extern uint32 g_hintsShown2;
