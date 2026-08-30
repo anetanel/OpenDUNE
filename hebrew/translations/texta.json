@@ -1,19 +1,19 @@
 [
   {
     "en": "House Atreides\rCaladan, home planet of the Atreides, has a warm, calm climate and the lands are lush and green. The rich soils and mild weather supports an extensive variety of agricultural activities. In recent centuries industrial and technological development has added to the prosperity of the Caladanian peoples.",
-    "he": "בית אטריידיס\rלקלדן, עולם הבית של בית אטריידיס, אקלים רגוע ואדמות ירוקות ושופעות. האדמה העשירה ומזג האויר הנוח מובילים לגידולים חקלאיים רבים ומגוונים. פיתוחים תעשייתיים וטכנולוגיים לאורך המאות האחרונות תרמו לשגשוגם של תושבי קלדן."
+    "he": "בית אטריידיס\rלקלדן, עולם הבית של בית אטריידיס, אקלים רגוע ואדמות ירוקות ושופעות. האדמה העשירה ומזג האוויר הנוח מובילים לגידולים חקלאיים רבים ומגוונים. פיתוחים תעשייתיים וטכנולוגיים לאורך המאות האחרונות תרמו לשגשוגם של תושבי קלדן."
   },
   {
     "en": "win text.",
-    "he": "win text."
+    "he": "טקסט ניצחון."
   },
   {
     "en": "lose text.",
-    "he": "lose text."
+    "he": "טקסט הפסד."
   },
   {
     "en": "advice text.",
-    "he": "advice text."
+    "he": "טקסט ייעוץ."
   },
   {
     "en": "Greetings, I am your Mentat Cyril. Together we will purge this planet of the foulness of the other Houses. The High Command wishes you to produce 1000 credits. You may earn credits by building a refinery and harvesting spice.",
@@ -69,11 +69,11 @@
   },
   {
     "en": "Well done! No task seems too difficult for you. The Harkonnen will think twice before attacking our harvesters again!",
-    "he": "עבודה טובה! נראה שאין משימה קשה מידי עבורך. ההארקונן יחשבו פעמיים לפני שיתקפו את המקצרות שלנו שוב!"
+    "he": "עבודה טובה! נראה שאין משימה קשה מדי עבורך. ההארקונן יחשבו פעמיים לפני שיתקפו את המקצרות שלנו שוב!"
   },
   {
     "en": "Although I understand the problems confronting you, I will confess that I am disappointed by your defeat. I am not sure what went wrong, but please do not let it happen again!",
-    "he": "על אף שאני מבין את האתגרים שניצבת בפניהם, אודה שאני מאוכזב מהפסדך. אינני בטוח מה השתבש, אבל נסה בבקשה להמנע מכך בעתיד!"
+    "he": "על אף שאני מבין את האתגרים שניצבת בפניהם, אודה שאני מאוכזב מהפסדך. אינני בטוח מה השתבש, אבל נסה בבקשה להימנע מכך בעתיד!"
   },
   {
     "en": "The addition of tanks in your forces is essential to your victory in this region.",
@@ -81,82 +81,82 @@
   },
   {
     "en": "Welcome. The rules seem to have changed. As you have witnessed, the Emperor himself has been aiding the efforts of our competitors!  As a part of our new strategy, we must ask that you eliminate the treacherous Ordos forces that presently control this region.",
-    "he": "Welcome. The rules seem to have changed. As you have witnessed, the Emperor himself has been aiding the efforts of our competitors!  As a part of our new strategy, we must ask that you eliminate the treacherous Ordos forces that presently control this region."
+    "he": "ברוך הבא. נראה שחוקי המשחק השתנו. כפי שנוכחת לראות, הקיסר עצמו מסייע למאמציהם של מתחרינו! כחלק מהאסטרטגיה החדשה שלנו, עלינו לבקש ממך לחסל את כוחות האורדוס הבוגדניים ששולטים כעת באזור זה."
   },
   {
     "en": "Congratulations again!  There seems to be no limit to your talents. I have to think that some divine force motivated your decision to serve within House Atreides. Our gain was certainly the others' loss!",
-    "he": "Congratulations again!  There seems to be no limit to your talents. I have to think that some divine force motivated your decision to serve within House Atreides. Our gain was certainly the others' loss!"
+    "he": "ברכותי שוב! נראה שאין גבול לכשרונותיך! עלי לחשוב שהתערבות עליונה כלשהי היא שתרמה להחלטתך לשרת תחת בית אטריידיס. הרווח שלנו הוא ללא ספק הפסדם של האחרים!"
   },
   {
     "en": "This defeat of yours will not look good in my reports. I am not sure how much longer we can afford to support you. There are many others clamoring to take your place, so I suggest that you do whatever is required to be victorious in your next encounters!",
-    "he": "This defeat of yours will not look good in my reports. I am not sure how much longer we can afford to support you. There are many others clamoring to take your place, so I suggest that you do whatever is required to be victorious in your next encounters!"
+    "he": "הפסדך זה לא ייראה טוב בדוחות שלי. איני בטוח כמה עוד נוכל לתמוך בך. ישנם רבים אחרים המעוניינים לתפוס את מקומך, אז אמליץ שתעשה את כל הנדרש כדי לנצח בהתקלויות הבאות!"
   },
   {
     "en": "The production of Carryalls will greatly speed up your harvesting operations.",
-    "he": "The production of Carryalls will greatly speed up your harvesting operations."
+    "he": "ייצורן של כנפיים נושאות יזרז רבות את מבצעי הכרייה שלך."
   },
   {
     "en": "As the battle for this planet intensifies, all efforts must be taken to ensure our success. Once again, we must call upon you to destroy our enemies in a troubled sector. House Harkonnen must be taught a lesson. Thank you, and good luck!",
-    "he": "As the battle for this planet intensifies, all efforts must be taken to ensure our success. Once again, we must call upon you to destroy our enemies in a troubled sector. House Harkonnen must be taught a lesson. Thank you, and good luck!"
+    "he": "ככל שהקרב על כוכב-לכת זה מתעצם, עלינו לעשות כל מאמץ כדי להבטיח את הצלחתנו. פעם נוספת, עלינו לבקש ממך להשמיד את אויבינו באזור בעייתי. בית הארקונן חייב ללמוד לקח. תודה לך, ובהצלחה!"
   },
   {
     "en": "Hurrah! We have them on the run now, and it's all because of you. Your successes have been remarkable! Are you sure you didn't graduate from one of the intergalactic military academies?",
-    "he": "Hurrah! We have them on the run now, and it's all because of you. Your successes have been remarkable! Are you sure you didn't graduate from one of the intergalactic military academies?"
+    "he": "הידד! הם נסים מפנינו, והכל בזכותך. הצלחותיך מרשימות ביותר! האם אתה בטוח שאינך בוגר של אחת מהאקדמיות הצבאיות הגלקטיות?"
   },
   {
     "en": "There is a time for excuses, but this is not it!  I don't understand how you could have bungled the entire campaign! You have no choice but to apply yourself more diligently during your next assignment.",
-    "he": "There is a time for excuses, but this is not it!  I don't understand how you could have bungled the entire campaign! You have no choice but to apply yourself more diligently during your next assignment."
+    "he": "ישנה עת לתירוצים, אבל היא לא כעת! איני מסוגל להבין איך שיבשת את כל המערכה! אין לך ברירה אלא לשנס מותניך ולתת את כל כולך במערכה הבאה."
   },
   {
     "en": "I advise you to produce and then place Rocket Turrets at strategic defensive positions around your installation.",
-    "he": "I advise you to produce and then place Rocket Turrets at strategic defensive positions around your installation."
+    "he": "אני ממליץ לך לייצר ולהציב צריחי רקטות בנקודות הגנה אסטרטגיות סביב המתחם."
   },
   {
     "en": "The battle goes well, but there is no time to relax. We have an urgent need for you to subdue all Ordos forces in this region promptly. Our ongoing negotiations are aided immeasurably by corresponding victories in the field. We are counting on you.",
-    "he": "The battle goes well, but there is no time to relax. We have an urgent need for you to subdue all Ordos forces in this region promptly. Our ongoing negotiations are aided immeasurably by corresponding victories in the field. We are counting on you."
+    "he": "הקרב מתנהל היטב, אך אין פנאי למנוחה. יש צורך דחוף שתכניע את כל כוחות אורדוס באזור הזה במהרה. המשא ומתן המתנהל במקביל מושפע רבות מנצחונותינו בשדה הקרב. אנו סומכים עליך."
   },
   {
     "en": "Excellent! Your skill seems to improve with each assignment, and your exploits give great confidence to those on the home front. Keep up the good work!",
-    "he": "Excellent! Your skill seems to improve with each assignment, and your exploits give great confidence to those on the home front. Keep up the good work!"
+    "he": "נהדר! נראה שכישוריך משתפרים עם כל משימה, ומעלליך משרים ביטחון רב על אנשינו בעורף. המשך כך!"
   },
   {
     "en": "My goodness, what an awful defeat! Perhaps we have given you too much responsibility. If you fail at your next assignment we will have to seriously consider sending you home!",
-    "he": "My goodness, what an awful defeat! Perhaps we have given you too much responsibility. If you fail at your next assignment we will have to seriously consider sending you home!"
+    "he": "אלוהים אדירים, איזו תבוסה מחפירה!אולי הפקדנו בידיך אחריות רבה מדי. אם תכשל גם במשימתך הבאה נאלץ לשקול ברצינות לשלוח אותך חזרה לביתך!"
   },
   {
     "en": "The Sonic Tank is a powerful ally against enemy troops.",
-    "he": "The Sonic Tank is a powerful ally against enemy troops."
+    "he": "הטנק העל-קולי הינו כלי-עזר עוצמתי כנגד גדודי האויב."
   },
   {
     "en": "Although you have earned a well-deserved rest, I'm afraid the political situation requires that we send you back into the field immediately. Both Ordos and Harkonnen forces have built up to unacceptable levels in this region, and now must be removed completely.",
-    "he": "Although you have earned a well-deserved rest, I'm afraid the political situation requires that we send you back into the field immediately. Both Ordos and Harkonnen forces have built up to unacceptable levels in this region, and now must be removed completely."
+    "he": "למרות שהרווחת את מנוחתך ביושר, אני חושש שהמצב הפוליטי מאלץ אותנו לשלוח אותך לחזית מיד. כוחות אורדוס והארקונן גם יחד ביססו את עמדותיהם באזור במידה בלתי מתקבלת, וכעת עליהם להיות מוסרים לחלוטין."
   },
   {
     "en": "A masterful victory! Frankly, we would not be able to remain on Dune without your military guidance. We have come to rely completely on you sir, and cannot imagine further success without you!",
-    "he": "A masterful victory! Frankly, we would not be able to remain on Dune without your military guidance. We have come to rely completely on you sir, and cannot imagine further success without you!"
+    "he": "נצחון מפואר! בכנות, לא יכולנו להישאר בחולית אילולי הובלתך הצבאית. נעשינו תלויים בך לחלוטין אדוני, ואיננו מסוגלים לדמיין הצלחה נוספת בלעדיך!"
   },
   {
     "en": "A defeat is never welcome, but this loss is particularly devastating! All of our efforts may soon prove futile unless you can provide a victory in your next campaign!",
-    "he": "A defeat is never welcome, but this loss is particularly devastating! All of our efforts may soon prove futile unless you can provide a victory in your next campaign!"
+    "he": "כל תבוסה אינה מבורכת, אבל זו חמורה כפל כפליים! בקרוב כל מאמצינו יתגלו כחסרי תועלת אם לא תספק לנו ניצחון במערכה הבאה!"
   },
   {
     "en": "Utilize your Palace's special option whenever possible, for it costs nothing and it will recharge.",
-    "he": "Utilize your Palace's special option whenever possible, for it costs nothing and it will recharge."
+    "he": "השתמש בהתקפה המיוחדת של ארמונך בכל הזדמנות אפשרית, מאחר והעלות הינה שולית והמתקפה ניתנת לטעינה חוזרת."
   },
   {
     "en": "Your next assignment will determine the entire outcome of our efforts here on Dune. Victory will not come easily. In addition to destroying all remaining Ordos and Harkonnen troops, you are also instructed to subdue Emperor Frederick's forces. All of our hopes and dreams are riding with you, and we humbly beg of you to provide one final victory for our noble House Atreides.",
-    "he": "Your next assignment will determine the entire outcome of our efforts here on Dune. Victory will not come easily. In addition to destroying all remaining Ordos and Harkonnen troops, you are also instructed to subdue Emperor Frederick's forces. All of our hopes and dreams are riding with you, and we humbly beg of you to provide one final victory for our noble House Atreides."
+    "he": "משימתך הבאה תקבע את גורל כל המערכה כאן  בחולית. ניצחון לא יושג בקלות. בנוסף להשמדת כל כוחות אורדוס והארקונן הנותרים, עליך להכניע גם את כוחות הקיסר פרדריק. כל תקוותינו וחלומותינו נתונים בידיך, ואנו מפצירים בך בענווה לתת בידינו ניצחון אחרון עבור בית אטריידיס האצילי."
   },
   {
     "en": "Good Morning, your lordship, and congratulations!  You have served House Atreides well. We will not soon forget our most noble warrior! I go now to relay the news of your most glorious victory, and deliver your terms to the Emperor.",
-    "he": "Good Morning, your lordship, and congratulations!  You have served House Atreides well. We will not soon forget our most noble warrior! I go now to relay the news of your most glorious victory, and deliver your terms to the Emperor."
+    "he": "בוקר טוב, כבודו, וברכותינו! שירתת את בית אטריידיס היטב. לא במהרה נשכח את לוחמנו האצילי ביותר! אצא כעת לדרכי לבשר את חדשות ניצחוננו המפואר, ולמסור את תנאיך לקיסר."
   },
   {
     "en": "Your defects must have been inherited. Nobody could possibly learn the colossal stupidity that you have displayed.",
-    "he": "Your defects must have been inherited. Nobody could possibly learn the colossal stupidity that you have displayed."
+    "he": "פגמיך חייבים להיות תורשתיים. אף אחד לא מסוגל ללמוד את הטיפשות המהדהדת שהצגת."
   },
   {
     "en": "Watch for sneak attacks, defend your installations well. ",
-    "he": "Watch for sneak attacks, defend your installations well. "
+    "he": "שים לב למתקפות פתע, הגן היטב על המשאבים שלך. "
   }
 ]

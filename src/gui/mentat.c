@@ -1312,6 +1312,33 @@ uint16 GUI_Mentat_SplitText(char *str, uint16 maxWidth)
 			width += Font_GetCharWidth((unsigned char)*str++);
 		}
 
+		if (*str != '\0' && (*str == '.' || *str == '!' || *str == '?' || *str == '\r')) {
+			/* `str` sits on a sentence-ending/forced break. The code below
+			 * (past the height/punctuation check) keeps everything from
+			 * here up to -- but not including -- the next page's real
+			 * content as part of THIS page's rendered text; only the one
+			 * separator char immediately before that real content gets
+			 * overwritten with '\0' (or, if this run instead runs into the
+			 * end of the whole string, nothing gets overwritten and all of
+			 * it stays). None of that trailing punctuation/whitespace was
+			 * counted into `width` above, so a line that measured exactly
+			 * at budget can still overflow once it's actually rendered --
+			 * and for Hebrew, GUI_DrawText_WrapperBox() right-justifies
+			 * flush against the box edge with zero slack, so the excess
+			 * pushes the mirrored line's rightmost (logically first)
+			 * character past GUI_DrawChar()'s screen-width bound check,
+			 * dropping it entirely. Count the retained tail now. */
+			char *peek = str;
+			uint16 addWidth = 0;
+
+			while (*peek != '\0' && (*peek == ' ' || *peek == '.' || *peek == '!' || *peek == '?' || *peek == '\r')) {
+				addWidth += Font_GetCharWidth((unsigned char)*peek);
+				peek++;
+			}
+
+			width += (*peek == '\0') ? addWidth : addWidth - Font_GetCharWidth((unsigned char)*(peek - 1));
+		}
+
 		if (width >= maxWidth) {
 			/* str is one past the last character actually counted into
 			 * `width`. Back off word by word (to each preceding space)

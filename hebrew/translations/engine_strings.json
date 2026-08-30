@@ -48,5 +48,10 @@
     "id": "ENGINE_STR_IS_COMPLETED_AND_AWAITING_ORDERS_F",
     "en": "is completed and awaiting orders.",
     "he": "מוכנה וממתינה לפקודות."
+  },
+  {
+    "id": "ENGINE_STR_TIME_M",
+    "en": "Time: %dm",
+    "he": "זמן: %d דקות"
   }
 ]

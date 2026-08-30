@@ -54,6 +54,12 @@ static void munt_tick(void);
 
 #define MUNT_RENDER_RATE 50
 
+static mt32emu_report_handler_version get_version_id(mt32emu_report_handler_i i)
+{
+	(void)i;
+	return MT32EMU_REPORT_HANDLER_VERSION_0;
+}
+
 static void show_lcd_message(void * instance_data, const char * message)
 {
 	(void)instance_data;
@@ -80,7 +86,7 @@ const char * s_romfiles[] = {
 
 static const mt32emu_report_handler_i_v0 handler_v0 = {
 	/** Returns the actual interface version ID */
-	NULL, /*mt32emu_report_handler_version (*getVersionID)(mt32emu_report_handler_i i);*/
+	get_version_id, /*mt32emu_report_handler_version (*getVersionID)(mt32emu_report_handler_i i);*/
 	/** Callback for debug messages, in vprintf() format */
 	print_debug, /*void (*printDebug)(void *instance_data, const char *fmt, va_list list);*/
 	/** Callbacks for reporting errors */

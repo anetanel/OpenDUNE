@@ -13,7 +13,7 @@
   },
   {
     "en": "Retreat",
-    "he": "סוג לאחור"
+    "he": "היסוג"
   },
   {
     "en": "Guard",
@@ -61,7 +61,7 @@
   },
   {
     "en": "Initializing the MT-32",
-    "he": "מאתחל את MT-32"
+    "he": "Initializing the MT-32"
   },
   {
     "en": "Old save game file is incompatable with latest version.",
@@ -69,11 +69,11 @@
   },
   {
     "en": "Insufficient memory by %ld bytes.",
-    "he": "אין די זיכרון. חסרים %ld בתים."
+    "he": "Insufficient memory by %ld bytes."
   },
   {
     "en": "The setup program must be run first.",
-    "he": "תוכנת setup חייבת לרוץ קודם."
+    "he": "The setup program must be run first."
   },
   {
     "en": "%s %s destroyed.",
@@ -89,7 +89,7 @@
   },
   {
     "en": "Time: %dh %dm",
-    "he": "זמן: %dh %dm"
+    "he": "זמן: %d שעות %d דקות"
   },
   {
     "en": "You have attained the rank of",
@@ -97,15 +97,15 @@
   },
   {
     "en": "Units Destroyed By",
-    "he": "יחידות שהושמדו על יד"
+    "he": "יחידות שהושמדו על ידי"
   },
   {
     "en": "Buildings Destroyed By",
-    "he": "מבנים שהושמדו על יד"
+    "he": "מבנים שהושמדו על ידי"
   },
   {
     "en": "Spice Harvested By",
-    "he": "סם שנכרה על יד"
+    "he": "סם שנכרה על ידי"
   },
   {
     "en": "Play a Game",
@@ -1137,11 +1137,11 @@
   },
   {
     "en": "To take control of the land.",
-    "he": "על מנת להשתלט על האדמה."
+    "he": "על מנת לשלוט על שטחי האדמה."
   },
   {
     "en": "That has become divided.",
-    "he": "שנחלקה לאזורים."
+    "he": "שנחלקו לאזורים שונים."
   },
   {
     "en": "Select your next region",
@@ -1205,7 +1205,7 @@
   },
   {
     "en": "I give you my Sardaukar to assist\ragainst the Ordos, and you failed me!",
-    "he": "נתתי לך את הסרדאוקאק שלי לעזרה\rכנגד האורדוס, ואכזבת אותי!"
+    "he": "נתתי לך את הסרדאוקאר שלי לעזרה\rכנגד האורדוס, ואכזבת אותי!"
   },
   {
     "en": "We...",
@@ -1285,7 +1285,7 @@
   },
   {
     "en": "Thank you for playing Dune II.",
-    "he": "תודה ששיחקתם בחולית II."
+    "he": "Thank you for playing Dune II."
   },
   {
     "en": "Spice storage capacity low, build silos.",

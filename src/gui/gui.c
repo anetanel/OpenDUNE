@@ -1818,10 +1818,16 @@ static void GUI_HallOfFame_DrawBackground(uint16 score, bool hallOfFame)
 	uint16 xSrc;
 	uint16 colour;
 	uint16 offset;
+	const char *filename;
 
 	oldScreenID = GFX_Screen_SetActive(SCREEN_1);
 
-	Sprites_LoadImage("FAME.CPS", SCREEN_1, g_palette_998A);
+	/* Unlike AND/HERALD/MISC/TITLE, FAME.CPS is baked into the shared
+	 * DUNE.PAK for every language, so a plain "FAME.CPS" always exists --
+	 * the language-suffixed file must be tried first, not last. */
+	filename = String_GenerateFilename("FAME");
+	if (!File_Exists(filename)) filename = "FAME.CPS";
+	Sprites_LoadImage(filename, SCREEN_1, g_palette_998A);
 
 	xSrc = 1;
 	if (g_playerHouseID <= HOUSE_ORDOS) {
@@ -1848,11 +1854,25 @@ static void GUI_HallOfFame_DrawBackground(uint16 score, bool hallOfFame)
 
 	if (score != 0xFFFF) {
 		char buffer[64];
-		snprintf(buffer, sizeof(buffer), String_Get_ByIndex(STR_TIME_DH_DM), s_ticksPlayed / 60, s_ticksPlayed % 60);
 
-		if (s_ticksPlayed < 60) {
-			char *hours = strchr(buffer, '0');
-			while (*hours != ' ') memmove(hours, hours + 1, strlen(hours));
+		/* STR_TIME_DH_DM ("Time: %dh %dm") is one sentence with both
+		 * numbers baked in; below an hour, the "0h " lead-in is stripped
+		 * out by finding the leading '0' and deleting up to the next
+		 * space. That assumes the hour digit and its unit letter are
+		 * glued together with no space in between ("0h"), which holds for
+		 * English but not Hebrew ("0 שעות" -- digit, space, then the word
+		 * "hours"), where the deletion stops after just the digit and
+		 * leaves the disembodied word behind. Hebrew instead gets its own
+		 * minutes-only phrasing via the engine-string mechanism. */
+		if (g_config.language == LANGUAGE_HEBREW && s_ticksPlayed < 60) {
+			snprintf(buffer, sizeof(buffer), EngineString_Get(ENGINE_STR_TIME_M, "Time: %dm"), s_ticksPlayed % 60);
+		} else {
+			snprintf(buffer, sizeof(buffer), String_Get_ByIndex(STR_TIME_DH_DM), s_ticksPlayed / 60, s_ticksPlayed % 60);
+
+			if (s_ticksPlayed < 60) {
+				char *hours = strchr(buffer, '0');
+				while (*hours != ' ') memmove(hours, hours + 1, strlen(hours));
+			}
 		}
 
 		/* "Score: %d" */
@@ -1913,10 +1933,15 @@ void GUI_EndStats_Show(uint16 killedAllied, uint16 killedEnemy, uint16 destroyed
 {
 	Screen oldScreenID;
 	uint16 statsBoxCount;
-	uint16 textLeft;	/* text left position */
+	uint16 textLeft;	/* the bar's edge nearest the "You:"/"Enemy:" labels */
 	uint16 statsBarWidth;	/* available width to draw the score bars */
 	struct { uint16 value; uint16 increment; } scores[3][2];
 	uint16 i;
+	bool rtl;
+	uint16 labelWidth;
+	uint16 boxLeft;	/* left edge of the score-count box */
+	uint16 numberX;	/* horizontal center of the score-count box */
+	int16 barDir;	/* +1 : bar grows rightward, -1 : bar grows leftward */
 
 	s_ticksPlayed = ((g_timerGame - g_tickScenarioStart) / 3600) + 1;
 
@@ -1937,12 +1962,34 @@ void GUI_EndStats_Show(uint16 killedAllied, uint16 killedEnemy, uint16 destroyed
 	GUI_DrawTextOnFilledRectangle(String_Get_ByIndex(STR_UNITS_DESTROYED_BY), 119);
 	if (g_scenarioID != 1) GUI_DrawTextOnFilledRectangle(String_Get_ByIndex(STR_BUILDINGS_DESTROYED_BY), 155);
 
-	textLeft = 19 + max(Font_GetStringWidth(String_Get_ByIndex(STR_YOU)), Font_GetStringWidth(String_Get_ByIndex(STR_ENEMY)));
-	statsBarWidth = 261 - textLeft;
+	rtl = GUI_IsRTLLanguage();
+	labelWidth = max(Font_GetStringWidth(String_Get_ByIndex(STR_YOU)), Font_GetStringWidth(String_Get_ByIndex(STR_ENEMY)));
+	barDir = rtl ? -1 : 1;
+
+	if (rtl) {
+		/* Mirror the whole row for right-to-left reading: the score-count
+		 * box moves to the left edge (instead of the right), and the
+		 * "You:"/"Enemy:" labels sit to its right (instead of its left),
+		 * with the bar growing away from the label towards the box. */
+		boxLeft = 16;
+		numberX = 32;
+		textLeft = 300 - labelWidth;
+		statsBarWidth = textLeft - (boxLeft + 32 + 10);
+	} else {
+		boxLeft = 271;
+		numberX = 287;
+		textLeft = 19 + labelWidth;
+		statsBarWidth = boxLeft - 10 - textLeft;
+	}
 
 	for (i = 0; i < statsBoxCount; i++) {
-		GUI_DrawText_Wrapper(String_Get_ByIndex(STR_YOU), textLeft - 4,  92 + (i * 36), 0xF, 0, 0x221);
-		GUI_DrawText_Wrapper(String_Get_ByIndex(STR_ENEMY), textLeft - 4, 101 + (i * 36), 0xF, 0, 0x221);
+		if (rtl) {
+			GUI_DrawText_Wrapper(String_Get_ByIndex(STR_YOU), textLeft + 4,  92 + (i * 36), 0xF, 0, 0x021);
+			GUI_DrawText_Wrapper(String_Get_ByIndex(STR_ENEMY), textLeft + 4, 101 + (i * 36), 0xF, 0, 0x021);
+		} else {
+			GUI_DrawText_Wrapper(String_Get_ByIndex(STR_YOU), textLeft - 4,  92 + (i * 36), 0xF, 0, 0x221);
+			GUI_DrawText_Wrapper(String_Get_ByIndex(STR_ENEMY), textLeft - 4, 101 + (i * 36), 0xF, 0, 0x221);
+		}
 	}
 
 	Music_Play(17 + Tools_RandomLCG_Range(0, 5));
@@ -1986,16 +2033,18 @@ void GUI_EndStats_Show(uint16 killedAllied, uint16 killedEnemy, uint16 destroyed
 			uint16 posX;
 			uint16 posY;
 			uint16 score;
+			uint16 blitX;
 
 			GUI_HallOfFame_Tick();
 
 			colour = (j == 0) ? 255 : 209;
 			posX = textLeft;
 			posY = 93 + (i * 36) + (j * 9);
+			blitX = rtl ? boxLeft : textLeft;
 
 			for (score = 0; score < scores[i][j].value; score += scores[i][j].increment) {
-				GUI_DrawFilledRectangle(271, posY, 303, posY + 5, 226);
-				GUI_DrawText_Wrapper("%u", 287, posY - 1, 0x14, 0, 0x121, score);
+				GUI_DrawFilledRectangle(boxLeft, posY, boxLeft + 32, posY + 5, 226);
+				GUI_DrawText_Wrapper("%u", numberX, posY - 1, 0x14, 0, 0x121, score);
 
 				GUI_HallOfFame_Tick();
 
@@ -2003,21 +2052,21 @@ void GUI_EndStats_Show(uint16 killedAllied, uint16 killedEnemy, uint16 destroyed
 
 				GUI_DrawLine(posX, posY, posX, posY + 5, colour);
 
-				posX++;
+				posX += barDir;
 
 				GUI_DrawLine(posX, posY + 1, posX, posY + 6, 12);	/* shadow */
 
-				GFX_Screen_Copy2(textLeft, posY, textLeft, posY, 304, 7, SCREEN_1, SCREEN_0, false);
+				GFX_Screen_Copy2(blitX, posY, blitX, posY, 304, 7, SCREEN_1, SCREEN_0, false);
 
 				Driver_Sound_Play(52, 0xFF);
 
 				GUI_EndStats_Sleep(g_timerTimeout);
 			}
 
-			GUI_DrawFilledRectangle(271, posY, 303, posY + 5, 226);
-			GUI_DrawText_Wrapper("%u", 287, posY - 1, 0xF, 0, 0x121, scores[i][j].value);
+			GUI_DrawFilledRectangle(boxLeft, posY, boxLeft + 32, posY + 5, 226);
+			GUI_DrawText_Wrapper("%u", numberX, posY - 1, 0xF, 0, 0x121, scores[i][j].value);
 
-			GFX_Screen_Copy2(textLeft, posY, textLeft, posY, 304, 7, SCREEN_1, SCREEN_0, false);
+			GFX_Screen_Copy2(blitX, posY, blitX, posY, 304, 7, SCREEN_1, SCREEN_0, false);
 
 			Driver_Sound_Play(38, 0xFF);
 
@@ -3247,6 +3296,32 @@ char *GUI_String_Get_ByIndex(int16 stringID)
 			stringID = (g_gameConfig.autoScroll != 0) ? STR_ON : STR_OFF;
 			break;
 
+		case -15:
+			/* Hebrew-keyboard toggle button label: the single letter
+			 * naming whichever language is *currently* active ("\x92" is
+			 * the cp862 byte for Ayin, the first letter of "עברית" --
+			 * see hebrew/tools/eng.py -- not a UTF-8 literal, since this
+			 * source file's encoding doesn't match the font's). A fixed
+			 * language-agnostic symbol, not real UI text, so no
+			 * EngineString_Get()/translation entry is needed. Only
+			 * relevant when Hebrew is the active language at all (that's
+			 * the only case the toggle exists for) -- returning NULL
+			 * makes GUI_Window_Create() skip creating this widget
+			 * entirely otherwise. */
+			if (g_config.language != LANGUAGE_HEBREW) {
+				return NULL;
+			} else {
+				/* -Wwrite-strings makes string literals const-typed, but
+				 * this function returns plain `char *` throughout -- see
+				 * the identical reasoning above for -10/-14's STR_ON/
+				 * STR_OFF (those stay non-literal STR_* lookups, so they
+				 * don't hit this; a literal here needs the same
+				 * reinterpretation those didn't need). */
+				union { const char *c; char *m; } u;
+				u.c = Video_IsHebrewKeyboardMode() ? "\x92" : "E";
+				return u.m;
+			}
+
 		default: break;
 	}
 
@@ -3390,7 +3465,7 @@ static void GUI_StrategicMap_DrawText(const char *string)
 
 	GUI_DrawFilledRectangle(64, 172, 255, 185, GFX_GetPixel(64, 186));
 
-	GUI_DrawText_Wrapper(string, 64, 175, 12, 0, 0x12);
+	GUI_DrawText_WrapperBox(string, 64, 175, 255 - 64, 12, 0, 0x12);
 
 	while (g_timerGUI + 90 < l_timerNext) sleepIdle();
 
@@ -3631,7 +3706,16 @@ uint16 GUI_StrategicMap_Show(uint16 campaignID, bool win)
 
 	GUI_Mouse_SetPosition(160, 84);
 
-	Sprites_LoadImage("MAPMACH.CPS", SCREEN_2, g_palette_998A);
+	/* Unlike the LANGUAGE_GERMAN/LANGUAGE_FRENCH cases below, which patch a
+	 * small localized region already baked into the stock MAPMACH.CPS in
+	 * place, there's no such spare Hebrew region to select -- Hebrew ships
+	 * as a whole separate file instead (installed as "MAPMACHH.CPS", not
+	 * overwriting "MAPMACH.CPS") and is picked up only when present. */
+	if (g_config.language == LANGUAGE_HEBREW && File_Exists("MAPMACHH.CPS")) {
+		Sprites_LoadImage("MAPMACHH.CPS", SCREEN_2, g_palette_998A);
+	} else {
+		Sprites_LoadImage("MAPMACH.CPS", SCREEN_2, g_palette_998A);
+	}
 
 	GUI_Palette_RemapScreen(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_2, g_remap);
 
@@ -4516,6 +4600,141 @@ uint16 GUI_HallOfFame_Tick(void)
 	return 0;
 }
 
+/**
+ * Draw the Hall of Fame's Hebrew-keyboard toggle button, matching Clear
+ * List/Resume Game's look (GUI_Widget_TextButton2_Draw() in
+ * widget_draw.c) as closely as possible while this button exists in a
+ * context that function's exact flags/globals can't share:
+ *
+ * - Colour: Clear List/Resume Game's golden look comes from
+ *   s_colourBorderSchema being swapped to s_HOF_ColourBorderSchema for as
+ *   long as they exist (GUI_HallOfFame_CreateButtons()/DeleteButtons()).
+ *   This button is freed before that swap ever happens (it only exists
+ *   during name entry), so it borrows the golden schema only for the
+ *   duration of its own border/rectangle drawing, then restores whatever
+ *   was active before -- which also makes this safe to nest inside that
+ *   swapped window too, in case that ever changes.
+ * - Font: GUI_Widget_TextButton2_Draw() draws with font6p (flag 0x121).
+ *   GUI_DrawText_Wrapper() only calls Font_Select() when the requested
+ *   font differs from whatever was last drawn with -- a cache global to
+ *   the whole renderer, not scoped to one widget -- and
+ *   GUI_HallOfFame_Show()'s naming loop calls GUI_EditBox() with
+ *   font-less draws that rely on font8p already being primed. Unlike
+ *   Clear List/Resume Game, this button can redraw *during* that loop
+ *   (a hover change, or simply the first time this widget list is seen),
+ *   so drawing with font6p here and leaving it there would make the name
+ *   being typed render in the wrong font. Draw with font6p to match, then
+ *   restore font8p before returning, the same way as the colour scheme.
+ *
+ * Also doesn't reuse GUI_Widget_TextButton2_Draw() directly because that
+ * function fetches its label via the raw String_Get_ByIndex() (a direct,
+ * unchecked index into the string table); this button's label comes from
+ * GUI_String_Get_ByIndex()'s stringID==-15 case (see below), a synthetic
+ * entry outside the real string table's range that String_Get_ByIndex()
+ * would crash on. Also skips that function's shortcut auto-assignment
+ * (derived from the label's first letter) -- not needed here (Right-Ctrl
+ * is this toggle's keyboard access) and, for the same reason, unsafe to
+ * derive from this label.
+ *
+ * @param w The widget (which is a button) to draw.
+ */
+void GUI_Widget_HOF_HebrewToggle_Draw(Widget *w)
+{
+	Screen oldScreenID;
+	uint16 positionX, positionY;
+	uint16 width, height;
+	uint8 colour;
+	bool buttonSelected;
+	bool buttonDown;
+	uint16 savedColourBorderSchema[5][4];
+
+	if (w == NULL) return;
+
+	oldScreenID = SCREEN_ACTIVE;
+	if (GFX_Screen_IsActive(SCREEN_0)) {
+		oldScreenID = GFX_Screen_SetActive(SCREEN_1);
+	}
+
+	buttonSelected = w->state.selected;
+	buttonDown     = w->state.hover2;
+
+	positionX = w->offsetX;
+	positionY = w->offsetY;
+	width     = w->width;
+	height    = w->height;
+
+	memcpy(savedColourBorderSchema, s_colourBorderSchema, sizeof(s_colourBorderSchema));
+	memcpy(s_colourBorderSchema, s_HOF_ColourBorderSchema, sizeof(s_colourBorderSchema));
+
+	GUI_DrawWiredRectangle(positionX - 1, positionY - 1, positionX + width, positionY + height, 12);
+	GUI_DrawBorder(positionX, positionY, width, height, buttonDown ? 0 : 1, true);
+
+	memcpy(s_colourBorderSchema, savedColourBorderSchema, sizeof(s_colourBorderSchema));
+
+	colour = 0xF;
+	if (buttonSelected) {
+		colour = 0x6;
+	} else if (buttonDown) {
+		colour = 0xE;
+	}
+
+	GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(w->stringID), positionX + width / 2, positionY + 1, colour, 0, 0x121);
+	GUI_DrawText_Wrapper(NULL, 0, 0, 0, 0, 0x22);
+
+	if (oldScreenID != SCREEN_0) return;
+
+	GUI_Mouse_Hide_InRegion(positionX - 1, positionY - 1, positionX + width + 1, positionY + height + 1);
+	GFX_Screen_Copy2(positionX - 1, positionY - 1, positionX - 1, positionY - 1, width + 2, height + 2, SCREEN_1, SCREEN_0, false);
+	GUI_Mouse_Show_InRegion();
+
+	GFX_Screen_SetActive(SCREEN_0);
+}
+
+/**
+ * Allocate the Hall of Fame's Hebrew-keyboard toggle button, or return
+ * NULL outside a Hebrew install. Created and freed by
+ * GUI_HallOfFame_Show() around its own name-entry loop -- only needed
+ * while entering a name, not for Clear List/Resume Game afterward.
+ */
+static Widget *GUI_HallOfFame_CreateHebrewToggleButton(HallOfFameStruct *data)
+{
+	Widget *wToggle;
+
+	if (g_config.language != LANGUAGE_HEBREW) return NULL;
+
+	/* Same bordered look and row (y=180, height=10) as Clear List/Resume
+	 * Game below, pinned to the table's own right edge (GUI_HallOfFame_
+	 * DrawBackground() draws it at x=8..311) with the same 8px margin
+	 * the table border uses on the left. GUI_Widget_Allocate()'s
+	 * spriteID==0xFFFE path never dereferences stringID during
+	 * allocation (only a later draw does), so passing -15 (GUI_String_
+	 * Get_ByIndex()'s Hebrew-toggle-label case, not a real string-table
+	 * entry) here is safe; the draw/click hooks below are overridden to
+	 * GUI_Widget_HOF_HebrewToggle_Draw() specifically because the
+	 * default TextButton2_Draw() would instead call the unchecked
+	 * String_Get_ByIndex(), which cannot render it. */
+	wToggle = GUI_Widget_Allocate(102, 0, 311 - 8 - 16, 180, 0xFFFE, (uint16)-15);
+	wToggle->width  = 16;
+	wToggle->height = 10;
+	wToggle->clickProc = &GUI_Widget_HOF_HebrewToggle_Click;
+	wToggle->drawModeNormal   = DRAW_MODE_CUSTOM_PROC;
+	wToggle->drawModeSelected = DRAW_MODE_CUSTOM_PROC;
+	wToggle->drawModeDown     = DRAW_MODE_CUSTOM_PROC;
+	wToggle->drawParameterNormal.proc   = &GUI_Widget_HOF_HebrewToggle_Draw;
+	wToggle->drawParameterSelected.proc = &GUI_Widget_HOF_HebrewToggle_Draw;
+	wToggle->drawParameterDown.proc     = &GUI_Widget_HOF_HebrewToggle_Draw;
+	memset(&wToggle->flags, 0, sizeof(wToggle->flags));
+	wToggle->flags.requiresClick = true;
+	wToggle->flags.clickAsHover = true;
+	wToggle->flags.loseSelect = true;
+	wToggle->flags.notused2 = true;
+	wToggle->flags.buttonFilterLeft = 4;
+	wToggle->flags.buttonFilterRight = 4;
+	wToggle->data = data;
+
+	return wToggle;
+}
+
 static Widget *GUI_HallOfFame_CreateButtons(HallOfFameStruct *data)
 {
 	const char *resumeString;
@@ -4560,6 +4779,10 @@ static Widget *GUI_HallOfFame_CreateButtons(HallOfFameStruct *data)
 	wResume->flags.buttonFilterRight = 4;
 	wResume->data      = data;
 
+	/* No Hebrew-keyboard toggle here: that's only needed while entering a
+	 * name (see GUI_HallOfFame_CreateHebrewToggleButton(), created and
+	 * freed by GUI_HallOfFame_Show() around its own naming loop), not for
+	 * Clear List/Resume Game. */
 	return GUI_Widget_Insert(wClear, wResume);
 }
 
@@ -4616,6 +4839,7 @@ void GUI_HallOfFame_Show(uint16 score)
 	uint16 width;
 	uint16 editLine;
 	Widget *w;
+	Widget *wToggle;
 	uint8 fileID;
 	HallOfFameStruct *data;
 
@@ -4661,15 +4885,79 @@ void GUI_HallOfFame_Show(uint16 score)
 
 	GUI_Screen_Copy(0, 0, 0, 0, SCREEN_WIDTH / 8, SCREEN_HEIGHT, SCREEN_1, SCREEN_0);
 
+	/* GUI_Mouse_Hide_Safe()/Show_Safe() nest via a depth counter (see
+	 * their definitions), not a simple flag, so unlike the single
+	 * GUI_Mouse_Show_Safe() this used to be paired with (originally
+	 * placed after the whole naming block below), rebalancing here
+	 * instead is what actually makes the cursor visible during naming
+	 * -- otherwise every Hide/Show pair GUI_EditBox() does internally
+	 * for its own drawing nets back to the depth this function's own
+	 * initial GUI_Mouse_Hide_Safe() left it at, never reaching 0. Shown
+	 * unconditionally here (not just when a name needs entering) since
+	 * Clear List/Resume Game need it regardless. */
+	wToggle = NULL;
+	GUI_Mouse_Show_Safe();
+
 	if (editLine != 0) {
 		WidgetProperties backupProperties;
 		char *name;
 
 		name = data[editLine - 1].name;
 
+		/* Only needed for the duration of typing the name -- freed
+		 * below once it's accepted, since Clear List/Resume Game (the
+		 * only buttons once naming is done) don't need a language
+		 * toggle. */
+		wToggle = GUI_HallOfFame_CreateHebrewToggleButton(data);
+
+		if (wToggle != NULL) {
+			Screen oldScreenID;
+
+			/* Force the first draw explicitly rather than relying on
+			 * GUI_Widget_HandleEvents()'s own "first time this widget
+			 * list pointer is seen" heuristic (a `!=` comparison against
+			 * a static last-seen pointer, persisting across calls) --
+			 * this widget is freed after every naming session, and a
+			 * later session's freshly calloc()'d wToggle reusing the
+			 * same address as an earlier, already-freed one would make
+			 * that heuristic wrongly conclude "already drawn" and skip
+			 * it, leaving the button invisible until some other state
+			 * change (e.g. a hover) forces a redraw.
+			 *
+			 * At this exact point the active screen is still SCREEN_1,
+			 * left that way by GUI_HallOfFame_DrawBackground()/DrawData()
+			 * restoring to whatever their *caller* (this function's own
+			 * caller, GUI_HallOfFame_Show()'s stats-screen caller) had
+			 * active on entry -- GUI_EditBox() below is what normally
+			 * flips the active screen to SCREEN_0 for the whole naming
+			 * session, but that hasn't run yet for this very first paint.
+			 * GUI_Widget_HOF_HebrewToggle_Draw() only performs its
+			 * SCREEN_1->SCREEN_0 blit when SCREEN_0 was the ambient
+			 * screen (matching GUI_Widget_TextButton2_Draw()'s own
+			 * nesting rule), so without forcing it here this draw would
+			 * silently land only on the off-screen buffer and never
+			 * reach the visible one -- invisible until some later hover
+			 * happens to redraw it while GUI_EditBox() has SCREEN_0
+			 * active, which is why the button only *sometimes* appeared. */
+			oldScreenID = GFX_Screen_SetActive(SCREEN_0);
+			GUI_Widget_Draw(wToggle);
+			GFX_Screen_SetActive(oldScreenID);
+		}
+
 		memcpy(&backupProperties, &g_widgetProperties[19], sizeof(WidgetProperties));
 
-		g_widgetProperties[19].xBase = 4;
+		/* Right edge fixed at the mirrored name column position (see
+		 * GUI_HallOfFame_DrawData()'s nameX == 320-32 == 288, deliberately
+		 * a multiple of 8 -- WidgetProperties.xBase/width are in 8px
+		 * units, and computing xBase from a SEPARATE truncating division
+		 * of (320-32-width) rather than from this same already-divided
+		 * `width / 8` let the two roundings disagree by up to 7px each,
+		 * i.e. up to ~14px total drift -- the cursor's reported "too far
+		 * left" starting position. Left edge trails the fixed right edge
+		 * by `width` (a pure distance, unaffected by the mirror) --
+		 * GUI_EditBox() itself right-anchors the typed text within this
+		 * box when Hebrew is active, growing it leftward as typed. */
+		g_widgetProperties[19].xBase = GUI_IsRTLLanguage() ? (288 / 8) - (width / 8) : 4;
 		g_widgetProperties[19].yBase = (editLine - 1) * 11 + 90;
 		g_widgetProperties[19].width = width / 8;
 		g_widgetProperties[19].height = 11;
@@ -4686,13 +4974,69 @@ void GUI_HallOfFame_Show(uint16 score)
 			Widget_SetAndPaintCurrentWidget(19);
 			GFX_Screen_SetActive(oldScreenID);
 
-			GUI_EditBox(name, 5, 19, NULL, &GUI_HallOfFame_Tick, false);
+			/* An inner for(;;), not a second `continue` against the
+			 * outer while(*name=='\0') -- that condition is false as
+			 * soon as anything's been typed, so a `continue` meant to
+			 * just retry GUI_EditBox() after a toggle click would
+			 * instead re-check the *outer* condition, find it false,
+			 * and exit the whole loop straight into the "name accepted"
+			 * logic below: exactly the "toggle click submits the name"
+			 * bug this replaced. break below to fall out to that logic
+			 * for real (Enter/Escape, or the name still being empty);
+			 * continue to retry GUI_EditBox() (a toggle click) without
+			 * ever reaching the outer loop's own condition check. */
+			for (;;) {
+				/* Passing wToggle (NULL outside a Hebrew install) as the
+				 * widget list here, instead of NULL unconditionally, is
+				 * what makes GUI_Widget_HandleEvents() (called
+				 * internally by GUI_EditBox()) check mouse clicks
+				 * against it at all -- with a NULL list it returns
+				 * immediately without any hit-testing. A click toggles
+				 * the language via wToggle's own clickProc (invoked
+				 * internally the same way, before GUI_EditBox() ever
+				 * sees the resulting 0x8000-flagged return value) and
+				 * exits GUI_EditBox() the same way clicking Save/Cancel
+				 * does on the save-name screen -- so re-enter it to keep
+				 * editing instead of falling through to the "name
+				 * accepted" logic below, which would otherwise wrongly
+				 * treat an in-progress, non-empty name as submitted. */
+				uint16 ret = GUI_EditBox(name, 5, 19, wToggle, &GUI_HallOfFame_Tick, false);
+
+				/* GUI_DrawText_Wrapper() only calls Font_Select() when the
+				 * requested font differs from whatever was last drawn
+				 * with (a global cache, not scoped to this loop), and
+				 * GUI_EditBox()'s own text draws specify no font at all --
+				 * they rely on this having already primed font8p (below,
+				 * and once more before this loop started). Before wToggle
+				 * existed that priming was never disturbed for the whole
+				 * naming loop's duration; now that the toggle button can
+				 * redraw *during* GUI_EditBox() (a hover change, or the
+				 * very first time this widget list is seen, not just an
+				 * actual click), its own font6p draw silently overwrites
+				 * that priming, and the next keystroke's font-less draw
+				 * inherits font6p instead -- re-prime every iteration,
+				 * regardless of what happened this time, rather than
+				 * only after a detected click. */
+				GUI_DrawText_Wrapper(NULL, 0, 0, 0, 0, 0x22);
+
+				if (wToggle != NULL && (ret & 0x7FFF) == wToggle->index) continue;
+
+				break;
+			}
 
 			if (*name == '\0') continue;
 
 			nameEnd = name + strlen(name) - 1;
 
-			while (*nameEnd <= ' ' && nameEnd >= name) *nameEnd-- = '\0';
+			/* (unsigned char) matters: plain `char` is signed on this
+			 * platform, so a cp862 Hebrew byte (0x80-0x9A) reads as
+			 * negative and satisfies "<= ' '" -- without the cast, this
+			 * loop treats every Hebrew character as trailing whitespace
+			 * and strips the whole name down to empty. Also check the
+			 * bounds first, not after dereferencing: once the trim runs
+			 * past the start of the buffer, `nameEnd < name` must stop
+			 * the loop before `*nameEnd` reads before it, not after. */
+			while (nameEnd >= name && (unsigned char)*nameEnd <= ' ') *nameEnd-- = '\0';
 		}
 
 		memcpy(&g_widgetProperties[19], &backupProperties, sizeof(WidgetProperties));
@@ -4704,9 +5048,27 @@ void GUI_HallOfFame_Show(uint16 score)
 		fileID = File_Open_Personal("SAVEFAME.DAT", FILE_MODE_WRITE);
 		File_Write(fileID, data, 128);
 		File_Close(fileID);
-	}
 
-	GUI_Mouse_Show_Safe();
+		if (wToggle != NULL) {
+			/* Erase its on-screen footprint (same SCREEN_1-draw-then-
+			 * copy-to-SCREEN_0 pattern GUI_Widget_HOF_HebrewToggle_Draw()
+			 * itself uses) before freeing it -- Clear List/Resume Game
+			 * don't overlap this position, so nothing else will paint
+			 * over it. */
+			Screen oldScreenID2 = GFX_Screen_SetActive(SCREEN_1);
+			GUI_DrawFilledRectangle(wToggle->offsetX - 1, wToggle->offsetY - 1,
+			                         wToggle->offsetX + wToggle->width, wToggle->offsetY + wToggle->height, 116);
+			GFX_Screen_SetActive(oldScreenID2);
+
+			GUI_Mouse_Hide_Safe();
+			GFX_Screen_Copy2(wToggle->offsetX - 1, wToggle->offsetY - 1, wToggle->offsetX - 1, wToggle->offsetY - 1,
+			                  wToggle->width + 2, wToggle->height + 2, SCREEN_1, SCREEN_0, false);
+			GUI_Mouse_Show_Safe();
+
+			free(wToggle);
+			wToggle = NULL;
+		}
+	}
 
 	w = GUI_HallOfFame_CreateButtons(data);
 
@@ -4736,11 +5098,16 @@ uint16 GUI_HallOfFame_DrawData(HallOfFameStruct *data, bool show)
 	uint16 offsetY;
 	uint16 scoreX;
 	uint16 battleX;
+	uint16 nameX;
+	uint16 ordinalX;
 	uint8 i;
+	bool rtl;
 
 	oldScreenID = GFX_Screen_SetActive(SCREEN_1);
 	GUI_DrawFilledRectangle(8, 80, 311, 178, 116);
 	GUI_DrawText_Wrapper(NULL, 0, 0, 0, 0, 0x22);
+
+	rtl = GUI_IsRTLLanguage();
 
 	battleString = String_Get_ByIndex(STR_BATTLE);
 	scoreString = String_Get_ByIndex(STR_SCORE);
@@ -4749,9 +5116,27 @@ uint16 GUI_HallOfFame_DrawData(HallOfFameStruct *data, bool show)
 	battleX = scoreX - Font_GetStringWidth(scoreString) / 2 - 8 - Font_GetStringWidth(battleString) / 2;
 	offsetY = 80;
 
-	GUI_DrawText_Wrapper(String_Get_ByIndex(STR_NAME_AND_RANK), 32, offsetY, 8, 0, 0x22);
-	GUI_DrawText_Wrapper(battleString, battleX, offsetY, 8, 0, 0x122);
-	GUI_DrawText_Wrapper(scoreString, scoreX, offsetY, 8, 0, 0x122);
+	/* For Hebrew, the whole row is mirrored left-right (score/battle/name/
+	 * ordinal, in that screen order) rather than translating each string
+	 * in place, since the list otherwise still reads name-first from the
+	 * left like English. `320 - x` reflects a point around the table's
+	 * own bounds (x=8..311, i.e. this is a mirror of the table, not
+	 * quite the true 320px screen center -- picked so the name column's
+	 * mirrored edge, 320-32=288, lands on a multiple of 8, since that
+	 * edge also anchors GUI_EditBox()'s WidgetProperties.xBase/width,
+	 * which are in 8px units); flipping a left-aligned draw to
+	 * right-aligned (and vice versa) at the mirrored point reproduces
+	 * the same spacing as a true reflection, since GUI_DrawText_Wrapper's
+	 * own align-right flag (0x0200) is exactly "anchor - stringWidth" --
+	 * center-aligned elements (battle/score) only need the coordinate
+	 * mirrored, not the alignment, since a centered element is its own
+	 * mirror image. */
+	nameX = rtl ? (320 - 32) : 32;
+	ordinalX = rtl ? (320 - 24) : 24;
+
+	GUI_DrawText_Wrapper(String_Get_ByIndex(STR_NAME_AND_RANK), nameX, offsetY, 8, 0, rtl ? 0x222 : 0x22);
+	GUI_DrawText_Wrapper(battleString, rtl ? (320 - battleX) : battleX, offsetY, 8, 0, 0x122);
+	GUI_DrawText_Wrapper(scoreString, rtl ? (320 - scoreX) : scoreX, offsetY, 8, 0, 0x122);
 
 	offsetY = 90;
 	for (i = 0; i < 8; i++, offsetY += 11) {
@@ -4776,14 +5161,19 @@ uint16 GUI_HallOfFame_DrawData(HallOfFameStruct *data, bool show)
 		snprintf(buffer, sizeof(buffer), "%s, %s %s", data[i].name, p1, p2);
 
 		if (*data[i].name == '\0') {
+			/* A pure distance, so the mirror doesn't change its value --
+			 * see GUI_HallOfFame_Show()'s use of this for the inline
+			 * name-entry editbox's width, both directions. */
 			width = battleX - 36 - Font_GetStringWidth(buffer);
 		} else {
-			GUI_DrawText_Wrapper(buffer, 32, offsetY, 15, 0, 0x22);
+			GUI_DrawText_Wrapper(buffer, nameX, offsetY, 15, 0, rtl ? 0x222 : 0x22);
 		}
 
-		GUI_DrawText_Wrapper("%u.", 24, offsetY, 15, 0, 0x222, i + 1);
-		GUI_DrawText_Wrapper("%u", battleX, offsetY, 15, 0, 0x122, data[i].campaignID);
-		GUI_DrawText_Wrapper("%u", scoreX, offsetY, 15, 0, 0x122, data[i].score);
+		/* ".%u" for Hebrew, not "%u.": the dot reads to the left of the
+		 * digit in an RTL ordinal, not the right. */
+		GUI_DrawText_Wrapper(rtl ? ".%u" : "%u.", ordinalX, offsetY, 15, 0, rtl ? 0x22 : 0x222, i + 1);
+		GUI_DrawText_Wrapper("%u", rtl ? (320 - battleX) : battleX, offsetY, 15, 0, 0x122, data[i].campaignID);
+		GUI_DrawText_Wrapper("%u", rtl ? (320 - scoreX) : scoreX, offsetY, 15, 0, 0x122, data[i].score);
 	}
 
 	if (show) {

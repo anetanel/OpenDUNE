@@ -415,3 +415,22 @@ void * Video_GetFrameBuffer(uint16 size)
 	(void)size;
 	return s_frame_buffer;
 }
+
+uint8 Video_GetHebrewTextInput(void)
+{
+	/* No Hebrew-keyboard toggle wired up here. */
+	return 0;
+}
+
+void Video_ClearHebrewTextInput(void)
+{
+}
+
+bool Video_IsHebrewKeyboardMode(void)
+{
+	return false;
+}
+
+void Video_ToggleHebrewKeyboardMode(void)
+{
+}

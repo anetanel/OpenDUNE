@@ -297,7 +297,7 @@ WindowDesc g_savegameNameWindowDesc = {
 	/* index       */ 14,
 	/* stringID    */ STR_ENTER_A_DESCRIPTION_OF_YOUR_SAVED_GAME,
 	/* addArrows   */ false,
-	/* widgetCount */ 2,
+	/* widgetCount */ 3,
 	{ /* widgets */
 		{ /* 0 */
 		/* stringID      */ STR_SAVE,
@@ -318,11 +318,11 @@ WindowDesc g_savegameNameWindowDesc = {
 		/* shortcut2     */ 110,
 		},
 		{ /* 2 */
-		/* stringID      */ STR_NULL,
-		/* offsetX       */ 0,
-		/* offsetY       */ 0,
-		/* width         */ 0,
-		/* height        */ 0,
+		/* stringID      */ -15, /* Hebrew-keyboard toggle label -- see GUI_String_Get_ByIndex(). */
+		/* offsetX       */ 264, /* Top right corner, aligned with the title row (offsetX/width both */
+		/* offsetY       */ 3,   /* multiples of 8: GUI_Widget_TextButton_Draw()'s screen-copy blits */
+		/* width         */ 16,  /* in 8px-aligned units). */
+		/* height        */ 16,
 		/* labelStringID */ STR_NULL,
 		/* shortcut2     */ 0,
 		},

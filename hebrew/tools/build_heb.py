@@ -113,6 +113,16 @@ STRING_JOBS = {
 # picks "INTRO1H.WSA" over the stock "INTRO1.WSA" only when
 # g_config.language == LANGUAGE_HEBREW and the file exists.
 #
+# mapmach.heb.cps -> MAPMACHH.CPS is the same kind of special case: the
+# strategic-map frame graphic. GUI_StrategicMap_Show() (src/gui/gui.c)
+# hardcodes the base "MAPMACH.CPS" lookup with no per-language suffix
+# (other languages instead patch a small localized region already baked
+# into the *same* file in place -- see the LANGUAGE_GERMAN/LANGUAGE_FRENCH
+# GUI_Screen_Copy() branches right after it -- there's no such spare
+# Hebrew region to select), so it's installed under its own non-clobbering
+# name and picked up only when g_config.language == LANGUAGE_HEBREW and
+# the file exists.
+#
 # Note: BLDING.VOC/DYNASTY.VOC (the "battle for Arrakis" title-correction
 # audio -- see hebrew/README.md) are NOT installed as loose ASSET_JOBS
 # entries like INTRO1.WSA. The loose-file-overrides-PAK lookup that works
@@ -129,11 +139,13 @@ ASSET_JOBS = {
     "and.heb.cps": ("graphics", "AND.HEB"),
     "bttn.heb.shp": ("graphics", "BTTN.HEB"),
     "choam.heb.shp": ("graphics", "CHOAM.HEB"),
+    "fame.heb.cps": ("graphics", "FAME.HEB"),
     "herald.heb.cps": ("graphics", "HERALD.HEB"),
     "mentat.heb.shp": ("graphics", "MENTAT.HEB"),
     "misc.heb.cps": ("graphics", "MISC.HEB"),
     "title.heb.cps": ("graphics", "TITLE.HEB"),
     "intro1.wsa": (".", "INTRO1H.WSA"),
+    "mapmach.heb.cps": ("graphics", "MAPMACHH.CPS"),
 }
 
 

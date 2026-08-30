@@ -34,6 +34,7 @@
 #include "../tile.h"
 #include "../timer.h"
 #include "../unit.h"
+#include "../video/video.h"
 
 
 char g_savegameDesc[5][51];                                 /*!< Array of savegame descriptions for the SaveLoad window. */
@@ -896,24 +897,32 @@ static bool GUI_Widget_Savegame_Click(uint16 index)
 
 		if ((eventKey & 0x8000) == 0) continue;
 
-		GUI_Widget_MakeNormal(GUI_Widget_Get_ByIndex(w, eventKey & 0x7FFF), false);
+		{
+			Widget *clicked = GUI_Widget_Get_ByIndex(w, eventKey & 0x7FFF);
+			GUI_Widget_MakeNormal(clicked, false);
 
-		switch (eventKey & 0x7FFF) {
-			case 0x1E:	/* RETURN / Save Button */
-				if (*saveDesc == 0) break;
+			switch (eventKey & 0x7FFF) {
+				case 0x1E:	/* RETURN / Save Button */
+					if (*saveDesc == 0) break;
 
-				SaveGame_SaveFile(GenerateSavegameFilename(s_savegameIndexBase - index), saveDesc);
-				loop = false;
-				ret = true;
-				break;
+					SaveGame_SaveFile(GenerateSavegameFilename(s_savegameIndexBase - index), saveDesc);
+					loop = false;
+					ret = true;
+					break;
 
-			case 0x1F:	/* ESCAPE / Cancel Button */
-				loop = false;
-				ret = false;
-				FillSavegameDesc(true);
-				break;
+				case 0x1F:	/* ESCAPE / Cancel Button */
+					loop = false;
+					ret = false;
+					FillSavegameDesc(true);
+					break;
 
-			default: break;
+				case 0x20:	/* Hebrew-keyboard toggle button */
+					Video_ToggleHebrewKeyboardMode();
+					GUI_Widget_Draw(clicked);
+					break;
+
+				default: break;
+			}
 		}
 	}
 
@@ -1074,6 +1083,20 @@ bool GUI_Widget_HOF_Resume_Click(Widget *w)
 	VARIABLE_NOT_USED(w);
 
 	g_doQuitHOF = true;
+
+	return true;
+}
+
+/**
+ * Handles Click event for the Hall of Fame's Hebrew-keyboard toggle button.
+ *
+ * @return True, always.
+ */
+bool GUI_Widget_HOF_HebrewToggle_Click(Widget *w)
+{
+	Video_ToggleHebrewKeyboardMode();
+	GUI_Widget_MakeNormal(w, false);
+	GUI_Widget_Draw(w);
 
 	return true;
 }

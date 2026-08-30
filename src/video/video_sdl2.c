@@ -9,12 +9,14 @@
 
 #include "video.h"
 
+#include "../config.h"
 #include "../file.h"
 #include "../gfx.h"
 #include "../input/input.h"
 #include "../input/mouse.h"
 #include "../opendune.h"
 #include "../inifile.h"
+#include "../string.h"
 
 #include "video_fps.h"
 #include "scalebit.h"
@@ -72,6 +74,42 @@ static const uint8 s_SDL_keymap[] = {
         0x19, 0x10, 0x13, 0x1F, 0x14, 0x16, 0x2F, 0x11, 0x2D, 0x15, 0x2C,    0,    0,    0,    0, 0x53, /*  0x70 -  0x7F */
 };
 
+/* Maps SDL_Scancode (physical key position, always layout-independent) to the
+ * DOS/AT scancode for the printable keys. Unlike s_SDL_keymap above, this is
+ * unaffected by the active keyboard layout -- e.g. under a non-US layout, the
+ * physical 'A' key reports a keysym for whatever letter that layout puts
+ * there instead of 'a', but it still reports SDL_SCANCODE_A, so this table is
+ * what lets typing work regardless of the OS's active layout. Indexed by
+ * SDL_Scancode. */
+static const uint8 s_SDL_scancodemap[] = {
+	   0,    0,    0,    0, 0x1E, 0x30, 0x2E, 0x20, 0x12, 0x21, 0x22, 0x23, 0x17, 0x24, 0x25, 0x26, /*  0x00 -  0x0F */
+	0x32, 0x31, 0x18, 0x19, 0x10, 0x13, 0x1F, 0x14, 0x16, 0x2F, 0x11, 0x2D, 0x15, 0x2C, 0x02, 0x03, /*  0x10 -  0x1F */
+	0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x1C, 0x01, 0x0E, 0x0F, 0x39, 0x0C, 0x0D, 0x1A, /*  0x20 -  0x2F */
+	0x1B, 0x2B,    0, 0x27, 0x28, 0x29, 0x33, 0x34, 0x35,                                           /*  0x30 -  0x38 */
+};
+
+/* Maps SDL_Scancode to the cp862 Hebrew glyph byte (0x80-0x9A -- see
+ * hebrew/tools/eng.py) a physical key produces on the standard Israeli
+ * keyboard layout (SI 1452), used only while the in-game Hebrew-keyboard
+ * toggle (Right-Ctrl) is on -- see Video_GetHebrewTextInput(). This exists
+ * because relying on the OS's own active layout turned out to be
+ * unreliable in practice: switching layout after the game window is
+ * already focused doesn't reliably propagate to the app on at least one
+ * real desktop environment tested (Cinnamon/X11) -- confirmed via `xev`
+ * that X11 itself delivers the correct Hebrew keysym unfiltered, so the
+ * gap is in the OS/desktop's per-window layout hand-off, not something
+ * fixable from inside this codebase. A fixed table keyed by physical
+ * scancode sidesteps that entirely, matching how a real DOS-era Hebrew
+ * keyboard driver would have worked. 0 means "not a letter on this
+ * layout" -- keep using the plain English/scancode-based mapping above for
+ * digits, punctuation, space, etc. Indexed by SDL_Scancode. */
+static const uint8 s_SDL_hebrewLetterMap[] = {
+	   0,    0,    0,    0, 0x99, 0x90, 0x81, 0x82, 0x97, 0x8B, 0x92, 0x89, 0x8F, 0x87, 0x8C, 0x8A, /*  0x00 -  0x0F : - - - - A B C D E F G H I J K L */
+	0x96, 0x8E, 0x8D, 0x94,    0, 0x98, 0x83, 0x80, 0x85, 0x84,    0, 0x91, 0x88, 0x86,    0,    0, /*  0x10 -  0x1F : M N O P Q R S T U V W X Y Z 1 2 */
+	   0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0, /*  0x20 -  0x2F : 3-0 RETURN ESCAPE BACKSPACE TAB SPACE MINUS EQUALS LEFTBRACKET */
+	   0,    0,    0, 0x93,    0,    0, 0x9A, 0x95,    0,                                           /*  0x30 -  0x38 : RIGHTBRACKET BACKSLASH NONUSHASH SEMICOLON APOSTROPHE GRAVE COMMA PERIOD SLASH */
+};
+
 /* see https://wiki.libsdl.org/SDLKeycodeLookup */
 static const uint8 s_SDL_hikeymap[] = {
 	0x3A,	/* 1073741881 0x40000039 SDLK_CAPSLOCK */
@@ -118,6 +156,67 @@ static const uint8 s_SDL_hikeymap[] = {
 	0x52,	/* 1073741922 0x40000062 SDLK_KP_0 */
 	0x53,	/* 1073741923 0x40000063 SDLK_KP_PERIOD */
 };
+
+/* Whether the in-game Hebrew-keyboard toggle (Right-Ctrl) is currently on.
+ * Right-Ctrl is fully repurposed as this toggle -- it no longer functions
+ * as a modifier key in-game -- the same way F8/F11 are already fully
+ * repurposed by this file (FPS display / fullscreen) rather than reaching
+ * the game at all. */
+static bool s_hebrewKeyboardMode = false;
+
+/* FIFO of cp862 Hebrew bytes, one slot pushed per SDL_KEYDOWN (0 if that
+ * keypress wasn't a Hebrew letter under the current s_hebrewKeyboardMode
+ * state) -- see Video_GetHebrewTextInput(). A single latched "most recent"
+ * value is NOT enough here: GUI_EditBox() dequeues from a separate
+ * input-history queue (input/input.c) that can lag behind SDL's event
+ * production, so if a second key is pressed before the first is consumed,
+ * a single latch would already hold *that* key's value by the time the
+ * first key is finally read -- e.g. typing a Hebrew letter then quickly
+ * hitting space would apply the letter to the space instead. Pushing one
+ * entry per keydown (0 if not Hebrew) and popping in the same order keeps
+ * them correctly paired regardless of how far GUI_EditBox()'s consumption
+ * lags behind. */
+#define HEBREW_QUEUE_SIZE 32
+static uint8 s_hebrewQueue[HEBREW_QUEUE_SIZE];
+static uint8 s_hebrewQueueHead = 0;
+static uint8 s_hebrewQueueTail = 0;
+
+static void Video_HebrewQueue_Push(uint8 value)
+{
+	uint8 next = (s_hebrewQueueTail + 1) % HEBREW_QUEUE_SIZE;
+	if (next == s_hebrewQueueHead) return;	/* full; drop rather than clobber older entries */
+	s_hebrewQueue[s_hebrewQueueTail] = value;
+	s_hebrewQueueTail = next;
+}
+
+/** See video.h. */
+uint8 Video_GetHebrewTextInput(void)
+{
+	uint8 result;
+
+	if (s_hebrewQueueHead == s_hebrewQueueTail) return 0;
+	result = s_hebrewQueue[s_hebrewQueueHead];
+	s_hebrewQueueHead = (s_hebrewQueueHead + 1) % HEBREW_QUEUE_SIZE;
+	return result;
+}
+
+/** See video.h. */
+void Video_ClearHebrewTextInput(void)
+{
+	s_hebrewQueueHead = s_hebrewQueueTail;
+}
+
+/** See video.h. */
+bool Video_IsHebrewKeyboardMode(void)
+{
+	return s_hebrewKeyboardMode;
+}
+
+/** See video.h. */
+void Video_ToggleHebrewKeyboardMode(void)
+{
+	s_hebrewKeyboardMode = !s_hebrewKeyboardMode;
+}
 
 /**
  * Callback wrapper for mouse actions.
@@ -308,6 +407,13 @@ bool Video_Init(int screen_magnification, VideoScaleFilter filter)
 	if (filter == FILTER_HQX) {
 		hqxInit();
 	}
+
+	/* Default to Hebrew keyboard input for the Hebrew version -- g_config
+	 * is already loaded by the time Video_Init() runs (Config_Read()
+	 * happens before OpenDune_Init(), which calls this). Still just the
+	 * initial state: Right-Ctrl (or the save/load dialog's toggle button)
+	 * flips it either way from here. */
+	s_hebrewKeyboardMode = (g_config.language == LANGUAGE_HEBREW);
 
 	err = SDL_Init(SDL_INIT_VIDEO);
 
@@ -675,21 +781,30 @@ void Video_Tick(void)
 				} else if (sym >= SDLK_CAPSLOCK) {
 					sym -= SDLK_CAPSLOCK;
 					if (sym < sizeof(s_SDL_hikeymap)) code = s_SDL_hikeymap[sym];
+				} else if (event.key.keysym.scancode < sizeof(s_SDL_scancodemap)) {
+					/* Layout-independent: correct even when the OS's active
+					 * keyboard layout makes keysym report a non-Latin
+					 * character. */
+					code = s_SDL_scancodemap[event.key.keysym.scancode];
 				} else {
 					if (sym < sizeof(s_SDL_keymap)) code = s_SDL_keymap[sym];
 				}
 				if (code == 0) {
-					if (event.key.keysym.scancode == SDL_SCANCODE_GRAVE) {
-						code = 0x29;
-					} else if (event.key.keysym.scancode == SDL_SCANCODE_APOSTROPHE) {
-						code = 0x28;
-					} else {
-						Warning("Unhandled key scancode=0x%X sym=0x%X %s\n",
-						        event.key.keysym.scancode, event.key.keysym.sym,
-						        SDL_GetKeyName(event.key.keysym.sym));
-						continue;
-					}
+					Warning("Unhandled key scancode=0x%X sym=0x%X %s\n",
+					        event.key.keysym.scancode, event.key.keysym.sym,
+					        SDL_GetKeyName(event.key.keysym.sym));
+					continue;
 				}
+
+				if (!keyup) {
+					uint8 hebrewByte = 0;
+
+					if (s_hebrewKeyboardMode && event.key.keysym.scancode < sizeof(s_SDL_hebrewLetterMap)) {
+						hebrewByte = s_SDL_hebrewLetterMap[event.key.keysym.scancode];
+					}
+					Video_HebrewQueue_Push(hebrewByte);
+				}
+
 				Video_Key_Callback(code | (keyup ? 0x80 : 0x0));
 			} break;
 

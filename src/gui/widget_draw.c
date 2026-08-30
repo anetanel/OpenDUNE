@@ -54,7 +54,10 @@ void GUI_Widget_TextButton_Draw(Widget *w)
 
 	GUI_Widget_DrawBorder(19, state, 1);
 
-	if (w->stringID == STR_CANCEL || w->stringID == STR_PREVIOUS || w->stringID == STR_YES || w->stringID == STR_NO) {
+	if (w->stringID == (uint16)-15 /* Hebrew-keyboard toggle -- see GUI_String_Get_ByIndex() */) {
+		GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(w->stringID), positionX + (width / 2), positionY + 3, colour, 0, 0x122);
+	} else if (w->stringID == STR_CANCEL || w->stringID == STR_PREVIOUS || w->stringID == STR_YES || w->stringID == STR_NO
+	           || w->stringID == STR_SAVE /* only used here; matches Cancel's centering in this same dialog */) {
 		GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(w->stringID), positionX + (width / 2), positionY + 2, colour, 0, 0x122);
 	} else {
 		GUI_DrawText_WrapperBox(GUI_String_Get_ByIndex(w->stringID), positionX + 3, positionY + 2, width - 6, colour, 0, 0x22);
