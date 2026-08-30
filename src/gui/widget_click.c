@@ -13,6 +13,7 @@
 #include "gui.h"
 #include "widget.h"
 #include "../os/error.h"
+#include "../audio/adl_music.h"
 #include "../audio/driver.h"
 #include "../audio/sound.h"
 #include "../config.h"
@@ -33,6 +34,7 @@
 #include "../table/strings.h"
 #include "../tile.h"
 #include "../timer.h"
+#include "../tools.h"
 #include "../unit.h"
 #include "../video/video.h"
 
@@ -603,7 +605,12 @@ static void GUI_Widget_GameControls_Click(Widget *w)
 			switch ((key & 0x7FFF) - 0x1E) {
 				case 0:
 					g_gameConfig.music ^= 0x1;
-					if (g_gameConfig.music == 0) Driver_Music_Stop();
+					if (g_gameConfig.music == 0) {
+						Driver_Music_Stop();
+						ADLMusic_Stop();
+					} else {
+						Music_Play(Tools_RandomLCG_Range(0, 8) + 8);
+					}
 					break;
 
 				case 1:

@@ -8,7 +8,6 @@
 
 #include "config.h"
 
-#include "audio/sound.h"
 #include "file.h"
 #include "string.h"
 
@@ -146,6 +145,4 @@ void GameOptions_Save(void)
 	File_Write_LE16(index, g_gameConfig.autoScroll);
 
 	File_Close(index);
-
-	if (g_gameConfig.music == 0) Music_Play(0);
 }

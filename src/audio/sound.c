@@ -115,6 +115,7 @@ void Music_Play(uint16 musicID)
 		s_currentMusic = g_table_musics[musicID].string;
 
 		Driver_Music_Stop();
+		if (adlib) ADLMusic_Stop();
 		Driver_Voice_Play(NULL, 0xFF);
 		Driver_Music_LoadFile(NULL);
 		Driver_Sound_LoadFile(NULL);

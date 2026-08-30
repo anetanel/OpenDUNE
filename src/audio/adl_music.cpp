@@ -18,6 +18,7 @@
 
 extern "C" {
 #include "types.h"
+#include "../config.h"
 #include "../os/error.h"
 #include "../file.h"
 #include "../inifile.h"
@@ -118,6 +119,10 @@ void ADLMusic_Play(uint16 musicID)
 		ADLMusic_Stop();
 		return;
 	}
+	/* Mirror Driver_Music_Play()'s "music off" guard (sound.c) -- without
+	 * this, disabling music has no effect on the AdLib path. */
+	if (g_gameConfig.music == 0) return;
+
 	if (!ADLMusic_InitOutput()) return;
 
 	snprintf(filename, sizeof(filename), "%s.ADL", g_table_musics[musicID].string);
