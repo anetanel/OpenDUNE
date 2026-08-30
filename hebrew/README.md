@@ -82,6 +82,33 @@ project), which already had a working Hebrew translation:
   (`src/string.c`) only loads `ENGINE.<suffix>` if it exists for the
   active language, falling back to the caller's English literal
   otherwise, so this is safe for every language, not just Hebrew.
+- `translations/regions.json` — source for the strategic-map narration
+  text shown between missions (e.g. "The Atreides claimed strategic
+  regions."). Lives in `REGIONA.INI`/`REGIONH.INI`/`REGIONO.INI` (one per
+  starting house), plain-text `.INI` files packed inside `SCENARIO.PAK`,
+  keyed per scenario group as `<LANGSUFFIX>TXT<region>` (`ENGTXT13`,
+  `FRETXT13`, `GERTXT13`, ...) — see `GUI_StrategicMap_ShowProgression()`
+  (`src/gui/gui.c`). Unlike every other string table here, this isn't a
+  `String_Load()`-managed file at all: `Sprites_CPS_LoadRegionClick()`
+  (`src/sprites.c`) reads it straight off disk via `File_ReadFile()` into
+  `g_fileRegionINI`, which does go through the normal loose-file-overrides-
+  PAK lookup — so, unlike `INTRO1.WSA`/`MAPMACH.CPS`, this needs no new
+  filename convention or C code change, just a loose file that shadows the
+  copy inside `SCENARIO.PAK`. No `HEBTXT*` keys exist in the original, so
+  `Ini_GetString()` returns `NULL` for Hebrew and the affected narration
+  lines were silently skipped rather than erroring — that's the bug this
+  closes. `tools/region_ini.py` (the codec) + `tools/build_regions.py`
+  (the entry point) are separate from `build_heb.py`/`STRING_JOBS` for the
+  same reason as `build_intro1_animation.py`/`pack_introvoc.py`: building
+  requires the pristine original `REGION*.INI` files as input (copyrighted,
+  not committed), expected at
+  `hebrew/extracted/dune2_eu_1.07/REGION{A,H,O}.INI` (extract with
+  `dunepak unpak bin/data/SCENARIO.PAK .` against your own legally-owned
+  copy of the game). `region_ini.py` splices new `HEBTXTn = ...` lines in
+  next to each file's existing `ENGTXTn` lines without touching anything
+  else byte-for-byte (French/German text included) — run
+  `python3 hebrew/tools/build_regions.py` after editing this JSON, it
+  writes straight to `bin/data/REGION{A,H,O}.INI`.
 - `tools/build_heb.py` — run this after editing any translation JSON, then
   just relaunch the game (no recompile needed). Encodes the JSON into
   `DUNE.HEB`, `MESSAGE.HEB`, `INTRO.HEB`, `TEXTH.HEB`, `TEXTA.HEB`,

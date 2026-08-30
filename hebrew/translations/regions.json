@@ -1,0 +1,51 @@
+{
+  "REGIONA.INI": [
+    {"group": "GROUP1", "key": 13, "en": "The Atreides claimed strategic regions.", "he": "אטריידיס תפסו אזורים אסטרטגיים."},
+    {"group": "GROUP1", "key": 19, "en": "House Ordos moved in on the east.", "he": "בית אורדוס התקדם במזרח."},
+    {"group": "GROUP1", "key": 6, "en": "The Harkonnen invaded from the north.", "he": "הארקונן פלשו מהצפון."},
+    {"group": "GROUP2", "key": 8, "en": "Atreides captured more territory...", "he": "אטריידיס תפסו עוד שטח..."},
+    {"group": "GROUP2", "key": 23, "en": "...and drove the Ordos out.", "he": "...וגירשו את האורדוס."},
+    {"group": "GROUP2", "key": 12, "en": "Ordos headed for the Harkonnen.", "he": "אורדוס פנו לעבר הארקונן."},
+    {"group": "GROUP2", "key": 1, "en": "The Harkonnen expanded their borders.", "he": "הארקונן הרחיבו את גבולותיהם."},
+    {"group": "GROUP3", "key": 1, "en": "The Harkonnen borders were weak...", "he": "גבולות הארקונן היו חלשים..."},
+    {"group": "GROUP3", "key": 16, "en": "...except for one outpost.", "he": "...פרט למאחז אחד."},
+    {"group": "GROUP4", "key": 4, "en": "The Harkonnen continued to retreat...", "he": "הארקונן המשיכו לסגת..."},
+    {"group": "GROUP4", "key": 11, "en": "...into the territory of the Ordos.", "he": "...לתוך שטחם של האורדוס."},
+    {"group": "GROUP5", "key": 17, "en": "All forces were aimed at the Ordos.", "he": "כל הכוחות כוונו כלפי האורדוס."},
+    {"group": "GROUP6", "key": 10, "en": "Atreides pushed the Ordos back further.", "he": "אטריידיס דחקו את האורדוס אחורה עוד יותר."},
+    {"group": "GROUP7", "key": 26, "en": "The Ordos were nearly wiped out.", "he": "האורדוס כמעט הושמדו כליל."},
+    {"group": "GROUP8", "key": 5, "en": "Only the Emperor's forces remain.", "he": "רק כוחותיו של הקיסר נותרו."}
+  ],
+  "REGIONH.INI": [
+    {"group": "GROUP1", "key": 6, "en": "Harkonnen arrived first.", "he": "הארקונן הגיעו ראשונים."},
+    {"group": "GROUP1", "key": 13, "en": "The weak Atreides will be easy.", "he": "אטריידיס החלשים יהיו קלים."},
+    {"group": "GROUP1", "key": 19, "en": "The Ordos are getting closer.", "he": "האורדוס מתקרבים."},
+    {"group": "GROUP2", "key": 2, "en": "Harkonnen spread out strong forces.", "he": "הארקונן פרסו כוחות חזקים."},
+    {"group": "GROUP2", "key": 15, "en": "Atreides went after the Ordos.", "he": "אטריידיס יצאו בעקבות האורדוס."},
+    {"group": "GROUP2", "key": 17, "en": "The Ordos stole even more land.", "he": "האורדוס גזלו אדמות נוספות."},
+    {"group": "GROUP3", "key": 17, "en": "House Atreides did not stand a chance.", "he": "לבית אטריידיס לא היה סיכוי."},
+    {"group": "GROUP3", "key": 24, "en": "The Atreides and Ordos traded land.", "he": "אטריידיס והאורדוס החליפו שטחים."},
+    {"group": "GROUP4", "key": 18, "en": "An Ordos outpost was surrounded.", "he": "מאחז של אורדוס הוקף."},
+    {"group": "GROUP4", "key": 24, "en": "The Ordos broke through the Atreides.", "he": "האורדוס פרצו את קווי אטריידיס."},
+    {"group": "GROUP5", "key": 7, "en": "Soon House Atreides will be extinct.", "he": "בקרוב בית אטריידיס ייכחד."},
+    {"group": "GROUP6", "key": 24, "en": "The Harkonnen crushed most of the Ordos.", "he": "הארקונן מחצו את רוב כוחות האורדוס."},
+    {"group": "GROUP6", "key": 23, "en": "Atreides reclaimed its land.", "he": "אטריידיס השיבו לעצמם את אדמותיהם."},
+    {"group": "GROUP7", "key": 20, "en": "The Harkonnen devastated the Atreides.", "he": "הארקונן הכריעו את אטריידיס."},
+    {"group": "GROUP8", "key": 16, "en": "Only House Harkonnen will prevail.", "he": "רק בית הארקונן ישרוד."}
+  ],
+  "REGIONO.INI": [
+    {"group": "GROUP1", "key": 19, "en": "Ordos took the best land.", "he": "אורדוס תפסו את האדמות הטובות ביותר."},
+    {"group": "GROUP1", "key": 13, "en": "House Atreides is nearby.", "he": "בית אטריידיס נמצא בקרבת מקום."},
+    {"group": "GROUP1", "key": 6, "en": "Harkonnen are a threat.", "he": "הארקונן מהווים איום."},
+    {"group": "GROUP2", "key": 15, "en": "Ordos advanced without a challenge.", "he": "אורדוס התקדמו ללא כל התנגדות."},
+    {"group": "GROUP2", "key": 11, "en": "The Harkonnen drew closer.", "he": "הארקונן התקרבו."},
+    {"group": "GROUP2", "key": 1, "en": "The Atreides spread too thin.", "he": "אטריידיס פרסו את כוחותיהם באופן דליל מדי."},
+    {"group": "GROUP3", "key": 8, "en": "All attacks were directed at the Atreides.", "he": "כל ההתקפות כוונו כלפי אטריידיס."},
+    {"group": "GROUP4", "key": 21, "en": "Ordos took advantage of the Atreides...", "he": "אורדוס ניצלו את אטריידיס..."},
+    {"group": "GROUP4", "key": 2, "en": "...while they were fighting the Harkonnen.", "he": "...בזמן שנלחמו בהארקונן."},
+    {"group": "GROUP5", "key": 18, "en": "The Harkonnen had to be turned back.", "he": "היה צורך להדוף את ההארקונן."},
+    {"group": "GROUP6", "key": 7, "en": "Ordos killed off most of the Atreides.", "he": "אורדוס חיסלו את רוב כוחות אטריידיס."},
+    {"group": "GROUP7", "key": 6, "en": "Ordos conquered more Harkonnen land.", "he": "אורדוס כבשו אדמות נוספות של הארקונן."},
+    {"group": "GROUP8", "key": 3, "en": "Soon Ordos will control all of Dune.", "he": "בקרוב אורדוס ישלטו בכל חולית."}
+  ]
+}
