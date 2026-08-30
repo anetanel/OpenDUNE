@@ -43,6 +43,7 @@ extern void Voice_Play(int16 voiceID);
 extern void Voice_LoadVoices(uint16 voiceSet);
 extern void Voice_UnloadVoices(void);
 
+extern void Sound_Play(int16 index, int16 volume);
 extern void Sound_StartSound(uint16 index);
 extern void Sound_Output_Feedback(uint16 index);
 extern bool Sound_StartSpeech(void);

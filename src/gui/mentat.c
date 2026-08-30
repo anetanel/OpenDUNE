@@ -392,7 +392,7 @@ bool GUI_Widget_Mentat_Click(Widget *w)
 
 	Timer_SetTimer(TIMER_GAME, true);
 
-	Driver_Sound_Play(1, 0xFF);
+	Sound_Play(1, 0xFF);
 
 	Sprites_LoadTiles();
 

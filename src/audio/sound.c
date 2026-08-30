@@ -80,21 +80,36 @@ static void Driver_Music_LoadFile(const char *musicName)
 }
 
 /**
+ * Plays a short sound effect (credit ticks, UI clicks, ...) by index into
+ * the currently loaded music file/resource -- routes to the AdLib engine
+ * under "adlib=1" instead of the MIDI/MPU driver, since AdLibMusic_Play()
+ * loads its own separate .ADL data rather than sharing content with
+ * Driver_Sound_LoadFile().
+ * @param index The sound effect index (same index space as Driver_Sound_Play()).
+ * @param volume The volume to play at.
+ */
+void Sound_Play(int16 index, int16 volume)
+{
+	if (ADLMusic_IsEnabled()) {
+		ADLMusic_PlaySoundEffect((uint16)index);
+		return;
+	}
+
+	Driver_Sound_Play(index, volume);
+}
+
+/**
  * Plays a music.
  * @param index The index of the music to play.
  */
 void Music_Play(uint16 musicID)
 {
 	static uint16 currentMusicID = 0;
+	const bool adlib = ADLMusic_IsEnabled();
 
 	if (musicID == 0xFFFF || musicID >= 38 || musicID == currentMusicID) return;
 
 	currentMusicID = musicID;
-
-	if (ADLMusic_IsEnabled()) {
-		ADLMusic_Play(musicID);
-		return;
-	}
 
 	if (g_table_musics[musicID].string != s_currentMusic) {
 		s_currentMusic = g_table_musics[musicID].string;
@@ -103,11 +118,15 @@ void Music_Play(uint16 musicID)
 		Driver_Voice_Play(NULL, 0xFF);
 		Driver_Music_LoadFile(NULL);
 		Driver_Sound_LoadFile(NULL);
-		Driver_Music_LoadFile(s_currentMusic);
+		if (!adlib) Driver_Music_LoadFile(s_currentMusic);
 		Driver_Sound_LoadFile(s_currentMusic);
 	}
 
-	Driver_Music_Play(g_table_musics[musicID].index, 0xFF);
+	if (adlib) {
+		ADLMusic_Play(musicID);
+	} else {
+		Driver_Music_Play(g_table_musics[musicID].index, 0xFF);
+	}
 }
 
 /**
@@ -161,7 +180,7 @@ void Voice_PlayAtTile(int16 voiceID, tile32 position)
 
 		Driver_Voice_Play(g_readBuffer, s_currentVoicePriority);
 	} else {
-		Driver_Sound_Play(voiceID, volume);
+		Sound_Play(voiceID, volume);
 	}
 }
 
@@ -207,7 +226,17 @@ void Voice_LoadVoices(uint16 voiceSet)
 		/* unload if necessary */
 		switch (g_table_voices[voice].string[0]) {
 			case '%':
-				if (g_config.language != LANGUAGE_ENGLISH || currentVoiceSet == voiceSet) {
+				/* French/German always substitute a fixed language letter
+				 * (see the loading loop below) so a cached '%'-voice is
+				 * still correct after a house change and can be kept.
+				 * Every other language (English, Italian, Spanish, Hebrew)
+				 * substitutes the *house*'s prefix char instead, so the
+				 * cached file must be dropped and reloaded whenever the
+				 * voiceSet's house actually changes -- otherwise a language
+				 * that skips this reload gets stuck replaying whichever
+				 * house's clip happened to load first, for the rest of the
+				 * session. */
+				if (g_config.language == LANGUAGE_FRENCH || g_config.language == LANGUAGE_GERMAN || currentVoiceSet == voiceSet) {
 					if (voiceSet != 0xFFFF && voiceSet != 0xFFFE) break;
 				}
 
@@ -389,7 +418,7 @@ void Sound_Output_Feedback(uint16 index)
 	}
 
 	if (g_enableVoices == 0 || g_gameConfig.sounds == 0) {
-		Driver_Sound_Play(g_feedback[index].soundId, 0xFF);
+		Sound_Play(g_feedback[index].soundId, 0xFF);
 
 		g_viewportMessageText = String_Get_ByIndex(g_feedback[index].messageId);
 
@@ -406,8 +435,14 @@ void Sound_Output_Feedback(uint16 index)
 	if (s_spokenWords[0] == 0xFFFF) {
 		uint8 i;
 
+		/* Hebrew has no localized voice recordings of its own -- it reuses
+		 * the original English clips, same as the real game did, so it
+		 * needs the full multi-part phrase from g_feedback[] rather than
+		 * the abbreviated g_translatedVoice[] entries (e.g. index 69 is
+		 * just "Harvester" instead of "Atreides Harvester Deployed"). */
 		for (i = 0; i < lengthof(s_spokenWords); i++) {
-			s_spokenWords[i] = (g_config.language == LANGUAGE_ENGLISH) ? g_feedback[index].voiceId[i] : g_translatedVoice[index][i];
+			s_spokenWords[i] = (g_config.language == LANGUAGE_ENGLISH || g_config.language == LANGUAGE_HEBREW)
+				? g_feedback[index].voiceId[i] : g_translatedVoice[index][i];
 		}
 	}
 

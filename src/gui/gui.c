@@ -2058,7 +2058,7 @@ void GUI_EndStats_Show(uint16 killedAllied, uint16 killedEnemy, uint16 destroyed
 
 				GFX_Screen_Copy2(blitX, posY, blitX, posY, 304, 7, SCREEN_1, SCREEN_0, false);
 
-				Driver_Sound_Play(52, 0xFF);
+				Sound_Play(52, 0xFF);
 
 				GUI_EndStats_Sleep(g_timerTimeout);
 			}
@@ -2068,7 +2068,7 @@ void GUI_EndStats_Show(uint16 killedAllied, uint16 killedEnemy, uint16 destroyed
 
 			GFX_Screen_Copy2(blitX, posY, blitX, posY, 304, 7, SCREEN_1, SCREEN_0, false);
 
-			Driver_Sound_Play(38, 0xFF);
+			Sound_Play(38, 0xFF);
 
 			GUI_EndStats_Sleep(12);
 		}
@@ -2531,7 +2531,7 @@ void GUI_DrawCredits(uint8 houseID, uint16 mode)
 	}
 
 	if (creditsDiff != 0 && (creditsAnimationOffset < -7 || creditsAnimationOffset > 7)) {
-		Driver_Sound_Play(creditsDiff > 0 ? 52 : 53, 0xFF);
+		Sound_Play(creditsDiff > 0 ? 52 : 53, 0xFF);
 	}
 
 	if (creditsAnimationOffset < 0 && creditsAnimation == 0) creditsAnimationOffset = 0;

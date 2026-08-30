@@ -179,7 +179,7 @@ bool GUI_Widget_Viewport_Click(Widget *w)
 		}
 
 		if (g_enableVoices == 0) {
-			Driver_Sound_Play(36, 0xFF);
+			Sound_Play(36, 0xFF);
 		} else if (g_table_unitInfo[u->o.type].movementType == MOVEMENT_FOOT) {
 			Sound_StartSound(g_table_actionInfo[action].soundID);
 		} else {

@@ -21,6 +21,11 @@ void ADLMusic_Stop(void)
 {
 }
 
+void ADLMusic_PlaySoundEffect(uint16 index)
+{
+	VARIABLE_NOT_USED(index);
+}
+
 bool ADLMusic_IsPlaying(void)
 {
 	return false;

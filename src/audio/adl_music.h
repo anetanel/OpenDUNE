@@ -23,6 +23,13 @@ extern void ADLMusic_Stop(void);
 extern bool ADLMusic_IsPlaying(void);
 extern void ADLMusic_Uninit(void);
 
+/** Play a short sound effect (the same index space as Driver_Sound_Play(),
+ * e.g. the credit-tick clicks) out of whichever .ADL file is currently
+ * loaded for music -- mirrors how Driver_Sound_Play() pulls SFX out of
+ * whichever XMI/C55 file is the current music on the MIDI path. No-op if
+ * no music has been loaded yet. */
+extern void ADLMusic_PlaySoundEffect(uint16 index);
+
 #ifdef __cplusplus
 }
 #endif

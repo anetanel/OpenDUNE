@@ -144,6 +144,13 @@ void ADLMusic_Stop(void)
 	if (s_adlib != NULL) s_adlib->haltTrack();
 }
 
+void ADLMusic_PlaySoundEffect(uint16 index)
+{
+	if (s_adlib == NULL || index >= 120) return;
+
+	s_adlib->playSoundEffect((uint8_t)index);
+}
+
 bool ADLMusic_IsPlaying(void)
 {
 	return s_adlib != NULL && s_adlib->isPlaying();
