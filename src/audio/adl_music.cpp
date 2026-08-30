@@ -119,10 +119,6 @@ void ADLMusic_Play(uint16 musicID)
 		ADLMusic_Stop();
 		return;
 	}
-	/* Mirror Driver_Music_Play()'s "music off" guard (sound.c) -- without
-	 * this, disabling music has no effect on the AdLib path. */
-	if (g_gameConfig.music == 0) return;
-
 	if (!ADLMusic_InitOutput()) return;
 
 	snprintf(filename, sizeof(filename), "%s.ADL", g_table_musics[musicID].string);
@@ -139,7 +135,13 @@ void ADLMusic_Play(uint16 musicID)
 	delete s_adlib;
 	s_adlib = new SoundAdLibPC(data, size, SRATE, true);
 	s_adlib->init();
-	s_adlib->playTrack((uint8)g_table_musics[musicID].index);
+	/* Still load the file (and thus its sound-effect table) even with
+	 * music off -- ADLMusic_PlaySoundEffect() (credit ticks, UI clicks)
+	 * pulls from whichever .ADL file is currently loaded here, and those
+	 * effects play regardless of the music setting in the original game.
+	 * Only the music track itself is gated on g_gameConfig.music, mirroring
+	 * Driver_Music_Play()'s guard (sound.c) for the MIDI path. */
+	if (g_gameConfig.music != 0) s_adlib->playTrack((uint8)g_table_musics[musicID].index);
 
 	free(data);
 }
