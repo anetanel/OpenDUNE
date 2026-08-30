@@ -109,7 +109,7 @@
       "prefix": "Construc.wsa",
       "delim": "*",
       "body_en": "Construction Yard\r(Harsh climate model)\rSelf-Powered \fA Construction Yard is required to build any buildings. ",
-      "body_he": "חצר ייצור\r)דגם אקלים קשה(\rמופעל עצמאית\fחצר הייצור הכרחית לבניית כל מבנה אחר. "
+      "body_he": "חצר ייצור\r)דגם מותאם לאקלים קשה(\rמקור כוח עצמאי\fחצר הייצור הכרחית לבניית כל מבנה אחר. "
     },
     {
       "code": "21",
@@ -229,7 +229,7 @@
       "prefix": "turret.wsa",
       "delim": "*",
       "body_en": "Base Defense Turret\rPower Needs: 10 \fTurrets are stationary base defenses that are exceptionally accurate at close range. ",
-      "body_he": "צריח הגנה בסיסי\rfuj bsra: 10 \rצריחים הם אמצעי הגנה בסיסיים נייחים והינם מדוייקים ביותר מטווח קצר. "
+      "body_he": "צריח הגנה בסיסי\rכוח נדרש: 10 \fצריחים הם אמצעי הגנה בסיסיים נייחים והינם מדוייקים ביותר מטווח קצר. "
     },
     {
       "code": "21",
@@ -309,7 +309,7 @@
       "prefix": "hyinfy.wsa",
       "delim": "*",
       "body_en": "Heavy Troopers\rMobility: Foot\rFirepower: medium \fThe Heavy troopers are armed with powerful weapons and strong armor. ",
-      "body_he": "Heavy Troopers\rMobility: Foot\rFirepower: medium \fThe Heavy troopers are armed with powerful weapons and strong armor. "
+      "body_he": "סיירים כבדים\rניידות: רגליים\rכוח אש: בינוני \fהסיירים הכבדים מצוידים בנשק רב עוצמה ושריון חזק. "
     },
     {
       "code": "31",
@@ -319,7 +319,7 @@
       "prefix": "infantry.wsa",
       "delim": "*",
       "body_en": "Light Infantry\rMobility: Foot\rFirepower: light \fThe light infantry is satisfactorily protected and adequately armed, and is capable of defending our installations. ",
-      "body_he": "Light Infantry\rMobility: Foot\rFirepower: light \fThe light infantry is satisfactorily protected and adequately armed, and is capable of defending our installations. "
+      "body_he": "חיל-רגלי קל\rניידות: רגליים\rכוח אש: קל \fחיל הרגלים הקל מוגן ומצויד כראוי, ומסוגל להגן על מתקנינו. "
     },
     {
       "code": "31",
@@ -329,7 +329,7 @@
       "prefix": "mcv.wsa",
       "delim": "*",
       "body_en": "MCV\rMobility: Wheeled\rFirepower: none \fThe Mobile Construction Vehicle can be employed to erect new structures that need not be connected to the other buildings in your area. Additional refineries in outlying areas, for example, would allow you to harvest more effectively. ",
-      "body_he": "MCV\rMobility: Wheeled\rFirepower: none \fThe Mobile Construction Vehicle can be employed to erect new structures that need not be connected to the other buildings in your area. Additional refineries in outlying areas, for example, would allow you to harvest more effectively. "
+      "body_he": "ר.ב.נ.\rניידות: גלגלים\rכוח אש: אין \fרכב הבנייה הנייד משמש להקמת מבנים חדשים שאינם צריכים להיות מחוברים לשאר המבנים באזורך. לדוגמה, מזקקות נוספות באזורים מרוחקים יאפשרו לך לכרות ביעילות רבה יותר. "
     },
     {
       "code": "31",
@@ -339,7 +339,7 @@
       "prefix": "otrike.wsa",
       "delim": "*",
       "body_en": "Ordos Raider Trike\rMobility: Wheeled\rFirepower: Light \fThe Ordos produce a Trike that they call the \"Raider\".  The \"Raider\" is much like our own Trike, only it is faster, more maneuverable, and highly agile, yet it has less armor. ",
-      "body_he": "Ordos Raider Trike\rMobility: Wheeled\rFirepower: Light \fThe Ordos produce a Trike that they call the \"Raider\".  The \"Raider\" is much like our own Trike, only it is faster, more maneuverable, and highly agile, yet it has less armor. "
+      "body_he": "תלתנוע פושט אורדוס\rניידות: גלגלים\rכוח אש: קל \fהאורדוס מייצרים תלתנוע שהם מכנים \"הפושט\". ה\"פושט\" דומה למדי לתלתנוע שלנו, אלא שהוא מהיר יותר, בעל תמרון טוב יותר וזריז ביותר, אך שריונו קל יותר. "
     },
     {
       "code": "31",
@@ -349,7 +349,7 @@
       "prefix": "orni.wsa",
       "delim": "*",
       "body_en": "Ornithopter\rMobility: Winged\rFirepower: Medium \fThe Ornithopter, a lightly armored, highly maneuverable aircraft, is excellent for defensive air support of your harvesters, trikes, and quads. ",
-      "body_he": "Ornithopter\rMobility: Winged\rFirepower: Medium \fThe Ornithopter, a lightly armored, highly maneuverable aircraft, is excellent for defensive air support of your harvesters, trikes, and quads. "
+      "body_he": "כנפנוע\rניידות: כנפיים\rכוח אש: בינוני \fהכנפנוע, כלי טיס משוריין קלות ובעל תמרון גבוה, מצוין למתן תמיכה אווירית הגנתית למקצרות, לתלתנועים ולארבע-אופנים שלך. "
     },
     {
       "code": "31",
@@ -359,7 +359,7 @@
       "prefix": "Quad.wsa",
       "delim": "*",
       "body_en": "Combat Quad\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fQuads are four wheeled vehicles with strong armor and powerful weapons. Like the Trike, they are an efficient defense system. With quads and trikes, you should be able to defend against most attacks. ",
-      "body_he": "Combat Quad\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fQuads are four wheeled vehicles with strong armor and powerful weapons. Like the Trike, they are an efficient defense system. With quads and trikes, you should be able to defend against most attacks. "
+      "body_he": "ארבע-אופן קרבי\r)דגם מדבר(\rניידות: גלגלים\rכוח אש: בינוני \fארבע-אופנים הם כלי רכב בעלי ארבעה גלגלים, שריון חזק ונשק רב עוצמה. כמו התלתנוע, הם מהווים מערכת הגנה יעילה. עם ארבע-אופנים ותלתנועים, תוכל להתגונן מפני רוב ההתקפות. "
     },
     {
       "code": "31",
@@ -369,7 +369,7 @@
       "prefix": "rtank.wsa",
       "delim": "*",
       "body_en": "Rocket Tank\rMobility: Tracked\rFirepower: Heavy \fThe Rocket Tank has good armor, is faster than normal tanks, and has long range strike capabilities. It is excellent for defensive support of the light infantry and your squadrons of trikes and quads. ",
-      "body_he": "Rocket Tank\rMobility: Tracked\rFirepower: Heavy \fThe Rocket Tank has good armor, is faster than normal tanks, and has long range strike capabilities. It is excellent for defensive support of the light infantry and your squadrons of trikes and quads. "
+      "body_he": "טנק רקטות\rניידות: זחלים\rכוח אש: כבד \fלטנק הרקטות שריון טוב, הוא מהיר יותר מטנקים רגילים, ובעל יכולת תקיפה ארוכת טווח. הוא מצוין למתן תמיכה הגנתית לחיל הרגלים הקל ולפלוגות התלתנועים והארבע-אופנים שלך. "
     },
     {
       "code": "31",
@@ -379,7 +379,7 @@
       "prefix": "htank.wsa",
       "delim": "*",
       "body_en": "Siege Tank\rMobility: Tracked\rFirepower: Very Heavy \fThe Siege Tank is heavily armored and has very powerful weapons. It is more than adequate to defend your harvesters and installations. ",
-      "body_he": "Siege Tank\rMobility: Tracked\rFirepower: Very Heavy \fThe Siege Tank is heavily armored and has very powerful weapons. It is more than adequate to defend your harvesters and installations. "
+      "body_he": "טנק מצור\rניידות: זחלים\rכוח אש: כבד מאוד \fטנק המצור משוריין היטב ומצויד בנשק רב עוצמה. הוא מספיק ביותר להגנה על המקצרות והמתקנים שלך. "
     },
     {
       "code": "31",
@@ -389,7 +389,7 @@
       "prefix": "Trike.wsa",
       "delim": "*",
       "body_en": "Combat Trike\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fThe Trike is a three wheeled vehicle produced by the light factory. It is fast, well armored, and carries light weapons for defense. Trikes may be utilized for protection against enemy raids and scouting for spice fields. ",
-      "body_he": "Combat Trike\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fThe Trike is a three wheeled vehicle produced by the light factory. It is fast, well armored, and carries light weapons for defense. Trikes may be utilized for protection against enemy raids and scouting for spice fields. "
+      "body_he": "תלתנוע קרבי\r)דגם מדבר(\rניידות: גלגלים\rכוח אש: בינוני \fהתלתנוע הוא כלי רכב תלת-גלגלי המיוצר במפעל הקל. הוא מהיר, משוריין היטב, ונושא נשק קל להגנה. ניתן להשתמש בתלתנועים להגנה מפני פשיטות אויב ולסיור אחר שדות סם. "
     },
     {
       "code": "40",
@@ -409,7 +409,7 @@
       "prefix": "Gold-bb.wsa",
       "delim": "*",
       "body_en": "Death Hand\rMobility: Flight\rFirepower: Unknown \fOne of the most destructive weapons on Dune is the Harkonnen missile called the Death Hand. This multiple explosive warhead affects a wide area and can cause much greater damage than a conventional missile. ",
-      "body_he": "Death Hand\rMobility: Flight\rFirepower: Unknown \fOne of the most destructive weapons on Dune is the Harkonnen missile called the Death Hand. This multiple explosive warhead affects a wide area and can cause much greater damage than a conventional missile. "
+      "body_he": "יד המוות\rניידות: טיסה\rכוח אש: לא ידוע \fאחד הנשקים ההרסניים ביותר על חולית הוא הטיל ההארקונני המכונה יד המוות. ראש הנפץ המרובה שלו פוגע בשטח נרחב ועלול לגרום נזק גדול בהרבה מטיל רגיל. "
     },
     {
       "code": "41",
@@ -419,7 +419,7 @@
       "prefix": "harktank.wsa",
       "delim": "*",
       "body_en": "Devastator\rMobility: Tracked\rFirepower: Very Heavy \fThis massive tank is one of the newest war machines developed by the Harkonnen. It has nearly impenetrable armor, enormous firepower, and is capable of destroying nearly any obstacle in its path. ",
-      "body_he": "Devastator\rMobility: Tracked\rFirepower: Very Heavy \fThis massive tank is one of the newest war machines developed by the Harkonnen. It has nearly impenetrable armor, enormous firepower, and is capable of destroying nearly any obstacle in its path. "
+      "body_he": "משמידן\rניידות: זחלים\rכוח אש: כבד מאוד \fטנק ענק זה הוא אחת ממכונות המלחמה החדשות ביותר שפותחו על ידי ההארקונן. שריונו כמעט בלתי חדיר, כוח האש שלו עצום, והוא מסוגל להשמיד כמעט כל מכשול בדרכו. "
     },
     {
       "code": "41",
@@ -429,7 +429,7 @@
       "prefix": "ordrtank.wsa",
       "delim": "*",
       "body_en": "Deviator\rMobility: Tracked\rFirepower: Unknown \fThe Deviator fires missiles containing dangerous nerve gas that can seriously distort the perceptions of affected personnel, and may even incite full scale mutinies. ",
-      "body_he": "Deviator\rMobility: Tracked\rFirepower: Unknown \fThe Deviator fires missiles containing dangerous nerve gas that can seriously distort the perceptions of affected personnel, and may even incite full scale mutinies. "
+      "body_he": "מתעתע\rניידות: זחלים\rכוח אש: לא ידוע \fהמתעתע יורה טילים המכילים גז עצבים מסוכן, העלול לעוות באורח חמור את תפיסתם של הנפגעים, ואף לעורר מרד בקנה מידה מלא. "
     },
     {
       "code": "41",
@@ -439,7 +439,7 @@
       "prefix": "Fremen.wsa",
       "delim": "*",
       "body_en": "Fremen\rMobility: Foot\rFirepower: Medium \fThe native peoples of this planet are excellent guerrilla fighters. The Fremen are friendly toward us because House Atreides has always dealt with them fairly, and as equals. ",
-      "body_he": "Fremen\rMobility: Foot\rFirepower: Medium \fThe native peoples of this planet are excellent guerrilla fighters. The Fremen are friendly toward us because House Atreides has always dealt with them fairly, and as equals. "
+      "body_he": "דררי\rניידות: רגליים\rכוח אש: בינוני \fילידי כוכב-הלכת הזה הם לוחמי גרילה מעולים. הדררים ידידותיים כלפינו מכיוון שבית אטריידיס תמיד נהג עמם בהגינות, וכשווים. "
     },
     {
       "code": "41",
@@ -449,7 +449,7 @@
       "prefix": "saboture.wsa",
       "delim": "*",
       "body_en": "Saboteur\rMobility: Foot\rFirepower: Unknown \fThe Ordos often employ a band of local terrorist fighters called Saboteurs. These men are well versed in sabotage, and can easily penetrate defensive perimeters en route to the buildings they intend to destroy. They should be attacked and killed promptly whenever discovered. ",
-      "body_he": "Saboteur\rMobility: Foot\rFirepower: Unknown \fThe Ordos often employ a band of local terrorist fighters called Saboteurs. These men are well versed in sabotage, and can easily penetrate defensive perimeters en route to the buildings they intend to destroy. They should be attacked and killed promptly whenever discovered. "
+      "body_he": "חבלן\rניידות: רגליים\rכוח אש: לא ידוע \fהאורדוס נוהגים להעסיק כנופיית לוחמי טרור מקומיים המכונים חבלנים. אנשים אלו בקיאים בחבלה, ומסוגלים לחדור בקלות אל מעבר להיקפי הגנה בדרכם אל המבנים אותם הם מתעתדים להשמיד. יש לתקוף ולחסל אותם מיד עם גילויים. "
     },
     {
       "code": "41",
@@ -459,7 +459,7 @@
       "prefix": "Worm.wsa",
       "delim": "*",
       "body_en": "Shai-Hulud\rNo Known Weakness \fThese enormous creatures are attracted by vibrations on the surface and will often attack and devour both personnel and vehicles. Rock is the only sure defense against these creatures. ",
-      "body_he": "Shai-Hulud\rNo Known Weakness \fThese enormous creatures are attracted by vibrations on the surface and will often attack and devour both personnel and vehicles. Rock is the only sure defense against these creatures. "
+      "body_he": "שייח-חולוד\rאין חולשה ידועה \fיצורים ענקיים אלו נמשכים לרעידות על פני השטח, ולרוב יתקפו ויטרפו הן אנשי צוות והן כלי רכב. סלע הוא ההגנה הבטוחה היחידה מפני יצורים אלו. "
     },
     {
       "code": "41",
@@ -469,7 +469,7 @@
       "prefix": "stank.wsa",
       "delim": "*",
       "body_en": "Sonic Tank\rMobility: Tracked\rFirepower: Heavy \fThe Sonic Tank is one of our unique weapons. It fires a blast of sonic energy rather than projectile weapons. An excellent weapon for defensive missions, it is especially effective against enemy infantry. ",
-      "body_he": "Sonic Tank\rMobility: Tracked\rFirepower: Heavy \fThe Sonic Tank is one of our unique weapons. It fires a blast of sonic energy rather than projectile weapons. An excellent weapon for defensive missions, it is especially effective against enemy infantry. "
+      "body_he": "טנק על-קולי\rניידות: זחלים\rכוח אש: כבד \fהטנק העל-קולי הוא אחד מנשקינו הייחודיים. הוא יורה פרץ אנרגיה על-קולית במקום נשק קליעים. נשק מצוין למשימות הגנתיות, יעיל במיוחד נגד חיל רגלים אויב. "
     }
   ]
 }
