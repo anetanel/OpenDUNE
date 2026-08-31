@@ -5,7 +5,7 @@
       "code": "00",
       "threshold": 0,
       "name_en": "Briefing",
-      "name_he": "Briefing",
+      "name_he": "תדרוך",
       "prefix": "No file",
       "delim": "?",
       "body_en": "NO Desc ",
@@ -15,7 +15,7 @@
       "code": "01",
       "threshold": 1,
       "name_en": "Advice",
-      "name_he": "Advice",
+      "name_he": "ייעוץ",
       "prefix": "3",
       "delim": "*",
       "body_en": "No desc ",
@@ -25,7 +25,7 @@
       "code": "01",
       "threshold": 1,
       "name_en": "Orders",
-      "name_he": "Orders",
+      "name_he": "פקודות",
       "prefix": "0",
       "delim": "*",
       "body_en": "No desc ",
@@ -35,7 +35,7 @@
       "code": "10",
       "threshold": 0,
       "name_en": "Houses",
-      "name_he": "Houses",
+      "name_he": "בתים",
       "prefix": "No file",
       "delim": "?",
       "body_en": "NO Desc ",
@@ -45,37 +45,37 @@
       "code": "11",
       "threshold": 1,
       "name_en": "House Atreides",
-      "name_he": "House Atreides",
+      "name_he": "בית אטריידיס",
       "prefix": "FARTR.WSA",
       "delim": "*",
       "body_en": "House Atreides \fThe Atreides are spawned from the humid tropical planet of Caladan. They are best known for their weaknesses of honesty and kindness. They do not seem to believe in war and will usually avoid military conflicts. They have befriended the natives of Dune, and may be expected to involve the local patriot Fremen in their defensive plans. ",
-      "body_he": "House Atreides \fThe Atreides are spawned from the humid tropical planet of Caladan. They are best known for their weaknesses of honesty and kindness. They do not seem to believe in war and will usually avoid military conflicts. They have befriended the natives of Dune, and may be expected to involve the local patriot Fremen in their defensive plans. "
+      "body_he": "בית אטריידיס \fהאטריידיס צמחו מכוכב-הלכת הטרופי והלח קלדן. הם ידועים בעיקר בחולשותיהם - היושר וטוב-הלב. נראה כי הם אינם מאמינים במלחמה ובדרך כלל יימנעו מעימותים צבאיים. הם התיידדו עם ילידי חולית, ויש לצפות שישתפו את הדררים הפטריוטיים המקומיים בתוכניות ההגנה שלהם. "
     },
     {
       "code": "11",
       "threshold": 1,
       "name_en": "House Harkonnen",
-      "name_he": "House Harkonnen",
+      "name_he": "בית הארקונן",
       "prefix": "FHARK.WSA",
       "delim": "*",
       "body_en": "House Harkonnen \fWe Harkonnen have come from the planet Giedi Prime. We want now to possess Dune. Our weapons are powerful enough to deflect any attacks from our enemies. All of House Harkonnen is concentrating on this task, and only a disaster could stop us now. ",
-      "body_he": "House Harkonnen \fWe Harkonnen have come from the planet Giedi Prime. We want now to possess Dune. Our weapons are powerful enough to deflect any attacks from our enemies. All of House Harkonnen is concentrating on this task, and only a disaster could stop us now. "
+      "body_he": "בית הארקונן \fאנו, ההארקונן, הגענו מכוכב-הלכת גיאיידי פריים. אנו רוצים כעת להשתלט על חולית. נשקנו חזק דיו כדי להדוף כל התקפה מצד אויבינו. כל בית הארקונן מרוכז במשימה זו, ורק אסון יוכל לעצור אותנו כעת. "
     },
     {
       "code": "11",
       "threshold": 1,
       "name_en": "House Ordos",
-      "name_he": "House Ordos",
+      "name_he": "בית אורדוס",
       "prefix": "FORDOS.WSA",
       "delim": "*",
       "body_en": "House Ordos \fThis cartel of greedy families has been thrown together by the lust for power. They will most likely be too busy bickering among themselves to be overly concerned with our forces. ",
-      "body_he": "House Ordos \fThis cartel of greedy families has been thrown together by the lust for power. They will most likely be too busy bickering among themselves to be overly concerned with our forces. "
+      "body_he": "בית אורדוס \fקרטל זה של משפחות חמדניות חבר לו יחד בשל תאוות הכוח. סביר להניח שהם עסוקים מכדי לדאוג יתר על המידה לכוחותינו, שכן הם עסוקים בריב ביניהם לבין עצמם. "
     },
     {
       "code": "20",
       "threshold": 0,
       "name_en": "Structures",
-      "name_he": "Structures",
+      "name_he": "מבנים",
       "prefix": "No file",
       "delim": "?",
       "body_en": "NO Desc ",
@@ -85,187 +85,187 @@
       "code": "21",
       "threshold": 2,
       "name_en": "Barracks",
-      "name_he": "Barracks",
+      "name_he": "מגורי חיילים",
       "prefix": "barrac.wsa",
       "delim": "*",
       "body_en": "Infantry Barracks\rPower Needs: 20 \fThese simple little buildings train infantry units. The building itself has fair armor and is relatively cheap to maintain. We Harkonnen, however, do not have use for such weak forces. ",
-      "body_he": "Infantry Barracks\rPower Needs: 20 \fThese simple little buildings train infantry units. The building itself has fair armor and is relatively cheap to maintain. We Harkonnen, however, do not have use for such weak forces. "
+      "body_he": "מגורי חיילים\rכוח נדרש: 20 \fמבנים פשוטים וקטנים אלו מאמנים יחידות חיל-רגלים. למבנה עצמו שריון סביר והוא זול יחסית לתחזוקה. אנו, ההארקונן, עם זאת, אין לנו שימוש בכוחות חלשים שכאלה. "
     },
     {
       "code": "21",
       "threshold": 1,
       "name_en": "Concrete Slab",
-      "name_he": "Concrete Slab",
+      "name_he": "משטח בטון",
       "prefix": "slab.wsa",
       "delim": "*",
       "body_en": "Concrete Slab \fSlabs are used to provide stable building foundations. We have found that anything built on bare rock will deteriorate rapidly. ",
-      "body_he": "Concrete Slab \fSlabs are used to provide stable building foundations. We have found that anything built on bare rock will deteriorate rapidly. "
+      "body_he": "משטח בטון \fמשטחים משמשים לספק יסודות בנייה יציבים. גילינו שכל דבר שנבנה על סלע חשוף יתפורר במהירות. "
     },
     {
       "code": "21",
       "threshold": 1,
       "name_en": "Construction Yard",
-      "name_he": "Construction Yard",
+      "name_he": "חצר ייצור",
       "prefix": "Construc.wsa",
       "delim": "*",
       "body_en": "Construction Yard\r(Harsh climate model)\rSelf-Powered \fYou must have a construction yard. It will give you the means to construct other buildings. ",
-      "body_he": "Construction Yard\r(Harsh climate model)\rSelf-Powered \fYou must have a construction yard. It will give you the means to construct other buildings. "
+      "body_he": "חצר ייצור\r)דגם מותאם לאקלים קשה(\rמקור כוח עצמאי \fעליך להחזיק בחצר ייצור. היא תספק לך את האמצעים לבניית מבנים נוספים. "
     },
     {
       "code": "21",
       "threshold": 4,
       "name_en": "Heavy Factory",
-      "name_he": "Heavy Factory",
+      "name_he": "מפעל כבד",
       "prefix": "hvyftry.wsa",
       "delim": "*",
       "body_en": "Heavy Vehicle Factory\rPower Needs: 35 \fYou must have a Heavy factory in order to construct our heavy tanks. ",
-      "body_he": "Heavy Vehicle Factory\rPower Needs: 35 \fYou must have a Heavy factory in order to construct our heavy tanks. "
+      "body_he": "מפעל רכב כבד\rכוח נדרש: 35 \fעליך להחזיק במפעל כבד על מנת לבנות את הטנקים הכבדים שלנו. "
     },
     {
       "code": "21",
       "threshold": 5,
       "name_en": "High-Tech Factory",
-      "name_he": "High-Tech Factory",
+      "name_he": "מפעל הייטק",
       "prefix": "hitcftry.wsa",
       "delim": "*",
       "body_en": "High-Tech Factory\rPower Needs: 35 \fThe High-Tech factory produces our carryalls. ",
-      "body_he": "High-Tech Factory\rPower Needs: 35 \fThe High-Tech factory produces our carryalls. "
+      "body_he": "מפעל הייטק\rכוח נדרש: 35 \fמפעל ההייטק מייצר את הכנפיים-הנושאות שלנו. "
     },
     {
       "code": "21",
       "threshold": 7,
       "name_en": "IX",
-      "name_he": "IX",
+      "name_he": "איקס",
       "prefix": "ix.wsa",
       "delim": "*",
       "body_en": "IX Research Center\rPower Needs: 40 \fIX will provide you with a source of militarily advanced weapons. ",
-      "body_he": "IX Research Center\rPower Needs: 40 \fIX will provide you with a source of militarily advanced weapons. "
+      "body_he": "מרכז מחקר איקס\rכוח נדרש: 40 \fאיקס יספק לך מקור לנשק מתקדם מבחינה צבאית. "
     },
     {
       "code": "21",
       "threshold": 3,
       "name_en": "Light Factory",
-      "name_he": "Light Factory",
+      "name_he": "מפעל קל",
       "prefix": "liteftry.wsa",
       "delim": "*",
       "body_en": "Light Vehicle Factory\rPower Needs: 20 \fThe light factory produces only lightly armored vehicles, and is only a beginning step towards your goal of military superiority. ",
-      "body_he": "Light Vehicle Factory\rPower Needs: 20 \fThe light factory produces only lightly armored vehicles, and is only a beginning step towards your goal of military superiority. "
+      "body_he": "מפעל רכב קל\rכוח נדרש: 20 \fהמפעל הקל מייצר רק כלי רכב משוריינים קלות, והוא רק צעד ראשון בדרכך אל עליונות צבאית. "
     },
     {
       "code": "21",
       "threshold": 2,
       "name_en": "Outpost",
-      "name_he": "Outpost",
+      "name_he": "מוצב תצפית",
       "prefix": "headqrts.wsa",
       "delim": "*",
       "body_en": "Radar Outpost\rPower Needs: 30 \fThe outpost houses radar equipment. The radar will help you to keep an eye on your own domain as well as nearby enemy activity. ",
-      "body_he": "Radar Outpost\rPower Needs: 30 \fThe outpost houses radar equipment. The radar will help you to keep an eye on your own domain as well as nearby enemy activity. "
+      "body_he": "מוצב רדאר\rכוח נדרש: 30 \fמוצב התצפית מכיל ציוד רדאר. הרדאר יסייע לך לפקוח עין הן על שטחך והן על פעילות אויב בקרבתך. "
     },
     {
       "code": "21",
       "threshold": 8,
       "name_en": "Palace",
-      "name_he": "Palace",
+      "name_he": "ארמון",
       "prefix": "palace.wsa",
       "delim": "*",
       "body_en": "Palace\rPower Needs: 80 \fHouse Harkonnen may grant a Palace to those who have proved themselves worthy of such an honor. If you lose a Palace, that was given to you, you will have failed your mission. ",
-      "body_he": "Palace\rPower Needs: 80 \fHouse Harkonnen may grant a Palace to those who have proved themselves worthy of such an honor. If you lose a Palace, that was given to you, you will have failed your mission. "
+      "body_he": "ארמון\rכוח נדרש: 80 \fבית הארקונן עשוי להעניק ארמון לאלו שהוכיחו עצמם ראויים לכבוד שכזה. אובדן ארמון שהוענק לך, יחשב ככישלון במשימתך. "
     },
     {
       "code": "21",
       "threshold": 1,
       "name_en": "Refinery",
-      "name_he": "Refinery",
+      "name_he": "מזקקה",
       "prefix": "refinery.wsa",
       "delim": "*",
       "body_en": "Spice Refinery\rPower Needs: 30 \fThe refinery converts harvested spice into credits. ",
-      "body_he": "Spice Refinery\rPower Needs: 30 \fThe refinery converts harvested spice into credits. "
+      "body_he": "מזקקת סם\rכוח נדרש: 30 \fהמזקקה ממירה סם שנכרה לקרדיטים. "
     },
     {
       "code": "21",
       "threshold": 5,
       "name_en": "Repair Facility",
-      "name_he": "Repair Facility",
+      "name_he": "מוסך תיקונים",
       "prefix": "repair.wsa",
       "delim": "*",
       "body_en": "Vehicle Repair Facility\rPower Needs: 20 \fIt is impossible to operate machinery in this desert without causing damage. You must have a repair facility to take care of your damaged vehicles. ",
-      "body_he": "Vehicle Repair Facility\rPower Needs: 20 \fIt is impossible to operate machinery in this desert without causing damage. You must have a repair facility to take care of your damaged vehicles. "
+      "body_he": "מוסך תיקון כלי רכב\rכוח נדרש: 20 \fאי אפשר להפעיל מכונות במדבר הזה בלי לגרום נזק. עליך להחזיק במוסך תיקונים כדי לטפל בכלי הרכב הפגומים שלך. "
     },
     {
       "code": "21",
       "threshold": 6,
       "name_en": "Rocket Turret",
-      "name_he": "Rocket Turret",
+      "name_he": "צריח רקטות",
       "prefix": "rturret.wsa",
       "delim": "*",
       "body_en": "Rocket Turret\rPower Needs: 25 \fThe Rocket Turret is an excellent weapon. Although they cannot be moved, they can be utilized for long and short range defense. ",
-      "body_he": "Rocket Turret\rPower Needs: 25 \fThe Rocket Turret is an excellent weapon. Although they cannot be moved, they can be utilized for long and short range defense. "
+      "body_he": "צריח רקטות\rכוח נדרש: 25 \fצריח הרקטות הוא נשק מצוין. אף שלא ניתן להזיזו, ניתן להשתמש בו להגנה בטווח ארוך וקצר כאחד. "
     },
     {
       "code": "21",
       "threshold": 1,
       "name_en": "Spice Silos",
-      "name_he": "Spice Silos",
+      "name_he": "ממגורות סם",
       "prefix": "storage.wsa",
       "delim": "*",
       "body_en": "Spice Storage Silo\rPower Needs: 5 \fSpice silos must be built to be able to store the harvested spice. Unfortunately, they are weak structures, and must be repaired frequently. ",
-      "body_he": "Spice Storage Silo\rPower Needs: 5 \fSpice silos must be built to be able to store the harvested spice. Unfortunately, they are weak structures, and must be repaired frequently. "
+      "body_he": "ממגורת אחסון סם\rכוח נדרש: 5 \fיש לבנות ממגורות סם כדי לאחסן את הסם שנכרה. לרוע המזל, אלו מבנים חלשים, ויש לתקנם לעיתים תכופות. "
     },
     {
       "code": "21",
       "threshold": 6,
       "name_en": "Starport",
-      "name_he": "Starport",
+      "name_he": "נמל חלל",
       "prefix": "Starport.wsa",
       "delim": "*",
       "body_en": "Starport\rPower Needs: 80 \fThe Starport is your link to the storehouses beyond the surface of the planet. With a Starport at your disposal, you can purchase powerful weapons and vehicles. ",
-      "body_he": "Starport\rPower Needs: 80 \fThe Starport is your link to the storehouses beyond the surface of the planet. With a Starport at your disposal, you can purchase powerful weapons and vehicles. "
+      "body_he": "נמל חלל\rכוח נדרש: 80 \fנמל החלל הוא חוליית הקישור שלך אל מחסני האספקה מעבר לפני כוכב-הלכת. עם נמל חלל לרשותך, תוכל לרכוש נשק וכלי רכב רבי-עוצמה. "
     },
     {
       "code": "21",
       "threshold": 5,
       "name_en": "Turret",
-      "name_he": "Turret",
+      "name_he": "צריח",
       "prefix": "turret.wsa",
       "delim": "*",
       "body_en": "Base Defense Turret\rPower Needs: 10 \fTurrets are accurate and effective weapons. Although they are immobile, you should consider them as required enhancements to your forces. ",
-      "body_he": "Base Defense Turret\rPower Needs: 10 \fTurrets are accurate and effective weapons. Although they are immobile, you should consider them as required enhancements to your forces. "
+      "body_he": "צריח הגנה בסיסי\rכוח נדרש: 10 \fצריחים הם נשק מדויק ויעיל. אף שהם נייחים, עליך להתייחס אליהם כאל שיפור הכרחי לכוחותיך. "
     },
     {
       "code": "21",
       "threshold": 4,
       "name_en": "Wall",
-      "name_he": "Wall",
+      "name_he": "חומה",
       "prefix": "wall.wsa",
       "delim": "*",
       "body_en": "Wall \fWalls are an excellent choice for defensive reinforcement. Like the concrete slabs, walls are inexpensive to produce. ",
-      "body_he": "Wall \fWalls are an excellent choice for defensive reinforcement. Like the concrete slabs, walls are inexpensive to produce. "
+      "body_he": "חומה \fחומות הן בחירה מצוינת לחיזוק הגנתי. כמו משטחי הבטון, חומות זולות לייצור. "
     },
     {
       "code": "21",
       "threshold": 1,
       "name_en": "Windtrap",
-      "name_he": "Windtrap",
+      "name_he": "מלכודת רוח",
       "prefix": "windtrap.wsa",
       "delim": "*",
       "body_en": "Power Generator\rPower Output: 100 \fThese are the structures that provide power and water to your installation. They are a bit fragile, and you are well advised to construct more than one. ",
-      "body_he": "Power Generator\rPower Output: 100 \fThese are the structures that provide power and water to your installation. They are a bit fragile, and you are well advised to construct more than one. "
+      "body_he": "תחנת כוח\rתפוקת כוח: 100 \fאלו הם המבנים המספקים כוח ומים למתקן שלך. הם עדינים במקצת, ומומלץ מאוד לבנות יותר מאחת. "
     },
     {
       "code": "21",
       "threshold": 2,
       "name_en": "Wor",
-      "name_he": "Wor",
+      "name_he": "כסח",
       "prefix": "wor.wsa",
       "delim": "*",
       "body_en": "Trooper Barracks\rPower Needs: 20 \fWOR will train the Heavy Troopers. ",
-      "body_he": "Trooper Barracks\rPower Needs: 20 \fWOR will train the Heavy Troopers. "
+      "body_he": "מגורי סיירים\rכוח נדרש: 20 \fכסח יאמן את הסיירים הכבדים. "
     },
     {
       "code": "30",
       "threshold": 0,
       "name_en": "Vehicles",
-      "name_he": "Vehicles",
+      "name_he": "כלי רכב",
       "prefix": "No file",
       "delim": "?",
       "body_en": "NO Desc ",
@@ -275,137 +275,137 @@
       "code": "31",
       "threshold": 1,
       "name_en": "Carryall",
-      "name_he": "Carryall",
+      "name_he": "כנף-נושאת",
       "prefix": "carryall.wsa",
       "delim": "*",
       "body_en": "Carryall\rMobility: Jet\rFirepower: none \fThis transport aircraft can carry large vehicles, such as harvesters, to their destinations more efficiently than letting them wander about on their own. ",
-      "body_he": "Carryall\rMobility: Jet\rFirepower: none \fThis transport aircraft can carry large vehicles, such as harvesters, to their destinations more efficiently than letting them wander about on their own. "
+      "body_he": "כנף-נושאת\rניידות: סילון\rכוח אש: אין \fכלי טיס תובלה זה מסוגל לשאת כלי רכב גדולים, כגון מקצרות, אל יעדיהם ביעילות רבה יותר מאשר להותירם לנדוד בכוחות עצמם. "
     },
     {
       "code": "31",
       "threshold": 4,
       "name_en": "Combat Tank",
-      "name_he": "Combat Tank",
+      "name_he": "טנק קרב",
       "prefix": "LTANK.WSA",
       "delim": "*",
       "body_en": "Combat Tank\rMobility: Tracked\rFirepower: heavy \fThe combat tank will be your first tank, and it has adequate armor and fire power. However, remember that there are more powerful weapons at your disposal. ",
-      "body_he": "Combat Tank\rMobility: Tracked\rFirepower: heavy \fThe combat tank will be your first tank, and it has adequate armor and fire power. However, remember that there are more powerful weapons at your disposal. "
+      "body_he": "טנק קרב\rניידות: זחלים\rכוח אש: כבד \fטנק הקרב יהיה הטנק הראשון שלך, ויש לו שריון וכוח אש נאותים. עם זאת, זכור כי ישנם נשקים רבי-עוצמה יותר לרשותך. "
     },
     {
       "code": "31",
       "threshold": 1,
       "name_en": "Harvester",
-      "name_he": "Harvester",
+      "name_he": "מקצרה זחלילית",
       "prefix": "harvest.wsa",
       "delim": "*",
       "body_en": "Harvester\rMobility: Tracked\rFirepower: none \fThis large, slow, and barely maneuverable vehicle is used to harvest raw spice and convey it to the refinery. Although unarmed, the iron clad harvesters can be used effectively against small groups of infantry by crushing them beneath their treads. ",
-      "body_he": "Harvester\rMobility: Tracked\rFirepower: none \fThis large, slow, and barely maneuverable vehicle is used to harvest raw spice and convey it to the refinery. Although unarmed, the iron clad harvesters can be used effectively against small groups of infantry by crushing them beneath their treads. "
+      "body_he": "מקצרה זחלילית\rניידות: זחלים\rכוח אש: אין \fכלי רכב גדול, איטי וכבד תמרון זה משמש לכריית סם גולמי ולשינועו אל המזקקה. אף שאינן חמושות, ניתן להשתמש במקצרות משוריינות אלו ביעילות כנגד קבוצות קטנות של חיל-רגלים, על ידי מעיכתם תחת זחליהן. "
     },
     {
       "code": "31",
       "threshold": 1,
       "name_en": "Heavy Troopers",
-      "name_he": "Heavy Troopers",
+      "name_he": "סיירים כבדים",
       "prefix": "hyinfy.wsa",
       "delim": "*",
       "body_en": "Heavy Troopers\rMobility: Foot\rFirepower: medium \fThe Heavy Troopers are superior fighting units. They are well armored and have powerful weapons. ",
-      "body_he": "Heavy Troopers\rMobility: Foot\rFirepower: medium \fThe Heavy Troopers are superior fighting units. They are well armored and have powerful weapons. "
+      "body_he": "סיירים כבדים\rניידות: רגליים\rכוח אש: בינוני \fהסיירים הכבדים הם יחידות לחימה מעולות. הם משוריינים היטב ומצוידים בנשק רב-עוצמה. "
     },
     {
       "code": "31",
       "threshold": 1,
       "name_en": "Light Infantry",
-      "name_he": "Light Infantry",
+      "name_he": "חיל-רגלי קל",
       "prefix": "infantry.wsa",
       "delim": "*",
       "body_en": "Light Infantry\rMobility: Foot\rFirepower: light \fThe Light Infantry will hardly suit your needs. They are slow, poorly armored, and have a tendency to miss their targets. You should depend upon the more massive troopers. ",
-      "body_he": "Light Infantry\rMobility: Foot\rFirepower: light \fThe Light Infantry will hardly suit your needs. They are slow, poorly armored, and have a tendency to miss their targets. You should depend upon the more massive troopers. "
+      "body_he": "חיל-רגלי קל\rניידות: רגליים\rכוח אש: קל \fחיל הרגלים הקל בקושי יתאים לצרכיך. הם איטיים, משוריינים בצורה ירודה, ונוטים להחטיא את מטרותיהם. עליך להסתמך על הסיירים המסיביים יותר. "
     },
     {
       "code": "31",
       "threshold": 4,
       "name_en": "MCV",
-      "name_he": "MCV",
+      "name_he": "ר.ב.נ.",
       "prefix": "mcv.wsa",
       "delim": "*",
       "body_en": "MCV\rMobility: Wheeled\rFirepower: none \fThe Mobile Construction Vehicle will allow you to expand your territories. By using an MCV you will be able to construct distant buildings that need not be adjacent to your principal location. ",
-      "body_he": "MCV\rMobility: Wheeled\rFirepower: none \fThe Mobile Construction Vehicle will allow you to expand your territories. By using an MCV you will be able to construct distant buildings that need not be adjacent to your principal location. "
+      "body_he": "ר.ב.נ.\rניידות: גלגלים\rכוח אש: אין \fרכב הבנייה הנייד יאפשר לך להרחיב את שטחיך. באמצעות ר.ב.נ. תוכל לבנות מבנים מרוחקים שאינם צריכים להיות סמוכים למיקומך העיקרי. "
     },
     {
       "code": "31",
       "threshold": 3,
       "name_en": "Ordos Raider",
-      "name_he": "Ordos Raider",
+      "name_he": "פושט אורדוס",
       "prefix": "otrike.wsa",
       "delim": "*",
       "body_en": "Ordos Raider Trike\rMobility: Wheeled\rFirepower: Light \fThis is a pitiful little machine. For some reason the Ordos believe that this overblown Trike can out maneuver and out fire our Quads. ",
-      "body_he": "Ordos Raider Trike\rMobility: Wheeled\rFirepower: Light \fThis is a pitiful little machine. For some reason the Ordos believe that this overblown Trike can out maneuver and out fire our Quads. "
+      "body_he": "תלתנוע פושט אורדוס\rניידות: גלגלים\rכוח אש: קל \fזוהי מכונה קטנה ועלובה. מסיבה כלשהי, האורדוס מאמינים שתלתנוע מנופח זה מסוגל לעלות בתמרון ובכוח אש על הארבע-אופנים שלנו. "
     },
     {
       "code": "31",
       "threshold": 7,
       "name_en": "Ornithopter",
-      "name_he": "Ornithopter",
+      "name_he": "כנפנוע",
       "prefix": "orni.wsa",
       "delim": "*",
       "body_en": "Ornithopter\rMobility: Winged\rFirepower: Medium \fThis fragile little aircraft is merely an annoyance. Their delicate armor is no match for our weapons of war. ",
-      "body_he": "Ornithopter\rMobility: Winged\rFirepower: Medium \fThis fragile little aircraft is merely an annoyance. Their delicate armor is no match for our weapons of war. "
+      "body_he": "כנפנוע\rניידות: כנפיים\rכוח אש: בינוני \fכלי טיס קטן ושברירי זה הוא לא יותר ממטרד. שריונם העדין אינו מהווה אתגר לנשקי המלחמה שלנו. "
     },
     {
       "code": "31",
       "threshold": 1,
       "name_en": "Quad",
-      "name_he": "Quad",
+      "name_he": "ארבע-אופן",
       "prefix": "quad.wsa",
       "delim": "*",
       "body_en": "Combat Quad\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fThe Quad is a much better vehicle than the smaller trike. It has far superior armor and is much more powerful. ",
-      "body_he": "Combat Quad\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fThe Quad is a much better vehicle than the smaller trike. It has far superior armor and is much more powerful. "
+      "body_he": "ארבע-אופן קרבי\r)דגם מדבר(\rניידות: גלגלים\rכוח אש: בינוני \fהארבע-אופן הוא כלי רכב טוב בהרבה מהתלתנוע הקטן יותר. שריונו טוב יותר, והוא רב-עוצמה במידה רבה יותר. "
     },
     {
       "code": "31",
       "threshold": 5,
       "name_en": "Rocket Tank",
-      "name_he": "Rocket Tank",
+      "name_he": "טנק רקטות",
       "prefix": "rtank.wsa",
       "delim": "*",
       "body_en": "Rocket Tank\rMobility: Tracked\rFirepower: Heavy \fThe rocket tank is effective for long range attacks. Guard these well, for they are ineffective at close range. ",
-      "body_he": "Rocket Tank\rMobility: Tracked\rFirepower: Heavy \fThe rocket tank is effective for long range attacks. Guard these well, for they are ineffective at close range. "
+      "body_he": "טנק רקטות\rניידות: זחלים\rכוח אש: כבד \fטנק הרקטות יעיל להתקפות ארוכות-טווח. הגן עליהם היטב, שכן הם אינם יעילים בטווח קצר. "
     },
     {
       "code": "31",
       "threshold": 4,
       "name_en": "Sardaukar",
-      "name_he": "Sardaukar",
+      "name_he": "סרדאוקאר",
       "prefix": "sardukar.wsa",
       "delim": "*",
       "body_en": "Sardaukar \fDie Elitetruppen des Imperators. ",
-      "body_he": "Sardaukar \fDie Elitetruppen des Imperators. "
+      "body_he": "סרדאוקאר \fחיל העילית של הקיסר. "
     },
     {
       "code": "31",
       "threshold": 6,
       "name_en": "Siege Tank",
-      "name_he": "Siege Tank",
+      "name_he": "טנק מצור",
       "prefix": "htank.wsa",
       "delim": "*",
       "body_en": "Siege Tank\rMobility: Tracked\rFirepower: Very Heavy \fThe Siege Tank is superior to the Combat tank. It's armor and weaponry has the power you will need to complete your conquest of this planet. ",
-      "body_he": "Siege Tank\rMobility: Tracked\rFirepower: Very Heavy \fThe Siege Tank is superior to the Combat tank. It's armor and weaponry has the power you will need to complete your conquest of this planet. "
+      "body_he": "טנק מצור\rניידות: זחלים\rכוח אש: כבד מאוד \fטנק המצור עולה על טנק הקרב. שריונו ונשקו מעניקים לך את העוצמה הדרושה להשלמת כיבוש כוכב-הלכת הזה. "
     },
     {
       "code": "31",
       "threshold": 1,
       "name_en": "Trike",
-      "name_he": "Trike",
+      "name_he": "תלתנוע",
       "prefix": "trike.wsa",
       "delim": "*",
       "body_en": "Combat Trike\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fAlthough these three-wheeled, lightly armored vehicles are functional, we strongly suggest utilizing the larger, more powerful vehicles. ",
-      "body_he": "Combat Trike\r(Desert model)\rMobility: Wheeled\rFirepower: medium \fAlthough these three-wheeled, lightly armored vehicles are functional, we strongly suggest utilizing the larger, more powerful vehicles. "
+      "body_he": "תלתנוע קרבי\r)דגם מדבר(\rניידות: גלגלים\rכוח אש: בינוני \fאף שכלי הרכב התלת-גלגליים המשוריינים קלות האלו תפקודיים, אנו ממליצים בחום להשתמש בכלי הרכב הגדולים והחזקים יותר. "
     },
     {
       "code": "40",
       "threshold": 0,
       "name_en": "Specials",
-      "name_he": "Specials",
+      "name_he": "מיוחדים",
       "prefix": "No file",
       "delim": "?",
       "body_en": "NO Desc ",
@@ -415,81 +415,81 @@
       "code": "41",
       "threshold": 8,
       "name_en": "Death Hand",
-      "name_he": "Death Hand",
+      "name_he": "יד המוות",
       "prefix": "Gold-bb.wsa",
       "delim": "*",
       "body_en": "Death Hand\rMobility: Flight\rFirepower: Very Heavy \fOur Death Hand is a lovely weapon capable of being targeted for long range strikes. Just prior to impact it releases a series of explosive fingers that spread destruction over a wide area. ",
-      "body_he": "Death Hand\rMobility: Flight\rFirepower: Very Heavy \fOur Death Hand is a lovely weapon capable of being targeted for long range strikes. Just prior to impact it releases a series of explosive fingers that spread destruction over a wide area. "
+      "body_he": "יד המוות\rניידות: טיסה\rכוח אש: כבד מאוד \fיד המוות שלנו היא נשק נהדר שניתן לכוונו למתקפות ארוכות-טווח. רגע לפני הפגיעה הוא משחרר סדרה של אצבעות נפץ המפזרות הרס על פני שטח נרחב. "
     },
     {
       "code": "41",
       "threshold": 7,
       "name_en": "Devastator",
-      "name_he": "Devastator",
+      "name_he": "משמידן",
       "prefix": "harktank.wsa",
       "delim": "*",
       "body_en": "Devastator\rMobility: Tracked\rFirepower: Very Heavy \fThe Devastator is another of the unique and powerful weapons in our awesome arsenal. It's armor and weapons are unequaled. The Devastator need not fear other lesser tanks on the battlefield. ",
-      "body_he": "Devastator\rMobility: Tracked\rFirepower: Very Heavy \fThe Devastator is another of the unique and powerful weapons in our awesome arsenal. It's armor and weapons are unequaled. The Devastator need not fear other lesser tanks on the battlefield. "
+      "body_he": "משמידן\rניידות: זחלים\rכוח אש: כבד מאוד \fהמשמידן הוא נשק ייחודי ורב-עוצמה נוסף בארסנל המרשים שלנו. שריונו ונשקו הינם ללא תחרות. המשמידן אינו צריך לחשוש מטנקים נחותים אחרים בשדה הקרב. "
     },
     {
       "code": "41",
       "threshold": 8,
       "name_en": "Fremen",
-      "name_he": "Fremen",
+      "name_he": "דררים",
       "prefix": "Fremen.wsa",
       "delim": "*",
       "body_en": "Fremen\rMobility: Foot\rFirepower: unknown \fThe Fremen are little more than slaves to the Atreides. Ignorant and aboriginal, they occasionally fight for the Atreides, and are provided food and supplies in return. ",
-      "body_he": "Fremen\rMobility: Foot\rFirepower: unknown \fThe Fremen are little more than slaves to the Atreides. Ignorant and aboriginal, they occasionally fight for the Atreides, and are provided food and supplies in return. "
+      "body_he": "דררים\rניידות: רגליים\rכוח אש: לא ידוע \fהדררים אינם אלא עבדים לכל דבר עבור האטריידיס. בורים וילידיים, הם נלחמים מדי פעם עבור האטריידיס, ומקבלים בתמורה מזון ואספקה. "
     },
     {
       "code": "41",
       "threshold": 6,
       "name_en": "Frigatte",
-      "name_he": "Frigatte",
+      "name_he": "פריגטה",
       "prefix": "frigate.wsa",
       "delim": "*",
       "body_en": "CHOAM Frigatte\rPlanetarisches\rTransportsystem \fDiese gewaltigen Raumschiffe dienen dazu, Schiffsladungen aus dem Orbit zum Raumflughafen zu transportieren. ",
-      "body_he": "CHOAM Frigatte\rPlanetarisches\rTransportsystem \fDiese gewaltigen Raumschiffe dienen dazu, Schiffsladungen aus dem Orbit zum Raumflughafen zu transportieren. "
+      "body_he": "פריגטת אנקס\rמערכת\rתובלה כוכבית \fספינות חלל אדירות אלו משמשות לשינוע מטענים מהמסלול אל נמל החלל. "
     },
     {
       "code": "41",
       "threshold": 8,
       "name_en": "Ordos Deviator",
-      "name_he": "Ordos Deviator",
+      "name_he": "מתעתע אורדוס",
       "prefix": "ordrtank.wsa",
       "delim": "*",
       "body_en": "Deviator\rMobility: Tracked\rFirepower: Unknown \fThis tank fires a powerful nerve gas that can cause your weaker-willed soldiers to turn against you. ",
-      "body_he": "Deviator\rMobility: Tracked\rFirepower: Unknown \fThis tank fires a powerful nerve gas that can cause your weaker-willed soldiers to turn against you. "
+      "body_he": "מתעתע\rניידות: זחלים\rכוח אש: לא ידוע \fטנק זה יורה גז עצבים רב-עוצמה העלול לגרום לחייליך חלושי הרצון להתקומם נגדך. "
     },
     {
       "code": "41",
       "threshold": 8,
       "name_en": "Saboteur",
-      "name_he": "Saboteur",
+      "name_he": "חבלן",
       "prefix": "saboture.wsa",
       "delim": "*",
       "body_en": "Saboteur\rMobility: Foot\rFirepower: Unknown \fThe Ordos depend upon a band of terrorists called Saboteurs. If uncontrolled, these cunning little pests will inflict a great deal of damage to your buildings. I suggest eliminating Saboteurs immediately whenever they are encountered. ",
-      "body_he": "Saboteur\rMobility: Foot\rFirepower: Unknown \fThe Ordos depend upon a band of terrorists called Saboteurs. If uncontrolled, these cunning little pests will inflict a great deal of damage to your buildings. I suggest eliminating Saboteurs immediately whenever they are encountered. "
+      "body_he": "חבלן\rניידות: רגליים\rכוח אש: לא ידוע \fהאורדוס נסמכים על כנופיית מחבלים המכונים חבלנים. אם לא ייבלמו, מזיקים ערמומיים וקטנים אלו יגרמו נזק רב למבניך. אני ממליץ לחסל חבלנים מיידית עם היתקלות בהם. "
     },
     {
       "code": "41",
       "threshold": 1,
       "name_en": "Sand Worm",
-      "name_he": "Sand Worm",
+      "name_he": "עקלתון",
       "prefix": "Worm.wsa",
       "delim": "*",
       "body_en": "Shai-Hulud\rNo Known Weakness \fThese huge native worms are almost impossible to kill. They are attracted by surface vibrations, and all ground based units are at risk of being devoured.  Rock is the only sure defense against these creatures. ",
-      "body_he": "Shai-Hulud\rNo Known Weakness \fThese huge native worms are almost impossible to kill. They are attracted by surface vibrations, and all ground based units are at risk of being devoured.  Rock is the only sure defense against these creatures. "
+      "body_he": "שייח-חולוד\rאין חולשה ידועה \fתולעים ילידיות עצומות אלו כמעט בלתי אפשריות להריגה. הן נמשכות לרעידות על פני השטח, וכל היחידות הקרקעיות נמצאות בסכנת טריפה.  סלע הוא ההגנה הבטוחה היחידה מפני יצורים אלו. "
     },
     {
       "code": "41",
       "threshold": 7,
       "name_en": "Sonic Tank",
-      "name_he": "Sonic Tank",
+      "name_he": "טנק על-קולי",
       "prefix": "stank.wsa",
       "delim": "*",
       "body_en": "Sonic Tank\rMobility: Tracked\rFirepower: Unknown \fThe Atreides believe that they have found a humane way of eliminating their enemies. Their Sonic Tank fires shock waves instead of rockets. ",
-      "body_he": "Sonic Tank\rMobility: Tracked\rFirepower: Unknown \fThe Atreides believe that they have found a humane way of eliminating their enemies. Their Sonic Tank fires shock waves instead of rockets. "
+      "body_he": "טנק על-קולי\rניידות: זחלים\rכוח אש: לא ידוע \fהאטריידיס מאמינים שמצאו דרך הומנית לחסל את אויביהם. הטנק העל-קולי שלהם יורה גלי הלם במקום רקטות. "
     }
   ]
 }

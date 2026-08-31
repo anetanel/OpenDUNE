@@ -435,11 +435,11 @@
       "code": "41",
       "threshold": 8,
       "name_en": "Fremen",
-      "name_he": "דררי",
+      "name_he": "דררים",
       "prefix": "Fremen.wsa",
       "delim": "*",
       "body_en": "Fremen\rMobility: Foot\rFirepower: Medium \fThe native peoples of this planet are excellent guerrilla fighters. The Fremen are friendly toward us because House Atreides has always dealt with them fairly, and as equals. ",
-      "body_he": "דררי\rניידות: רגליים\rכוח אש: בינוני \fילידי כוכב-הלכת הזה הם לוחמי גרילה מעולים. הדררים ידידותיים כלפינו מכיוון שבית אטריידיס תמיד נהג עמם בהגינות, וכשווים. "
+      "body_he": "דררים\rניידות: רגליים\rכוח אש: בינוני \fילידי כוכב-הלכת הזה הם לוחמי גרילה מעולים. הדררים ידידותיים כלפינו מכיוון שבית אטריידיס תמיד נהג עמם בהגינות, וכשווים. "
     },
     {
       "code": "41",

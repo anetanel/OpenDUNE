@@ -61,7 +61,7 @@
   },
   {
     "en": "Initializing the MT-32",
-    "he": "Initializing the MT-32"
+    "he": "מאתחל את ה-MT-32"
   },
   {
     "en": "Old save game file is incompatable with latest version.",
@@ -69,11 +69,11 @@
   },
   {
     "en": "Insufficient memory by %ld bytes.",
-    "he": "Insufficient memory by %ld bytes."
+    "he": "חסר זיכרון בגודל %ld בתים."
   },
   {
     "en": "The setup program must be run first.",
-    "he": "The setup program must be run first."
+    "he": "יש להריץ את תוכנית ההתקנה תחילה."
   },
   {
     "en": "%s %s destroyed.",
@@ -1285,7 +1285,7 @@
   },
   {
     "en": "Thank you for playing Dune II.",
-    "he": "Thank you for playing Dune II."
+    "he": "תודה ששיחקת בחולית II."
   },
   {
     "en": "Spice storage capacity low, build silos.",

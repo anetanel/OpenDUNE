@@ -5,43 +5,43 @@
   },
   {
     "en": "There is a traitor among us.  We are questioning everyone, including YOU! Answer this question correctly and you will prove your loyalty to House Harkonnen!",
-    "he": "There is a traitor among us.  We are questioning everyone, including YOU! Answer this question correctly and you will prove your loyalty to House Harkonnen!"
+    "he": "יש בוגד בינינו.  אנו חוקרים את כולם, כולל אותך! ענה נכונה על שאלה זו ותוכיח את נאמנותך לבית הארקונן!"
   },
   {
     "en": "Correct, you are truly loyal to House Harkonnen!",
-    "he": "Correct, you are truly loyal to House Harkonnen!"
+    "he": "נכון, אתה נאמן באמת לבית הארקונן!"
   },
   {
     "en": "That is the wrong answer!",
-    "he": "That is the wrong answer!"
+    "he": "זו התשובה השגויה!"
   },
   {
     "en": "We have reports that you have been trading confidential information with the Ordos. You must answer a question correctly to prove your innocence.",
-    "he": "We have reports that you have been trading confidential information with the Ordos. You must answer a question correctly to prove your innocence."
+    "he": "יש בידינו דיווחים שסחרת במידע חסוי עם האורדוס. עליך לענות נכונה על שאלה כדי להוכיח את חפותך."
   },
   {
     "en": "Very good, I am glad to see that our reports were wrong about you.",
-    "he": "Very good, I am glad to see that our reports were wrong about you."
+    "he": "טוב מאוד, אני שמח לראות שהדיווחים שלנו עליך היו שגויים."
   },
   {
     "en": "That is incorrect!",
-    "he": "That is incorrect!"
+    "he": "זו תשובה שגויה!"
   },
   {
     "en": "There is talk of an information leak within the ranks of the high military. To prove your innocence, you must answer the following question accurately:",
-    "he": "There is talk of an information leak within the ranks of the high military. To prove your innocence, you must answer the following question accurately:"
+    "he": "יש שמועות על דליפת מידע בשורות הפיקוד הבכיר. כדי להוכיח את חפותך, עליך לענות נכונה על השאלה הבאה:"
   },
   {
     "en": "Well done.  You are no longer under suspicion, for now.",
-    "he": "Well done.  You are no longer under suspicion, for now."
+    "he": "כל הכבוד.  אינך עוד תחת חשד, לעת עתה."
   },
   {
     "en": "You are wrong!",
-    "he": "You are wrong!"
+    "he": "אתה טועה!"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "slab.wsa",
@@ -49,11 +49,11 @@
   },
   {
     "en": "foundation",
-    "he": "foundation"
+    "he": "יסוד"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "wall.wsa",
@@ -61,11 +61,11 @@
   },
   {
     "en": "defensive wall",
-    "he": "defensive wall"
+    "he": "חומת הגנה"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "windtrap.wsa",
@@ -73,11 +73,11 @@
   },
   {
     "en": "power plant",
-    "he": "power plant"
+    "he": "תחנת כוח"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "refinery.wsa",
@@ -85,11 +85,11 @@
   },
   {
     "en": "industrial facility",
-    "he": "industrial facility"
+    "he": "מתקן תעשייתי"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "storage.wsa",
@@ -97,11 +97,11 @@
   },
   {
     "en": "storehouse",
-    "he": "storehouse"
+    "he": "מחסן"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "turret.wsa",
@@ -109,11 +109,11 @@
   },
   {
     "en": "ground based turret",
-    "he": "ground based turret"
+    "he": "צריח קרקעי"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "rturret.wsa",
@@ -121,11 +121,11 @@
   },
   {
     "en": "ground based turret",
-    "he": "ground based turret"
+    "he": "צריח קרקעי"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "construc.wsa",
@@ -133,11 +133,11 @@
   },
   {
     "en": "production facility",
-    "he": "production facility"
+    "he": "מתקן ייצור"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "barrac.wsa",
@@ -145,11 +145,11 @@
   },
   {
     "en": "production facility",
-    "he": "production facility"
+    "he": "מתקן ייצור"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "wor.wsa",
@@ -157,11 +157,11 @@
   },
   {
     "en": "production facility",
-    "he": "production facility"
+    "he": "מתקן ייצור"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "liteftry.wsa",
@@ -169,11 +169,11 @@
   },
   {
     "en": "production facility",
-    "he": "production facility"
+    "he": "מתקן ייצור"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "hvyftry.wsa",
@@ -181,11 +181,11 @@
   },
   {
     "en": "production facility",
-    "he": "production facility"
+    "he": "מתקן ייצור"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "hitcftry.wsa",
@@ -193,11 +193,11 @@
   },
   {
     "en": "production facility",
-    "he": "production facility"
+    "he": "מתקן ייצור"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "repair.wsa",
@@ -205,11 +205,11 @@
   },
   {
     "en": "industrial facility",
-    "he": "industrial facility"
+    "he": "מתקן תעשייתי"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "ix.wsa",
@@ -217,11 +217,11 @@
   },
   {
     "en": "technology facility",
-    "he": "technology facility"
+    "he": "מתקן טכנולוגי"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "starport.wsa",
@@ -229,11 +229,11 @@
   },
   {
     "en": "advanced structure",
-    "he": "advanced structure"
+    "he": "מבנה מתקדם"
   },
   {
     "en": "What type of structure is this?",
-    "he": "What type of structure is this?"
+    "he": "מהו סוג המבנה הזה?"
   },
   {
     "en": "palace.wsa",
@@ -241,11 +241,11 @@
   },
   {
     "en": "capitol building",
-    "he": "capitol building"
+    "he": "בניין הבירה"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "slab.wsa",
@@ -253,11 +253,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "wall.wsa",
@@ -265,11 +265,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "windtrap.wsa",
@@ -277,11 +277,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "refinery.wsa",
@@ -289,11 +289,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "storage.wsa",
@@ -301,11 +301,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "headqrts.wsa",
@@ -313,11 +313,11 @@
   },
   {
     "en": "heavy",
-    "he": "heavy"
+    "he": "כבד"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "turret.wsa",
@@ -325,11 +325,11 @@
   },
   {
     "en": "heavy",
-    "he": "heavy"
+    "he": "כבד"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "rturret.wsa",
@@ -337,11 +337,11 @@
   },
   {
     "en": "heavy",
-    "he": "heavy"
+    "he": "כבד"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "construc.wsa",
@@ -349,11 +349,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "barrac.wsa",
@@ -361,11 +361,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "wor.wsa",
@@ -373,11 +373,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "liteftry.wsa",
@@ -385,11 +385,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "hvyftry.wsa",
@@ -397,11 +397,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "hitcftry.wsa",
@@ -409,11 +409,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "repair.wsa",
@@ -421,11 +421,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "ix.wsa",
@@ -433,11 +433,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "starport.wsa",
@@ -445,11 +445,11 @@
   },
   {
     "en": "heavy",
-    "he": "heavy"
+    "he": "כבד"
   },
   {
     "en": "What is the armor level of this structure?",
-    "he": "What is the armor level of this structure?"
+    "he": "מהי רמת השריון של מבנה זה?"
   },
   {
     "en": "palace.wsa",
@@ -457,11 +457,11 @@
   },
   {
     "en": "heavy",
-    "he": "heavy"
+    "he": "כבד"
   },
   {
     "en": "What is the weight of this structure?",
-    "he": "What is the weight of this structure?"
+    "he": "מהו משקלו של מבנה זה?"
   },
   {
     "en": "slab.wsa",
@@ -473,7 +473,7 @@
   },
   {
     "en": "What is the weight of this structure?",
-    "he": "What is the weight of this structure?"
+    "he": "מהו משקלו של מבנה זה?"
   },
   {
     "en": "wall.wsa",
@@ -485,7 +485,7 @@
   },
   {
     "en": "What is the armament of this structure?",
-    "he": "What is the armament of this structure?"
+    "he": "מהו החימוש של מבנה זה?"
   },
   {
     "en": "turret.wsa",
@@ -497,7 +497,7 @@
   },
   {
     "en": "What is the range of this structure?",
-    "he": "What is the range of this structure?"
+    "he": "מהו הטווח של מבנה זה?"
   },
   {
     "en": "turret.wsa",
@@ -509,7 +509,7 @@
   },
   {
     "en": "What is the capacity of this structure?",
-    "he": "What is the capacity of this structure?"
+    "he": "מהי הקיבולת של מבנה זה?"
   },
   {
     "en": "storage.wsa",
@@ -517,11 +517,11 @@
   },
   {
     "en": "1000 spice units",
-    "he": "1000 spice units"
+    "he": "1000 יחידות סם"
   },
   {
     "en": "What is the capacity of this structure?",
-    "he": "What is the capacity of this structure?"
+    "he": "מהי הקיבולת של מבנה זה?"
   },
   {
     "en": "refinery.wsa",
@@ -529,11 +529,11 @@
   },
   {
     "en": "1000 spice units",
-    "he": "1000 spice units"
+    "he": "1000 יחידות סם"
   },
   {
     "en": "What is the armament of this structure?",
-    "he": "What is the armament of this structure?"
+    "he": "מהו החימוש של מבנה זה?"
   },
   {
     "en": "headqrts.wsa",
@@ -541,11 +541,11 @@
   },
   {
     "en": "none",
-    "he": "none"
+    "he": "אין"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "harvest.wsa",
@@ -553,11 +553,11 @@
   },
   {
     "en": "spice recovery vehicle",
-    "he": "spice recovery vehicle"
+    "he": "כלי איסוף סם"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "mcv.wsa",
@@ -565,11 +565,11 @@
   },
   {
     "en": "base deployment vehicle",
-    "he": "base deployment vehicle"
+    "he": "כלי פריסת בסיס"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "quad.wsa",
@@ -577,11 +577,11 @@
   },
   {
     "en": "light attack vehicle",
-    "he": "light attack vehicle"
+    "he": "כלי תקיפה קל"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "ltank.wsa",
@@ -589,11 +589,11 @@
   },
   {
     "en": "medium battle tank",
-    "he": "medium battle tank"
+    "he": "טנק קרב בינוני"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "rtank.wsa",
@@ -601,11 +601,11 @@
   },
   {
     "en": "battlefield support vehicle",
-    "he": "battlefield support vehicle"
+    "he": "כלי תמיכה בשדה הקרב"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "htank.wsa",
@@ -613,11 +613,11 @@
   },
   {
     "en": "main battle tank",
-    "he": "main battle tank"
+    "he": "טנק קרב ראשי"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "carryall.wsa",
@@ -625,11 +625,11 @@
   },
   {
     "en": "airborne unit",
-    "he": "airborne unit"
+    "he": "יחידה אווירית"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "orni.wsa",
@@ -637,11 +637,11 @@
   },
   {
     "en": "close support attack craft",
-    "he": "close support attack craft"
+    "he": "כלי תקיפה לתמיכה קרובה"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "worm.wsa",
@@ -649,11 +649,11 @@
   },
   {
     "en": "creature of dune",
-    "he": "creature of dune"
+    "he": "יצור חולית"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "stank.wsa",
@@ -661,11 +661,11 @@
   },
   {
     "en": "advanced battle tank",
-    "he": "advanced battle tank"
+    "he": "טנק קרב מתקדם"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "ordrtank.wsa",
@@ -673,11 +673,11 @@
   },
   {
     "en": "battlefield support vehicle",
-    "he": "battlefield support vehicle"
+    "he": "כלי תמיכה בשדה הקרב"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "otrike.wsa",
@@ -685,11 +685,11 @@
   },
   {
     "en": "quick strike vehicle",
-    "he": "quick strike vehicle"
+    "he": "כלי תקיפה מהיר"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "gold-bb.wsa",
@@ -697,11 +697,11 @@
   },
   {
     "en": "battlefield support missile",
-    "he": "battlefield support missile"
+    "he": "טיל תמיכה בשדה הקרב"
   },
   {
     "en": "What type of unit is this?",
-    "he": "What type of unit is this?"
+    "he": "מהו סוג היחידה הזו?"
   },
   {
     "en": "harktank.wsa",
@@ -709,11 +709,11 @@
   },
   {
     "en": "advanced battle tank",
-    "he": "advanced battle tank"
+    "he": "טנק קרב מתקדם"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "harvest.wsa",
@@ -721,11 +721,11 @@
   },
   {
     "en": "none",
-    "he": "none"
+    "he": "אין"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "mcv.wsa",
@@ -733,11 +733,11 @@
   },
   {
     "en": "none",
-    "he": "none"
+    "he": "אין"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "infantry.wsa",
@@ -749,7 +749,7 @@
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "trike.wsa",
@@ -761,7 +761,7 @@
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "quad.wsa",
@@ -773,7 +773,7 @@
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "ltank.wsa",
@@ -785,7 +785,7 @@
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "rtank.wsa",
@@ -793,11 +793,11 @@
   },
   {
     "en": "missile launcher",
-    "he": "missile launcher"
+    "he": "משגר טילים"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "htank.wsa",
@@ -809,7 +809,7 @@
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "carryall.wsa",
@@ -817,11 +817,11 @@
   },
   {
     "en": "none",
-    "he": "none"
+    "he": "אין"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "orni.wsa",
@@ -829,11 +829,11 @@
   },
   {
     "en": "battle support rockets",
-    "he": "battle support rockets"
+    "he": "רקטות תמיכה קרבית"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "worm.wsa",
@@ -841,11 +841,11 @@
   },
   {
     "en": "appetite",
-    "he": "appetite"
+    "he": "תיאבון"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "stank.wsa",
@@ -853,11 +853,11 @@
   },
   {
     "en": "sonic amplifier",
-    "he": "sonic amplifier"
+    "he": "מגבר קול"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "ordrtank.wsa",
@@ -865,11 +865,11 @@
   },
   {
     "en": "missile launcher",
-    "he": "missile launcher"
+    "he": "משגר טילים"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "otrike.wsa",
@@ -881,7 +881,7 @@
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "saboture.wsa",
@@ -889,11 +889,11 @@
   },
   {
     "en": "unknown",
-    "he": "unknown"
+    "he": "לא ידוע"
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "harktank.wsa",
@@ -905,7 +905,7 @@
   },
   {
     "en": "What is the armament of this unit?",
-    "he": "What is the armament of this unit?"
+    "he": "מהו החימוש של יחידה זו?"
   },
   {
     "en": "sardukar.wsa",
@@ -913,11 +913,11 @@
   },
   {
     "en": "classified",
-    "he": "classified"
+    "he": "מסווג"
   },
   {
     "en": "What is the speed (tracked) of this unit?",
-    "he": "What is the speed (tracked) of this unit?"
+    "he": "מהי המהירות )זחלים( של יחידה זו?"
   },
   {
     "en": "harvest.wsa",
@@ -929,7 +929,7 @@
   },
   {
     "en": "What is the speed (tracked) of this unit?",
-    "he": "What is the speed (tracked) of this unit?"
+    "he": "מהי המהירות )זחלים( של יחידה זו?"
   },
   {
     "en": "mcv.wsa",
@@ -941,7 +941,7 @@
   },
   {
     "en": "What is the speed (foot) of this unit?",
-    "he": "What is the speed (foot) of this unit?"
+    "he": "מהי המהירות )רגלית( של יחידה זו?"
   },
   {
     "en": "infantry.wsa",
@@ -953,7 +953,7 @@
   },
   {
     "en": "What is the speed (foot) of this unit?",
-    "he": "What is the speed (foot) of this unit?"
+    "he": "מהי המהירות )רגלית( של יחידה זו?"
   },
   {
     "en": "hyinfy.wsa",
@@ -965,7 +965,7 @@
   },
   {
     "en": "What is the speed (wheel) of this unit?",
-    "he": "What is the speed (wheel) of this unit?"
+    "he": "מהי המהירות )גלגלים( של יחידה זו?"
   },
   {
     "en": "trike.wsa",
@@ -977,7 +977,7 @@
   },
   {
     "en": "What is the speed (wheel) of this unit?",
-    "he": "What is the speed (wheel) of this unit?"
+    "he": "מהי המהירות )גלגלים( של יחידה זו?"
   },
   {
     "en": "quad.wsa",
@@ -989,7 +989,7 @@
   },
   {
     "en": "What is the speed (tracked) of this unit?",
-    "he": "What is the speed (tracked) of this unit?"
+    "he": "מהי המהירות )זחלים( של יחידה זו?"
   },
   {
     "en": "ltank.wsa",
@@ -1001,7 +1001,7 @@
   },
   {
     "en": "What is the speed (tracked) of this unit?",
-    "he": "What is the speed (tracked) of this unit?"
+    "he": "מהי המהירות )זחלים( של יחידה זו?"
   },
   {
     "en": "rtank.wsa",
@@ -1013,7 +1013,7 @@
   },
   {
     "en": "What is the speed (tracked) of this unit?",
-    "he": "What is the speed (tracked) of this unit?"
+    "he": "מהי המהירות )זחלים( של יחידה זו?"
   },
   {
     "en": "htank.wsa",
@@ -1025,7 +1025,7 @@
   },
   {
     "en": "What is the speed (airborne) of this unit?",
-    "he": "What is the speed (airborne) of this unit?"
+    "he": "מהי המהירות )אווירית( של יחידה זו?"
   },
   {
     "en": "carryall.wsa",
@@ -1037,7 +1037,7 @@
   },
   {
     "en": "What is the speed (airborne) of this unit?",
-    "he": "What is the speed (airborne) of this unit?"
+    "he": "מהי המהירות )אווירית( של יחידה זו?"
   },
   {
     "en": "orni.wsa",
@@ -1049,7 +1049,7 @@
   },
   {
     "en": "What is the speed of this unit?",
-    "he": "What is the speed of this unit?"
+    "he": "מהי המהירות של יחידה זו?"
   },
   {
     "en": "worm.wsa",
@@ -1061,7 +1061,7 @@
   },
   {
     "en": "What is the speed (foot) of this unit?",
-    "he": "What is the speed (foot) of this unit?"
+    "he": "מהי המהירות )רגלית( של יחידה זו?"
   },
   {
     "en": "fremen.wsa",
@@ -1073,7 +1073,7 @@
   },
   {
     "en": "What is the speed (tracked) of this unit?",
-    "he": "What is the speed (tracked) of this unit?"
+    "he": "מהי המהירות )זחלים( של יחידה זו?"
   },
   {
     "en": "stank.wsa",
@@ -1085,7 +1085,7 @@
   },
   {
     "en": "What is the speed (tracked) of this unit?",
-    "he": "What is the speed (tracked) of this unit?"
+    "he": "מהי המהירות )זחלים( של יחידה זו?"
   },
   {
     "en": "ordrtank.wsa",
@@ -1097,7 +1097,7 @@
   },
   {
     "en": "What is the speed (wheel) of this unit?",
-    "he": "What is the speed (wheel) of this unit?"
+    "he": "מהי המהירות )גלגלים( של יחידה זו?"
   },
   {
     "en": "otrike.wsa",
@@ -1109,7 +1109,7 @@
   },
   {
     "en": "What is the speed (trike) of this unit?",
-    "he": "What is the speed (trike) of this unit?"
+    "he": "מהי המהירות )תלתנוע( של יחידה זו?"
   },
   {
     "en": "saboture.wsa",
@@ -1121,7 +1121,7 @@
   },
   {
     "en": "What is the speed (tracked) of this unit?",
-    "he": "What is the speed (tracked) of this unit?"
+    "he": "מהי המהירות )זחלים( של יחידה זו?"
   },
   {
     "en": "harktank.wsa",
@@ -1133,7 +1133,7 @@
   },
   {
     "en": "What is the speed (foot) of this unit?",
-    "he": "What is the speed (foot) of this unit?"
+    "he": "מהי המהירות )רגלית( של יחידה זו?"
   },
   {
     "en": "sardukar.wsa",
@@ -1145,7 +1145,7 @@
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "harvest.wsa",
@@ -1153,11 +1153,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "mcv.wsa",
@@ -1165,11 +1165,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "infantry.wsa",
@@ -1177,11 +1177,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "hyinfy.wsa",
@@ -1189,11 +1189,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "trike.wsa",
@@ -1201,11 +1201,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "quad.wsa",
@@ -1213,11 +1213,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "ltank.wsa",
@@ -1225,11 +1225,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "rtank.wsa",
@@ -1237,11 +1237,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "htank.wsa",
@@ -1249,11 +1249,11 @@
   },
   {
     "en": "heavy",
-    "he": "heavy"
+    "he": "כבד"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "carryall.wsa",
@@ -1261,11 +1261,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "orni.wsa",
@@ -1273,11 +1273,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "worm.wsa",
@@ -1285,11 +1285,11 @@
   },
   {
     "en": "heavy",
-    "he": "heavy"
+    "he": "כבד"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "fremen.wsa",
@@ -1297,11 +1297,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "stank.wsa",
@@ -1309,11 +1309,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "ordrtank.wsa",
@@ -1321,11 +1321,11 @@
   },
   {
     "en": "medium",
-    "he": "medium"
+    "he": "בינוני"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "otrike.wsa",
@@ -1333,11 +1333,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "saboture.wsa",
@@ -1345,11 +1345,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "harktank.wsa",
@@ -1357,11 +1357,11 @@
   },
   {
     "en": "heavy",
-    "he": "heavy"
+    "he": "כבד"
   },
   {
     "en": "What is the armor level of this unit?",
-    "he": "What is the armor level of this unit?"
+    "he": "מהי רמת השריון של יחידה זו?"
   },
   {
     "en": "sardukar.wsa",
@@ -1369,11 +1369,11 @@
   },
   {
     "en": "light",
-    "he": "light"
+    "he": "קל"
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "harvest.wsa",
@@ -1385,7 +1385,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "mcv.wsa",
@@ -1397,7 +1397,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "trike.wsa",
@@ -1409,7 +1409,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "quad.wsa",
@@ -1421,7 +1421,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "ltank.wsa",
@@ -1433,7 +1433,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "rtank.wsa",
@@ -1445,7 +1445,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "htank.wsa",
@@ -1457,7 +1457,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "carryall.wsa",
@@ -1469,7 +1469,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "orni.wsa",
@@ -1481,7 +1481,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "stank.wsa",
@@ -1493,7 +1493,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "ordrtank.wsa",
@@ -1505,7 +1505,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "otrike.wsa",
@@ -1517,7 +1517,7 @@
   },
   {
     "en": "What is the crew compliment of this unit?",
-    "he": "What is the crew compliment of this unit?"
+    "he": "מהו צוות ההפעלה של יחידה זו?"
   },
   {
     "en": "harktank.wsa",
@@ -1529,7 +1529,7 @@
   },
   {
     "en": "To which House does this unit belong?",
-    "he": "To which House does this unit belong?"
+    "he": "לאיזה בית שייכת יחידה זו?"
   },
   {
     "en": "stank.wsa",
@@ -1537,11 +1537,11 @@
   },
   {
     "en": "atreides",
-    "he": "atreides"
+    "he": "אטריידיס"
   },
   {
     "en": "To which House does this unit belong?",
-    "he": "To which House does this unit belong?"
+    "he": "לאיזה בית שייכת יחידה זו?"
   },
   {
     "en": "ordrtank.wsa",
@@ -1549,11 +1549,11 @@
   },
   {
     "en": "ordos",
-    "he": "ordos"
+    "he": "אורדוס"
   },
   {
     "en": "To which House does this unit belong?",
-    "he": "To which House does this unit belong?"
+    "he": "לאיזה בית שייכת יחידה זו?"
   },
   {
     "en": "otrike.wsa",
@@ -1561,11 +1561,11 @@
   },
   {
     "en": "ordos",
-    "he": "ordos"
+    "he": "אורדוס"
   },
   {
     "en": "To which House does this unit belong?",
-    "he": "To which House does this unit belong?"
+    "he": "לאיזה בית שייכת יחידה זו?"
   },
   {
     "en": "saboture.wsa",
@@ -1573,11 +1573,11 @@
   },
   {
     "en": "ordos",
-    "he": "ordos"
+    "he": "אורדוס"
   },
   {
     "en": "To which House does this unit belong?",
-    "he": "To which House does this unit belong?"
+    "he": "לאיזה בית שייכת יחידה זו?"
   },
   {
     "en": "gold-bb.wsa",
@@ -1585,11 +1585,11 @@
   },
   {
     "en": "harkonnen",
-    "he": "harkonnen"
+    "he": "הארקונן"
   },
   {
     "en": "To which House does this unit belong?",
-    "he": "To which House does this unit belong?"
+    "he": "לאיזה בית שייכת יחידה זו?"
   },
   {
     "en": "harktank.wsa",
@@ -1597,11 +1597,11 @@
   },
   {
     "en": "harkonnen",
-    "he": "harkonnen"
+    "he": "הארקונן"
   },
   {
     "en": "To which House does this unit belong?",
-    "he": "To which House does this unit belong?"
+    "he": "לאיזה בית שייכת יחידה זו?"
   },
   {
     "en": "sardukar.wsa",
@@ -1609,11 +1609,11 @@
   },
   {
     "en": "emperor",
-    "he": "emperor"
+    "he": "קיסר"
   },
   {
     "en": "What is the length of this unit?",
-    "he": "What is the length of this unit?"
+    "he": "מהו האורך של יחידה זו?"
   },
   {
     "en": "gold-bb.wsa",
@@ -1625,7 +1625,7 @@
   },
   {
     "en": "What type of warhead does this unit have?",
-    "he": "What type of warhead does this unit have?"
+    "he": "איזה סוג ראש נפץ יש ליחידה זו?"
   },
   {
     "en": "gold-bb.wsa",
@@ -1637,7 +1637,7 @@
   },
   {
     "en": "What is the guidance of this unit?",
-    "he": "What is the guidance of this unit?"
+    "he": "מהי מערכת ההכוונה של יחידה זו?"
   },
   {
     "en": "gold-bb.wsa",
@@ -1645,11 +1645,11 @@
   },
   {
     "en": "inertial",
-    "he": "inertial"
+    "he": "אינרציאלי"
   },
   {
     "en": "What is the range of this unit?",
-    "he": "What is the range of this unit?"
+    "he": "מהו הטווח של יחידה זו?"
   },
   {
     "en": "gold-bb.wsa",
