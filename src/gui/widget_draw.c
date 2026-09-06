@@ -256,15 +256,63 @@ void GUI_Widget_SpriteTextButton_Draw(Widget *w)
 	if (g_productionStringID == STR_UPGRADINGD_DONE) {
 		percentDone = 100 - s->upgradeTimeLeft;
 
-		GUI_DrawText_Wrapper(
-			String_Get_ByIndex(g_productionStringID),
-			positionX + 1,
-			positionY + height - 19,
-			buttonDown ? 0xE : 0xF,
-			0,
-			0x021,
-			percentDone
-		);
+		if (GUI_IsRTLLanguage()) {
+			/* This string is a hardcoded two-line label ("Upgrading\r%d%%
+			 * done") -- GUI_DrawText_Wrapper()'s align-right flag measures
+			 * the *whole* formatted string as a single line, which is
+			 * meaningless for a two-line label (same pitfall documented
+			 * on GUI_DrawText_WrapperBox()). Substitute the percentage
+			 * ourselves and right-align each physical line individually
+			 * against the box's right edge, the way
+			 * GUI_DrawText_WrapperBox() does for pre-wrapped dialogue. */
+			char textBuffer[64];
+			const char *lineStart;
+			int16 y;
+			uint8 colour = buttonDown ? 0xE : 0xF;
+
+			snprintf(textBuffer, sizeof(textBuffer), String_Get_ByIndex(g_productionStringID), percentDone);
+
+			GUI_DrawText_Wrapper(NULL, 0, 0, colour, 0, 0x021);
+
+			lineStart = textBuffer;
+			y = positionY + height - 19;
+
+			for (;;) {
+				const char *p = lineStart;
+				char lineBuf[64];
+				size_t len;
+				uint16 lineWidth;
+				int16 x;
+
+				while (*p != '\0' && *p != '\r' && *p != '\n') p++;
+
+				len = (size_t)(p - lineStart);
+				if (len >= sizeof(lineBuf)) len = sizeof(lineBuf) - 1;
+				memcpy(lineBuf, lineStart, len);
+				lineBuf[len] = '\0';
+
+				lineWidth = Font_GetStringWidth(lineBuf);
+				x = positionX + width - 2 - lineWidth;
+				if (x < positionX) x = positionX;
+
+				GUI_DrawText(lineBuf, x, y, colour, 0);
+
+				if (*p == '\0') break;
+				while (*p == '\r' || *p == '\n') p++;
+				lineStart = p;
+				y += g_fontCurrent->height;
+			}
+		} else {
+			GUI_DrawText_Wrapper(
+				String_Get_ByIndex(g_productionStringID),
+				positionX + 1,
+				positionY + height - 19,
+				buttonDown ? 0xE : 0xF,
+				0,
+				0x021,
+				percentDone
+			);
+		}
 	} else {
 		GUI_DrawText_Wrapper(
 			String_Get_ByIndex(g_productionStringID),
