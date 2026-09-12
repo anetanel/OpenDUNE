@@ -2202,9 +2202,15 @@ uint8 GUI_PickHouse(void)
 
 		GUI_Mouse_Hide_Safe();
 
-		GUI_Screen_Copy(0, 0, 0, 0, 26, 24, SCREEN_1, SCREEN_0);
+		if (GUI_IsRTLLanguage()) {
+			GUI_Screen_Copy(0, 24 * (houseID + 1), 1, 0, 13, 24, SCREEN_1, SCREEN_0);
 
-		GUI_Screen_Copy(0, 24 * (houseID + 1), 26, 0, 13, 24, SCREEN_1, SCREEN_0);
+			GUI_Screen_Copy(0, 0, 14, 0, 26, 24, SCREEN_1, SCREEN_0);
+		} else {
+			GUI_Screen_Copy(0, 0, 0, 0, 26, 24, SCREEN_1, SCREEN_0);
+
+			GUI_Screen_Copy(0, 24 * (houseID + 1), 26, 0, 13, 24, SCREEN_1, SCREEN_0);
+		}
 
 		GUI_Widget_DrawAll(w);
 
