@@ -592,7 +592,18 @@ static void Video_DrawScreen_Nearest_Neighbor(void)
 		}
 	}
 	SDL_UnlockTexture(s_texture);
-	if (SDL_RenderCopy(s_renderer, s_texture, prect, prect)) {
+	/* Present the whole texture, not just prect: Video_DrawScreen() now
+	 * clears the full render target every frame (see there for why), and
+	 * the texture lock above only guarantees *its own* untouched area
+	 * keeps its prior content -- the *renderer*, freshly cleared, has
+	 * none of that outside of whatever SDL_RenderCopy actually paints
+	 * this call. A partial prect->prect copy left everything outside the
+	 * dirty rect black until the next full repaint, which read as the
+	 * whole screen flickering to black on every partial update (e.g.
+	 * every mouse move) with only the just-redrawn area staying lit.
+	 * Copying the full (correctly up to date) texture is a cheap GPU
+	 * blit regardless of size, so this costs nothing meaningful. */
+	if (SDL_RenderCopy(s_renderer, s_texture, NULL, NULL)) {
 		Error("SDL_RenderCopy failed : %s\n", SDL_GetError());
 	}
 }
@@ -607,7 +618,6 @@ static void Video_DrawScreen_Scale2x(void)
 	uint32 * p;
 	static uint32 truecolorbuffer[SCREEN_WIDTH * SCREEN_HEIGHT] __attribute__((aligned(16)));
 	SDL_Rect rect, rectlock;
-	SDL_Rect * prect = NULL;
 	SDL_Rect * prectlock = NULL;
 
 	data += (s_screenOffset << 2);
@@ -619,7 +629,6 @@ static void Video_DrawScreen_Scale2x(void)
 		rect.y = area->top * s_screen_magnification;
 		rect.w = (area->right - area->left) * s_screen_magnification;
 		rect.h = (area->bottom - area->top) * s_screen_magnification;
-		prect = &rect;
 		rectlock.x = 0;
 		rectlock.y = rect.y;
 		rectlock.w = SCREEN_WIDTH * s_screen_magnification;
@@ -658,7 +667,9 @@ static void Video_DrawScreen_Scale2x(void)
 	           truecolorbuffer, SCREEN_WIDTH * 4, 4,
 	           SCREEN_WIDTH, SCREEN_HEIGHT, top, bottom);
 	SDL_UnlockTexture(s_texture);
-	if (SDL_RenderCopy(s_renderer, s_texture, prect, prect)) {
+	/* Present the whole texture, not just prect -- see the identical note
+	 * in Video_DrawScreen_Nearest_Neighbor(). */
+	if (SDL_RenderCopy(s_renderer, s_texture, NULL, NULL)) {
 		Error("SDL_RenderCopy failed : %s\n", SDL_GetError());
 	}
 }
