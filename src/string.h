@@ -53,6 +53,7 @@ typedef enum EngineStringID {
 	ENGINE_STR_DESTROYED_F,
 	ENGINE_STR_IS_COMPLETED_AND_AWAITING_ORDERS_F,
 	ENGINE_STR_TIME_M,
+	ENGINE_STR_INTRO_BUILDING_OF_A_DYNASTY,
 
 	ENGINE_STR_COUNT
 } EngineStringID;
@@ -61,6 +62,7 @@ extern uint16 String_DecompressAndTranslate(const char *source, char *dest, uint
 extern const char *String_GenerateFilename(const char *name);
 extern char *String_Get_ByIndex(uint16 stringID);
 extern const char *EngineString_Get(EngineStringID id, const char *fallback);
+extern bool String_IsUSDuneRelease(void);
 extern void String_Init(void);
 extern void String_Uninit(void);
 extern uint8 *String_NextString(uint8 *ptr);

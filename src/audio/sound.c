@@ -28,6 +28,11 @@ static const char *s_currentMusic = NULL;        /*!< Currently loaded music fil
 static uint16 s_spokenWords[NUM_SPEECH_PARTS];   /*!< Buffer with speech to play. */
 static int16 s_currentVoicePriority;            /*!< Priority of the currently playing Speech */
 
+/* hebrew/audio/{BLDINGH,DYNASTYH}.VOC's title-corrected splice ("the
+ * battle... Arrakis" instead of "the building... a dynasty") -- see
+ * Sound_Output_Feedback() and src/table/sound.c's voice ids 131/132. */
+static const uint16 s_introTitleCorrectedWords[NUM_SPEECH_PARTS] = { 131, 132, 0xFFFF, 0xFFFF, 0xFFFF };
+
 static void *Sound_LoadVoc(const char *filename, uint32 *retFileSize);
 
 static void Driver_Music_Play(int16 index, uint16 volume)
@@ -435,15 +440,43 @@ void Sound_Output_Feedback(uint16 index)
 	/* If nothing is being said currently, load new words. */
 	if (s_spokenWords[0] == 0xFFFF) {
 		uint8 i;
+		const uint16 *words;
 
 		/* Hebrew has no localized voice recordings of its own -- it reuses
 		 * the original English clips, same as the real game did, so it
 		 * needs the full multi-part phrase from g_feedback[] rather than
 		 * the abbreviated g_translatedVoice[] entries (e.g. index 69 is
 		 * just "Harvester" instead of "Atreides Harvester Deployed"). */
+		if (g_config.language == LANGUAGE_ENGLISH || g_config.language == LANGUAGE_HEBREW) {
+			if (g_feedback[index].voiceId[0] != 0xFFFF) {
+				words = g_feedback[index].voiceId;
+			} else if (index == 76 && !String_IsUSDuneRelease()) {
+				/* g_feedback[]/g_translatedVoice[] index 76 is
+				 * s_feedback_base_index(0x4A) + subtitle 2 in cutscene.c --
+				 * the intro's title-card screen (STR_THE_BATTLE_FOR_ARRAKIS).
+				 * g_feedback[] is empty there because the EU/HitSquad
+				 * release this project's Hebrew support otherwise targets
+				 * never dubbed it (its narration audio is byte-identical to
+				 * the US release's own "the building of a dynasty" line,
+				 * mismatching the EU's "Battle for Arrakis" title -- see
+				 * hebrew/README.md). Rather than reproduce that silence,
+				 * speak the title-corrected splice instead (new voice ids,
+				 * installed as loose files alongside, not over, the
+				 * originals -- see src/table/sound.c). Under confirmed US
+				 * data the pristine words already fit, so only the non-US
+				 * case needs the swap. */
+				words = s_introTitleCorrectedWords;
+			} else {
+				/* index 75's "Dune" (see g_translatedVoice[]) needs no
+				 * region-specific correction -- same word either way. */
+				words = g_translatedVoice[index];
+			}
+		} else {
+			words = g_translatedVoice[index];
+		}
+
 		for (i = 0; i < lengthof(s_spokenWords); i++) {
-			s_spokenWords[i] = (g_config.language == LANGUAGE_ENGLISH || g_config.language == LANGUAGE_HEBREW)
-				? g_feedback[index].voiceId[i] : g_translatedVoice[index][i];
+			s_spokenWords[i] = words[i];
 		}
 	}
 

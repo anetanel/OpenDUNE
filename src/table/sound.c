@@ -147,7 +147,15 @@ const VoiceData g_table_voices[NUM_VOICES] = {
 	{"-MISSLE8.VOC",   10}, /* 127 */
 	{"-CLANK.VOC",     10}, /* 128 */
 	{"-BLOWUP1.VOC",   10}, /* 129 */
-	{"-BLOWUP2.VOC",   11}  /* 130 */
+	{"-BLOWUP2.VOC",   11}, /* 130 */
+	/* Not part of the original game data: hebrew/tools/build_heb.py
+	 * installs these as new loose files (hebrew/audio/*.VOC), alongside,
+	 * not over, the original -BLDING.VOC/-DYNASTY.VOC above -- a
+	 * title-corrected splice saying "the battle... Arrakis" instead of
+	 * "the building... a dynasty", for use under non-US release data
+	 * (see String_IsUSDuneRelease() in src/string.c). */
+	{"-BLDINGH.VOC",   12}, /* 131 */
+	{"-DYNASTYH.VOC",  12}  /* 132 */
 };
 
 static const char _music_dune00[] = "dune0";

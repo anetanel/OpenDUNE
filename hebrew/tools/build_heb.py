@@ -123,15 +123,14 @@ STRING_JOBS = {
 # name and picked up only when g_config.language == LANGUAGE_HEBREW and
 # the file exists.
 #
-# Note: BLDING.VOC/DYNASTY.VOC (the "battle for Arrakis" title-correction
-# audio -- see hebrew/README.md) are NOT installed as loose ASSET_JOBS
-# entries like INTRO1.WSA. The loose-file-overrides-PAK lookup that works
-# for INTRO1.WSA turned out not to apply to VOC playback (confirmed by
-# testing in-game -- only a fragment of "for" played), so those two files
-# have to be packed directly into INTROVOC.PAK instead. See
-# hebrew/tools/pack_introvoc.py (a separate script, like
-# build_intro1_animation.py, since it needs the pristine original PAK as
-# input and isn't part of "build everything" below).
+# BLDINGH.VOC/DYNASTYH.VOC are the "battle for Arrakis" title-correction
+# audio (see hebrew/README.md and String_IsUSDuneRelease() in
+# src/string.c) -- new voice ids (src/table/sound.c), not the original
+# BLDING.VOC/DYNASTY.VOC, so this is a plain loose-file install like every
+# other entry here, no PAK patching needed: the loose-file-overrides-PAK
+# lookup only failed (confirmed by testing in-game -- only a fragment of
+# "for" played) back when an earlier version of this tool reused the
+# original names and tried to override the packed entries in place.
 ASSET_JOBS = {
     "intro.fnt": ("fonts", "introh.fnt"),
     "new8p.fnt": ("fonts", "new8ph.fnt"),
@@ -146,6 +145,8 @@ ASSET_JOBS = {
     "title.heb.cps": ("graphics", "TITLE.HEB"),
     "intro1.wsa": (".", "INTRO1H.WSA"),
     "mapmach.heb.cps": ("graphics", "MAPMACHH.CPS"),
+    "BLDINGH.VOC": ("audio", "BLDINGH.VOC"),
+    "DYNASTYH.VOC": ("audio", "DYNASTYH.VOC"),
 }
 
 

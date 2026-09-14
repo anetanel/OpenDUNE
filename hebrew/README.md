@@ -29,28 +29,43 @@ project), which already had a working Hebrew translation:
   the stock `INTRO1.WSA` only when `language == HEBREW` and the file is
   actually present, so the stock English WSA plays untouched for every
   other language.
-- `audio/{BLDING,DYNASTY}.VOC` — a title correction to the intro
+- `audio/{BLDINGH,DYNASTYH}.VOC` — a title correction to the intro
   narration, not a translation. The US release's narration says "Dune...
   the building of a dynasty", but the EU/HitSquad release (the one this
   project's Hebrew support otherwise targets) was titled "Dune II: The
   Battle for Arrakis" — and `INTROVOC.PAK`'s narration audio turns out to
   be byte-identical across every 1.07 release, so the EU release never
-  actually re-recorded it to match its own title. These two files replace
-  just the mismatched words ("the building of a dynasty" → "the battle
-  for Arrakis"), spliced from the same narrator's voice reading other
-  intro lines via voice conversion, then matched back to the original's
-  exact format (14705Hz/8-bit u8) and tape hiss.
+  actually re-recorded it to match its own title (and so stayed silent
+  over that title card rather than misplay the US's line — see git
+  history for `cutscene.c`). These two files replace just the mismatched
+  words ("the building of a dynasty" → "the battle for Arrakis"), spliced
+  from the same narrator's voice reading other intro lines via voice
+  conversion, then matched back to the original's exact format
+  (14705Hz/8-bit u8) and tape hiss.
 
-  Unlike every other asset here, these aren't installed as loose files —
-  `src/table/sound.c` hardcodes `-BLDING.VOC`/`-DYNASTY.VOC` the same
-  no-per-language-suffix way `INTRO1.WSA` is hardcoded, but the
-  loose-file-overrides-PAK lookup that works for `INTRO1.WSA` turned out
-  not to apply to VOC playback (confirmed in-game — only a fragment of
-  "for" played), so `hebrew/tools/pack_introvoc.py` patches them directly
-  into a copy of `INTROVOC.PAK` instead. They play for every language,
-  not just Hebrew (relevant here since Hebrew plays the English narration
-  under its own subtitles rather than going silent, see git history for
-  `cutscene.c`).
+  Installed as plain loose files by `build_heb.py`'s `ASSET_JOBS`, same as
+  every other asset here — `src/table/sound.c` hardcodes
+  `-BLDING.VOC`/`-DYNASTY.VOC`/`-BLDINGH.VOC`/`-DYNASTYH.VOC` the same
+  no-per-language-suffix way `INTRO1.WSA` is hardcoded, and the
+  loose-file-overrides-PAK lookup that works for `INTRO1.WSA` works here
+  too, as long as the loose file's name doesn't collide with an existing
+  packed entry: an earlier version of this tool tried overriding the
+  original `BLDING.VOC`/`DYNASTY.VOC` names directly and that failed
+  (confirmed in-game — only a fragment of "for" played), which is why the
+  correction lives under new names instead — alongside the original
+  `BLDING.VOC`/`DYNASTY.VOC` inside `INTROVOC.PAK`, untouched, so both the
+  pristine US narration and the corrected EU/HitSquad splice are
+  available at once, with no original data file ever modified.
+  `Sound_Output_Feedback()` (`src/audio/sound.c`) picks between
+  them at runtime via `String_IsUSDuneRelease()` (`src/string.c`, checks
+  the installed `INTRO.ENG`'s own title text): the pristine words for
+  confirmed US data, the corrected splice otherwise. This plays for every
+  language, not just Hebrew — English narrates this line too now, where
+  the original game never did for the EU/HitSquad release — and Hebrew's
+  intro subtitle for this line (`GameLoop_PlaySubtitle()`) switches to a
+  "building of a dynasty" translation (`ENGINE_STR_INTRO_BUILDING_OF_A_DYNASTY`
+  in `hebrew/translations/engine_strings.json`) under confirmed US data,
+  so the Hebrew text and the (English) narration always agree.
 - `tools/eng.py` — codec for the `.ENG`/`.HEB`-style string table format,
   reverse-engineered directly from this repo's own
   `String_DecompressAndTranslate()` (`src/string.c`) — see its docstring.
@@ -99,7 +114,7 @@ project), which already had a working Hebrew translation:
   lines were silently skipped rather than erroring — that's the bug this
   closes. `tools/region_ini.py` (the codec) + `tools/build_regions.py`
   (the entry point) are separate from `build_heb.py`/`STRING_JOBS` for the
-  same reason as `build_intro1_animation.py`/`pack_introvoc.py`: building
+  same reason as `build_intro1_animation.py`: building
   requires the pristine original `REGION*.INI` files as input (copyrighted,
   not committed), expected at
   `hebrew/extracted/dune2_eu_1.07/REGION{A,H,O}.INI` (extract with
@@ -113,10 +128,11 @@ project), which already had a working Hebrew translation:
   just relaunch the game (no recompile needed). Encodes the JSON into
   `DUNE.HEB`, `MESSAGE.HEB`, `INTRO.HEB`, `TEXTH.HEB`, `TEXTA.HEB`,
   `TEXTO.HEB`, `PROTECT.HEB`, `MENTATA.HEB`, `MENTATH.HEB`, `MENTATO.HEB`,
-  `ENGINE.HEB`, and copies the font/graphics assets under their
-  Hebrew-suffixed names, all into `bin/data/` (where `File_Init()` looks
-  by default). Usage: `python3 hebrew/tools/build_heb.py`, or name
-  specific jobs (`dune`, `texta`, …; `list` shows valid names).
+  `ENGINE.HEB`, and copies the font/graphics/audio assets (including
+  `BLDINGH.VOC`/`DYNASTYH.VOC`) under their Hebrew-suffixed names, all
+  into `bin/data/` (where `File_Init()` looks by default) — none of it
+  touches an original data file. Usage: `python3 hebrew/tools/build_heb.py`,
+  or name specific jobs (`dune`, `texta`, …; `list` shows valid names).
 - `tools/build_intro1_animation.py` + `wsa_encode.py`/`wsa_decode.py` —
   regenerates `hebrew/intro1.wsa` from `hebrew/INTRO1-00049.png` (the
   hand-edited final frame). Ported from
@@ -134,16 +150,6 @@ project), which already had a working Hebrew translation:
   `dunepak`). `hebrew/extracted/` is gitignored — never commit it. Usage:
   `python3 hebrew/tools/build_intro1_animation.py`, then run
   `build_heb.py` as usual to install the result.
-- `tools/pack_introvoc.py` — patches `audio/{BLDING,DYNASTY}.VOC` (see
-  above) directly into a copy of `INTROVOC.PAK`, written to `bin/data/`.
-  A separate script from `build_heb.py` for the same reason as
-  `build_intro1_animation.py`: it needs the pristine, copyrighted
-  original `INTROVOC.PAK` as input, expected at
-  `hebrew/extracted/dune2_eu_1.07/INTROVOC.PAK` (US 1.0/1.07, EU 1.07,
-  and HitSquad 1.07 are all byte-identical, so any of those works — copy
-  it in from your own legally-owned copy of the game). Doesn't need the
-  heavier `build_intro1_animation.py` dependencies, just stdlib. Usage:
-  `python3 hebrew/tools/pack_introvoc.py`.
 
 ## Known gaps (translated source exists, but nothing loads it — yet)
 

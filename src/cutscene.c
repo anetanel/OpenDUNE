@@ -222,14 +222,20 @@ static void GameLoop_PlaySubtitle(uint8 animation)
 			GameLoop_DrawText(String_Get_ByIndex(subtitle->stringID), subtitle->top);
 		}
 	} else {
-		/* The original game only ever dubbed the intro narration for English;
-		 * every other localized release showed subtitles in silence. Hebrew
-		 * keeps the English narration audio under translated subtitles rather
-		 * than going silent (matching dunedynasty's identical carve-out here).
-		 * Unlike English, messageId doesn't gate the text here: that flag only
-		 * marks the handful of lines the English release forced onto screen
-		 * as title cards, but Hebrew needs every line's translated text shown
-		 * since (unlike English) the narration audio itself isn't translated. */
+		/* Only the US release ever dubbed the intro's title-card line (see
+		 * String_IsUSDuneRelease()); the EU/HitSquad release this project's
+		 * Hebrew support otherwise targets showed it in silence, since its
+		 * narration audio is byte-identical to the US release's own
+		 * mismatching "the building of a dynasty" (see hebrew/README.md).
+		 * Sound_Output_Feedback() now speaks a title-corrected splice there
+		 * (hebrew/audio/{BLDINGH,DYNASTYH}.VOC, installed by
+		 * hebrew/tools/build_heb.py) instead of reproducing that silence,
+		 * for English too, not just Hebrew -- see src/audio/sound.c.
+		 * Unlike English's own branch above, messageId doesn't gate the
+		 * text here: that flag only marks the handful of lines the English
+		 * release forced onto screen as title cards, but Hebrew needs every
+		 * line's translated text shown since (unlike English) the
+		 * narration audio itself isn't translated. */
 		if (g_enableVoices != 0 && s_feedback_base_index != 0xFFFF && s_houseAnimation_currentSubtitle != 0
 				&& g_config.language == LANGUAGE_HEBREW) {
 			uint16 feedback_index = s_feedback_base_index + s_houseAnimation_currentSubtitle;
@@ -238,7 +244,24 @@ static void GameLoop_PlaySubtitle(uint8 animation)
 		}
 
 		if (subtitle->stringID != STR_NULL) {
-			GameLoop_DrawText(String_Get_ByIndex(subtitle->stringID), subtitle->top);
+			char *text = String_Get_ByIndex(subtitle->stringID);
+			char altTitleBuffer[64];
+
+			/* hebrew/translations/intro.json's translation of this line
+			 * assumes the EU/HitSquad release's "The Battle for Arrakis"
+			 * title. Under the US release's data, the narration above
+			 * instead speaks its own "The Building of a Dynasty" line, so
+			 * swap the subtitle to match -- otherwise the Hebrew text and
+			 * the (English) narration would flatly disagree. */
+			if (g_config.language == LANGUAGE_HEBREW
+			 && subtitle->stringID == STR_THE_BATTLE_FOR_ARRAKIS
+			 && String_IsUSDuneRelease()) {
+				snprintf(altTitleBuffer, sizeof(altTitleBuffer), "%s",
+					EngineString_Get(ENGINE_STR_INTRO_BUILDING_OF_A_DYNASTY, "The Building of a Dynasty"));
+				text = altTitleBuffer;
+			}
+
+			GameLoop_DrawText(text, subtitle->top);
 		}
 	}
 

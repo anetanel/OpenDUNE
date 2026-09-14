@@ -28,7 +28,7 @@ typedef struct Feedback {
 } Feedback;
 
 /** Number of voices in the game. */
-#define NUM_VOICES 131
+#define NUM_VOICES 133
 
 extern const uint16 g_table_voiceMapping[];
 extern const MusicData g_table_musics[];

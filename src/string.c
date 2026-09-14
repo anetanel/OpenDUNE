@@ -107,6 +107,45 @@ char *String_Get_ByIndex(uint16 stringID)
 	return s_stringsBuffer + s_strings[stringID];
 }
 
+static bool String_ContainsCaseInsensitive(const char *haystack, const char *needle)
+{
+	size_t needleLen = strlen(needle);
+	const char *p;
+
+	for (p = haystack; *p != '\0'; p++) {
+		if (strncasecmp(p, needle, needleLen) == 0) return true;
+	}
+	return false;
+}
+
+/**
+ * Whether the installed data is the US release ("Dune II: The Building of a
+ * Dynasty") rather than the EU/HitSquad release ("Dune II: The Battle for
+ * Arrakis") this project otherwise targets. Both ship the exact same
+ * narration audio in INTROVOC.PAK (see hebrew/README.md) but different text
+ * at INTRO.<suffix> entry 2 -- STR_THE_BATTLE_FOR_ARRAKIS's slot, stored
+ * uncompressed there. Checked directly against the real INTRO.ENG file
+ * regardless of the active UI language, since Hebrew's own INTRO.HEB
+ * doesn't carry the original English text.
+ */
+bool String_IsUSDuneRelease(void)
+{
+	uint8 *buf;
+	uint16 offset;
+	bool result;
+
+	if (!File_Exists("INTRO.ENG")) return false;
+
+	buf = (uint8 *)File_ReadWholeFile("INTRO.ENG");
+	if (buf == NULL) return false;
+
+	offset = READ_LE_UINT16(buf + 2 * 2);
+	result = String_ContainsCaseInsensitive((const char *)buf + offset, "dynasty");
+
+	free(buf);
+	return result;
+}
+
 static void String_Load(const char *filename, bool compressed, uint16 start, uint16 end)
 {
 	uint8 *buf;

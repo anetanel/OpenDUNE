@@ -8,7 +8,7 @@ Needs the pristine original REGION*.INI files as input (copyrighted, not
 committed here) -- expected at hebrew/extracted/dune2_eu_1.07/REGION*.INI,
 extracted from your own legally-owned copy of the game (e.g. via dunepak
 against bin/data/SCENARIO.PAK -- same convention as
-build_intro1_animation.py/pack_introvoc.py's inputs).
+build_intro1_animation.py's inputs).
 
 Usage: python3 hebrew/tools/build_regions.py
 """

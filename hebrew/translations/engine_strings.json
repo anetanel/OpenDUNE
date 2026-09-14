@@ -53,5 +53,10 @@
     "id": "ENGINE_STR_TIME_M",
     "en": "Time: %dm",
     "he": "זמן: %d דקות"
+  },
+  {
+    "id": "ENGINE_STR_INTRO_BUILDING_OF_A_DYNASTY",
+    "en": "The Building of a Dynasty",
+    "he": "ב נ י י ת ה   ש ל   ש ו ש ל ת"
   }
 ]
