@@ -120,3 +120,29 @@ bundle_one() {
 }
 
 bundle_one "$EXE"
+
+# Homebrew's "sdl2" formula is actually sdl2-compat, a shim that
+# implements the SDL2 ABI by translating calls into a separate SDL3
+# library it dlopen()s *by name* ("libSDL3.dylib", via @loader_path) in
+# its dllinit() constructor at load time -- not a normal link-time
+# dependency, so it never shows up in otool -L and the loop above never
+# bundles it. Without it, the shim aborts at launch ("Failed loading
+# SDL3 library"), confirmed via a real crash report (abort() inside
+# libSDL2-2.0.0.dylib's own dllinit). See
+# https://discourse.libsdl.org/t/sdl2-compat-mac-fixed-sdl3-libname-to-be-libsdl3-dylib/40802
+if [ -f "$FRAMEWORKS_DIR/libSDL2-2.0.0.dylib" ] && [ ! -f "$FRAMEWORKS_DIR/libSDL3.dylib" ]; then
+	sdl3=$(find /opt/homebrew /usr/local -name "libSDL3.dylib" -print 2>/dev/null | head -n 1)
+	if [ -z "$sdl3" ]; then
+		sdl3=$(find /opt/homebrew /usr/local -name "libSDL3.*.dylib" -print 2>/dev/null | head -n 1)
+	fi
+
+	if [ -n "$sdl3" ]; then
+		cp -L "$sdl3" "$FRAMEWORKS_DIR/libSDL3.dylib"
+		chmod u+w "$FRAMEWORKS_DIR/libSDL3.dylib"
+		install_name_tool -id "@executable_path/../Frameworks/libSDL3.dylib" "$FRAMEWORKS_DIR/libSDL3.dylib"
+		( bundle_one "$FRAMEWORKS_DIR/libSDL3.dylib" )
+		codesign --force -s - "$FRAMEWORKS_DIR/libSDL3.dylib" 2>/dev/null || true
+	else
+		echo "bundle_dylibs.sh: WARNING: libSDL2-2.0.0.dylib (sdl2-compat) bundled but no libSDL3*.dylib found under /opt/homebrew or /usr/local -- the shim will fail to load SDL3 at runtime" >&2
+	fi
+fi
