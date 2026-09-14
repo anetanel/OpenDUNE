@@ -703,6 +703,21 @@ static void Video_DrawScreen(void)
 {
 	if (!GFX_Screen_IsDirty(SCREEN_0) && !s_screen_needrepaint) return;
 
+	/* SDL_RenderSetLogicalSize() (Video_Init()) can letterbox/pillarbox if
+	 * the window's actual drawable size doesn't exactly match a clean
+	 * integer multiple of the logical size -- most likely on a HiDPI/
+	 * Retina display, where the window's point size and its backing
+	 * pixel size differ. Nothing below ever draws into that padding
+	 * area, so without an explicit clear here it keeps showing whatever
+	 * was already in the renderer's backing store (confirmed on real
+	 * macOS/Metal hardware: thick garbled bands along the edges,
+	 * unaffected by the dirty-rect texture-locking fix above since that
+	 * only concerns pixels *inside* the texture, not the letterboxing
+	 * around it). A full clear is a cheap GPU fill, not a CPU-side
+	 * re-encode of unchanged framebuffer content, so this doesn't undo
+	 * the point of the dirty-rect optimization below. */
+	SDL_RenderClear(s_renderer);
+
 	if (s_screen_magnification == 1) {
 		Video_DrawScreen_Nearest_Neighbor();
 	} else switch (s_scale_filter) {
