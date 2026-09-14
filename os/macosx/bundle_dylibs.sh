@@ -36,18 +36,37 @@ rpaths_of() {
 	'
 }
 
-# Resolve "@rpath/libFoo.dylib" against target's LC_RPATH entries to a
-# real file on disk. Prints the resolved path, or nothing if not found.
+# Resolve "@rpath/libFoo.dylib" to a real file on disk, trying in order:
+# 1) Contents/Frameworks (a sibling branch of the dependency tree may
+#    have already bundled it there);
+# 2) target's own LC_RPATH entries;
+# 3) a broad search under the standard Homebrew roots, since a
+#    dependency's recorded LC_RPATH doesn't always actually point at
+#    wherever the real copy on this machine lives (seen in practice with
+#    some of libjxl's/libwebp's own sub-dependencies).
+# Prints the resolved path, or nothing if none of these find it.
 resolve_rpath() {
 	target="$1"
 	leaf="${2#@rpath/}"
-	rpaths_of "$target" | while read -r rp; do
+
+	if [ -f "$FRAMEWORKS_DIR/$leaf" ]; then
+		echo "$FRAMEWORKS_DIR/$leaf"
+		return
+	fi
+
+	found=$(rpaths_of "$target" | while read -r rp; do
 		candidate="$rp/$leaf"
 		if [ -f "$candidate" ]; then
 			echo "$candidate"
 			break
 		fi
-	done
+	done)
+	if [ -n "$found" ]; then
+		echo "$found"
+		return
+	fi
+
+	find /opt/homebrew /usr/local -name "$leaf" -print 2>/dev/null | head -n 1
 }
 
 bundle_one() {
@@ -82,7 +101,16 @@ bundle_one() {
 			cp "$src" "$dest"
 			chmod u+w "$dest"
 			install_name_tool -id "@executable_path/../Frameworks/$libname" "$dest"
-			bundle_one "$dest"
+			# In a subshell: none of target/dep/src/libname/dest above are
+			# scoped to this function (no portable "local" in POSIX sh), so
+			# a direct recursive call would clobber them on return and the
+			# -change call below would end up firing against whatever the
+			# innermost recursion last left in $target instead of this
+			# frame's actual target -- confirmed happening via a CI build
+			# log: the second install_name_tool invocation for a freshly
+			# bundled dylib kept re-targeting that same dylib instead of
+			# the one that actually depended on it.
+			( bundle_one "$dest" )
 		fi
 
 		install_name_tool -change "$dep" "@executable_path/../Frameworks/$libname" "$target"
