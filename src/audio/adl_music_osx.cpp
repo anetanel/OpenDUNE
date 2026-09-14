@@ -3,12 +3,20 @@
  * (adl/opl_dosbox.cpp, adl/opl_mame.cpp). Bypasses the MIDI/mt32mpu.c
  * pipeline entirely -- .ADL files carry their own instrument patches and
  * note sequencing, not General MIDI events. Output goes through the same
- * CoreAudio AudioUnit API dsp_osx.c uses for VOC playback, but that file's
- * DSP_Play() hands the render callback one fixed pre-decoded buffer to
- * drain -- the wrong shape for continuously-generated streaming music.
- * Here the render callback pulls fresh samples from the OPL emulator on
- * every invocation instead, which fits this API's pull model more
- * naturally than the push/tick pattern the PulseAudio/WinMM backends need.
+ * CoreAudio AudioUnit API dsp_osx.c uses for VOC playback, but component
+ * lookup here uses the modern AudioComponent* calls (AudioComponentFindNext/
+ * InstanceNew/InstanceDispose) instead of dsp_osx.c's Component Manager
+ * ones (FindNextComponent/OpenAComponent/CloseComponent) -- those were
+ * removed from the SDK at some point and don't compile at all against a
+ * current one (found the hard way: CI's macOS matrix only builds with
+ * SDL/SDL2 configured, which routes voice/sound playback through
+ * dsp_sdl.c instead, so dsp_osx.c itself is never actually compiled
+ * there and this had gone uncaught). Also, unlike that file's DSP_Play(),
+ * which hands the render callback one fixed pre-decoded buffer to drain,
+ * this backend's render callback pulls fresh samples from the OPL
+ * emulator on every invocation -- the right shape for continuously-
+ * generated streaming music, and a more natural fit for this API's pull
+ * model than the push/tick pattern the PulseAudio/WinMM backends need.
  */
 
 #if defined(__ALTIVEC__) && !defined(MAC_OS_X_VERSION_10_5)
@@ -87,8 +95,8 @@ bool ADLMusic_IsEnabled(void)
 static bool ADLMusic_InitOutput(void)
 {
 	AudioStreamBasicDescription format;
-	Component comp;
-	ComponentDescription desc;
+	AudioComponent comp;
+	AudioComponentDescription desc;
 	struct AURenderCallbackStruct callback;
 	OSStatus result;
 
@@ -101,10 +109,10 @@ static bool ADLMusic_InitOutput(void)
 	desc.componentFlags = 0;
 	desc.componentFlagsMask = 0;
 
-	comp = FindNextComponent(NULL, &desc);
+	comp = AudioComponentFindNext(NULL, &desc);
 	if (comp == NULL) goto fail;
 
-	result = OpenAComponent(comp, &s_outputAudioUnit);
+	result = AudioComponentInstanceNew(comp, &s_outputAudioUnit);
 	if (result != noErr) goto fail;
 
 	result = AudioUnitInitialize(s_outputAudioUnit);
@@ -231,7 +239,7 @@ void ADLMusic_Uninit(void)
 				kAudioUnitProperty_SetRenderCallback, kAudioUnitScope_Input,
 				0, &callback, sizeof(callback));
 
-		CloseComponent(s_outputAudioUnit);
+		AudioComponentInstanceDispose(s_outputAudioUnit);
 	}
 
 	s_initialized = false;
