@@ -42,6 +42,9 @@ ifdef OSXAPP
 	$(Q)cp "$(ROOT_DIR)/os/macosx/opendune.icns"                   "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources"
 endif
 	$(Q)cp "$(BIN_DIR)/$(OPENDUNE)"           "$(OPENDUNE_DIR)/"
+ifdef OSXAPP
+	$(Q)"$(ROOT_DIR)/os/macosx/bundle_dylibs.sh" "$(OPENDUNE_DIR)/$(OPENDUNE)"
+endif
 	$(Q)cp "$(ROOT_DIR)/README.txt"           "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/enhancement.txt"      "$(BUNDLE_DIR)/"
