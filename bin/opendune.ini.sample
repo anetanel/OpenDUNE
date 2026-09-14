@@ -2,7 +2,9 @@
 ; and edit it to suit your preferences.
 ; Lines starting with a semi-colon ';' are comments
 [opendune]
-; supported languages are : english, french and german
+; supported languages are : english, french, german, italian, spanish,
+; hebrew. Hebrew is only available in this branch's Hebrew localization
+; (see README.txt); the others come from the original game data files.
 ;language=french
 ; directory where the Dune 2 data files are :
 ;datadir=/usr/local/opendune
@@ -17,8 +19,9 @@
 ; Maximum frame rate  (default is 60)
 ;framerate=60
 ; set adlib=1 for authentic AdLib/OPL music (built-in emulator, original
-; .ADL instrument data) instead of General MIDI. Only implemented for
-; builds with PulseAudio support; silently ignored otherwise.
+; .ADL instrument data) instead of General MIDI. Implemented on Windows
+; (via WinMM) and on builds with PulseAudio support; silently ignored
+; on every other build.
 ;adlib=1
 ; set mt32midi=1 if you output music to a MT-32 device or compatible
 ; default setting is for GeneralMidi music (Roland SC55)
