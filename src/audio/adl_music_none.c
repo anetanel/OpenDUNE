@@ -1,7 +1,8 @@
 /** @file src/audio/adl_music_none.c Fallback when no AdLib output backend is
- * available (currently only PulseAudio is implemented -- see
- * adl_music.cpp). "adlib=1" in opendune.ini is simply ignored on builds
- * without PulseAudio; Music_Play() falls through to the normal MIDI path. */
+ * available (currently only PulseAudio and Windows/WinMM are implemented --
+ * see adl_music.cpp / adl_music_win32.cpp). "adlib=1" in opendune.ini is
+ * simply ignored on every other build; Music_Play() falls through to the
+ * normal MIDI path. */
 
 #include "types.h"
 

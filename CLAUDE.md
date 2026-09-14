@@ -114,13 +114,17 @@ compile.
   plus a bytecode interpreter for Westwood's original `.ADL` resource
   files (their own instrument patches/sequencing, not General MIDI),
   giving authentic 1992 AdLib-sounding music instead of a GM soundfont.
-  `src/audio/adl_music.cpp` is the glue that owns its own PulseAudio
-  output stream and reuses the existing `g_table_musics[]` track table
-  unchanged (same base filename/index as the MIDI source, just a `.ADL`
-  extension). `Music_Play()` (`src/audio/sound.c`) branches to this path
+  `src/audio/adl_music.cpp` (PulseAudio) and `src/audio/adl_music_win32.cpp`
+  (WinMM `waveOut`, `#if WIN32` in `source.list`) are the two output-glue
+  implementations; both own their output stream/device directly, bypassing
+  the `dsp_*.c` abstraction (its `DSP_Play()` is shaped for one-shot VOC
+  clips, not continuously-refilled streaming music), and both reuse the
+  existing `g_table_musics[]` track table unchanged (same base
+  filename/index as the MIDI source, just a `.ADL` extension).
+  `Music_Play()` (`src/audio/sound.c`) branches to whichever is compiled in
   when `ADLMusic_IsEnabled()` is true, gated by the `adlib` ini option;
   sound effects always stay on the MIDI/DSP path. The AdLib sources are
-  unconditionally compiled but only wired to real output when PulseAudio
-  support is configured in — `src/audio/adl_music_none.c` is the no-op
-  fallback otherwise (see `source.list`'s `#if PULSE` split), so `adlib=1`
-  silently does nothing on non-PulseAudio builds rather than erroring.
+  unconditionally compiled but only wired to real output on Windows or
+  when PulseAudio support is configured in — `src/audio/adl_music_none.c`
+  is the no-op fallback otherwise, so `adlib=1` silently does nothing on
+  every other build (e.g. Linux without PulseAudio) rather than erroring.
