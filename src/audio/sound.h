@@ -38,6 +38,7 @@ extern const uint16 g_translatedVoice[][NUM_SPEECH_PARTS];
 
 extern void Music_Play(uint16 musicID);
 extern bool Music_IsPlaying(void);
+extern bool Music_IsEnabled(void);
 extern void Music_InitMT32(void);
 extern void Voice_PlayAtTile(int16 voiceID, tile32 position);
 extern void Voice_Play(int16 voiceID);

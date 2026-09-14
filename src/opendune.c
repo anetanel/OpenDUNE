@@ -905,7 +905,6 @@ static void InGame_Numpad_Move(uint16 key)
  */
 static void GameLoop_Main(void)
 {
-	static uint32 l_timerNext = 0;
 	static uint32 l_timerUnitStatus = 0;
 	static int16  l_selectionState = -2;
 
@@ -1059,7 +1058,6 @@ static void GameLoop_Main(void)
 			g_viewport_fadein = false; /* scenario start shouldn't trigger the mentat-return dissolve */
 
 			Music_Play(Tools_RandomLCG_Range(0, 8) + 8);
-			l_timerNext = g_timerGUI + 300;
 		}
 
 		if (l_selectionState != g_selectionState) {
@@ -1075,15 +1073,11 @@ static void GameLoop_Main(void)
 				g_musicInBattle = 0;
 			} else if (g_musicInBattle > 0) {
 				Music_Play(Tools_RandomLCG_Range(0, 5) + 17);
-				l_timerNext = g_timerGUI + 300;
 				g_musicInBattle = -1;
 			} else {
 				g_musicInBattle = 0;
-				if (g_enableSoundMusic != 0 && g_timerGUI > l_timerNext) {
-					if (!Music_IsPlaying()) {
-						Music_Play(Tools_RandomLCG_Range(0, 8) + 8);
-						l_timerNext = g_timerGUI + 300;
-					}
+				if (Music_IsEnabled() && !Music_IsPlaying()) {
+					Music_Play(Tools_RandomLCG_Range(0, 8) + 8);
 				}
 			}
 		}

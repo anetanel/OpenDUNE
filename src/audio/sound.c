@@ -149,6 +149,21 @@ bool Music_IsPlaying(void)
 }
 
 /**
+ * Whether background music should be attempted at all. g_enableSoundMusic
+ * only reflects whether the MIDI/MPU driver initialized successfully
+ * (Drivers_SoundMusic_Init(), driver.c) -- under "adlib=1" that's
+ * irrelevant, since AdLib playback never touches the MIDI driver, but on
+ * a system with no working MIDI output (e.g. no Timidity++ running) it's
+ * false regardless, which otherwise permanently blocked
+ * GameLoop_Main()'s ambient-music retrigger even with AdLib enabled and
+ * working.
+ */
+bool Music_IsEnabled(void)
+{
+	return g_enableSoundMusic != 0 || ADLMusic_IsEnabled();
+}
+
+/**
  * Initialises the MT-32.
  * @param index The index of the music to play.
  */
