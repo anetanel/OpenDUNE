@@ -1041,7 +1041,7 @@ static void Gameloop_Logos(void)
 
 	GUI_SetPaletteAnimated(g_palette2, 60);
 
-	while (Driver_Music_IsPlaying()) sleepIdle();
+	while (Music_IsPlaying()) sleepIdle();
 
 	GUI_SetPaletteAnimated(g_palette2, 60);
 

@@ -136,6 +136,19 @@ void Music_Play(uint16 musicID)
 }
 
 /**
+ * Whether background music is currently playing -- routes to whichever
+ * backend Music_Play() actually used, since Driver_Music_IsPlaying() alone
+ * only knows about the MIDI/MPU path and always reports false under
+ * "adlib=1" (nothing is ever loaded into it in that case), which made
+ * callers wrongly think a track had already finished.
+ */
+bool Music_IsPlaying(void)
+{
+	if (ADLMusic_IsEnabled()) return ADLMusic_IsPlaying();
+	return Driver_Music_IsPlaying();
+}
+
+/**
  * Initialises the MT-32.
  * @param index The index of the music to play.
  */
