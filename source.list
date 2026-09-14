@@ -71,10 +71,14 @@ audio/adl/sound_adlib.cpp
 #if WIN32
 audio/adl_music_win32.cpp
 #else
+#if OSX
+audio/adl_music_osx.cpp
+#else
 #if PULSE
 audio/adl_music.cpp
 #else
 audio/adl_music_none.c
+#endif
 #endif
 #endif
 audio/mt32mpu.c

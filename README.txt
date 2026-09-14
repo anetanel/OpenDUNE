@@ -52,9 +52,9 @@ In order to use sounds and music on Linux, you need a working ALSA driver.
 OpenDUNE also supports OSS and PulseAudio for digitized sound output.
 The `adlib` option (see below), which plays music through a built-in
 AdLib/OPL emulator using the original .ADL instrument data instead of
-the General MIDI pipeline, is implemented on Windows (WinMM) and on
-builds with PulseAudio support; on every other build it is silently
-ignored and music falls back to General MIDI.
+the General MIDI pipeline, is implemented on Windows (WinMM), macOS
+(CoreAudio) and on builds with PulseAudio support; on every other
+build it is silently ignored and music falls back to General MIDI.
 Music is sent to MIDI Out port of Atari machines.
 It is also possible to build with Munt MT32 emulator http://munt.sourceforge.net/
 to have MT32 music : Windows users should just install the mt32emu_win32drv and
@@ -98,10 +98,11 @@ Available options are :
 - fullscreen : 0(default)/1 starts the game in full screen mode if possible
 - adlib : 0(default)/1 play music through a built-in AdLib/OPL emulator,
           using the original .ADL instrument data, instead of the General
-          MIDI pipeline. Implemented on Windows (via WinMM) and on builds
-          with PulseAudio support (auto-detected by configure on most
-          Unix-like systems); on every other build this option is
-          silently ignored and music falls back to General MIDI.
+          MIDI pipeline. Implemented on Windows (via WinMM), macOS (via
+          CoreAudio) and on builds with PulseAudio support (auto-detected
+          by configure on most Unix-like systems); on every other build
+          this option is silently ignored and music falls back to
+          General MIDI.
 - mt32midi : 0(default)/1 send MT32 init, use .XMI files
 - mt32rompath : directory containing CM32L_CONTROL.ROM/CM32L_PCM.ROM files
                 for Munt MT32 emulator.

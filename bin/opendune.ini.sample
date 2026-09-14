@@ -20,8 +20,8 @@
 ;framerate=60
 ; set adlib=1 for authentic AdLib/OPL music (built-in emulator, original
 ; .ADL instrument data) instead of General MIDI. Implemented on Windows
-; (via WinMM) and on builds with PulseAudio support; silently ignored
-; on every other build.
+; (via WinMM), macOS (via CoreAudio) and on builds with PulseAudio
+; support; silently ignored on every other build.
 ;adlib=1
 ; set mt32midi=1 if you output music to a MT-32 device or compatible
 ; default setting is for GeneralMidi music (Roland SC55)
