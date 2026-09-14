@@ -50,6 +50,10 @@ For Linux/FreeBSD, you need to install LibSDL yourself. It is available in every
  system.
 In order to use sounds and music on Linux, you need a working ALSA driver.
 OpenDUNE also supports OSS and PulseAudio for digitized sound output.
+PulseAudio support is additionally required to use the `adlib` option
+(see below), which plays music through a built-in AdLib/OPL emulator
+using the original .ADL instrument data instead of the General MIDI
+pipeline; on builds without PulseAudio the option is silently ignored.
 Music is sent to MIDI Out port of Atari machines.
 It is also possible to build with Munt MT32 emulator http://munt.sourceforge.net/
 to have MT32 music : Windows users should just install the mt32emu_win32drv and
@@ -64,7 +68,10 @@ Extract OpenDUNE.
 Copy the original Dune2 1.07 data files (including dune2.exe) to data/.
  All three existing versions of the Dune 1.07 data files (eu, hs and us) will
   work, but only with the eu/hs data files the French language will work, and
-  only with the eu data files the German language will work.
+  only with the eu data files the German language will work. Availability of
+  Italian/Spanish similarly depends on which data files you have; Hebrew is
+  not part of the original data files at all -- see "Hebrew localization"
+  below.
 Start 'opendune'.
 
 OS X/macOS : data files are searched additionaly in the Contents/Resources/data
@@ -78,7 +85,10 @@ in the data/ directory, in the current directory or in %APPDATA%\OpenDUNE
 (on Haiku). All options must be in an [opendune] section.
 
 Available options are :
-- language : english / french / german
+- language : english / french / german / italian / spanish / hebrew
+          Hebrew is only available in this branch's Hebrew localization
+          (see "Hebrew localization" below); the others come from the
+          original game data files.
 - datadir : directory where Dune data files are
 - savedir : directory for Dune personal data files (savegames)
 - scalefactor : 1 (no upscaling), 2 (default), 3, 4
@@ -97,6 +107,14 @@ Available options are :
 - fs_soundfont : SoundFont2 file for FluidSynth
 - fs_audiodriver : FluidSynth audio driver name (alsa, jack, oss, etc.)
 - midideviceid : Windows MIDI Device ID to use (default is 0)
+- security_question : controls the manual-lookup copy-protection screen
+          (the "look up word X on page Y, line Z of the manual" check
+          before a game starts)
+          0 = original behaviour: answer correctly within 3 tries or
+              the game exits
+          1(default) = the screen is still shown, but the correct
+              answer is pre-filled -- just press Enter
+          2 = the screen is skipped entirely
 
 debug options (for developpers) :
 - dune2_enhanced : 0 = game acts like the original Dune II, including bugs
@@ -128,6 +146,28 @@ A few key controls are added in OpenDUNE, available depending on the
 platform :
 F8 - Toggle FPS display
 CTRL-ENTER or F11 - Toggle full screen
+
+
+Hebrew localization
+--------------------
+This branch adds a Hebrew translation as a native language option
+alongside English/French/German/Italian/Spanish. It is not shipped as
+built data files -- you generate them yourself from your own legally
+owned Dune II 1.07 data files:
+
+1. Copy the original data files to data/ (or bin/data/) as usual.
+2. Run `python3 hebrew/tools/build_heb.py`. This encodes the
+   translation source under hebrew/translations/*.json (and copies the
+   hand-edited fonts/graphics/audio under hebrew/) into new,
+   distinctly-named `*.HEB`-suffixed files installed into bin/data/ --
+   no original data file is modified, and no recompile is needed for
+   text changes.
+3. Set `language=hebrew` in opendune.ini and start the game.
+
+Text is drawn right-to-left and mirrored at draw time. See
+hebrew/README.md for the full pipeline (including the extra,
+copyrighted-input-only steps for the strategic-map narration and the
+intro animation) and its list of known gaps.
 
 
 Enhancement over Dune2
