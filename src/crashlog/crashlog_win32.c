@@ -31,7 +31,12 @@ static EXCEPTION_POINTERS *s_ep;
 #define PRINTF_PTR "0x%08I64X"
 #endif
 
-#if defined(_MSC_VER)
+/* dbghelp.dll's API (StackWalk64, MiniDumpWriteDump, ...) is a system DLL
+ * loaded here via LoadLibrary/GetProcAddress -- no import-library link step
+ * needed -- and mingw-w64 ships the same dbghelp.h/type definitions as the
+ * MSVC SDK, so this isn't actually MSVC-specific; only guarded that way
+ * historically. */
+#if defined(_MSC_VER) || defined(__MINGW32__)
 #include <dbghelp.h>
 
 static void AppendDecodedStacktrace(char *buffer)
@@ -209,7 +214,7 @@ bool WriteCrashDump(void)
 	}
 	return ret;
 }
-#endif /* _MSC_VER */
+#endif /* _MSC_VER || __MINGW32__ */
 
 static void ShowCrashlogWindow(void)
 {
@@ -239,10 +244,10 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		_T("Generated file(s):\n")
 	);
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(__MINGW32__)
 	AppendDecodedStacktrace(s_crashlog);
 	if (WriteCrashDump()) _tcscat(s_crashText, "crash.dmp\n");
-#endif /* _MSC_VER */
+#endif /* _MSC_VER || __MINGW32__ */
 
 	if (CrashLog_WriteCrashLog(s_crashlog)) _tcscat(s_crashText, _T("crash.log\n"));
 

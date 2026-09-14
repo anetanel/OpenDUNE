@@ -1268,6 +1268,11 @@ int main(int argc, char **argv)
 
 	if (err != NULL) _dup2(_fileno(err), _fileno(stderr));
 	if (out != NULL) _dup2(_fileno(out), _fileno(stdout));
+	/* Without this, writes sit in the CRT's buffer and never reach disk
+	 * unless the process exits cleanly -- a crash or forced kill leaves
+	 * error.log/output.log empty even though Warning()/Error() ran. */
+	setvbuf(stderr, NULL, _IONBF, 0);
+	setvbuf(stdout, NULL, _IOLBF, 0);
 	FreeConsole();
 #endif /* _WIN32 */
 #ifdef TOS
