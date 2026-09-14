@@ -7,6 +7,3 @@ extracted/
 
 # Debug output from build_intro1_animation.py.
 tools/_wsa_debug_frames/
-
-# Packaged drop-in zip from tools/package_heb.py.
-dist/
