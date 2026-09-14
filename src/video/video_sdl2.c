@@ -546,21 +546,35 @@ static void Video_DrawScreen_Nearest_Neighbor(void)
 	SDL_Rect * prect = NULL;
 
 	gfx_screen8 += (s_screenOffset << 2);
-	if (SDL_LockTexture(s_texture, NULL, (void **)&pixels, &pitch) != 0) {
-		Error("Could not set lock texture: %s\n", SDL_GetError());
-		return;
-	}
 	if (!s_screen_needrepaint && area && (area->left > 0 || area->top > 0 || area->right < SCREEN_WIDTH || area->bottom < SCREEN_HEIGHT)) {
 		rect.x = area->left;
 		rect.y = area->top;
 		rect.w = area->right - area->left;
 		rect.h = area->bottom - area->top;
 		prect = &rect;
-		pixels += pitch * area->top;
+	}
+
+	/* Lock only the dirty rect (NULL = the whole texture) when doing a
+	 * partial update. SDL_TEXTUREACCESS_STREAMING textures commonly
+	 * rotate between several internal buffers across lock/unlock cycles
+	 * to avoid a GPU sync stall, so locking the *whole* texture but only
+	 * writing the dirty sub-rect into it leaves the untouched area
+	 * showing whatever an earlier, unrelated frame left in that
+	 * particular buffer slot -- not last frame's content -- which reads
+	 * as flickering garbage outside whatever part of the screen actually
+	 * changed. Locking just the sub-rect keeps this to SDL2's documented
+	 * partial-update contract instead. Confirmed against a real machine
+	 * (macOS/Metal backend); the equivalent SDL1 backend has no such
+	 * multi-buffering concept and never showed this. */
+	if (SDL_LockTexture(s_texture, prect, (void **)&pixels, &pitch) != 0) {
+		Error("Could not set lock texture: %s\n", SDL_GetError());
+		return;
+	}
+
+	if (prect != NULL) {
 		gfx_screen8 += SCREEN_WIDTH * area->top + area->left;
 		for (y = area->top; y < area->bottom; y++) {
 			p = (uint32 *)pixels;
-			p += area->left;
 			for (x = area->left; x < area->right; x++) {
 				*p++ = s_palette[*gfx_screen8++];
 			}
