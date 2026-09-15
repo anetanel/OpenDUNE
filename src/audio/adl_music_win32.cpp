@@ -8,22 +8,35 @@
  * DSP_Play() is a fire-and-forget single buffer, the wrong shape for
  * continuous looping music.
  *
- * The tick runs on our own dedicated thread rather than through the
- * shared Timer_Add() mechanism. On Win32 without SDL/SDL2 (how the
- * release win32/win64 builds are configured), timer.c's tick callbacks
- * run on a Windows timer-queue thread that only fakes single-threadedness
- * by SuspendThread()-ing the main thread for the callback's duration --
- * that can land mid-instruction, not just at C-statement boundaries. A
- * plain CRITICAL_SECTION shared with that mechanism is actually a
- * deadlock trap: if the main thread is suspended while holding the lock,
- * the timer thread's own attempt to acquire it inside the tick blocks
- * forever (it can't be released until the tick returns, which can't
- * happen until the lock is acquired). Our own thread is never the one
- * SuspendThread() targets, so a normal critical section between it and
- * the main thread is safe. (An earlier version of this file put the tick
- * on Timer_Add and raced s_adlib against a delete-then-reassign in
- * ADLMusic_Play() -- fixed first, but the deeper internal-state race
- * against ADLMusic_Stop()/ADLMusic_PlaySoundEffect() needed this.)
+ * EXPERIMENTAL single-threaded variant (branch: adlib-win32-singlethread).
+ * dunedynasty (the fork this AdLib port comes from) drives its AdLib
+ * emulator entirely from one thread: the main/game thread polls Allegro's
+ * audio-stream-fragment event synchronously as part of the normal game
+ * loop, so nothing ever touches the emulator concurrently. OpenDUNE's own
+ * POSIX/SDL builds work the same way (SleepAndProcessBackgroundTasks()
+ * calls Timer_InterruptRun() synchronously on the calling thread).
+ *
+ * Win32 *without* SDL/SDL2 is the exception: Timer_Add() callbacks
+ * (ADLMusic_Tick() here, but also Timer_Tick() and Video_Tick() --
+ * this isn't AdLib-specific) run on a Windows timer-queue thread, and
+ * sleepIdle() on this config is just `msleep(1)` -- it does NOT drive
+ * Timer_InterruptRun() at all (see os/sleep.h). Game timing and screen
+ * redraws on this platform already depend on that background thread
+ * ticking independently of the main thread, so removing it entirely
+ * (to fully match dunedynasty/POSIX) would mean reworking timer.c
+ * game-wide, not just this file.
+ *
+ * This variant keeps that constraint but still gets to "single-threaded"
+ * from SoundAdLibPC's point of view: s_adlib is touched ONLY by
+ * ADLMusic_Tick(), which always runs on that one shared timer-queue
+ * thread (same as Timer_Tick()/Video_Tick() already do). The main-thread
+ * entry points (ADLMusic_Play/Stop/PlaySoundEffect(), called from
+ * sound.c's Music_Play()/Sound_Play()) never call into the AdLib object
+ * directly -- they publish lock-free requests (Interlocked* pointer/value
+ * swaps, single-producer/single-consumer) that the tick consumes for
+ * itself before rendering each buffer. No CRITICAL_SECTION, no dedicated
+ * thread of our own -- compare against master's dedicated-thread+lock
+ * fix for the same bug.
  */
 
 #include <stdlib.h>
@@ -37,6 +50,7 @@ extern "C" {
 #include "../os/error.h"
 #include "../file.h"
 #include "../inifile.h"
+#include "../timer.h"
 #include "sound.h"
 }
 
@@ -46,47 +60,50 @@ extern "C" {
 static const int SRATE = 44100;
 static const int FRAGLEN = 1024; /* samples per buffer/tick */
 static const int NUM_BUFFERS = 4; /* ~93ms of slack ahead of playback */
-static const DWORD TICK_POLL_MS = 10; /* well under one buffer's ~23ms drain time */
+static const LONG NO_EFFECT_PENDING = -1;
 
 static HWAVEOUT s_waveOut = NULL;
 static WAVEHDR s_waveHdr[NUM_BUFFERS];
 static int16 s_waveBuf[NUM_BUFFERS][FRAGLEN];
 
+/* Owned exclusively by ADLMusic_Tick() -- never touched from the main
+ * thread. Everything below is how the main thread hands it requests. */
 static SoundAdLibPC *s_adlib = NULL;
+
+/* Published by ADLMusic_Play(), consumed (and cleared) by the tick via
+ * InterlockedExchangePointer(). A fully-built, fully-initialized object
+ * is handed off with a single pointer swap -- same "publish, don't leave
+ * a torn intermediate state" principle as master's fix, just consumed by
+ * the tick instead of applied directly to s_adlib from the main thread. */
+static SoundAdLibPC *volatile s_pendingAdlib = NULL;
+
+static volatile LONG s_pendingStop = 0;
+static volatile LONG s_pendingSoundEffect = NO_EFFECT_PENDING;
+static volatile LONG s_isPlayingCache = 0; /* written by the tick, read by ADLMusic_IsPlaying() */
+
 static bool s_initialized = false;
 static bool s_initFailed = false;
 
-static HANDLE s_audioThread = NULL;
-static HANDLE s_stopEvent = NULL;
-
-/* Lives for the whole process (constructed before main() runs), unlike
- * s_adlib/s_waveOut/etc which come and go across Init/Uninit cycles --
- * ADLMusic_Stop()/ADLMusic_PlaySoundEffect() can be reached (via
- * Music_Play()/Sound_Play() in sound.c) before ADLMusic_Play() has ever
- * run ADLMusic_InitOutput(), so a lock lazily created there would still
- * be uninitialized on that first call. Entering an uninitialized
- * CRITICAL_SECTION is undefined behavior -- this is what actually
- * produced the C0000005 inside RtlEnterCriticalSection. */
-class Win32Lock {
-public:
-	Win32Lock() { InitializeCriticalSection(&cs); }
-	~Win32Lock() { DeleteCriticalSection(&cs); }
-	CRITICAL_SECTION cs;
-};
-static Win32Lock s_lock;
-
-class ScopedLock {
-public:
-	ScopedLock(CRITICAL_SECTION &cs) : m_cs(cs) { EnterCriticalSection(&m_cs); }
-	~ScopedLock() { LeaveCriticalSection(&m_cs); }
-private:
-	CRITICAL_SECTION &m_cs;
-};
-
-/* Caller must hold s_lock. */
-static void ADLMusic_TickLocked(void)
+static void ADLMusic_Tick(void)
 {
 	int i;
+	SoundAdLibPC *newAdlib;
+	LONG stopRequested;
+	LONG effectRequested;
+
+	newAdlib = (SoundAdLibPC *)InterlockedExchangePointer((PVOID volatile *)&s_pendingAdlib, NULL);
+	if (newAdlib != NULL) {
+		delete s_adlib;
+		s_adlib = newAdlib;
+	}
+
+	stopRequested = InterlockedExchange(&s_pendingStop, 0);
+	if (stopRequested != 0 && s_adlib != NULL) s_adlib->haltTrack();
+
+	effectRequested = InterlockedExchange(&s_pendingSoundEffect, NO_EFFECT_PENDING);
+	if (effectRequested != NO_EFFECT_PENDING && s_adlib != NULL) s_adlib->playSoundEffect((uint8_t)effectRequested);
+
+	s_isPlayingCache = (s_adlib != NULL && s_adlib->isPlaying()) ? 1 : 0;
 
 	if (s_adlib == NULL || s_waveOut == NULL) return;
 
@@ -96,20 +113,6 @@ static void ADLMusic_TickLocked(void)
 		SoundAdLibPC::callback(s_adlib, (SoundAdLibPC::Uint8 *)s_waveBuf[i], (int)sizeof(s_waveBuf[i]));
 		waveOutWrite(s_waveOut, &s_waveHdr[i], sizeof(WAVEHDR));
 	}
-}
-
-static DWORD WINAPI ADLMusic_ThreadProc(LPVOID param)
-{
-	VARIABLE_NOT_USED(param);
-
-	for (;;) {
-		if (WaitForSingleObject(s_stopEvent, TICK_POLL_MS) == WAIT_OBJECT_0) break;
-
-		ScopedLock guard(s_lock.cs);
-		ADLMusic_TickLocked();
-	}
-
-	return 0;
 }
 
 bool ADLMusic_IsEnabled(void)
@@ -156,23 +159,18 @@ static bool ADLMusic_InitOutput(void)
 		if (res != MMSYSERR_NOERROR) goto fail;
 
 		/* Queue silence up front so playback starts immediately;
-		 * the tick thread refills with real audio as buffers drain. */
+		 * the tick refills with real audio as buffers drain. */
 		res = waveOutWrite(s_waveOut, &s_waveHdr[i], sizeof(WAVEHDR));
 		if (res != MMSYSERR_NOERROR) goto fail;
 	}
 
-	s_stopEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
-	if (s_stopEvent == NULL) goto fail;
-
-	s_audioThread = CreateThread(NULL, 0, ADLMusic_ThreadProc, NULL, 0, NULL);
-	if (s_audioThread == NULL) goto fail;
+	Timer_Add(ADLMusic_Tick, (uint32)(1000000LL * FRAGLEN / SRATE), false);
 
 	s_initialized = true;
 	return true;
 
 fail:
 	Error("ADLMusic_InitOutput() failed to set up WinMM output\n");
-	if (s_stopEvent != NULL) { CloseHandle(s_stopEvent); s_stopEvent = NULL; }
 	s_initFailed = true;
 	return false;
 }
@@ -183,7 +181,7 @@ void ADLMusic_Play(uint16 musicID)
 	uint32 size;
 	uint8 *data;
 	SoundAdLibPC *newAdlib;
-	SoundAdLibPC *oldAdlib;
+	SoundAdLibPC *unconsumed;
 
 	if (musicID >= 38 || g_table_musics[musicID].string == NULL) {
 		ADLMusic_Stop();
@@ -202,8 +200,9 @@ void ADLMusic_Play(uint16 musicID)
 	if (data == NULL) return;
 	File_ReadBlockFile(filename, data, size);
 
-	/* Build/initialize off to the side -- newAdlib isn't shared yet, so
-	 * none of this needs the lock. */
+	/* Fully build off to the side -- nothing else can see newAdlib until
+	 * the InterlockedExchangePointer() below publishes it, so none of
+	 * this needs any synchronization. */
 	newAdlib = new SoundAdLibPC(data, size, SRATE, true);
 	newAdlib->init();
 	/* Still load the file (and thus its sound-effect table) even with
@@ -216,61 +215,50 @@ void ADLMusic_Play(uint16 musicID)
 
 	free(data);
 
-	{
-		ScopedLock guard(s_lock.cs);
-		oldAdlib = s_adlib;
-		s_adlib = newAdlib;
-	}
-	delete oldAdlib;
+	/* Hand off to the tick -- it's the only code that ever touches
+	 * s_adlib. If a previous request hadn't been consumed yet (the tick
+	 * runs at ~43Hz, so this would need two ADLMusic_Play() calls within
+	 * one tick interval), free it here rather than leak it. */
+	unconsumed = (SoundAdLibPC *)InterlockedExchangePointer((PVOID volatile *)&s_pendingAdlib, newAdlib);
+	delete unconsumed;
 }
 
 void ADLMusic_Stop(void)
 {
-	ScopedLock guard(s_lock.cs);
-	if (s_adlib != NULL) s_adlib->haltTrack();
+	InterlockedExchange(&s_pendingStop, 1);
 }
 
 void ADLMusic_PlaySoundEffect(uint16 index)
 {
-	ScopedLock guard(s_lock.cs);
-	if (s_adlib == NULL || index >= 120) return;
+	if (index >= 120) return;
 
-	s_adlib->playSoundEffect((uint8_t)index);
+	InterlockedExchange(&s_pendingSoundEffect, (LONG)index);
 }
 
 bool ADLMusic_IsPlaying(void)
 {
-	ScopedLock guard(s_lock.cs);
-	return s_adlib != NULL && s_adlib->isPlaying();
+	return s_isPlayingCache != 0;
 }
 
 void ADLMusic_Uninit(void)
 {
 	int i;
-	SoundAdLibPC *oldAdlib;
+	SoundAdLibPC *unconsumed;
 
 	if (!s_initialized) return;
 
-	/* Stop the tick thread first, and join it outside the lock -- it
-	 * only ever needs s_lock for one ADLMusic_TickLocked() call at a
-	 * time, so it will see the signaled event and exit within one
-	 * TICK_POLL_MS regardless of what this thread is doing. Taking
-	 * s_lock here before joining would risk exactly the kind of
-	 * lock-vs-suspend deadlock this design was written to avoid. */
-	if (s_audioThread != NULL) {
-		SetEvent(s_stopEvent);
-		WaitForSingleObject(s_audioThread, INFINITE);
-		CloseHandle(s_audioThread);
-		s_audioThread = NULL;
-	}
-	if (s_stopEvent != NULL) {
-		CloseHandle(s_stopEvent);
-		s_stopEvent = NULL;
-	}
+	/* Timer_Remove() itself has a pre-existing, general race in timer.c
+	 * against a concurrently in-flight Timer_InterruptRun() on this
+	 * platform (it mutates the shared node array with no synchronization
+	 * of its own) -- not introduced by this file and not attempted to be
+	 * fixed here, since it'd mean touching the shared timer subsystem
+	 * game-wide. In practice this only runs once, at shutdown. */
+	Timer_Remove(ADLMusic_Tick);
 
-	oldAdlib = s_adlib;
+	unconsumed = (SoundAdLibPC *)InterlockedExchangePointer((PVOID volatile *)&s_pendingAdlib, NULL);
+	delete unconsumed;
+	delete s_adlib;
 	s_adlib = NULL;
-	delete oldAdlib;
 
 	if (s_waveOut != NULL) {
 		waveOutReset(s_waveOut);
