@@ -56,11 +56,19 @@ void GUI_Widget_TextButton_Draw(Widget *w)
 
 	if (w->stringID == (uint16)-15 /* Hebrew-keyboard toggle -- see GUI_String_Get_ByIndex() */) {
 		GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(w->stringID), positionX + (width / 2), positionY + 3, colour, 0, 0x122);
-	} else if (w->stringID == STR_CANCEL || w->stringID == STR_PREVIOUS || w->stringID == STR_YES || w->stringID == STR_NO
-	           || w->stringID == STR_SAVE /* only used here; matches Cancel's centering in this same dialog */) {
-		GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(w->stringID), positionX + (width / 2), positionY + 2, colour, 0, 0x122);
 	} else {
-		GUI_DrawText_WrapperBox(GUI_String_Get_ByIndex(w->stringID), positionX + 3, positionY + 2, width - 6, colour, 0, 0x22);
+		/* The original game always centers a text button's label (e.g.
+		 * "ON", "Normal", "Load a game") regardless of language -- verified
+		 * against real Dune II 1.07 screenshots. This used to left-align
+		 * (GUI_DrawText_WrapperBox(), positionX + 3, width - 6) for every
+		 * language but Hebrew, which happened to make English/etc. buttons
+		 * deviate from the original too (left-aligned instead of centered);
+		 * GUI_DrawText_WrapperBox()'s automatic RTL right-justify -- meant
+		 * for real multi-line text boxes, see its own comment -- pinned
+		 * Hebrew's short one-line values flush to the right edge instead
+		 * of centering them either. Centering unconditionally matches the
+		 * original for every language and needs no per-language branch. */
+		GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(w->stringID), positionX + (width / 2), positionY + 2, colour, 0, 0x122);
 	}
 
 	if (oldScreenID == SCREEN_0) {

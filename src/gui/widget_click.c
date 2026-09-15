@@ -10,6 +10,7 @@
 #include "../os/sleep.h"
 #include "../os/strings.h"
 
+#include "font.h"
 #include "gui.h"
 #include "widget.h"
 #include "../os/error.h"
@@ -452,6 +453,7 @@ static void GUI_Widget_Undraw(Widget *w, uint8 colour)
 static void GUI_Window_Create(WindowDesc *desc)
 {
 	uint8 i;
+	uint16 gameControlEdgeMargin = 8;
 
 	if (desc == NULL) return;
 
@@ -471,6 +473,55 @@ static void GUI_Window_Create(WindowDesc *desc)
 		GUI_DrawText_Wrapper(String_Get_ByIndex(STR_THERE_ARE_NO_SAVED_GAMES_TO_LOAD), (g_curWidgetXBase + 2) << 3, g_curWidgetYBase + 42, 232, 0, 0x22);
 	}
 
+	if (desc == &g_gameControlWindowDesc) {
+		/* The five toggle buttons and the Back button all hardcode the same
+		 * fixed 8px margin from the window's edge nearest the buttons --
+		 * the window's right edge for English (buttons sit to the right of
+		 * their label), mirrored to the left edge for Hebrew (buttons sit
+		 * to the left of a right-justified label). But translated labels
+		 * are rarely as wide as the space the original English layout
+		 * reserves for them (e.g. "Music is"/"Sounds are" vs. much shorter
+		 * single-word translations), so gluing the button+label block to
+		 * that edge leaves a dead strip on the other side that grows with
+		 * how much narrower the label is. Measure the widest label actually
+		 * in use and centre the whole button+label block in the window
+		 * instead of hugging the edge -- the buttons stay aligned with each
+		 * other either way, just at a shared edge margin bigger than 8 when
+		 * the content doesn't fill the window. */
+		uint16 maxLabelWidth = 0;
+		uint16 buttonWidth   = 0;
+		uint16 contentWidth;
+		uint16 windowWidthPx = g_widgetProperties[desc->index].width << 3;
+
+		/* Font_GetStringWidth() reads g_fontCurrent, which is only
+		 * updated as a side effect of a real draw call with these flags
+		 * -- same priming idiom as GUI_DrawText_WrapperBox(). */
+		GUI_DrawText_Wrapper(NULL, 0, 0, 0, 0, 0x22);
+
+		for (i = 0; i < desc->widgetCount; i++) {
+			uint16 labelWidth;
+
+			if (desc->widgets[i].labelStringId == STR_NULL) continue;
+
+			labelWidth = Font_GetStringWidth(GUI_String_Get_ByIndex(desc->widgets[i].labelStringId));
+			if (labelWidth > maxLabelWidth) maxLabelWidth = labelWidth;
+			buttonWidth = desc->widgets[i].width;
+		}
+
+		contentWidth = buttonWidth + 10 + maxLabelWidth;
+		if (windowWidthPx > contentWidth + 8) {
+			/* GUI_Widget_TextButton_Draw() truncates the button's border
+			 * to an 8px-aligned column (positionX >> 3, see its own
+			 * comment) but centres the button's text on the exact,
+			 * untruncated positionX. A margin that isn't a multiple of 8
+			 * therefore snaps the visible border left of where the text
+			 * is centred, making the text look off-centre by however
+			 * much got truncated away. Round down to the 8px grid so
+			 * both agree. */
+			gameControlEdgeMargin = ((windowWidthPx - contentWidth) / 2) & ~7;
+		}
+	}
+
 	for (i = 0; i < desc->widgetCount; i++) {
 		Widget *w = &g_table_windowWidgets[i];
 
@@ -483,6 +534,21 @@ static void GUI_Window_Create(WindowDesc *desc)
 		w->height    = desc->widgets[i].height;
 		w->shortcut  = 0;
 		w->shortcut2 = 0;
+
+		/* The Game Controls window hardcodes every button (the five
+		 * on/off/speed toggles, plus the Back button) 8px from the
+		 * window's edge nearest them. Re-anchor at gameControlEdgeMargin
+		 * (computed above) instead, on the right for LTR (matching the
+		 * table's original edge) or mirrored to the left for RTL -- the
+		 * label draw below keys off the same w->offsetX to match. French
+		 * is left alone: it already draws this label at its own fixed
+		 * position (see the French branch below) independent of the
+		 * button, tuned around the button's original hardcoded spot. */
+		if (desc == &g_gameControlWindowDesc && g_config.language != LANGUAGE_FRENCH) {
+			uint16 windowWidthPx = g_widgetProperties[desc->index].width << 3;
+
+			w->offsetX = GUI_IsRTLLanguage() ? gameControlEdgeMargin : windowWidthPx - gameControlEdgeMargin - w->width;
+		}
 
 		if (desc != &g_savegameNameWindowDesc) {
 			if (desc->widgets[i].labelStringId != STR_NULL) {
@@ -517,6 +583,12 @@ static void GUI_Window_Create(WindowDesc *desc)
 
 		if (g_config.language == LANGUAGE_FRENCH) {
 			GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(desc->widgets[i].labelStringId), (g_widgetProperties[w->parentID].xBase << 3) + 40, w->offsetY + g_widgetProperties[w->parentID].yBase + 3, 232, 0, 0x22);
+		} else if (GUI_IsRTLLanguage()) {
+			/* Button already mirrored to the window's left half above;
+			 * draw the label left-anchored just to its right (mirror
+			 * image of the default branch's right-anchored-just-left-
+			 * of-button layout) instead of right-justifying it. */
+			GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(desc->widgets[i].labelStringId), w->offsetX + w->width + 10 + (g_widgetProperties[w->parentID].xBase << 3), w->offsetY + g_widgetProperties[w->parentID].yBase + 3, 232, 0, 0x22);
 		} else {
 			GUI_DrawText_Wrapper(GUI_String_Get_ByIndex(desc->widgets[i].labelStringId), w->offsetX + (g_widgetProperties[w->parentID].xBase << 3) - 10, w->offsetY + g_widgetProperties[w->parentID].yBase + 3, 232, 0, 0x222);
 		}
