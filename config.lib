@@ -19,6 +19,7 @@ set_default() {
 	as_host=""
 	strip=""
 	lipo=""
+	windres=""
 	awk="awk"
 	os="DETECT"
 	cpu_type="DETECT"
@@ -135,6 +136,7 @@ detect_params() {
 			--strip=*)                    strip="$optarg";;
 			--lipo)                       prev_p="lipo";;
 			--lipo=*)                     lipo="$optarg";;
+			--windres=*)                  windres="$optarg";;
 
 
 			# Alias --prefix with --prefix-dir, for compatibility with GNU autotools
@@ -342,6 +344,7 @@ check_params() {
 		log 1 "checking strip... disabled"
 	fi
 	check_lipo
+	check_windres
 
 	if [ "$enable_builtin_depend" != "0" ]; then
 		log 1 "checking builtin depend... yes"
@@ -1350,6 +1353,30 @@ check_lipo() {
 	fi
 }
 
+check_windres() {
+	if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
+		return
+	fi
+
+	if [ -z "$windres" ]; then
+		# Derive the matching windres from the (possibly cross-)compiler
+		# prefix, e.g. "i686-w64-mingw32-gcc" -> "i686-w64-mingw32-windres"
+		# -- same prefix CI/cross-builds already select CC with. Falls
+		# back to a plain "windres" for a native (non-cross) toolchain.
+		case "$cc_host" in
+			*-gcc) windres="`echo "$cc_host" | sed 's/-gcc$/-windres/'`";;
+			*)     windres="windres";;
+		esac
+	fi
+
+	if "$windres" --version > /dev/null 2>&1; then
+		log 1 "checking windres... $windres"
+	else
+		log 1 "checking windres... $windres not found; opendune.exe will have no icon"
+		windres=""
+	fi
+}
+
 check_osx_sdk() {
 	local sysroot=""
 	if [ -n "$1" ]; then
@@ -1925,6 +1952,7 @@ make_sed() {
 		s@!!AS_HOST!!@$as_host@g;
 		s@!!STRIP!!@$strip $strip_arg@g;
 		s@!!LIPO!!@$lipo@g;
+		s@!!WINDRES!!@$windres@g;
 		s@!!CFLAGS!!@$T_CFLAGS@g;
 		s@!!CFLAGS_BUILD!!@$CFLAGS_BUILD@g;
 		s@!!ASFLAGS!!@$asflags@g;
@@ -2109,6 +2137,7 @@ showhelp() {
 	echo "  --strip=STRIP                  the strip to use [HOST-strip]"
 	echo "  --awk=AWK                      the awk to use in configure [awk]"
 	echo "  --lipo=LIPO                    the lipo to use (OSX ONLY) [HOST-lipo]"
+	echo "  --windres=WINDRES              the windres to use (MINGW/CYGWIN only) [HOST-windres]"
 	echo "  --os=OS                        the OS we are compiling for [DETECT]"
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/OPENBSD/NETBSD/"
 	echo "                                 MORPHOS/HPUX/BEOS/SUNOS/CYGWIN/MINGW/OS2/"

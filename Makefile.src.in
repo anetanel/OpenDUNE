@@ -2,6 +2,7 @@ CC_HOST        = !!CC_HOST!!
 CC_BUILD       = !!CC_BUILD!!
 AS_HOST        = !!AS_HOST!!
 STRIP          = !!STRIP!!
+WINDRES        = !!WINDRES!!
 CFLAGS         = !!CFLAGS!!
 CFLAGS_BUILD   = !!CFLAGS_BUILD!!
 ASFLAGS        = !!ASFLAGS!!
@@ -30,6 +31,17 @@ OBJS_CXX := !!OBJS_CXX!!
 OBJS_S   := !!OBJS_S!!
 OBJS     := $(OBJS_C) $(OBJS_CXX) $(OBJS_S)
 SRCS     := !!SRCS!!
+
+# Embed the app icon (os/win32/opendune.rc -> opendune.ico) into the exe.
+# Only meaningful for the MinGW/Cygwin GCC toolchain this Makefile drives --
+# an MSVC build instead gets this via projects/opendune_*.vcxproj's own
+# <ResourceCompile> of the same .rc file. Skipped silently if windres
+# wasn't found (check_windres(), config.lib) -- see comment there.
+ifneq ($(WINDRES),)
+ifneq ($(filter MINGW CYGWIN, $(OS)),)
+OBJS += $(SRC_OBJS_DIR)/opendune_rc.o
+endif
+endif
 
 # All C-files depend on those 3 files
 FILE_DEP := $(CONFIG_CACHE_COMPILER)
@@ -190,6 +202,10 @@ $(OBJS_CXX): %.o: $(SRC_DIR)/%.cpp $(DEP_MASK) $(FILE_DEP)
 $(OBJS_S): %.o: $(SRC_DIR)/%.s
 	$(E) '$(STAGE) Assembling $(<:$(SRC_DIR)/%.s=%.s)'
 	$(Q)$(AS_HOST) $(ASFLAGS) -o $@ $<
+
+$(SRC_OBJS_DIR)/opendune_rc.o: $(ROOT_DIR)/os/win32/opendune.rc
+	$(E) '$(STAGE) Compiling opendune.rc'
+	$(Q)$(WINDRES) -O coff -o $@ $<
 
 $(BIN_DIR)/$(OPENDUNE): $(OPENDUNE)
 	$(Q)cp $(OPENDUNE) $(BIN_DIR)/$(OPENDUNE)
