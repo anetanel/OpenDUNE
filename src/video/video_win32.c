@@ -86,6 +86,60 @@ static uint16 s_mouseMaxY = 0;
 static bool s_showFPS = false;
 static bool s_clearWindowBackground = false;
 
+/* Whether the in-game Hebrew-keyboard toggle (clicked via the save/Hall of
+ * Fame screen's "E"/Hebrew-letter button -- see
+ * GUI_Widget_HOF_HebrewToggle_Click(), src/gui/widget_click.c) is
+ * currently on. */
+static bool s_hebrewKeyboardMode = false;
+
+/* FIFO of cp862 Hebrew bytes, one slot pushed per WM_KEYDOWN (0 if that
+ * keypress wasn't a Hebrew letter under the current s_hebrewKeyboardMode
+ * state) -- see Video_GetHebrewTextInput(). Same design/reasoning as
+ * video_sdl2.c's own s_hebrewQueue: GUI_EditBox() dequeues from a separate
+ * input-history queue (input/input.c) that can lag behind key production,
+ * so a single "most recent" latch isn't enough to keep a key correctly
+ * paired with its Hebrew byte (if any) once more than one key is pressed
+ * in quick succession. */
+#define HEBREW_QUEUE_SIZE 32
+static uint8 s_hebrewQueue[HEBREW_QUEUE_SIZE];
+static uint8 s_hebrewQueueHead = 0;
+static uint8 s_hebrewQueueTail = 0;
+
+static void Video_HebrewQueue_Push(uint8 value)
+{
+	uint8 next = (uint8)((s_hebrewQueueTail + 1) % HEBREW_QUEUE_SIZE);
+	if (next == s_hebrewQueueHead) return;	/* full; drop rather than clobber older entries */
+	s_hebrewQueue[s_hebrewQueueTail] = value;
+	s_hebrewQueueTail = next;
+}
+
+/* Maps the PC/XT hardware scancode -- the true physical key, as reported
+ * by Windows in the high byte of WM_KEYDOWN's lParam (see WindowProc()'s
+ * "Real scancode is also ((lParam >> 16) & 0xff)" comment), rather than
+ * the layout-translated virtual-key code MapKey() works from -- to the
+ * cp862 Hebrew glyph byte (0x80-0x9A -- see hebrew/tools/eng.py) a
+ * physical key produces on the standard Israeli keyboard layout (SI
+ * 1452), used only while s_hebrewKeyboardMode is on. Deliberately keyed
+ * by the raw hardware scancode rather than through MapKey()'s VK-code
+ * table, for the same reason video_sdl2.c's equivalent table is keyed by
+ * SDL_Scancode rather than the (layout-translated) SDL keysym: relying on
+ * the OS's active layout to identify a physical key turned out to be
+ * unreliable in practice on at least one real desktop tested. Same
+ * values/physical-key assignments as video_sdl2.c's
+ * s_SDL_hebrewLetterMap, just re-indexed from SDL_Scancode numbering to
+ * this codebase's own PC/XT scancode numbering (both describe the same
+ * physical Latin-QWERTY key positions -- e.g. index 0x1E is the "A" key
+ * either way). 0 means "not a letter on this layout". */
+static const uint8 s_win32_hebrewLetterMap[0x36] = {
+	/* 0x00-0x0F */    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+	/* 0x10-0x1F : Q W E R T Y U I O P [ ] RETURN CTRL A S */
+	                   0,    0, 0x97, 0x98, 0x80, 0x88, 0x85, 0x8F, 0x8D, 0x94,    0,    0,    0,    0, 0x99, 0x83,
+	/* 0x20-0x2F : D F G H J K L ; ' ` LSHIFT \ Z X C V */
+	                0x82, 0x8B, 0x92, 0x89, 0x87, 0x8C, 0x8A, 0x93,    0,    0,    0,    0, 0x86, 0x91, 0x81, 0x84,
+	/* 0x30-0x35 : B N M , . / */
+	                0x90, 0x8E, 0x96, 0x9A, 0x95,    0,
+};
+
 typedef struct VkMapping {
 	WPARAM  vk;
 	uint16 scan;
@@ -512,6 +566,17 @@ static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM l
 				Warning("Unhandled key %X (='%c')  (scan = %x)\n", wParam, wParam >= 32 ? wParam : '.', (lParam >> 16) & 0xff);
 				return 0;
 			}
+
+			if (!keyup) {
+				uint8 hardwareScancode = (uint8)((lParam >> 16) & 0xff);
+				uint8 hebrewByte = 0;
+
+				if (s_hebrewKeyboardMode && hardwareScancode < lengthof(s_win32_hebrewLetterMap)) {
+					hebrewByte = s_win32_hebrewLetterMap[hardwareScancode];
+				}
+				Video_HebrewQueue_Push(hebrewByte);
+			}
+
 			if ((scan >> 8) != 0) Input_EventHandler(scan >> 8);
 			Input_EventHandler((scan & 0xFF) | (keyup ? 0x80 : 0x0));
 			return 0;
@@ -925,19 +990,25 @@ void * Video_GetFrameBuffer(uint16 size)
 
 uint8 Video_GetHebrewTextInput(void)
 {
-	/* No Hebrew-keyboard toggle wired up here. */
-	return 0;
+	uint8 result;
+
+	if (s_hebrewQueueHead == s_hebrewQueueTail) return 0;
+	result = s_hebrewQueue[s_hebrewQueueHead];
+	s_hebrewQueueHead = (uint8)((s_hebrewQueueHead + 1) % HEBREW_QUEUE_SIZE);
+	return result;
 }
 
 void Video_ClearHebrewTextInput(void)
 {
+	s_hebrewQueueHead = s_hebrewQueueTail;
 }
 
 bool Video_IsHebrewKeyboardMode(void)
 {
-	return false;
+	return s_hebrewKeyboardMode;
 }
 
 void Video_ToggleHebrewKeyboardMode(void)
 {
+	s_hebrewKeyboardMode = !s_hebrewKeyboardMode;
 }
