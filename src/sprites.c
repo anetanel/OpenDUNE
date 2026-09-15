@@ -139,9 +139,19 @@ static void Sprites_Load(const char *filename, const char *altFilename, uint16 e
 		g_sprites[s_spritesCount - count + i] = dst;
 	}
 	if (expectedCount == 99 && count == 103) {
-		// relocation of BTTN when loading SHAPES.SHP of Dune2 v1.0
-		memcpy(g_sprites + 7, g_sprites + (s_spritesCount - count + 94), 4 * sizeof(uint8 *));
-		memmove(g_sprites + (s_spritesCount - count + 94), g_sprites + (s_spritesCount - count + 98), (count - 98) * sizeof(uint8 *));
+		/* relocation of BTTN when loading SHAPES.SHP of Dune2 v1.0 -- SHAPES.SHP
+		 * bundles the 4 Mentat/Options button sprites at indices 94-97 in this
+		 * format. Only use them as a fallback if a dedicated BTTN.<suffix> file
+		 * didn't already provide real button art for the active language
+		 * (g_sprites[7] still NULL): otherwise this would silently clobber a
+		 * translated BTTN (e.g. Hebrew) with these English v1.0 button sprites. */
+		uint16 buttonsOffset = s_spritesCount - count + 94;
+		if (g_sprites[7] == NULL) {
+			memcpy(g_sprites + 7, g_sprites + buttonsOffset, 4 * sizeof(uint8 *));
+		} else {
+			for (i = 0; i < 4; i++) free(g_sprites[buttonsOffset + i]);
+		}
+		memmove(g_sprites + buttonsOffset, g_sprites + (s_spritesCount - count + 98), (count - 98) * sizeof(uint8 *));
 		s_spritesCount -= 4;
 	} else if (expectedCount != count) {
 		Warning("Sprites %-12s : %d sprites expected, found %d\n", filename, expectedCount, count);
