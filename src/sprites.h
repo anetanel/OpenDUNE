@@ -59,6 +59,7 @@ extern uint8 **g_sprites;
 
 extern uint8 *g_fileRgnclkCPS;
 extern void *g_fileRegionINI;
+extern void *g_fileRegionINI_lang;
 extern uint16 *g_regions;
 
 extern void *g_mouseSprite;

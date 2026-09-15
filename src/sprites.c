@@ -35,6 +35,7 @@ uint16 *g_iconMap = NULL;
 
 uint8 *g_fileRgnclkCPS = NULL;
 void *g_fileRegionINI = NULL;
+void *g_fileRegionINI_lang = NULL;
 uint16 *g_regions = NULL;
 
 uint16 g_veiledTileID;
@@ -462,6 +463,7 @@ void Sprites_CPS_LoadRegionClick(void)
 	uint8 *buf;
 	uint8 i;
 	char filename[16];
+	const char *langFilename;
 
 	buf = GFX_Screen_Get_ByIndex(SCREEN_2);
 
@@ -473,6 +475,24 @@ void Sprites_CPS_LoadRegionClick(void)
 	g_fileRegionINI = buf;
 	snprintf(filename, sizeof(filename), "REGION%c.INI", g_table_houseInfo[g_playerHouseID].name[0]);
 	buf += File_ReadFile(filename, buf);
+
+	/* Optional per-language narration text on top of the (English/French/
+	 * German only) original, e.g. "REGIONA.HEB" -- unlike every other
+	 * language-suffixed asset this can never be shadowing a same-named
+	 * entry inside the original PAKs, so (as with INTRO1H.WSA) it needs
+	 * its own File_Exists() check rather than just being read unconditio-
+	 * nally. Kept in a separate buffer/global instead of appended to
+	 * g_fileRegionINI's own text: Ini_GetString() only ever scans the
+	 * first occurrence of a given [section] in its source, so a second,
+	 * later [GROUPn] block for the same group would silently never be
+	 * found. See GUI_StrategicMap_ShowProgression() (src/gui/gui.c). */
+	g_fileRegionINI_lang = NULL;
+	snprintf(filename, sizeof(filename), "REGION%c", g_table_houseInfo[g_playerHouseID].name[0]);
+	langFilename = String_GenerateFilename(filename);
+	if (File_Exists(langFilename)) {
+		g_fileRegionINI_lang = buf;
+		buf += File_ReadFile(langFilename, buf);
+	}
 
 	g_regions = (uint16 *)buf;
 

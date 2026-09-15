@@ -164,13 +164,9 @@ in alongside your own legally owned Dune II 1.07 data files:
    modified or overwritten, and no recompile is needed.
 3. Set `language=hebrew` in opendune.ini and start the game.
 
-Text is drawn right-to-left and mirrored at draw time. The strategic-
-map narration (REGIONA/H/O.INI) isn't included in the zip since it's
-generated from your own copy of the original game data rather than
-redistributable -- see hebrew/README.md / hebrew/tools/build_regions.py
-if you want it. hebrew/README.md also documents the full build
-pipeline (for regenerating dune2-hebrew.zip itself after editing a
-translation) and lists known gaps.
+Text is drawn right-to-left and mirrored at draw time. hebrew/README.md
+documents the full build pipeline (for regenerating dune2-hebrew.zip
+itself after editing a translation) and lists known gaps.
 
 
 Enhancement over Dune2

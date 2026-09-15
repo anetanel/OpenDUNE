@@ -9,14 +9,6 @@ Hebrew-suffixed `.CPS`/`.SHP` -> `.HEB`, `INTRO1H.WSA`, `MAPMACHH.CPS`,
 `BLDINGH.VOC`/`DYNASTYH.VOC`) -- none of them share a name with an
 original game file.
 
-Deliberately excludes REGIONA.INI/REGIONH.INI/REGIONO.INI
-(hebrew/tools/build_regions.py): those are generated from your own
-locally-extracted, copyrighted original .INI files with new Hebrew
-lines spliced in among the existing English/French/German ones, so the
-output itself contains copyrighted text and isn't safe to redistribute
-this way -- run that script yourself, against your own legally-owned
-game files, if you also want in-mission strategic-map narration.
-
 Runs build_heb.py first (so the zip always reflects the current
 translation source), then zips exactly the STRING_JOBS/ASSET_JOBS
 output filenames out of bin/data/.
@@ -51,11 +43,6 @@ Then set `language=hebrew` in opendune.ini and launch the game.
 Requires an OpenDUNE build with Hebrew support (this project's
 `hebrew` branch) -- these files alone do nothing against a stock
 OpenDUNE build or the original DOS DUNE2.EXE.
-
-Not included: in-mission strategic-map narration (REGIONA/H/O.INI).
-That file is generated from your own copy of the original game data
-and isn't redistributable the same way -- see hebrew/README.md /
-hebrew/tools/build_regions.py in the project source if you want it.
 """
 
 

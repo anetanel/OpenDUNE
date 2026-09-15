@@ -3670,7 +3670,17 @@ static void GUI_StrategicMap_ShowProgression(uint16 campaignID)
 
 				sprintf(key, "%sTXT%d", g_languageSuffixes[g_config.language], region);
 
-				if (Ini_GetString(category, key, NULL, buffer, sizeof(buffer), g_fileRegionINI) != NULL) {
+				/* g_fileRegionINI_lang (e.g. "REGIONA.HEB") holds only the
+				 * lines for languages the original REGION*.INI has none
+				 * of -- see Sprites_CPS_LoadRegionClick(), src/sprites.c.
+				 * Checked first, since a language with no such file (or no
+				 * matching key in it) should still fall back to whatever
+				 * the original file already provides (English/French/
+				 * German). */
+				if (g_fileRegionINI_lang != NULL
+				 && Ini_GetString(category, key, NULL, buffer, sizeof(buffer), g_fileRegionINI_lang) != NULL) {
+					GUI_StrategicMap_DrawText(buffer);
+				} else if (Ini_GetString(category, key, NULL, buffer, sizeof(buffer), g_fileRegionINI) != NULL) {
 					GUI_StrategicMap_DrawText(buffer);
 				}
 

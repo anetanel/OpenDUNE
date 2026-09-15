@@ -99,31 +99,39 @@ project), which already had a working Hebrew translation:
   otherwise, so this is safe for every language, not just Hebrew.
 - `translations/regions.json` — source for the strategic-map narration
   text shown between missions (e.g. "The Atreides claimed strategic
-  regions."). Lives in `REGIONA.INI`/`REGIONH.INI`/`REGIONO.INI` (one per
-  starting house), plain-text `.INI` files packed inside `SCENARIO.PAK`,
-  keyed per scenario group as `<LANGSUFFIX>TXT<region>` (`ENGTXT13`,
-  `FRETXT13`, `GERTXT13`, ...) — see `GUI_StrategicMap_ShowProgression()`
-  (`src/gui/gui.c`). Unlike every other string table here, this isn't a
-  `String_Load()`-managed file at all: `Sprites_CPS_LoadRegionClick()`
-  (`src/sprites.c`) reads it straight off disk via `File_ReadFile()` into
-  `g_fileRegionINI`, which does go through the normal loose-file-overrides-
-  PAK lookup — so, unlike `INTRO1.WSA`/`MAPMACH.CPS`, this needs no new
-  filename convention or C code change, just a loose file that shadows the
-  copy inside `SCENARIO.PAK`. No `HEBTXT*` keys exist in the original, so
-  `Ini_GetString()` returns `NULL` for Hebrew and the affected narration
-  lines were silently skipped rather than erroring — that's the bug this
-  closes. `tools/region_ini.py` (the codec) + `tools/build_regions.py`
-  (the entry point) are separate from `build_heb.py`/`STRING_JOBS` for the
-  same reason as `build_intro1_animation.py`: building
-  requires the pristine original `REGION*.INI` files as input (copyrighted,
-  not committed), expected at
-  `hebrew/extracted/dune2_eu_1.07/REGION{A,H,O}.INI` (extract with
-  `dunepak unpak bin/data/SCENARIO.PAK .` against your own legally-owned
-  copy of the game). `region_ini.py` splices new `HEBTXTn = ...` lines in
-  next to each file's existing `ENGTXTn` lines without touching anything
-  else byte-for-byte (French/German text included) — run
-  `python3 hebrew/tools/build_regions.py` after editing this JSON, it
-  writes straight to `bin/data/REGION{A,H,O}.INI`.
+  regions."). The original text lives in `REGIONA.INI`/`REGIONH.INI`/
+  `REGIONO.INI` (one per starting house), plain-text `.INI` files packed
+  inside `SCENARIO.PAK`, keyed per scenario group as `<LANGSUFFIX>TXT
+  <region>` (`ENGTXT13`, `FRETXT13`, `GERTXT13`, ...) — see
+  `GUI_StrategicMap_ShowProgression()` (`src/gui/gui.c`). No `HEBTXT*`
+  keys exist there, so `Ini_GetString()` used to return `NULL` for Hebrew
+  and the affected narration lines were silently skipped rather than
+  erroring.
+
+  Rather than splicing new `HEBTXTn = ...` lines into a copy of the
+  original file (which would mean redistributing its existing, copyrighted
+  English/French/German text and region layout data under a new name),
+  `tools/region_ini.py`'s `encode_file()` instead builds a small standalone
+  file holding *only* the new `HEBTXTn` lines, nothing else —
+  `bin/data/REGIONA.HEB`/`REGIONH.HEB`/`REGIONO.HEB`, built by
+  `build_heb.py`'s `regiona`/`regionh`/`regiono` jobs. Unlike every other
+  translation source here except this one, none of it needs a pristine/
+  copyrighted original as input (unlike `build_intro1_animation.py`), so —
+  unlike the old, since-removed `build_regions.py` — it's just a normal
+  `STRING_JOBS` entry, no separate entry point needed.
+
+  `Sprites_CPS_LoadRegionClick()` (`src/sprites.c`) loads this file, if
+  present, as a loose `REGION<H>.HEB`-style file (via
+  `String_GenerateFilename()`, same per-language-suffix convention as
+  every other Hebrew asset here) *in addition to* the real `REGION<H>.INI`,
+  into a separate buffer/global (`g_fileRegionINI_lang`) — a small,
+  generic mechanism, not Hebrew-specific, available to any future
+  language that wants this file.
+  `GUI_StrategicMap_ShowProgression()` checks that buffer first and falls
+  back to the original file's own (English-only, for Hebrew) text if a
+  key isn't there. Since it's a new, distinctly-named file with no
+  copyrighted content, it ships in `hebrew/dist/dune2-hebrew.zip` like
+  everything else `build_heb.py` installs.
 - `tools/build_heb.py` — run this after editing any translation JSON, then
   just relaunch the game (no recompile needed). Encodes the JSON into
   `DUNE.HEB`, `MESSAGE.HEB`, `INTRO.HEB`, `TEXTH.HEB`, `TEXTA.HEB`,

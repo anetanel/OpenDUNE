@@ -38,6 +38,7 @@ DEST_DIR = REPO_ROOT / "bin" / "data"
 sys.path.insert(0, str(HEBREW_DIR / "tools"))
 import eng  # noqa: E402
 import mentat_eng  # noqa: E402
+import region_ini  # noqa: E402
 
 
 def _write(name, data):
@@ -59,6 +60,13 @@ def _build_mentat(name):
     entries = doc["entries"]
     translated = sum(1 for e in entries if e["name_he"] != e["name_en"] or e["body_he"] != e["body_en"])
     return mentat_eng.encode(doc), len(entries), translated
+
+
+def _build_region_file(source_name):
+    translations = json.loads((TRANSLATIONS_DIR / "regions.json").read_text())
+    entries = translations[source_name]
+    translated = sum(1 for e in entries if e["he"] != e["en"])
+    return region_ini.encode_file(entries), len(entries), translated
 
 
 # name -> (output filename, builder). compressed flags mirror exactly the
@@ -84,6 +92,15 @@ STRING_JOBS = {
     # (src/string.c) only loads this file if it exists for the active
     # language, so English (and any language without one) is unaffected.
     "engine": ("ENGINE.HEB", lambda: _build_simple_list("engine_strings", False)),
+    # Strategic-map narration text shown between missions, standalone
+    # Hebrew-only supplements to the original REGIONA/H/O.INI (packed
+    # inside SCENARIO.PAK) -- see hebrew/README.md and region_ini.py's
+    # docstring for the in-game loading mechanism (g_fileRegionINI_lang,
+    # src/sprites.c + src/gui/gui.c). Unlike every other job here, none of
+    # this needs a pristine copyrighted original as input.
+    "regiona": ("REGIONA.HEB", lambda: _build_region_file("REGIONA.INI")),
+    "regionh": ("REGIONH.HEB", lambda: _build_region_file("REGIONH.INI")),
+    "regiono": ("REGIONO.HEB", lambda: _build_region_file("REGIONO.INI")),
 }
 
 # source path (relative to hebrew/) -> dest filename, for assets that are
