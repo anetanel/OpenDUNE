@@ -19,10 +19,15 @@
 	#define msleep(x) usleep(x * 1000)
 #endif /* _WIN32 */
 
-#if defined(_WIN32) && !defined(WITH_SDL) && !defined(WITH_SDL2)
-#define sleepIdle() msleep(1)
-#else /* _WIN32 */
 #include "../timer.h"
+
+#if defined(_WIN32) && !defined(WITH_SDL) && !defined(WITH_SDL2)
+/* Timer_Tick()/Video_Tick() etc. still tick via the separate Windows
+ * timer-queue thread on this config (see timer.c) -- this only runs
+ * idle hooks (Timer_AddIdleHook()), for things that must stay on
+ * whichever thread actually calls sleepIdle(). */
+#define sleepIdle() (msleep(1), Timer_RunIdleHooks())
+#else /* _WIN32 */
 #define sleepIdle SleepAndProcessBackgroundTasks
 #endif /* _WIN32 */
 

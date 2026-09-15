@@ -355,6 +355,37 @@ void Timer_Remove(void (*callback)(void))
 	}
 }
 
+static void (*s_idleHooks[4])(void);
+static int s_idleHookCount = 0;
+
+/**
+ * Register a callback to be run synchronously, inline, every time
+ * SleepAndProcessBackgroundTasks()/sleepIdle() is called -- see the
+ * comment in timer.h for why this exists instead of Timer_Add().
+ */
+void Timer_AddIdleHook(void (*callback)(void))
+{
+	if (s_idleHookCount >= (int)(sizeof(s_idleHooks) / sizeof(s_idleHooks[0]))) return;
+	s_idleHooks[s_idleHookCount++] = callback;
+}
+
+void Timer_RemoveIdleHook(void (*callback)(void))
+{
+	int i;
+	for (i = 0; i < s_idleHookCount; i++) {
+		if (s_idleHooks[i] == callback) {
+			s_idleHooks[i] = s_idleHooks[--s_idleHookCount];
+			return;
+		}
+	}
+}
+
+void Timer_RunIdleHooks(void)
+{
+	int i;
+	for (i = 0; i < s_idleHookCount; i++) s_idleHooks[i]();
+}
+
 /**
  * Handle game timers.
  */
