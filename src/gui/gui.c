@@ -2139,8 +2139,8 @@ uint8 GUI_PickHouse(void)
 			w = GUI_Widget_Link(w, w2);
 		}
 
-		if (File_Exists("HERALD.CPS")) Sprites_LoadImage("HERALD.CPS", SCREEN_1, NULL);
-		else Sprites_LoadImage(String_GenerateFilename("HERALD"), SCREEN_1, NULL);
+		if (File_Exists(String_GenerateFilename("HERALD"))) Sprites_LoadImage(String_GenerateFilename("HERALD"), SCREEN_1, NULL);
+		else Sprites_LoadImage("HERALD.CPS", SCREEN_1, NULL);
 
 		GUI_Mouse_Hide_Safe();
 		GUI_Screen_Copy(0, 0, 0, 0, SCREEN_WIDTH / 8, SCREEN_HEIGHT, SCREEN_1, SCREEN_0);
@@ -2197,8 +2197,8 @@ uint8 GUI_PickHouse(void)
 		strncpy(g_readBuffer, String_Get_ByIndex(STR_HOUSE_HARKONNENFROM_THE_DARK_WORLD_OF_GIEDI_PRIME_THE_SAVAGE_HOUSE_HARKONNEN_HAS_SPREAD_ACROSS_THE_UNIVERSE_A_CRUEL_PEOPLE_THE_HARKONNEN_ARE_RUTHLESS_TOWARDS_BOTH_FRIEND_AND_FOE_IN_THEIR_FANATICAL_PURSUIT_OF_POWER + houseID * 40), g_readBufferSize);
 		GUI_Mentat_Show(g_readBuffer, House_GetWSAHouseFilename(houseID), NULL);
 
-		if (File_Exists("MISC.CPS")) Sprites_LoadImage("MISC.CPS", SCREEN_1, g_palette1);
-		else Sprites_LoadImage(String_GenerateFilename("MISC"), SCREEN_1, g_palette1);
+		if (File_Exists(String_GenerateFilename("MISC"))) Sprites_LoadImage(String_GenerateFilename("MISC"), SCREEN_1, g_palette1);
+		else Sprites_LoadImage("MISC.CPS", SCREEN_1, g_palette1);
 
 		GUI_Mouse_Hide_Safe();
 

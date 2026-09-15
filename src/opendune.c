@@ -799,8 +799,8 @@ static void GameLoop_GameIntroAnimationMenu(void)
 		g_widgetProperties[13].yBase  = 160 - ((g_widgetProperties[21].height * g_fontCurrent->height) >> 1);
 		g_widgetProperties[13].height = (g_widgetProperties[21].height * g_fontCurrent->height) + 11;
 
-		if (File_Exists("TITLE.CPS")) Sprites_LoadImage("TITLE.CPS", SCREEN_1, NULL);
-		else Sprites_LoadImage(String_GenerateFilename("TITLE"), SCREEN_1, NULL);
+		if (File_Exists(String_GenerateFilename("TITLE"))) Sprites_LoadImage(String_GenerateFilename("TITLE"), SCREEN_1, NULL);
+		else Sprites_LoadImage("TITLE.CPS", SCREEN_1, NULL);
 
 		GUI_Mouse_Hide_Safe();
 
