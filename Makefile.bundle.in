@@ -49,6 +49,8 @@ endif
 	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/enhancement.txt"      "$(BUNDLE_DIR)/"
 	$(Q)cp "$(BIN_DIR)/opendune.ini.sample"  "$(BUNDLE_DIR)/"
+	$(Q)mkdir -p "$(OPENDUNE_DIR)/data"
+	$(Q)cp "$(BIN_DIR)/data/put_dune2_here.txt" "$(OPENDUNE_DIR)/data/"
 ifeq ($(OS), UNIX)
 	$(Q)cp "$(ROOT_DIR)/os/png_icon/opendune_32x32.png" "$(BUNDLE_DIR)/$(BINARY_NAME).png"
 endif
