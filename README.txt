@@ -153,23 +153,24 @@ CTRL-ENTER or F11 - Toggle full screen
 Hebrew localization
 --------------------
 This branch adds a Hebrew translation as a native language option
-alongside English/French/German/Italian/Spanish. It is not shipped as
-built data files -- you generate them yourself from your own legally
-owned Dune II 1.07 data files:
+alongside English/French/German/Italian/Spanish. It is not shipped
+merged into the original data files -- you drop the translated files
+in alongside your own legally owned Dune II 1.07 data files:
 
 1. Copy the original data files to data/ (or bin/data/) as usual.
-2. Run `python3 hebrew/tools/build_heb.py`. This encodes the
-   translation source under hebrew/translations/*.json (and copies the
-   hand-edited fonts/graphics/audio under hebrew/) into new,
-   distinctly-named `*.HEB`-suffixed files installed into bin/data/ --
-   no original data file is modified, and no recompile is needed for
-   text changes.
+2. Unzip hebrew/dist/dune2-hebrew.zip into the same directory. These
+   are new, distinctly-named `*.HEB`-suffixed files (plus a few
+   hand-edited fonts/graphics/audio) -- no original data file is
+   modified or overwritten, and no recompile is needed.
 3. Set `language=hebrew` in opendune.ini and start the game.
 
-Text is drawn right-to-left and mirrored at draw time. See
-hebrew/README.md for the full pipeline (including the extra,
-copyrighted-input-only steps for the strategic-map narration and the
-intro animation) and its list of known gaps.
+Text is drawn right-to-left and mirrored at draw time. The strategic-
+map narration (REGIONA/H/O.INI) isn't included in the zip since it's
+generated from your own copy of the original game data rather than
+redistributable -- see hebrew/README.md / hebrew/tools/build_regions.py
+if you want it. hebrew/README.md also documents the full build
+pipeline (for regenerating dune2-hebrew.zip itself after editing a
+translation) and lists known gaps.
 
 
 Enhancement over Dune2
