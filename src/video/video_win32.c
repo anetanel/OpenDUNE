@@ -296,6 +296,27 @@ static void Video_ToggleFullscreen(void)
 			/*width = s_screen_magnification * SCREEN_WIDTH;*/
 			s_window_y_offset = (height - s_screen_magnification * SCREEN_HEIGHT) / 2;
 			/*height = s_screen_magnification * SCREEN_HEIGHT;*/
+		} else {
+			/* Unlike the other filters, NEAREST_NEIGHBOR doesn't pre-render
+			 * into a fixed-size bitmap -- StretchBlt() scales it to fit at
+			 * paint time (see WM_PAINT below), so it can target a
+			 * non-integer scale factor directly instead of picking an
+			 * integer magnification. Still clamp to the largest centered
+			 * SCREEN_WIDTH:SCREEN_HEIGHT rectangle that fits the screen
+			 * (mirrors what WM_SIZING already enforces for manual windowed
+			 * resizing) rather than stretching to fill the screen exactly,
+			 * which distorts the image on any non-8:5 monitor. */
+			if (width * SCREEN_HEIGHT > height * SCREEN_WIDTH) {
+				/* screen is wider than 8:5 -- pillarbox (bars on the sides) */
+				int content_width = (height * SCREEN_WIDTH) / SCREEN_HEIGHT;
+				s_window_x_offset = (width - content_width) / 2;
+				s_window_y_offset = 0;
+			} else {
+				/* screen is taller than 8:5, or an exact match -- letterbox */
+				int content_height = (width * SCREEN_HEIGHT) / SCREEN_WIDTH;
+				s_window_x_offset = 0;
+				s_window_y_offset = (height - content_height) / 2;
+			}
 		}
 		s_clearWindowBackground = true;
 		SetWindowPos(s_hwnd, HWND_TOPMOST, 0, 0, width, height, SWP_FRAMECHANGED | SWP_NOCOPYBITS);
@@ -308,7 +329,22 @@ static void Video_ToggleFullscreen(void)
  */
 static void Video_Mouse_Callback(void)
 {
-	Mouse_EventHandler(s_mousePosX * SCREEN_WIDTH / s_window_width, s_mousePosY * SCREEN_HEIGHT / s_window_height,
+	/* Map from window-local pixels into the (possibly letterboxed/
+	 * pillarboxed, see Video_ToggleFullscreen()) content rect rather than
+	 * the raw window: s_window_x_offset/s_window_y_offset are 0 outside
+	 * that fullscreen aspect-ratio-clamped case, so this is unchanged
+	 * there. */
+	uint16 content_width = s_window_width - 2 * s_window_x_offset;
+	uint16 content_height = s_window_height - 2 * s_window_y_offset;
+	int x = (int)s_mousePosX - s_window_x_offset;
+	int y = (int)s_mousePosY - s_window_y_offset;
+
+	if (x < 0) x = 0;
+	if (y < 0) y = 0;
+	if (x >= content_width) x = content_width - 1;
+	if (y >= content_height) y = content_height - 1;
+
+	Mouse_EventHandler(x * SCREEN_WIDTH / content_width, y * SCREEN_HEIGHT / content_height,
 		               s_mouseButtonLeft, s_mouseButtonRight);
 }
 
@@ -425,7 +461,12 @@ static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM l
 			default:
 				/*StretchBlt(dc, 0, 0, SCREEN_WIDTH * s_screen_magnification, SCREEN_HEIGHT * s_screen_magnification, dc2, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, SRCCOPY);*/
 				if (s_screen_magnification * SCREEN_WIDTH != s_window_width) {
-					StretchBlt(dc, 0, 0, s_window_width, s_window_height,
+					/* s_window_x_offset/s_window_y_offset are 0 unless this is
+					 * the aspect-ratio-clamped fullscreen case (see
+					 * Video_ToggleFullscreen()), so this is a no-op change in
+					 * the plain windowed-resize case. */
+					StretchBlt(dc, s_window_x_offset, s_window_y_offset,
+							   s_window_width - 2 * s_window_x_offset, s_window_height - 2 * s_window_y_offset,
 							   dc2, 0, s_screenOffset / (SCREEN_WIDTH / 4), SCREEN_WIDTH, SCREEN_HEIGHT,
 							   SRCCOPY);
 				} else {

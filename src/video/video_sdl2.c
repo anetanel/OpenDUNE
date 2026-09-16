@@ -34,6 +34,14 @@ static VideoScaleFilter s_scale_filter;
 /** The the magnification of the screen. 2 means 640x400, 3 means 960x600, etc. */
 static int s_screen_magnification;
 
+/* The SDL_RenderSetLogicalSize() dimensions set in Video_Init() -- 320x200
+ * for FILTER_NEAREST_NEIGHBOR, or the pre-scaled SCREEN_WIDTH/HEIGHT *
+ * s_screen_magnification for FILTER_SCALE2X/FILTER_HQX. Kept around so
+ * Video_WindowToLogical()/Video_LogicalToWindow() can replicate SDL's own
+ * letterbox math for mouse coordinates -- see there for why. */
+static int s_render_width;
+static int s_render_height;
+
 static uint8 * s_framebuffer = NULL;
 
 static bool s_video_initialized = false;
@@ -297,44 +305,58 @@ static void Video_Mouse_Button(bool left, bool down)
 }
 
 /**
+ * Compute the current letterbox/pillarbox scale and viewport offset that
+ * SDL_RenderSetLogicalSize() (Video_Init()) applies, so a logical (game)
+ * coordinate can be converted to a window coordinate independently of the
+ * window's current size -- see Video_LogicalToWindow().
+ */
+static void Video_GetLetterbox(float *scale, float *offset_x, float *offset_y)
+{
+	int win_w, win_h;
+	float scale_x, scale_y;
+
+	SDL_GetWindowSize(s_window, &win_w, &win_h);
+
+	scale_x = (float)win_w / (float)s_render_width;
+	scale_y = (float)win_h / (float)s_render_height;
+	*scale = (scale_x < scale_y) ? scale_x : scale_y;
+
+	*offset_x = ((float)win_w - (float)s_render_width * (*scale)) / 2.0f;
+	*offset_y = ((float)win_h - (float)s_render_height * (*scale)) / 2.0f;
+}
+
+/**
+ * Convert a logical (game) coordinate point into window coordinates, for
+ * SDL_WarpMouseInWindow(). Unlike incoming mouse events -- which SDL2
+ * auto-converts to logical coordinates once a logical render size is set,
+ * see the SDL_MOUSEMOTION handler -- warping is not auto-converted, so this
+ * direction still needs a manual, live (window-size-independent) transform.
+ */
+static void Video_LogicalToWindow(float logical_x, float logical_y, int *window_x, int *window_y)
+{
+	float scale, offset_x, offset_y;
+
+	Video_GetLetterbox(&scale, &offset_x, &offset_y);
+
+	*window_x = (int)(logical_x * scale + offset_x);
+	*window_y = (int)(logical_y * scale + offset_y);
+}
+
+/**
  * Set the current position of the mouse.
  * @param x The new logical X-position of the mouse.
  * @param y The new logical Y-position of the mouse.
  */
 void Video_Mouse_SetPosition(uint16 x, uint16 y)
 {
-	SDL_Rect rect;
-	int w, h;
-	float scale;
+	int window_x, window_y;
 
-	/*
-	 * We receive logical positions but SDL_WarpMouseInWindow expects physical
-	 * window positions. We need to guess what SDL_RenderSetLogicalSize did
-	 * exactly. Note that the values from SDL_GetRendererOutputSize are in
-	 * physical units while SDL_RenderGetViewport are in logical units.
-	 */
-	SDL_RenderGetViewport(s_renderer, &rect);
-
-	if (SDL_GetRendererOutputSize(s_renderer, &w, &h)) {
-		Error("SDL_GetRendererOutputSize failed: %s\n", SDL_GetError());
-		return;
-	}
-
-	Debug("viewport : (%d,%d) %dx%d\n", rect.x, rect.y, rect.w, rect.h);
-	if (rect.x && !rect.y) {
-		scale = (float)h / (float)rect.h;
-	} else if (rect.y && !rect.x) {
-		scale = (float)w / (float)rect.w;
-	} else if (rect.w != 0 && w != 0) {
-		scale = (float)w / (float)rect.w;
-	} else if (rect.h != 0 && h != 0) {
-		scale = (float)h / (float)rect.h;
-	} else {
-		Warning("viewport : %dx%d,  render output size : %dx%d\n", rect.w, rect.h, w, h);
-		scale = 1.0;
-	}
-
-	SDL_WarpMouseInWindow(s_window, ((float)rect.x + (float)x) * scale, ((float)rect.y + (float)y) * scale);
+	/* Exact inverse of the Video_WindowToLogical() conversion the
+	 * SDL_MOUSEMOTION handler uses, so a clamp-triggered warp here and the
+	 * next reported motion event agree on the same logical position instead
+	 * of drifting apart. */
+	Video_LogicalToWindow((float)x, (float)y, &window_x, &window_y);
+	SDL_WarpMouseInWindow(s_window, window_x, window_y);
 }
 
 /**
@@ -394,7 +416,7 @@ bool Video_Init(int screen_magnification, VideoScaleFilter filter)
 #ifndef WITHOUT_SDLIMAGE
 	SDL_Surface * icon;
 #endif /* WITHOUT_SDLIMAGE */
-	uint32 window_flags = 0;
+	uint32 window_flags = SDL_WINDOW_RESIZABLE;
 	uint32 renderer_flags;
 
 	if (s_video_initialized) return true;
@@ -423,7 +445,16 @@ bool Video_Init(int screen_magnification, VideoScaleFilter filter)
 	}
 
 	if (IniFile_GetInteger("fullscreen", 0) != 0) {
-		window_flags |= SDL_WINDOW_FULLSCREEN;
+		/* FULLSCREEN_DESKTOP rather than exclusive FULLSCREEN: the latter
+		 * forces a real display mode change to this game's tiny native
+		 * resolution, which is unreliable on Linux (X11 compositors,
+		 * Wayland/XWayland) -- symptom seen in practice is the window
+		 * flickering and getting kicked back to the desktop while the
+		 * process keeps running. Desktop mode instead sizes a borderless
+		 * window to the current desktop resolution with no mode-switch,
+		 * and SDL_RenderSetLogicalSize() below already scales into
+		 * whatever window size results. */
+		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 		s_full_screen = true;
 	}
 
@@ -443,6 +474,7 @@ bool Video_Init(int screen_magnification, VideoScaleFilter filter)
 	}
 
 	SDL_SetWindowTitle(s_window, window_caption);
+	SDL_SetWindowMinimumSize(s_window, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 #ifndef WITHOUT_SDLIMAGE
 	icon = IMG_Load(DUNE_ICON_DIR "opendune.png");
@@ -465,6 +497,8 @@ bool Video_Init(int screen_magnification, VideoScaleFilter filter)
 		render_width = SCREEN_WIDTH * s_screen_magnification;
 		render_height = SCREEN_HEIGHT * s_screen_magnification;
 	}
+	s_render_width = render_width;
+	s_render_height = render_height;
 	s_framebuffer = calloc(1, SCREEN_WIDTH * (SCREEN_HEIGHT + 4) * sizeof(uint8));
 	if (s_framebuffer == NULL) {
 		Error("Could not allocate %d bytes of memory\n", SCREEN_WIDTH * (SCREEN_HEIGHT + 4) * sizeof(uint8));
@@ -778,6 +812,21 @@ void Video_Tick(void)
 			} break;
 
 			case SDL_MOUSEMOTION:
+				/* event.motion.x/y are already in logical (game) coordinates,
+				 * not raw window pixels: SDL2 auto-converts event mouse
+				 * coordinates through whatever SDL_RenderSetLogicalSize()
+				 * (Video_Init()) scaling is active, tracking the window's
+				 * current size live -- this is what let the pre-resizable
+				 * code get away with using event.motion.x/y directly. Only
+				 * the *outgoing* direction (Video_Mouse_SetPosition()'s
+				 * SDL_WarpMouseInWindow() call) needs a manual logical ->
+				 * window conversion, since warping is the one mouse API SDL
+				 * does not auto-convert for. Converting here too -- as an
+				 * earlier version of this code did, via either
+				 * SDL_RenderWindowToLogical() or a hand-rolled equivalent --
+				 * double-applies the scale on top of SDL's own, which is
+				 * what caused the in-game cursor to visibly lag behind the
+				 * real one at any scale other than 1. */
 				Video_Mouse_Move(event.motion.x, event.motion.y);
 				break;
 
@@ -800,7 +849,7 @@ void Video_Tick(void)
 				if ((sym == SDLK_RETURN && (event.key.keysym.mod & KMOD_ALT)) || sym == SDLK_F11) {
 					/* ALT-ENTER was pressed */
 					if (keyup) continue;	/* ignore key-up */
-					if (SDL_SetWindowFullscreen(s_window, s_full_screen ? 0 : SDL_WINDOW_FULLSCREEN) < 0) {
+					if (SDL_SetWindowFullscreen(s_window, s_full_screen ? 0 : SDL_WINDOW_FULLSCREEN_DESKTOP) < 0) {
 						Warning("Failed to toggle full screen : %s\n", SDL_GetError());
 					}
 					s_full_screen = !s_full_screen;
@@ -859,6 +908,34 @@ void Video_Tick(void)
 
 					SDL_RenderPresent(s_renderer);
 					draw = false;
+				} else if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+					/* SDL2 has no built-in resize aspect-ratio lock (that's
+					 * SDL3-only), unlike WM_SIZING on Windows (video_win32.c),
+					 * which the window manager enforces live while the user
+					 * drags. Snap back to the nearest SCREEN_WIDTH:
+					 * SCREEN_HEIGHT-preserving size instead, so a window
+					 * dragged to an arbitrary size doesn't sit there with
+					 * large black letterbox/pillarbox bars. This reacts
+					 * after the fact rather than constraining the drag
+					 * itself, so a fast drag can show a brief
+					 * wrong-then-corrected flash, but needs no
+					 * platform-specific window-system code (the X11
+					 * equivalent, XSizeHints, wouldn't cover Wayland
+					 * anyway). SDL_SetWindowSize() below reports back as
+					 * SDL_WINDOWEVENT_SIZE_CHANGED, not another
+					 * SDL_WINDOWEVENT_RESIZED, so this can't self-trigger a
+					 * loop. */
+					int win_w = event.window.data1;
+					int win_h = event.window.data2;
+					float scale_x = (float)win_w / (float)s_render_width;
+					float scale_y = (float)win_h / (float)s_render_height;
+					float scale = (scale_x < scale_y) ? scale_x : scale_y;
+					int corrected_w = (int)(s_render_width * scale + 0.5f);
+					int corrected_h = (int)(s_render_height * scale + 0.5f);
+
+					if (corrected_w != win_w || corrected_h != win_h) {
+						SDL_SetWindowSize(s_window, corrected_w, corrected_h);
+					}
 				}
 				break;
 		}
