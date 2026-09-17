@@ -581,9 +581,7 @@ void Video_Tick(void)
 	if (s_video_lock) return;
 	s_video_lock = true;
 
-	if (s_showFPS) {
-		Video_ShowFPS(GFX_Screen_Get_ByIndex(SCREEN_0));
-	}
+	Video_ShowFPS(GFX_Screen_Get_ByIndex(SCREEN_0), s_showFPS);
 
 	while (SDL_PollEvent(&event)) {
 		uint8 keyup = 1;
@@ -625,6 +623,11 @@ void Video_Tick(void)
 				}
 				if (sym == SDLK_F8 && !keyup) {
 					s_showFPS = !s_showFPS;
+					/* force a redraw so the FPS overlay's restore-the-
+					 * backdrop path (Video_ShowFPS_2()) runs right away
+					 * on disable, rather than waiting on the next dirty
+					 * SCREEN_0 from the game itself */
+					s_screen_needrepaint = true;
 					continue;
 				}
 				/* Mac keyboard scancodes are very different from what

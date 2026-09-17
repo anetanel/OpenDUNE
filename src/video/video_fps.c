@@ -1,7 +1,17 @@
+#include <string.h>
+
 #include "types.h"
 #include "../timer.h"
 
 #include "video_fps.h"
+
+/* The digit glyphs are 3px wide with a 1px gap (4px per digit) and 5px
+ * tall (see Video_ShowFPS_DrawChar()); 10 digits comfortably covers the
+ * largest value Video_ShowFPS_2() can compute. */
+#define FPS_AREA_HEIGHT 5
+#define FPS_AREA_MAX_DIGITS 10
+#define FPS_AREA_WIDTH (FPS_AREA_MAX_DIGITS * 4)
+#define FPS_AREA_LEFT (320 - FPS_AREA_WIDTH)
 
 static void Video_ShowFPS_DrawChar(uint8 * screen, int bytes_per_row, uint16 x, uint8 digit)
 {
@@ -20,11 +30,44 @@ static void Video_ShowFPS_DrawChar(uint8 * screen, int bytes_per_row, uint16 x, 
 	}
 }
 
-void Video_ShowFPS_2(uint8 *screen, int bytes_per_row, Video_ShowFPS_Proc drawchar)
+void Video_ShowFPS_2(uint8 *screen, int bytes_per_row, bool enabled, Video_ShowFPS_Proc drawchar)
 {
 	uint32 timeStamp;
 	static uint32 s_previousTimeStamps[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	static uint8 s_previousTimeStampsIndex = 0;
+	/* The digits are drawn straight into the live game screen buffer
+	 * (whatever callers pass in is SCREEN_0 itself, not a copy), so
+	 * disabling the display or drawing fewer digits than last time would
+	 * otherwise leave stale digit pixels behind forever -- nothing else
+	 * repaints this corner on its own. Freeze a copy of what was really
+	 * there the moment the overlay is first turned on, and re-composite
+	 * onto that same frozen backdrop every frame (rather than the
+	 * evolving live content) so toggling off -- or the digit count
+	 * shrinking -- can cleanly restore it. */
+	static uint8 s_backup[FPS_AREA_HEIGHT][FPS_AREA_WIDTH];
+	static bool s_backedUp = false;
+	int row;
+
+	if (!enabled) {
+		if (s_backedUp) {
+			for (row = 0; row < FPS_AREA_HEIGHT; row++) {
+				memcpy(screen + FPS_AREA_LEFT + row * bytes_per_row, s_backup[row], FPS_AREA_WIDTH);
+			}
+			s_backedUp = false;
+		}
+		return;
+	}
+
+	if (!s_backedUp) {
+		for (row = 0; row < FPS_AREA_HEIGHT; row++) {
+			memcpy(s_backup[row], screen + FPS_AREA_LEFT + row * bytes_per_row, FPS_AREA_WIDTH);
+		}
+		s_backedUp = true;
+	} else {
+		for (row = 0; row < FPS_AREA_HEIGHT; row++) {
+			memcpy(screen + FPS_AREA_LEFT + row * bytes_per_row, s_backup[row], FPS_AREA_WIDTH);
+		}
+	}
 
 	timeStamp = Timer_GetTime();
 	if(s_previousTimeStamps[s_previousTimeStampsIndex] > 0

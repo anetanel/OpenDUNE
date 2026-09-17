@@ -21,10 +21,10 @@ jobs:
             label: Linux (SDL2)
           - os: ubuntu-latest
             env: mingw32
-            label: Windows win32 (mingw)
+            label: Windows win32 (mingw, SDL2)
           - os: ubuntu-latest
             env: mingw64
-            label: Windows win64 (mingw)
+            label: Windows win64 (mingw, SDL2)
           - os: macos-latest
             env: SDLVERSION2
             label: macOS arm64 (SDL2)
@@ -49,16 +49,31 @@ jobs:
           elif [[ $envvar == "mingw64" ]]; then
             sudo apt-get install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
           fi
+      - name: Install SDL2 mingw devel (Windows)
+        if: ${{ matrix.env == 'mingw32' || matrix.env == 'mingw64' }}
+        env:
+          SDL2_VERSION: 2.30.9
+        run: |
+          curl -sL -o /tmp/SDL2-devel-mingw.tar.gz \
+            https://github.com/libsdl-org/SDL/releases/download/release-${SDL2_VERSION}/SDL2-devel-${SDL2_VERSION}-mingw.tar.gz
+          tar xzf /tmp/SDL2-devel-mingw.tar.gz -C /tmp
+          # The tarball ships both i686-w64-mingw32/ and x86_64-w64-mingw32/
+          # trees (headers, static+import libs, sdl2-config); drop each
+          # straight into the matching cross sysroot so sdl2-config's own
+          # relative-path lookup (script_dir/..) resolves correctly.
+          sudo cp -r /tmp/SDL2-${SDL2_VERSION}/i686-w64-mingw32/. /usr/i686-w64-mingw32/
+          sudo cp -r /tmp/SDL2-${SDL2_VERSION}/x86_64-w64-mingw32/. /usr/x86_64-w64-mingw32/
+          sudo chmod +x /usr/i686-w64-mingw32/bin/sdl2-config /usr/x86_64-w64-mingw32/bin/sdl2-config
       - name: Configure
         env:
           envvar: ${{ matrix.env }}
         run: |
           if [[ $envvar == "mingw32" ]]; then
             export CC="i686-w64-mingw32-gcc"
-            ./configure --prefix-dir=${HOME} --os=MINGW --without-asound --without-oss --without-munt --without-sdl --without-sdl2 --without-pulse
+            ./configure --prefix-dir=${HOME} --os=MINGW --without-asound --without-oss --without-munt --without-sdl --with-sdl2=/usr/i686-w64-mingw32/bin/sdl2-config --without-pulse
           elif [[ $envvar == "mingw64" ]]; then
             export CC="x86_64-w64-mingw32-gcc"
-            ./configure --prefix-dir=${HOME} --os=MINGW --without-asound --without-oss --without-munt --without-sdl --without-sdl2 --without-pulse
+            ./configure --prefix-dir=${HOME} --os=MINGW --without-asound --without-oss --without-munt --without-sdl --with-sdl2=/usr/x86_64-w64-mingw32/bin/sdl2-config --without-pulse
           else
             ./configure --prefix-dir=${HOME}
           fi

@@ -403,9 +403,7 @@ static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM l
 			RECT rect;
 
 			if (!GetUpdateRect(hwnd, &rect, FALSE)) return 0;
-			if (s_showFPS) {
-				Video_ShowFPS(s_screen);
-			}
+			Video_ShowFPS(s_screen, s_showFPS);
 			if (s_scale_filter == FILTER_SCALE2X) {
 				if (s_screen_magnification == 1) {
 					memcpy((char *)s_screen2 + rect.top * SCREEN_WIDTH,
