@@ -470,7 +470,14 @@ static void GUI_Window_Create(WindowDesc *desc)
 	}
 
 	if (GUI_String_Get_ByIndex(desc->widgets[0].stringID) == NULL) {
-		GUI_DrawText_Wrapper(String_Get_ByIndex(STR_THERE_ARE_NO_SAVED_GAMES_TO_LOAD), (g_curWidgetXBase + 2) << 3, g_curWidgetYBase + 42, 232, 0, 0x22);
+		if (GUI_IsRTLLanguage()) {
+			/* Mirror image of the LTR branch below: right-anchored at the
+			 * same margin from the window's right edge instead of
+			 * left-anchored from its left edge. */
+			GUI_DrawText_Wrapper(String_Get_ByIndex(STR_THERE_ARE_NO_SAVED_GAMES_TO_LOAD), (g_curWidgetXBase + g_curWidgetWidth - 2) << 3, g_curWidgetYBase + 42, 232, 0, 0x222);
+		} else {
+			GUI_DrawText_Wrapper(String_Get_ByIndex(STR_THERE_ARE_NO_SAVED_GAMES_TO_LOAD), (g_curWidgetXBase + 2) << 3, g_curWidgetYBase + 42, 232, 0, 0x22);
+		}
 	}
 
 	if (desc == &g_gameControlWindowDesc) {
