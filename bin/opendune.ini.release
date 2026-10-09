@@ -1,0 +1,7 @@
+; OpenDUNE configuration - preconfigured for Hebrew, AdLib music and fullscreen.
+; Lines starting with a semi-colon ';' are comments.
+; See opendune.ini.sample for all available options.
+[opendune]
+language=hebrew
+adlib=1
+fullscreen=1

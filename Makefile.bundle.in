@@ -49,6 +49,7 @@ endif
 	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/enhancement.txt"      "$(BUNDLE_DIR)/"
 	$(Q)cp "$(BIN_DIR)/opendune.ini.sample"  "$(BUNDLE_DIR)/"
+	$(Q)cp "$(BIN_DIR)/opendune.ini.release" "$(OPENDUNE_DIR)/opendune.ini"
 	$(Q)mkdir -p "$(OPENDUNE_DIR)/data"
 	$(Q)cp "$(BIN_DIR)/data/put_dune2_here.txt" "$(OPENDUNE_DIR)/data/"
 ifeq ($(OS), UNIX)
@@ -56,7 +57,7 @@ ifeq ($(OS), UNIX)
 endif
 ifeq ($(OPENDUNE), opendune.exe)
 	$(Q)unix2dos "$(BUNDLE_DIR)/README.txt" "$(BUNDLE_DIR)/COPYING" "$(BUNDLE_DIR)/enhancement.txt"
-	$(Q)unix2dos "$(BUNDLE_DIR)/opendune.ini.sample"
+	$(Q)unix2dos "$(BUNDLE_DIR)/opendune.ini.sample" "$(OPENDUNE_DIR)/opendune.ini"
 endif
 ifeq ($(OS), TOS)
 	$(Q)cp "$(ROOT_DIR)/README.atari"         "$(BUNDLE_DIR)/"

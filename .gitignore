@@ -15,6 +15,7 @@ bundles
 !bin/data/put_dune2_here.txt
 !bin/data/dune.cfg
 !bin/opendune.ini.sample
+!bin/opendune.ini.release
 projects/*
 !projects/generate
 !projects/determineversion.vbs
