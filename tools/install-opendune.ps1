@@ -4,8 +4,8 @@
 
 .DESCRIPTION
   Downloads the latest OpenDUNE Windows release and the Hebrew data files,
-  and installs the Dune II 1.07 (EU/US) game data. By default the Dune II game data is downloaded automatically (via
-  download_game.ps1, from MyAbandonware). Alternatively, supply your own copy
+  and installs the Dune II 1.07 (EU/US) game data. By default the Dune II game data is downloaded automatically (from
+  MyAbandonware). Alternatively, supply your own copy
   with -GamePath (a folder or a .zip containing the *.PAK files).
 
 .EXAMPLE
@@ -28,13 +28,19 @@ New-Item -ItemType Directory -Path $tmp | Out-Null
 try {
   # 1. Game data (user supplied via -GamePath, otherwise downloaded)
   if (-not $GamePath) {
-    $dl = Join-Path $PSScriptRoot 'download_game.ps1'
-    if (-not $PSScriptRoot -or -not (Test-Path $dl)) {   # e.g. run via irm | iex
-      $dl = Join-Path $tmp 'download_game.ps1'
-      Invoke-WebRequest "https://raw.githubusercontent.com/$Repo/$Branch/tools/download_game.ps1" -OutFile $dl
-    }
+    # MyAbandonware hands out a tokenized link, so load the game page first to get a session
+    $gamePageUrl = 'https://www.myabandonware.com/game/dune-ii-the-building-of-a-dynasty-1e7'
+    $downloadId  = 'lgxx-dune-ii-the-building-of-a-dynasty'   # EN-FR-DE / European version (4 MB)
+    # Other known IDs on the same page:
+    #   lgxw-dune-ii-the-building-of-a-dynasty   -> 4 MB
+    #   lt0i-dune-ii-the-building-of-a-dynasty   -> ISO 11 MB
+    #   p9ei-dune-ii-the-building-of-a-dynasty   -> Disc Image 4 MB
+    Write-Host 'Downloading Dune II game data...'
+    $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
+    $null = Invoke-WebRequest -Uri $gamePageUrl -WebSession $session -UseBasicParsing
     $GamePath = Join-Path $tmp 'game.zip'
-    & $dl -OutFile $GamePath
+    $null = Invoke-WebRequest -Uri "https://www.myabandonware.com/download/$downloadId" `
+                              -WebSession $session -UseBasicParsing -MaximumRedirection 5 -OutFile $GamePath
   }
   $GamePath = $GamePath.Trim('"')
   if (-not (Test-Path $GamePath)) { throw "Not found: $GamePath" }
