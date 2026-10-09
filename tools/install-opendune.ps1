@@ -4,21 +4,16 @@
 
 .DESCRIPTION
   Downloads the latest OpenDUNE Windows release and the Hebrew data files,
-  and installs your own copy of the Dune II 1.07 (EU/US) game data.
-  The game data is not bundled: Dune II is still under copyright, so you
-  must supply it yourself via -GamePath (a folder or a .zip containing the
-  *.PAK files). If omitted, the script asks for it. For testing/development
-  you can pass -DownloadGame instead, which runs tools/download_game.ps1 to
-  fetch the game zip from MyAbandonware.
+  and installs the Dune II 1.07 (EU/US) game data. By default the Dune II game data is downloaded automatically (via
+  download_game.ps1, from MyAbandonware). Alternatively, supply your own copy
+  with -GamePath (a folder or a .zip containing the *.PAK files).
 
 .EXAMPLE
-  .\install-opendune.ps1 -GamePath C:\Games\Dune2
-  .\install-opendune.ps1 -DownloadGame
   irm https://raw.githubusercontent.com/anetanel/OpenDUNE/master/tools/install-opendune.ps1 | iex
+  .\install-opendune.ps1 -GamePath C:\Games\Dune2
 #>
 param(
   [string]$GamePath,
-  [switch]$DownloadGame,
   [string]$InstallDir = (Join-Path $env:LOCALAPPDATA 'OpenDUNE'),
   [ValidateSet('win64','win32')][string]$Arch = 'win64',
   [string]$Repo = 'anetanel/OpenDUNE',
@@ -31,8 +26,8 @@ $ProgressPreference = 'SilentlyContinue'   # Invoke-WebRequest is much faster wi
 $tmp = Join-Path ([IO.Path]::GetTempPath()) ("opendune-" + [guid]::NewGuid())
 New-Item -ItemType Directory -Path $tmp | Out-Null
 try {
-  # 1. Game data (user supplied, or fetched with -DownloadGame)
-  if ($DownloadGame -and -not $GamePath) {
+  # 1. Game data (user supplied via -GamePath, otherwise downloaded)
+  if (-not $GamePath) {
     $dl = Join-Path $PSScriptRoot 'download_game.ps1'
     if (-not $PSScriptRoot -or -not (Test-Path $dl)) {   # e.g. run via irm | iex
       $dl = Join-Path $tmp 'download_game.ps1'
@@ -41,7 +36,6 @@ try {
     $GamePath = Join-Path $tmp 'game.zip'
     & $dl -OutFile $GamePath
   }
-  if (-not $GamePath) { $GamePath = Read-Host 'Path to your Dune II game folder or .zip (containing the .PAK files)' }
   $GamePath = $GamePath.Trim('"')
   if (-not (Test-Path $GamePath)) { throw "Not found: $GamePath" }
   if ((Get-Item $GamePath).PSIsContainer) { $gameSrc = $GamePath }
