@@ -136,7 +136,14 @@ try {
   # 3. Hebrew data files
   Step '[3/4] Hebrew data files'
   $hebZip = Join-Path $tmp 'hebrew.zip'
-  Get-File "https://raw.githubusercontent.com/$Repo/$Branch/hebrew/dist/dune2-hebrew.zip" $hebZip 'dune2-hebrew.zip'
+  $hebAsset = $rel.assets | Where-Object { $_.name -match 'hebrew.*\.zip$' } | Select-Object -First 1
+  if ($hebAsset) {
+    Info "Using $($hebAsset.name) from release $($rel.tag_name)"
+    Get-File $hebAsset.browser_download_url $hebZip $hebAsset.name
+  } else {
+    Info "Release $($rel.tag_name) has no Hebrew asset; falling back to branch '$Branch' (may not match the release)"
+    Get-File "https://raw.githubusercontent.com/$Repo/$Branch/hebrew/dist/dune2-hebrew.zip" $hebZip 'dune2-hebrew.zip'
+  }
 
   # 4. Install
   Step "[4/4] Installing to $InstallDir"

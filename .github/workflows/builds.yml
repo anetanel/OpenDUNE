@@ -7,6 +7,8 @@ on:
       - master
   schedule: # Run monthly
     - cron: "0 0 1 * *"
+  release: # Attach the Hebrew pack to published releases
+    types: [published]
 
 jobs:
   build:
@@ -88,3 +90,16 @@ jobs:
         with:
           name: OpenDune ${{ matrix.label }}
           path: bundles/opendune-custom-*.zip
+
+  hebrew-pack:
+    name: Attach Hebrew pack to release
+    if: ${{ github.event_name == 'release' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upload dune2-hebrew.zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ github.event.release.tag_name }}" hebrew/dist/dune2-hebrew.zip --clobber
