@@ -395,7 +395,7 @@ static bool GameLoop_IsInRange(uint16 x, uint16 y, uint16 minX, uint16 minY, uin
 	return x >= minX && x <= maxX && y >= minY && y <= maxY;
 }
 
-static uint16 GameLoop_HandleEvents(const char **strings)
+static uint16 GameLoop_HandleEvents(const char **strings, const uint16 *stringIDs)
 {
 	uint8 last;
 	uint16 result;
@@ -488,7 +488,7 @@ static uint16 GameLoop_HandleEvents(const char **strings)
 				char c2;
 
 				if (strings[i] == NULL) continue;
-				c1 = toupper(*strings[i]);
+				c1 = toupper(String_Get_ShortcutChar(stringIDs[i]));
 				c2 = toupper(Input_Keyboard_HandleKeys(key & 0xFF));
 
 				if (c1 == c2) {
@@ -826,7 +826,7 @@ static void GameLoop_GameIntroAnimationMenu(void)
 
 	if (loadGame) return;
 
-	stringID = GameLoop_HandleEvents(strings);
+	stringID = GameLoop_HandleEvents(strings, mainMenuStrings[index]);
 
 	if (stringID != 0xFFFF) stringID = mainMenuStrings[index][stringID];
 

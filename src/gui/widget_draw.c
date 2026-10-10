@@ -334,9 +334,9 @@ void GUI_Widget_SpriteTextButton_Draw(Widget *w)
 	}
 
 	if (g_productionStringID == STR_D_DONE || g_productionStringID == STR_UPGRADINGD_DONE) {
-		w->shortcut = GUI_Widget_GetShortcut(*String_Get_ByIndex(STR_ON_HOLD));
+		w->shortcut = GUI_Widget_GetShortcut(String_Get_ShortcutChar(STR_ON_HOLD));
 	} else {
-		w->shortcut = GUI_Widget_GetShortcut(*String_Get_ByIndex(g_productionStringID));
+		w->shortcut = GUI_Widget_GetShortcut(String_Get_ShortcutChar(g_productionStringID));
 	}
 
 	if (oldScreenID != SCREEN_0) return;
@@ -403,7 +403,7 @@ void GUI_Widget_TextButton2_Draw(Widget *w)
 		0x121
 	);
 
-	w->shortcut = GUI_Widget_GetShortcut(*String_Get_ByIndex(stringID));
+	w->shortcut = GUI_Widget_GetShortcut(String_Get_ShortcutChar(stringID));
 
 	if (oldScreenID != SCREEN_0) return;
 
@@ -804,7 +804,7 @@ void GUI_Widget_ActionPanel_Draw(bool forceDraw)
 
 					for (i = 0; i < 4; i++) {
 						buttons[i]->stringID = g_table_actionInfo[actions[i]].stringID;
-						buttons[i]->shortcut = GUI_Widget_GetShortcut(String_Get_ByIndex(buttons[i]->stringID)[0]);
+						buttons[i]->shortcut = GUI_Widget_GetShortcut(String_Get_ShortcutChar(buttons[i]->stringID));
 
 						if (g_config.language == LANGUAGE_FRENCH) {
 							if (buttons[i]->stringID == STR_MOVE) buttons[i]->shortcut2 = 0x27;	/* L key */

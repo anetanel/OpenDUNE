@@ -614,7 +614,7 @@ Widget *GUI_Widget_Allocate(uint16 index, uint16 shortcut, uint16 offsetX, uint1
 
 			if (stringID == STR_NULL) break;
 
-			if (String_Get_ByIndex(stringID) != NULL) w->shortcut = GUI_Widget_GetShortcut(*String_Get_ByIndex(stringID));
+			if (String_Get_ByIndex(stringID) != NULL) w->shortcut = GUI_Widget_GetShortcut(String_Get_ShortcutChar(stringID));
 			if (stringID == STR_CANCEL) w->shortcut2 = 'n';
 			break;
 

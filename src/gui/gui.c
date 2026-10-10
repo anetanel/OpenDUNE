@@ -2185,8 +2185,8 @@ uint8 GUI_PickHouse(void)
 			break;
 		}
 
-		w = GUI_Widget_Link(w, GUI_Widget_Allocate(1, GUI_Widget_GetShortcut(String_Get_ByIndex(STR_YES)[0]), 168, 168, 373, 0));
-		w = GUI_Widget_Link(w, GUI_Widget_Allocate(2, GUI_Widget_GetShortcut(String_Get_ByIndex(STR_NO)[0]), 240, 168, 375, 0));
+		w = GUI_Widget_Link(w, GUI_Widget_Allocate(1, GUI_Widget_GetShortcut(String_Get_ShortcutChar(STR_YES)), 168, 168, 373, 0));
+		w = GUI_Widget_Link(w, GUI_Widget_Allocate(2, GUI_Widget_GetShortcut(String_Get_ShortcutChar(STR_NO)), 240, 168, 375, 0));
 
 		g_playerHouseID = HOUSE_MERCENARY;
 
@@ -3021,7 +3021,7 @@ static uint32 GUI_FactoryWindow_CreateWidgets(void)
 		w->flags.notused2 = (wi->flags & 0x0080) ? true : false;
 		w->flags.buttonFilterLeft = (wi->flags >> 8) & 0x0f;
 		w->flags.buttonFilterRight = (wi->flags >> 12) & 0x0f;
-		w->shortcut  = (wi->shortcut < 0) ? abs(wi->shortcut) : GUI_Widget_GetShortcut(*String_Get_ByIndex(wi->shortcut));
+		w->shortcut  = (wi->shortcut < 0) ? abs(wi->shortcut) : GUI_Widget_GetShortcut(String_Get_ShortcutChar(wi->shortcut));
 		w->clickProc = wi->clickProc;
 		w->width     = wi->width;
 		w->height    = wi->height;

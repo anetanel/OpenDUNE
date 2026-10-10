@@ -107,6 +107,31 @@ char *String_Get_ByIndex(uint16 stringID)
 	return s_stringsBuffer + s_strings[stringID];
 }
 
+/**
+ * First character of the given string, to derive its keyboard shortcut from.
+ * For Hebrew, a leading Hebrew letter (cp862 0x80-0x9A) is replaced by the
+ * Latin letter on the same key of the Israeli layout (SI 1452) -- shortcuts
+ * are physical keys. A Cancel button reacts to Escape only.
+ *
+ * @param stringID The index of the string.
+ * @return The character the shortcut is derived from.
+ */
+uint8 String_Get_ShortcutChar(uint16 stringID)
+{
+	/* alef..tav, in cp862 order */
+	static const char hebrewKeys[27] = {
+		't', 'c', 'd', 's', 'v', 'u', 'z', 'j', 'y', 'h', 'l',
+		'f', 'k', 'o', 'n', 'i', 'b', 'x', 'g', ';', 'p', '.',
+		'm', 'e', 'r', 'a', ','
+	};
+	uint8 c = (uint8)*String_Get_ByIndex(stringID);
+
+	if (g_config.language != LANGUAGE_HEBREW) return c;
+	if (stringID == STR_CANCEL) return 0x1B;
+	if (c >= 0x80 && c <= 0x9A) return (uint8)hebrewKeys[c - 0x80];
+	return c;
+}
+
 static bool String_ContainsCaseInsensitive(const char *haystack, const char *needle)
 {
 	size_t needleLen = strlen(needle);

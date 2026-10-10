@@ -558,10 +558,15 @@ static void GUI_Window_Create(WindowDesc *desc)
 		}
 
 		if (desc != &g_savegameNameWindowDesc) {
-			if (desc->widgets[i].labelStringId != STR_NULL) {
-				w->shortcut = GUI_Widget_GetShortcut(*GUI_String_Get_ByIndex(desc->widgets[i].labelStringId));
+			int16 shortcutStringId = (desc->widgets[i].labelStringId != STR_NULL) ? desc->widgets[i].labelStringId : desc->widgets[i].stringID;
+
+			/* Non-negative IDs are plain table strings: derive the shortcut
+			 * from the English text (matters for Hebrew). Negative ones are
+			 * synthetic and resolved by GUI_String_Get_ByIndex(). */
+			if (shortcutStringId >= 0) {
+				w->shortcut = GUI_Widget_GetShortcut(String_Get_ShortcutChar(shortcutStringId));
 			} else {
-				w->shortcut = GUI_Widget_GetShortcut(*GUI_String_Get_ByIndex(desc->widgets[i].stringID));
+				w->shortcut = GUI_Widget_GetShortcut(*GUI_String_Get_ByIndex(shortcutStringId));
 			}
 		}
 
