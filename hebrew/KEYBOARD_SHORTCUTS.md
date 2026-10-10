@@ -1,6 +1,6 @@
 # Keyboard shortcuts (Hebrew version)
 
-Shortcut = first letter of the **Hebrew** label, on the matching key of the Israeli (SI-1452) layout. Keys are physical, so they work with either active layout. **Cancel** reacts to Esc only (also Esc for Continue game / Previous).
+Shortcut = first letter of the **Hebrew** label, on the matching key of the Israeli (SI-1452) layout. Keys are physical, so they work with either active layout. **Cancel** uses ב (also reacts to Esc, as do Continue game and Previous).
 
 ## Main menu
 
@@ -21,6 +21,7 @@ Shortcut = first letter of the **Hebrew** label, on the matching key of the Isra
 | Build it | בנה זאת | ב | C |
 | On hold | בהמתנה | ב | C |
 | Place it | הנח זאת | ה | V |
+| Cancel | ביטול | ב | C |
 | Launch | שגר | ש | A |
 
 Shared letters: ש (Upgrade, Launch); ב (Build it, On hold)
