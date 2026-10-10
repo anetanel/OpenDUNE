@@ -65,6 +65,13 @@ FluidSynth is also supported.
 
 Installation & Running
 ----------------------
+Windows quick install (with Hebrew support; downloads OpenDUNE and the game
+data, asks for an install location, default C:\Program Files\OpenDUNE --
+run PowerShell as Administrator for that location):
+
+  irm https://anetanel.github.io/OpenDUNE/tools/install-opendune.ps1 | iex
+
+Manual installation:
 Extract OpenDUNE.
 Copy the original Dune2 1.07 data files (including dune2.exe) to data/.
  All three existing versions of the Dune 1.07 data files (eu, hs and us) will

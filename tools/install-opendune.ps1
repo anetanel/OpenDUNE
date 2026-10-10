@@ -10,7 +10,7 @@
   with -GamePath (a folder or a .zip containing the *.PAK files).
 
 .EXAMPLE
-  irm https://raw.githubusercontent.com/anetanel/OpenDUNE/master/tools/install-opendune.ps1 | iex
+  irm https://anetanel.github.io/OpenDUNE/tools/install-opendune.ps1 | iex
   .\install-opendune.ps1 -GamePath C:\Games\Dune2
 #>
 param(

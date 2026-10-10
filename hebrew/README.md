@@ -3,6 +3,16 @@
 Adds Hebrew (`language=HEBREW` in `opendune.ini`) as a native OpenDUNE
 language, alongside the existing English/French/German/Italian/Spanish.
 
+## Quick install (Windows)
+
+```powershell
+irm https://anetanel.github.io/OpenDUNE/tools/install-opendune.ps1 | iex
+```
+
+Downloads OpenDUNE, this Hebrew pack and the Dune II game data, and asks for
+an install location (default `C:\Program Files\OpenDUNE`; run PowerShell as
+Administrator for that location).
+
 Translation source lives here, ported over from the `hebrew-support` branch
 of [dunedynasty](https://github.com/gameflorist/dunedynasty) (a fork of this
 project), which already had a working Hebrew translation:
